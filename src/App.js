@@ -11,13 +11,13 @@ import "./custom.scss";
 const App = () => {
   return (
     <BrowserRouter>
-      <Topbar />
+      {/* <Topbar /> */}
       <div>
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
         </Routes>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 };
