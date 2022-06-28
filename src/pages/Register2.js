@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-export default function Register() {
+export default function Register2() {
   return (
     <div>
       <nav
@@ -44,7 +44,7 @@ export default function Register() {
                     color: "#010040",
                   }}
                 >
-                  Daftar Diri
+                  Daftar Keluarga
                 </h4>
 
                 <div className="form-group">
@@ -55,12 +55,12 @@ export default function Register() {
                       fontSize: "11px",
                     }}
                   >
-                    Nama
+                    Nama Suami/Istri
                   </label>
                   <input
                     type="text"
                     className="form-control p-2"
-                    placeholder="contoh : Ahmad Taufik"
+                    placeholder="Tulis nama suami/istri"
                     aria-label="name"
                     style={{ fontSize: "12px" }}
                   />
@@ -73,13 +73,13 @@ export default function Register() {
                       fontSize: "11px",
                     }}
                   >
-                    Nomor Whatsapp anda
+                    Nama Anak Pertama
                   </label>
                   <input
                     type="text"
                     className="form-control p-2"
-                    placeholder="contoh : 08267492942"
-                    aria-label="notelp"
+                    placeholder="Tulis nama anak pertama anda"
+                    aria-label="name"
                     style={{ fontSize: "12px" }}
                   />
                 </div>
@@ -91,13 +91,13 @@ export default function Register() {
                       fontSize: "11px",
                     }}
                   >
-                    Masukan kembali Nomor Whatsapp anda
+                    Nama Anak Kedua
                   </label>
                   <input
                     type="text"
                     className="form-control p-2"
-                    placeholder="contoh : 08267492942"
-                    aria-label="notelp"
+                    placeholder="Tulis nama anak kedua anda"
+                    aria-label="name"
                     style={{ fontSize: "12px" }}
                   />
                 </div>
@@ -109,20 +109,15 @@ export default function Register() {
                       fontSize: "11px",
                     }}
                   >
-                    Departemen
+                    Nama Anak Ketiga
                   </label>
-                  <select
-                    className="form-select form-select-lg"
-                    style={{
-                      fontSize: "12px",
-                      border: "0px",
-                      boxShadow: "0px 2px #e3e3e3",
-                    }}
-                  >
-                    <option selected>Pilih Departemen anda saat ini</option>
-                    <option>Data 1</option>
-                    <option>Data 2</option>
-                  </select>
+                  <input
+                    type="text"
+                    className="form-control p-2"
+                    placeholder="Tulis nama anak ketiga anda"
+                    aria-label="name"
+                    style={{ fontSize: "12px" }}
+                  />
                 </div>
                 <div className="form-group">
                   <label
@@ -132,20 +127,15 @@ export default function Register() {
                       fontSize: "11px",
                     }}
                   >
-                    Kantor Cabang
+                    Nama Anak Keempat
                   </label>
-                  <select
-                    className="form-select form-select-lg"
-                    style={{
-                      fontSize: "12px",
-                      border: "0px",
-                      boxShadow: "0px 2px #e3e3e3",
-                    }}
-                  >
-                    <option selected>Pilih Kantor Cabang anda</option>
-                    <option>Data 1</option>
-                    <option>Data 2</option>
-                  </select>
+                  <input
+                    type="text"
+                    className="form-control p-2"
+                    placeholder="Tulis nama anak keempat anda"
+                    aria-label="name"
+                    style={{ fontSize: "12px" }}
+                  />
                 </div>
                 <div className="form-group">
                   <label
@@ -155,25 +145,19 @@ export default function Register() {
                       fontSize: "11px",
                     }}
                   >
-                    Transportasi
+                    Nama Anak Kelima
                   </label>
-                  <select
-                    className="form-select form-select-lg"
-                    style={{
-                      fontSize: "12px",
-                      border: "0px",
-                      boxShadow: "0px 2px #e3e3e3",
-                    }}
-                  >
-                    <option selected>Pilih Transportasi Kendaraan</option>
-                    <option>Data 1</option>
-                    <option>Data 2</option>
-                  </select>
+                  <input
+                    type="text"
+                    className="form-control p-2"
+                    placeholder="Tulis nama anak kelima anda"
+                    aria-label="name"
+                    style={{ fontSize: "12px" }}
+                  />
                 </div>
 
                 <div className="text-center d-grid mt-2 actions">
-                  <a
-                    href="/register2"
+                  <button
                     className="btn btn-warning btn-lg btn-block"
                     style={{
                       paddingTop: "10px",
@@ -185,7 +169,7 @@ export default function Register() {
                     }}
                   >
                     Lanjut
-                  </a>
+                  </button>
                   <p
                     className="mt-3 mb-3"
                     style={{ fontSize: "10px", color: "grey" }}
