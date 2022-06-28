@@ -53,12 +53,12 @@ export default function ConfirmRegister() {
 
   return (
     <div>
-      <LoadingScreen 
-        loading={loading} 
-        bgColor='rgba(0,0,0,0.5)'
-        spinnerColor='#9ee5f8'
-        textColor='#FFF'
-        text='Data sedang diproses'
+      <LoadingScreen
+        loading={loading}
+        bgColor="rgba(0,0,0,0.5)"
+        spinnerColor="#9ee5f8"
+        textColor="#FFF"
+        text="Data sedang diproses"
       />
       <nav
         className="navbar navbar-light"
@@ -124,105 +124,240 @@ export default function ConfirmRegister() {
                       onChange={_handleChange}
                     />
                   </div>
-                  <div className="form-group">
-                    <label
-                      style={{
-                        fontWeight: "bold",
-                        color: "#010040",
-                        fontSize: "11px",
-                      }}
-                    >
-                      Nama Anak Pertama
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control p-2"
-                      placeholder="Tulis nama anak pertama anda"
-                      aria-label="name"
-                      style={{ fontSize: "12px" }}
-                      name={1}
-                      onChange={_handleChange}
-                    />
+                  <div className="row">
+                    <div className="col-8" style={{ paddingRight: 0 }}>
+                      <div className="form-group">
+                        <label
+                          style={{
+                            fontWeight: "bold",
+                            color: "#010040",
+                            fontSize: "11px",
+                          }}
+                        >
+                          Nama Anak Pertama
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control p-2"
+                          placeholder="Tulis nama anak pertama anda"
+                          aria-label="name"
+                          style={{ fontSize: "12px" }}
+                          name={1}
+                          onChange={_handleChange}
+                        />
+                      </div>
+                    </div>
+                    <div className="col-4">
+                      <div className="form-group">
+                        <label
+                          style={{
+                            fontWeight: "bold",
+                            color: "#010040",
+                            fontSize: "11px",
+                          }}
+                        >
+                          Usia
+                        </label>
+                        <select
+                          className="form-select form-select-lg"
+                          style={{
+                            fontSize: "12px",
+                            border: "0px",
+                            boxShadow: "0px 2px #e3e3e3",
+                          }}
+                        >
+                          <option selected> 0 - 25 Tahun</option>
+                        </select>
+                      </div>
+                    </div>
                   </div>
-                  <div className="form-group">
-                    <label
-                      style={{
-                        fontWeight: "bold",
-                        color: "#010040",
-                        fontSize: "11px",
-                      }}
-                    >
-                      Nama Anak Kedua
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control p-2"
-                      placeholder="Tulis nama anak kedua anda"
-                      aria-label="name"
-                      style={{ fontSize: "12px" }}
-                      name={2}
-                      onChange={_handleChange}
-                    />
+                  <div className="row">
+                    <div className="col-8" style={{ paddingRight: 0 }}>
+                      <div className="form-group">
+                        <label
+                          style={{
+                            fontWeight: "bold",
+                            color: "#010040",
+                            fontSize: "11px",
+                          }}
+                        >
+                          Nama Anak Kedua
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control p-2"
+                          placeholder="Tulis nama anak kedua anda"
+                          aria-label="name"
+                          style={{ fontSize: "12px" }}
+                          name={2}
+                          onChange={_handleChange}
+                        />
+                      </div>
+                    </div>
+                    <div className="col-4">
+                      <div className="form-group">
+                        <label
+                          style={{
+                            fontWeight: "bold",
+                            color: "#010040",
+                            fontSize: "11px",
+                          }}
+                        >
+                          Usia
+                        </label>
+                        <select
+                          className="form-select form-select-lg"
+                          style={{
+                            fontSize: "12px",
+                            border: "0px",
+                            boxShadow: "0px 2px #e3e3e3",
+                          }}
+                        >
+                          <option selected> 0 - 25 Tahun</option>
+                        </select>
+                      </div>
+                    </div>
                   </div>
-                  <div className="form-group">
-                    <label
-                      style={{
-                        fontWeight: "bold",
-                        color: "#010040",
-                        fontSize: "11px",
-                      }}
-                    >
-                      Nama Anak Ketiga
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control p-2"
-                      placeholder="Tulis nama anak ketiga anda"
-                      aria-label="name"
-                      style={{ fontSize: "12px" }}
-                      name={3}
-                      onChange={_handleChange}
-                    />
+                  <div className="row">
+                    <div className="col-8" style={{ paddingRight: 0 }}>
+                      <div className="form-group">
+                        <label
+                          style={{
+                            fontWeight: "bold",
+                            color: "#010040",
+                            fontSize: "11px",
+                          }}
+                        >
+                          Nama Anak Ketiga
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control p-2"
+                          placeholder="Tulis nama anak ketiga anda"
+                          aria-label="name"
+                          style={{ fontSize: "12px" }}
+                          name={3}
+                          onChange={_handleChange}
+                        />
+                      </div>
+                    </div>
+                    <div className="col-4">
+                      <div className="form-group">
+                        <label
+                          style={{
+                            fontWeight: "bold",
+                            color: "#010040",
+                            fontSize: "11px",
+                          }}
+                        >
+                          Usia
+                        </label>
+                        <select
+                          className="form-select form-select-lg"
+                          style={{
+                            fontSize: "12px",
+                            border: "0px",
+                            boxShadow: "0px 2px #e3e3e3",
+                          }}
+                        >
+                          <option selected> 0 - 25 Tahun</option>
+                        </select>
+                      </div>
+                    </div>
                   </div>
-                  <div className="form-group">
-                    <label
-                      style={{
-                        fontWeight: "bold",
-                        color: "#010040",
-                        fontSize: "11px",
-                      }}
-                    >
-                      Nama Anak Keempat
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control p-2"
-                      placeholder="Tulis nama anak keempat anda"
-                      aria-label="name"
-                      style={{ fontSize: "12px" }}
-                      name={4}
-                      onChange={_handleChange}
-                    />
+                  <div className="row">
+                    <div className="col-8" style={{ paddingRight: 0 }}>
+                      <div className="form-group">
+                        <label
+                          style={{
+                            fontWeight: "bold",
+                            color: "#010040",
+                            fontSize: "11px",
+                          }}
+                        >
+                          Nama Anak Keempat
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control p-2"
+                          placeholder="Tulis nama anak keempat anda"
+                          aria-label="name"
+                          style={{ fontSize: "12px" }}
+                          name={4}
+                          onChange={_handleChange}
+                        />
+                      </div>
+                    </div>
+                    <div className="col-4">
+                      <div className="form-group">
+                        <label
+                          style={{
+                            fontWeight: "bold",
+                            color: "#010040",
+                            fontSize: "11px",
+                          }}
+                        >
+                          Usia
+                        </label>
+                        <select
+                          className="form-select form-select-lg"
+                          style={{
+                            fontSize: "12px",
+                            border: "0px",
+                            boxShadow: "0px 2px #e3e3e3",
+                          }}
+                        >
+                          <option selected> 0 - 25 Tahun</option>
+                        </select>
+                      </div>
+                    </div>
                   </div>
-                  <div className="form-group">
-                    <label
-                      style={{
-                        fontWeight: "bold",
-                        color: "#010040",
-                        fontSize: "11px",
-                      }}
-                    >
-                      Nama Anak Kelima
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control p-2"
-                      placeholder="Tulis nama anak kelima anda"
-                      aria-label="name"
-                      style={{ fontSize: "12px" }}
-                      name={5}
-                      onChange={_handleChange}
-                    />
+                  <div className="row">
+                    <div className="col-8" style={{ paddingRight: 0 }}>
+                      <div className="form-group">
+                        <label
+                          style={{
+                            fontWeight: "bold",
+                            color: "#010040",
+                            fontSize: "11px",
+                          }}
+                        >
+                          Nama Anak Kelima
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control p-2"
+                          placeholder="Tulis nama anak kelima anda"
+                          aria-label="name"
+                          style={{ fontSize: "12px" }}
+                          name={5}
+                          onChange={_handleChange}
+                        />
+                      </div>
+                    </div>
+                    <div className="col-4">
+                      <div className="form-group">
+                        <label
+                          style={{
+                            fontWeight: "bold",
+                            color: "#010040",
+                            fontSize: "11px",
+                          }}
+                        >
+                          Usia
+                        </label>
+                        <select
+                          className="form-select form-select-lg"
+                          style={{
+                            fontSize: "12px",
+                            border: "0px",
+                            boxShadow: "0px 2px #e3e3e3",
+                          }}
+                        >
+                          <option selected> 0 - 25 Tahun</option>
+                        </select>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="text-center d-grid mt-2 actions">
