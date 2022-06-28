@@ -1,6 +1,18 @@
-import React, { useState } from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-export default function Home() {
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+export default function Home() {  
+  const navigate = useNavigate();
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('user'));
+    if (!data) {
+      navigate('/login');
+      return
+    }
+    setUser({ ...data });
+  }, []);
   return (
     <div>
       <link
@@ -68,7 +80,7 @@ export default function Home() {
                     fontSize: "15px",
                   }}
                 >
-                  Hai, Aditya Galih Wicaksono
+                  Hai, {user.name}
                 </p>
 
                 <p

@@ -1,6 +1,42 @@
-import React from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
+import { Spinner } from "react-activity";
+import { Users } from "../services";
+import { showToast } from "./utils/helper";
+import { useNavigate } from "react-router-dom";
+
 export default function Login() {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [payload, setPayload] = useState({
+    phone_number: ''
+  });
+
+  const _handleSubmit = async (e) => {
+    e.preventDefault();
+    const user = new Users();
+    
+    try {
+      setLoading(true);
+      const resp = await user.login(payload);
+      localStorage.setItem('user', JSON.stringify(resp.data));
+      localStorage.setItem('token', resp.token);
+      
+      setLoading(false);
+
+      navigate('/home');
+      
+    } catch(err) {
+      if (err.code === 401) {
+        showToast('error', 'Nomor telepon tidak terdaftar.')
+        setLoading(false);
+        return
+      }
+
+      showToast('error', JSON.stringify(err));
+    }
+
+  }
+
   return (
     <div>
       <nav
@@ -45,77 +81,89 @@ export default function Login() {
                 >
                   Masuk
                 </h1>
-
-                <label
-                  style={{
-                    fontWeight: "bold",
-                    color: "#010040",
-                    fontSize: "11px",
-                  }}
-                >
-                  Nomor Whatsapp
-                </label>
-                <div className="input-group mb-3">
-                  <span
-                    className="input-group-text"
-                    id="basic-addon1"
-                    style={{ background: "white", borderRight: "0px" }}
-                  >
-                    <img
-                      src="assets/img/icon/whatsapp.png"
-                      alt=""
-                      style={{
-                        width: "18px",
-                      }}
-                    />
-                  </span>
-                  <input
-                    type="text"
-                    className="form-control p-2"
-                    placeholder="contoh : 08267492942"
-                    aria-label="notelp"
-                    style={{ borderLeft: "0px", fontSize: "12px" }}
-                  />
-                </div>
-                <div className="text-center d-grid mt-5">
-                  <button
-                    className="btn btn-warning btn-lg btn-block"
+                
+                <form onSubmit={_handleSubmit}>
+                  <label
                     style={{
-                      paddingTop: "10px",
-                      paddingBottom: "10px",
-                      background: "#f9af02",
-                      textTransform: "uppercase",
-                      fontSize: "13px",
-                      fontWeight: "800",
-                    }}
-                  >
-                    Masuk
-                  </button>
-                  <p
-                    className="mt-3 mb-3"
-                    style={{ fontSize: "10px", color: "grey" }}
-                  >
-                    Anda belum mendaftar? Daftar sekarang
-                  </p>
-                  <a
-                    href="/register"
-                    className="btn btn-lg"
-                    style={{
-                      paddingTop: "10px",
-                      paddingBottom: "10px",
-                      background: "transparent",
+                      fontWeight: "bold",
                       color: "#010040",
-                      boxShadow: 0,
-                      border: 0,
-                      border: "2px solid #010040",
-                      textTransform: "uppercase",
-                      fontSize: "13px",
-                      fontWeight: "800",
+                      fontSize: "11px",
                     }}
                   >
-                    Daftar
-                  </a>
-                </div>
+                    Nomor Whatsapp
+                  </label>
+                  <div className="input-group mb-3">
+                    <span
+                      className="input-group-text"
+                      id="basic-addon1"
+                      style={{ background: "white", borderRight: "0px" }}
+                    >
+                      <img
+                        src="assets/img/icon/whatsapp.png"
+                        alt=""
+                        style={{
+                          width: "18px",
+                        }}
+                      />
+                    </span>
+                    <input
+                      type="text"
+                      required
+                      name="phone_number"
+                      onChange={(e) => setPayload({ phone_number: e.target.value })}
+                      className="form-control p-2"
+                      placeholder="contoh : 08267492942"
+                      aria-label="notelp"
+                      style={{ borderLeft: "0px", fontSize: "12px" }}
+                    />
+                  </div>
+                  <div className="text-center d-grid mt-5">
+                    <button
+                      disabled={loading}
+                      className="btn btn-warning btn-lg btn-block"
+                      style={{
+                        paddingTop: "10px",
+                        paddingBottom: "10px",
+                        background: "#f9af02",
+                        textTransform: "uppercase",
+                        fontSize: "13px",
+                        fontWeight: "800",
+                        display: 'flex',
+                        justifyContent: 'center'
+                      }}
+                    >
+                      {
+                        !loading 
+                        ? 'Masuk'
+                        : <Spinner/>
+                      }
+                    </button>
+                    <p
+                      className="mt-3 mb-3"
+                      style={{ fontSize: "10px", color: "grey" }}
+                    >
+                      Anda belum mendaftar? Daftar sekarang
+                    </p>
+                    <a
+                      href="/register"
+                      className="btn btn-lg"
+                      style={{
+                        paddingTop: "10px",
+                        paddingBottom: "10px",
+                        background: "transparent",
+                        color: "#010040",
+                        boxShadow: 0,
+                        border: 0,
+                        border: "2px solid #010040",
+                        textTransform: "uppercase",
+                        fontSize: "13px",
+                        fontWeight: "800",
+                      }}
+                    >
+                      Daftar
+                    </a>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

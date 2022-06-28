@@ -39,7 +39,6 @@ export default function Register() {
     const value = evt.target.value;
     const name = evt.target.name;
 
-    console.log({ value, name });
     setPayload({ ...payload, [name]: value });
   };
 

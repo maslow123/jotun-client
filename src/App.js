@@ -5,10 +5,11 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ConfirmRegister from "./pages/ConfirmRegister";
 import Verif from "./pages/Verif";
+import Home from "./pages/Home";
 import { ToastContainer, toast } from 'react-toastify';
 
+import "react-activity/dist/library.css";
 import 'react-toastify/dist/ReactToastify.css';
-import Home from "./pages/Home";
 import "./App.css";
 import "./custom.scss";
 

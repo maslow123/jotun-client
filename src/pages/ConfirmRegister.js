@@ -32,7 +32,6 @@ export default function ConfirmRegister() {
     const user = new Users();
     setLoading(true);
     const resp = await user.register(data);
-    console.log(resp);
     setLoading(false);
     if (resp.code === 201) {
       localStorage.setItem('phone-number', data.phone_number);
