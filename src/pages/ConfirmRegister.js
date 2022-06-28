@@ -1,37 +1,44 @@
 import React, { useEffect, useState } from "react";
-import { BRANCHES, DEPARTMENT_LIST, TRANSPORTATION } from "./utils/constants";
-import { showToast, validate } from "./utils/helper";
+import LoadingScreen from 'react-loading-screen';
+import { Users } from "../services";
 import { useNavigate } from "react-router-dom";
-export default function Register() {
+
+export default function ConfirmRegister() {  
   const navigate = useNavigate();
 
-  const [payload, setPayload] = useState({    
-      name: "",
-      phone_number: "",
-      confirm_phone_number: "",
-      department: "",
-      branches: "",
-      transportation: "",
-      level: 0
+  const [loading, setLoading] = useState(false);
+  const [payload, setPayload] = useState({
+    family_list: ['', '', '', '', '', '']
   });
-  useEffect(() => {
-    // 
-  }, []);
 
-  const _handleSubmit = e => {
-    e.preventDefault();
-    const errors = validate(payload);
-    if (errors.length > 0) {
-      const phoneNumberNotMatch = errors.find(err => err === 'phone-number-not-match');
-      if (phoneNumberNotMatch) {
-        return showToast('error', 'Nomor whatsapp tidak sama, harap periksa kembali');
-      }
-      return showToast('error', JSON.stringify(errors));
+  useEffect(() => {
+    const data = localStorage.getItem('register-payload');
+    if (!data) {
+      navigate('/register');
+    }
+  }, []);
+  
+  const _handleSubmit = async e => {
+    e.preventDefault();    
+    const p1 = await JSON.parse(localStorage.getItem('register-payload'));
+    const p2 = { ...payload };
+
+    const data = {
+      ...p1,
+      ...p2
+    };
+
+    // store to backend
+    const user = new Users();
+    setLoading(true);
+    const resp = await user.register(data);
+    console.log(resp);
+    setLoading(false);
+    if (resp.code === 201) {
+      localStorage.setItem('phone-number', data.phone_number);
+      navigate('/verif');
     }
 
-    // save payload to localstorage
-    localStorage.setItem('register-payload', JSON.stringify(payload));
-    navigate('/confirm-register');
   };
 
   const _handleChange = evt => {
@@ -39,12 +46,21 @@ export default function Register() {
     const value = evt.target.value;
     const name = evt.target.name;
 
-    console.log({ value, name });
-    setPayload({ ...payload, [name]: value });
+    let p = [...payload.family_list];
+    p[name] = value;
+
+    setPayload({ family_list: [...p] });
   };
 
   return (
     <div>
+      <LoadingScreen 
+        loading={loading} 
+        bgColor='rgba(0,0,0,0.5)'
+        spinnerColor='#9ee5f8'
+        textColor='#FFF'
+        text='Data sedang diproses'
+      />
       <nav
         className="navbar navbar-light"
         style={{
@@ -86,7 +102,7 @@ export default function Register() {
                     color: "#010040",
                   }}
                 >
-                  Daftar Diri
+                  Daftar Keluarga
                 </h4>
                 <form onSubmit={_handleSubmit}>
                   <div className="form-group">
@@ -97,16 +113,15 @@ export default function Register() {
                         fontSize: "11px",
                       }}
                     >
-                      Nama
+                      Nama Suami/Istri
                     </label>
                     <input
-                      required
                       type="text"
                       className="form-control p-2"
-                      placeholder="contoh : Ahmad Taufik"
+                      placeholder="Tulis nama suami/istri"
                       aria-label="name"
                       style={{ fontSize: "12px" }}
-                      name="name"
+                      name={0}
                       onChange={_handleChange}
                     />
                   </div>
@@ -118,16 +133,15 @@ export default function Register() {
                         fontSize: "11px",
                       }}
                     >
-                      Nomor Whatsapp anda
+                      Nama Anak Pertama
                     </label>
                     <input
-                      required
                       type="text"
                       className="form-control p-2"
-                      placeholder="contoh : 08267492942"
-                      aria-label="notelp"
+                      placeholder="Tulis nama anak pertama anda"
+                      aria-label="name"
                       style={{ fontSize: "12px" }}
-                      name="phone_number"
+                      name={1}
                       onChange={_handleChange}
                     />
                   </div>
@@ -139,16 +153,15 @@ export default function Register() {
                         fontSize: "11px",
                       }}
                     >
-                      Masukan kembali Nomor Whatsapp anda
+                      Nama Anak Kedua
                     </label>
                     <input
-                      required
                       type="text"
                       className="form-control p-2"
-                      placeholder="contoh : 08267492942"
-                      aria-label="notelp"
+                      placeholder="Tulis nama anak kedua anda"
+                      aria-label="name"
                       style={{ fontSize: "12px" }}
-                      name="confirm_phone_number"
+                      name={2}
                       onChange={_handleChange}
                     />
                   </div>
@@ -160,24 +173,17 @@ export default function Register() {
                         fontSize: "11px",
                       }}
                     >
-                      Departemen
+                      Nama Anak Ketiga
                     </label>
-                    <select
-                      required
-                      name="department"
+                    <input
+                      type="text"
+                      className="form-control p-2"
+                      placeholder="Tulis nama anak ketiga anda"
+                      aria-label="name"
+                      style={{ fontSize: "12px" }}
+                      name={3}
                       onChange={_handleChange}
-                      className="form-select form-select-lg"
-                      style={{
-                        fontSize: "12px",
-                        border: "0px",
-                        boxShadow: "0px 2px #e3e3e3",
-                      }}
-                    >
-                      <option selected disabled value="">Pilih Departemen anda saat ini</option>
-                      {DEPARTMENT_LIST.map(item => (
-                        <option value={item}>{item}</option>
-                      ))}
-                    </select>
+                    />
                   </div>
                   <div className="form-group">
                     <label
@@ -187,24 +193,17 @@ export default function Register() {
                         fontSize: "11px",
                       }}
                     >
-                      Kantor Cabang
+                      Nama Anak Keempat
                     </label>
-                    <select                  
-                      name="branches"
+                    <input
+                      type="text"
+                      className="form-control p-2"
+                      placeholder="Tulis nama anak keempat anda"
+                      aria-label="name"
+                      style={{ fontSize: "12px" }}
+                      name={4}
                       onChange={_handleChange}
-                      required
-                      className="form-select form-select-lg"
-                      style={{
-                        fontSize: "12px",
-                        border: "0px",
-                        boxShadow: "0px 2px #e3e3e3",
-                      }}
-                    >
-                      <option selected disabled value="">Pilih Kantor Cabang anda</option>
-                      {BRANCHES.map(item => (
-                        <option value={item}>{item}</option>
-                      ))}
-                    </select>
+                    />
                   </div>
                   <div className="form-group">
                     <label
@@ -214,24 +213,17 @@ export default function Register() {
                         fontSize: "11px",
                       }}
                     >
-                      Transportasi
+                      Nama Anak Kelima
                     </label>
-                    <select
-                      name="transportation"
+                    <input
+                      type="text"
+                      className="form-control p-2"
+                      placeholder="Tulis nama anak kelima anda"
+                      aria-label="name"
+                      style={{ fontSize: "12px" }}
+                      name={5}
                       onChange={_handleChange}
-                      required
-                      className="form-select form-select-lg"
-                      style={{
-                        fontSize: "12px",
-                        border: "0px",
-                        boxShadow: "0px 2px #e3e3e3",
-                      }}
-                    >
-                      <option selected disabled value="">Pilih Transportasi Kendaraan</option>
-                      {TRANSPORTATION.map(item => (
-                        <option value={item}>{item}</option>
-                      ))}
-                    </select>
+                    />
                   </div>
 
                   <div className="text-center d-grid mt-2 actions">
