@@ -157,7 +157,8 @@ export default function Register2() {
                 </div>
 
                 <div className="text-center d-grid mt-2 actions">
-                  <button
+                  <a
+                    href="/verif"
                     className="btn btn-warning btn-lg btn-block"
                     style={{
                       paddingTop: "10px",
@@ -169,7 +170,7 @@ export default function Register2() {
                     }}
                   >
                     Lanjut
-                  </button>
+                  </a>
                   <p
                     className="mt-3 mb-3"
                     style={{ fontSize: "10px", color: "grey" }}
