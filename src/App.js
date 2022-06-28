@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Register2 from "./pages/Register2";
 import Verif from "./pages/Verif";
+import Home from "./pages/Home";
 import "./App.css";
 import "./custom.scss";
 
@@ -23,6 +24,7 @@ const App = () => {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/register2" element={<Register2 />} />
           <Route exact path="/verif" element={<Verif />} />
+          <Route exact path="/home" element={<Home />} />
         </Routes>
       </div>
       {/* <Footer /> */}
