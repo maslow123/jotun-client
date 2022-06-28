@@ -97,7 +97,8 @@ export default function Login() {
                   >
                     Anda belum mendaftar? Daftar sekarang
                   </p>
-                  <button
+                  <a
+                    href="/register"
                     className="btn btn-lg"
                     style={{
                       paddingTop: "10px",
@@ -113,7 +114,7 @@ export default function Login() {
                     }}
                   >
                     Daftar
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

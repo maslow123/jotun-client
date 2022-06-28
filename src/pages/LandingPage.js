@@ -14,7 +14,8 @@ export default function LandingPage() {
       >
         <div className="col-5">
           <div className="text-center d-grid">
-            <button
+            <a
+              href="/register"
               className="btn btn-warning btn-lg btn-block"
               style={{
                 paddingTop: "11px",
@@ -26,13 +27,14 @@ export default function LandingPage() {
               }}
             >
               Daftar
-            </button>
+            </a>
           </div>
         </div>
 
         <div className="col-5">
           <div className="text-center d-grid">
-            <button
+            <a
+              href="/login"
               className="btn btn-warning btn-lg btn-block"
               style={{
                 paddingTop: "11px",
@@ -44,7 +46,7 @@ export default function LandingPage() {
               }}
             >
               Masuk
-            </button>
+            </a>
           </div>
         </div>
       </div>
