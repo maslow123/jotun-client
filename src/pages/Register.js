@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import $ from "jquery";
+// import $ from "jquery";
 export default function Register() {
-  $(document).ready(function () {
-    $(".form-group input").on("keyup", function () {
-      let empty = false;
+  // $(document).ready(function () {
+  //   $(".form-group input").on("keyup", function () {
+  //     let empty = false;
 
-      $(".form-group input").each(function () {
-        empty = $(this).val().length == 0;
-      });
+  //     $(".form-group input").each(function () {
+  //       empty = $(this).val().length == 0;
+  //     });
 
-      if (empty) $(".actions button").attr("disabled", "disabled");
-      else $(".actions button").attr("disabled", false);
-    });
-  });
+  //     if (empty) $(".actions button").attr("disabled", "disabled");
+  //     else $(".actions button").attr("disabled", false);
+  //   });
+  // });
   return (
     <div>
       <nav
@@ -195,7 +195,6 @@ export default function Register() {
                       fontSize: "13px",
                       fontWeight: "800",
                     }}
-                    disabled="disabled"
                   >
                     Lanjut
                   </button>
