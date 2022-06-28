@@ -8,6 +8,7 @@ import Verif from "./pages/Verif";
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
+import Home from "./pages/Home";
 import "./App.css";
 import "./custom.scss";
 
@@ -24,6 +25,7 @@ const App = () => {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/confirm-register" element={<ConfirmRegister /> } />
           <Route exact path="/verif" element={<Verif />} />
+          <Route exact path="/home" element={<Home />} />
         </Routes>
       </div>
       {/* <Footer /> */}
