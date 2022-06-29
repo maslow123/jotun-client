@@ -2,14 +2,42 @@ import React, { useEffect, useState } from "react";
 import LoadingScreen from 'react-loading-screen';
 import { Users } from "../services";
 import { useNavigate } from "react-router-dom";
+import { AGES } from "./utils/constants";
 
 export default function ConfirmRegister() {  
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
   const [payload, setPayload] = useState({
-    family_list: ['', '', '', '', '', '']
+    family_list: [
+      {
+        name: '',
+        age: 0
+      },
+      {
+        name: '',
+        age: 0
+      },
+      {
+        name: '',
+        age: 0
+      },
+      {
+        name: '',
+        age: 0
+      },
+      {
+        name: '',
+        age: 0
+      },
+      {
+        name: '',
+        age: 0
+      }
+    ]
   });
+
+  
 
   useEffect(() => {
     const data = localStorage.getItem('register-payload');
@@ -35,19 +63,21 @@ export default function ConfirmRegister() {
     setLoading(false);
     if (resp.code === 201) {
       localStorage.setItem('phone-number', data.phone_number);
+      localStorage.clear();
       navigate('/verif');
     }
 
   };
 
-  const _handleChange = evt => {
+  const _handleChange = (index, evt) => {
     
     const value = evt.target.value;
     const name = evt.target.name;
 
     let p = [...payload.family_list];
-    p[name] = value;
+    p[index][name] = value;
 
+    console.log(p);
     setPayload({ family_list: [...p] });
   };
 
@@ -120,8 +150,8 @@ export default function ConfirmRegister() {
                       placeholder="Tulis nama suami/istri"
                       aria-label="name"
                       style={{ fontSize: "12px" }}
-                      name={0}
-                      onChange={_handleChange}
+                      name={'name'}
+                      onChange={e => _handleChange(0, e)}
                     />
                   </div>
                   <div className="row">
@@ -142,8 +172,8 @@ export default function ConfirmRegister() {
                           placeholder="Tulis nama anak pertama anda"
                           aria-label="name"
                           style={{ fontSize: "12px" }}
-                          name={1}
-                          onChange={_handleChange}
+                          name={'name'}
+                          onChange={e => _handleChange(1, e)}
                         />
                       </div>
                     </div>
@@ -158,7 +188,9 @@ export default function ConfirmRegister() {
                         >
                           Usia
                         </label>
-                        <select
+                        <select                            
+                          name={'age'}
+                          onChange={e => _handleChange(1, e)}
                           className="form-select form-select-lg"
                           style={{
                             fontSize: "12px",
@@ -166,7 +198,10 @@ export default function ConfirmRegister() {
                             boxShadow: "0px 2px #e3e3e3",
                           }}
                         >
-                          <option selected> 0 - 25 Tahun</option>
+                          <option selected disabled> Pilih umur</option>
+                          {AGES.map(age => (
+                            <option value={age}>{age}</option>
+                          ))}
                         </select>
                       </div>
                     </div>
@@ -189,8 +224,8 @@ export default function ConfirmRegister() {
                           placeholder="Tulis nama anak kedua anda"
                           aria-label="name"
                           style={{ fontSize: "12px" }}
-                          name={2}
-                          onChange={_handleChange}
+                          name={'name'}
+                          onChange={e => _handleChange(2, e)}
                         />
                       </div>
                     </div>
@@ -205,7 +240,9 @@ export default function ConfirmRegister() {
                         >
                           Usia
                         </label>
-                        <select
+                        <select                        
+                          name={'age'}
+                          onChange={e => _handleChange(2, e)}
                           className="form-select form-select-lg"
                           style={{
                             fontSize: "12px",
@@ -213,7 +250,10 @@ export default function ConfirmRegister() {
                             boxShadow: "0px 2px #e3e3e3",
                           }}
                         >
-                          <option selected> 0 - 25 Tahun</option>
+                          <option selected disabled> Pilih umur</option>
+                          {AGES.map(age => (
+                            <option value={age}>{age}</option>
+                          ))}
                         </select>
                       </div>
                     </div>
@@ -236,8 +276,8 @@ export default function ConfirmRegister() {
                           placeholder="Tulis nama anak ketiga anda"
                           aria-label="name"
                           style={{ fontSize: "12px" }}
-                          name={3}
-                          onChange={_handleChange}
+                          name={'name'}
+                          onChange={e => _handleChange(3, e)}
                         />
                       </div>
                     </div>
@@ -252,7 +292,9 @@ export default function ConfirmRegister() {
                         >
                           Usia
                         </label>
-                        <select
+                        <select                        
+                          name={'age'}
+                          onChange={e => _handleChange(3, e)}
                           className="form-select form-select-lg"
                           style={{
                             fontSize: "12px",
@@ -260,7 +302,10 @@ export default function ConfirmRegister() {
                             boxShadow: "0px 2px #e3e3e3",
                           }}
                         >
-                          <option selected> 0 - 25 Tahun</option>
+                          <option selected disabled> Pilih umur</option>
+                          {AGES.map(age => (
+                            <option value={age}>{age}</option>
+                          ))}
                         </select>
                       </div>
                     </div>
@@ -283,8 +328,8 @@ export default function ConfirmRegister() {
                           placeholder="Tulis nama anak keempat anda"
                           aria-label="name"
                           style={{ fontSize: "12px" }}
-                          name={4}
-                          onChange={_handleChange}
+                          name={'name'}
+                          onChange={e => _handleChange(4, e)}
                         />
                       </div>
                     </div>
@@ -299,7 +344,9 @@ export default function ConfirmRegister() {
                         >
                           Usia
                         </label>
-                        <select
+                        <select                        
+                          name={'age'}
+                          onChange={e => _handleChange(4, e)}
                           className="form-select form-select-lg"
                           style={{
                             fontSize: "12px",
@@ -307,7 +354,10 @@ export default function ConfirmRegister() {
                             boxShadow: "0px 2px #e3e3e3",
                           }}
                         >
-                          <option selected> 0 - 25 Tahun</option>
+                          <option selected disabled> Pilih umur</option>
+                          {AGES.map(age => (
+                            <option value={age}>{age}</option>
+                          ))}
                         </select>
                       </div>
                     </div>
@@ -330,8 +380,8 @@ export default function ConfirmRegister() {
                           placeholder="Tulis nama anak kelima anda"
                           aria-label="name"
                           style={{ fontSize: "12px" }}
-                          name={5}
-                          onChange={_handleChange}
+                          name={'name'}
+                          onChange={e => _handleChange(5, e)}
                         />
                       </div>
                     </div>
@@ -347,6 +397,9 @@ export default function ConfirmRegister() {
                           Usia
                         </label>
                         <select
+                        
+                          name={'age'}
+                          onChange={e => _handleChange(5, e)}
                           className="form-select form-select-lg"
                           style={{
                             fontSize: "12px",
@@ -354,7 +407,10 @@ export default function ConfirmRegister() {
                             boxShadow: "0px 2px #e3e3e3",
                           }}
                         >
-                          <option selected> 0 - 25 Tahun</option>
+                          <option selected disabled> Pilih umur</option>
+                          {AGES.map(age => (
+                            <option value={age}>{age}</option>
+                          ))}
                         </select>
                       </div>
                     </div>

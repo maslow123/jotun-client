@@ -31,8 +31,11 @@ const TRANSPORTATION = [
     'Bus Jotun Plant 2 - JDC',
 ];
 
+const AGES = Array.from(Array(30).keys())
+
 export {
     DEPARTMENT_LIST,
     BRANCHES,
-    TRANSPORTATION
+    TRANSPORTATION,
+    AGES
 };
