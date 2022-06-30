@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BRANCHES, DEPARTMENT_LIST, TRANSPORTATION } from "./utils/constants";
+import { BRANCHES, DEPARTMENT_LIST } from "./utils/constants";
 import { showToast, validate } from "./utils/helper";
 import { useNavigate } from "react-router-dom";
 export default function Register() {
@@ -15,6 +15,10 @@ export default function Register() {
   });
   useEffect(() => {
     // 
+    const data = JSON.parse(localStorage.getItem('register-payload'));
+    if (data) {
+      setPayload({ ...data });
+    }
   }, []);
 
   const _handleSubmit = e => {
@@ -106,6 +110,7 @@ export default function Register() {
                       style={{ fontSize: "12px" }}
                       name="name"
                       onChange={_handleChange}
+                      value={payload.name}
                     />
                   </div>
                   <div className="form-group">
@@ -127,6 +132,7 @@ export default function Register() {
                       style={{ fontSize: "12px" }}
                       name="phone_number"
                       onChange={_handleChange}
+                      value={payload.phone_number}
                     />
                   </div>
                   <div className="form-group">
@@ -148,6 +154,7 @@ export default function Register() {
                       style={{ fontSize: "12px" }}
                       name="confirm_phone_number"
                       onChange={_handleChange}
+                      value={payload.confirm_phone_number}
                     />
                   </div>
                   <div className="form-group">
@@ -173,7 +180,7 @@ export default function Register() {
                     >
                       <option selected disabled value="">Pilih Departemen anda saat ini</option>
                       {DEPARTMENT_LIST.map(item => (
-                        <option value={item}>{item}</option>
+                        <option selected={payload.department === item} value={item}>{item}</option>
                       ))}
                     </select>
                   </div>
@@ -200,7 +207,7 @@ export default function Register() {
                     >
                       <option selected disabled value="">Pilih Kantor Cabang anda</option>
                       {BRANCHES.map(item => (
-                        <option value={item}>{item}</option>
+                        <option selected={payload.branches === item} value={item}>{item}</option>
                       ))}
                     </select>
                   </div>                 

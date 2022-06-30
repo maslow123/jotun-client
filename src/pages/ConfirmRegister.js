@@ -3,6 +3,7 @@ import LoadingScreen from 'react-loading-screen';
 import { Users } from "../services";
 import { useNavigate } from "react-router-dom";
 import { AGES } from "./utils/constants";
+import { showToast } from "./utils/helper";
 
 export default function ConfirmRegister() {  
   const navigate = useNavigate();
@@ -68,7 +69,12 @@ export default function ConfirmRegister() {
     if (resp.code === 201) {
       localStorage.setItem('phone-number', data.phone_number);
       navigate('/verif');
+      return
     }
+    if (resp.message === 'phone-number-already-exists') {      
+      return showToast('error', 'Nomor handphone telah terdaftar.');
+    }
+    showToast('error', JSON.stringify(resp));
 
   };
 
@@ -80,7 +86,6 @@ export default function ConfirmRegister() {
     let p = [...payload.family_list];
     p[index][name] = value;
 
-    console.log(p);
     setPayload({ family_list: [...p] });
   };
 

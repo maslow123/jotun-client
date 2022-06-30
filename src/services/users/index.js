@@ -16,11 +16,11 @@ export default class Users {
                     if(data.code === 201) {
                         return resolve(data);
                     }
-                    reject(data);
+                    resolve(data);
                 });
             })
             .catch(err => {
-                reject(err);
+                resolve(err);
             });
         })
     };
