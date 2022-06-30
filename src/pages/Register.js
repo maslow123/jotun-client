@@ -11,7 +11,6 @@ export default function Register() {
       confirm_phone_number: "",
       department: "",
       branches: "",
-      transportation: "",
       level: 0
   });
   useEffect(() => {
@@ -186,7 +185,7 @@ export default function Register() {
                         fontSize: "11px",
                       }}
                     >
-                      Kantor Cabang
+                      Lokasi
                     </label>
                     <select                  
                       name="branches"
@@ -204,34 +203,7 @@ export default function Register() {
                         <option value={item}>{item}</option>
                       ))}
                     </select>
-                  </div>
-                  <div className="form-group">
-                    <label
-                      style={{
-                        fontWeight: "bold",
-                        color: "#010040",
-                        fontSize: "11px",
-                      }}
-                    >
-                      Transportasi
-                    </label>
-                    <select
-                      name="transportation"
-                      onChange={_handleChange}
-                      required
-                      className="form-select form-select-lg"
-                      style={{
-                        fontSize: "12px",
-                        border: "0px",
-                        boxShadow: "0px 2px #e3e3e3",
-                      }}
-                    >
-                      <option selected disabled value="">Pilih Transportasi Kendaraan</option>
-                      {TRANSPORTATION.map(item => (
-                        <option value={item}>{item}</option>
-                      ))}
-                    </select>
-                  </div>
+                  </div>                 
 
                   <div className="text-center d-grid mt-2 actions">
                     <button

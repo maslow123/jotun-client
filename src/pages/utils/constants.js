@@ -8,8 +8,7 @@ const DEPARTMENT_LIST = [
     'Marketing',
     'Powder Sales',
     'Protective',
-    'Supply Chain &',
-    'Warehouse',
+    'Supply Chain & Warehouse',
     'TSS',
 ];
 
@@ -24,18 +23,11 @@ const BRANCHES = [
     'Balikpapan',
 ];
 
-const TRANSPORTATION = [
-    'Kendaraan Pribadi (Mobil)',
-    'Kendaraan Pribadi (Motor)',
-    'Bus Powder Factory',
-    'Bus Jotun Plant 2 - JDC',
-];
 
 const AGES = Array.from(Array(30).keys())
 
 export {
     DEPARTMENT_LIST,
     BRANCHES,
-    TRANSPORTATION,
     AGES
 };

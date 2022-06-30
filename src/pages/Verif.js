@@ -4,14 +4,19 @@ import { useNavigate } from "react-router-dom";
 export default function Verif() {
   const navigate = useNavigate();
   
-  const [phoneNumber, setPhoneNumber] = useState(localStorage.getItem('phone-number'));
+  const [phoneNumber, _] = useState(localStorage.getItem('phone-number'));
   useEffect(() => {
-    const data = localStorage.getItem('register-payload');
+    const data = localStorage.getItem('phone-number');
     if (!data) {
       navigate('/register');
     }
   }, []);
   
+  const _goToLoginPage = () => {
+    navigate('/login');
+    localStorage.clear();
+  }
+
   return (
     <div>
       <nav
@@ -76,6 +81,7 @@ export default function Verif() {
 
                 <div className="text-center d-grid mt-2 actions">
                   <button
+                    onClick={_goToLoginPage}
                     className="btn btn-warning btn-lg btn-block"
                     style={{
                       paddingTop: "10px",

@@ -45,6 +45,10 @@ export default function ConfirmRegister() {
       navigate('/register');
     }
   }, []);
+
+  const _goToLoginPage = () => {
+    navigate('/login');
+  }
   
   const _handleSubmit = async e => {
     e.preventDefault();    
@@ -63,7 +67,6 @@ export default function ConfirmRegister() {
     setLoading(false);
     if (resp.code === 201) {
       localStorage.setItem('phone-number', data.phone_number);
-      localStorage.clear();
       navigate('/verif');
     }
 
@@ -189,6 +192,7 @@ export default function ConfirmRegister() {
                           Usia
                         </label>
                         <select                            
+                          required={payload.family_list[1].name !== ''}
                           name={'age'}
                           onChange={e => _handleChange(1, e)}
                           className="form-select form-select-lg"
@@ -198,7 +202,7 @@ export default function ConfirmRegister() {
                             boxShadow: "0px 2px #e3e3e3",
                           }}
                         >
-                          <option selected disabled> Pilih umur</option>
+                          <option selected disabled value=""> Pilih umur</option>
                           {AGES.map(age => (
                             <option value={age}>{age}</option>
                           ))}
@@ -240,7 +244,8 @@ export default function ConfirmRegister() {
                         >
                           Usia
                         </label>
-                        <select                        
+                        <select       
+                          required={payload.family_list[2].name !== ''}                 
                           name={'age'}
                           onChange={e => _handleChange(2, e)}
                           className="form-select form-select-lg"
@@ -250,7 +255,7 @@ export default function ConfirmRegister() {
                             boxShadow: "0px 2px #e3e3e3",
                           }}
                         >
-                          <option selected disabled> Pilih umur</option>
+                          <option selected disabled value=""> Pilih umur</option>
                           {AGES.map(age => (
                             <option value={age}>{age}</option>
                           ))}
@@ -292,7 +297,8 @@ export default function ConfirmRegister() {
                         >
                           Usia
                         </label>
-                        <select                        
+                        <select             
+                          required={payload.family_list[3].name !== ''}           
                           name={'age'}
                           onChange={e => _handleChange(3, e)}
                           className="form-select form-select-lg"
@@ -302,7 +308,7 @@ export default function ConfirmRegister() {
                             boxShadow: "0px 2px #e3e3e3",
                           }}
                         >
-                          <option selected disabled> Pilih umur</option>
+                          <option selected disabled value=""> Pilih umur</option>
                           {AGES.map(age => (
                             <option value={age}>{age}</option>
                           ))}
@@ -344,7 +350,8 @@ export default function ConfirmRegister() {
                         >
                           Usia
                         </label>
-                        <select                        
+                        <select    
+                          required={payload.family_list[4].name !== ''}                    
                           name={'age'}
                           onChange={e => _handleChange(4, e)}
                           className="form-select form-select-lg"
@@ -354,7 +361,7 @@ export default function ConfirmRegister() {
                             boxShadow: "0px 2px #e3e3e3",
                           }}
                         >
-                          <option selected disabled> Pilih umur</option>
+                          <option selected disabled value=""> Pilih umur</option>
                           {AGES.map(age => (
                             <option value={age}>{age}</option>
                           ))}
@@ -397,7 +404,7 @@ export default function ConfirmRegister() {
                           Usia
                         </label>
                         <select
-                        
+                          required={payload.family_list[5].name !== ''}                        
                           name={'age'}
                           onChange={e => _handleChange(5, e)}
                           className="form-select form-select-lg"
@@ -407,7 +414,7 @@ export default function ConfirmRegister() {
                             boxShadow: "0px 2px #e3e3e3",
                           }}
                         >
-                          <option selected disabled> Pilih umur</option>
+                          <option selected disabled value=""> Pilih umur</option>
                           {AGES.map(age => (
                             <option value={age}>{age}</option>
                           ))}
@@ -437,9 +444,9 @@ export default function ConfirmRegister() {
                     >
                       Anda sudah mendaftar? Masuk sekarang
                     </p>
-                    <a
-                      href="/login"
+                    <button
                       className="btn btn-lg"
+                      onClick={_goToLoginPage}
                       style={{
                         paddingTop: "10px",
                         paddingBottom: "10px",
@@ -453,7 +460,7 @@ export default function ConfirmRegister() {
                       }}
                     >
                       Masuk
-                    </a>
+                    </button>
                   </div>
                 </form>
               </div>
