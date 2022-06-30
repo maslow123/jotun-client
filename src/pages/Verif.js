@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ConfirmInvitation } from "../services";
+import { showToast } from "./utils/helper";
 
 export default function Verif() {
   const navigate = useNavigate();
   
   const [phoneNumber, _] = useState(localStorage.getItem('phone-number'));
+  const [count, setCount] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const confirm_invitation = new ConfirmInvitation();
+
   useEffect(() => {
     const data = localStorage.getItem('phone-number');
     if (!data) {
@@ -12,10 +18,40 @@ export default function Verif() {
     }
   }, []);
   
+  const _handleResend = async () => {
+    setLoading(true);
+    const payload = {
+      phone_number: phoneNumber
+    };
+
+    const resp = await confirm_invitation.resend(payload)
+    if (resp.code === 201) {
+      _handleResendTimer();
+    } else {
+      showToast('error', resp.message);
+    }
+
+    setLoading(false);
+  }
+  const _handleResendTimer = () => {    
+    setCount(30);
+    const timer = setInterval(() => {
+      setCount((oldCount) => {
+        const t = oldCount - 1;
+        if (t < 0) {
+          clearInterval(timer);          
+          return 0
+        }
+        return t;
+      });
+    }, 1000);
+  };
+  
+
   const _goToLoginPage = () => {
     navigate('/login');
     localStorage.clear();
-  }
+  };
 
   return (
     <div>
@@ -100,8 +136,9 @@ export default function Verif() {
                   >
                     Tidak menerima undangan? Kirim lagi
                   </p>
-                  <a
-                    href
+                  <button   
+                    disabled={!(!loading && count === 0)}
+                    onClick={_handleResend}                 
                     className="btn btn-lg"
                     style={{
                       paddingTop: "10px",
@@ -115,8 +152,8 @@ export default function Verif() {
                       fontWeight: "800",
                     }}
                   >
-                    Kirim Kembali
-                  </a>
+                    {count === 0 ? 'Kirim Kembali' : `Kirim lagi dalam ${count} detik.`}
+                  </button>
                   {/* PAKE INI KALO MAU KIRIM NOTIF */}
                   {/* <a
                     href

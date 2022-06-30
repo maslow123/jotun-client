@@ -1,5 +1,7 @@
 import Users from './users';
+import ConfirmInvitation from './confirm-invitation';
 
 export { 
-    Users
+    Users,
+    ConfirmInvitation
 };
