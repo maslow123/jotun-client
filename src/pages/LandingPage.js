@@ -1,10 +1,11 @@
 import React from "react";
-import $ from "jquery";
+import "./../style.css";
+
 export default function LandingPage() {
   return (
     <div className="row justify-content-center">
       <div
-        className="col-xs-12 col-sm-12 col-md-4 col-lg-4"
+        className="col-xs-12 col-sm-12 col-md-3 col-lg-3"
         style={{
           margin: 0,
           padding: 0,
@@ -14,7 +15,7 @@ export default function LandingPage() {
           id="carouselExampleIndicators"
           class="carousel slide"
           data-touch="true"
-          data-bs-ride="true"
+          data-interval="false"
           style={{
             // position: "absolute",
 
@@ -94,7 +95,7 @@ export default function LandingPage() {
           className="row justify-content-center"
           style={{ position: "relative", marginTop: "-65px" }}
         >
-          <div className="col-5 col-sm-5 col-md-3 col-lg-3">
+          <div className="col-5 col-sm-5 col-md-5 col-lg-5">
             <div className="text-center d-grid">
               <a
                 href="/register"
@@ -113,7 +114,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="col-5 col-sm-5 col-md-3 col-lg-3">
+          <div className="col-5 col-sm-5 col-md-5 col-lg-5">
             <div className="text-center d-grid">
               <a
                 href="/login"
