@@ -23,7 +23,7 @@ export default function Home() {
           overflowX: "hidden",
           overflowY: "clip",
           position: "relative",
-          paddingBottom: "50px",
+          minHeight: "700px",
         }}
       >
         <nav
@@ -56,7 +56,7 @@ export default function Home() {
           style={{ backgroundRepeat: "no-repeat", position: "absolute" }}
           alt=""
         />
-        <div className="container">
+        <div className="container-fluid">
           <div className="row mt-2">
             <div className="col-12">
               <img
@@ -66,9 +66,9 @@ export default function Home() {
                 alt=""
               />
             </div>
-            <div className="col-12 mt-4 mb-2">
+            <div className="col-12 mt-3 mb-2">
               <div className="card mx-2" style={{ borderRadius: "8px" }}>
-                <div className="card-body">
+                <div className="mx-4 my-2">
                   <span
                     style={{ float: "right", textAlign: "right" }}
                     className="mt-3"
@@ -79,10 +79,10 @@ export default function Home() {
                     ></i>
                   </span>
                   <p
-                    className="mb-1"
+                    className="mb-0"
                     style={{
                       fontWeight: "bold",
-                      fontSize: "15px",
+                      fontSize: "13px",
                     }}
                   >
                     Hai, {user.name}
@@ -92,7 +92,7 @@ export default function Home() {
                     className="mb-0"
                     style={{
                       fontWeight: "bold",
-                      fontSize: "15px",
+                      fontSize: "13px",
                       color: "#010040",
                       textTransform: "uppercase",
                     }}
@@ -103,22 +103,28 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="container">
+          <div className="container-fluid">
             <div className="d-flex justify-content-center mb-1">
-              <div className="col-6" style={{ marginRight: 3, padding: 0 }}>
-                <div className="card" style={{ borderRadius: "8px" }}>
+              <div
+                className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+                style={{ marginRight: 3, padding: 0 }}
+              >
+                <div
+                  className="card"
+                  style={{ borderRadius: "8px", minWidth: "100%" }}
+                >
                   <div style={{ padding: 5 }}>
                     <img
                       src="assets/img/home/grid1.svg"
                       className="img-fluid"
                       alt=""
-                      style={{ height: "100px" }}
+                      style={{ maxHeight: "100px" }}
                     />
                   </div>
-                  <div className="mx-3 my-1">
+                  <div className="mx-2 my-1">
                     <p
                       className="mb-1"
-                      style={{ fontWeight: "bold", fontSize: "13px" }}
+                      style={{ fontWeight: "bold", fontSize: "12px" }}
                     >
                       Denah Acara
                       <span
@@ -134,20 +140,26 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-6" style={{ marginLeft: 3, padding: 0 }}>
-                <div className="card" style={{ borderRadius: "8px" }}>
+              <div
+                className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+                style={{ marginLeft: 3, padding: 0 }}
+              >
+                <div
+                  className="card"
+                  style={{ borderRadius: "8px", minWidth: "100%" }}
+                >
                   <div style={{ padding: 5 }}>
                     <img
                       src="assets/img/home/grid2.svg"
                       className="img-fluid"
                       alt=""
-                      style={{ height: "100px" }}
+                      style={{ maxHeight: "100px" }}
                     />
                   </div>
-                  <div className="mx-3 my-1">
+                  <div className="mx-2 my-1">
                     <p
                       className="mb-1"
-                      style={{ fontWeight: "bold", fontSize: "13px" }}
+                      style={{ fontWeight: "bold", fontSize: "12px" }}
                     >
                       Jadwal Acara
                       <span
@@ -165,24 +177,30 @@ export default function Home() {
               </div>
             </div>
             <div className="d-flex justify-content-center">
-              <div className="col-6" style={{ marginRight: 3, padding: 0 }}>
-                <div className="card" style={{ borderRadius: "8px" }}>
+              <div
+                className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+                style={{ marginRight: 3, padding: 0 }}
+              >
+                <div
+                  className="card"
+                  style={{ borderRadius: "8px", minWidth: "100%" }}
+                >
                   <div style={{ padding: 5 }}>
                     <img
                       src="assets/img/home/grid3.svg"
                       className="img-fluid"
                       alt=""
-                      style={{ height: "100px" }}
+                      style={{ maxHeight: "100px" }}
                     />
                   </div>
-                  <div className="mx-3 my-1">
+                  <div className="mx-2 my-1">
                     <a
                       href="/contest-register"
                       style={{ textDecoration: "none", color: "#000" }}
                     >
                       <p
                         className="mb-1"
-                        style={{ fontWeight: "bold", fontSize: "13px" }}
+                        style={{ fontWeight: "bold", fontSize: "12px" }}
                       >
                         Daftar Lomba
                         <span
@@ -199,20 +217,26 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-6" style={{ marginLeft: 3, padding: 0 }}>
-                <div className="card" style={{ borderRadius: "8px" }}>
+              <div
+                className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+                style={{ marginLeft: 3, padding: 0 }}
+              >
+                <div
+                  className="card"
+                  style={{ borderRadius: "8px", minWidth: "100%" }}
+                >
                   <div style={{ padding: 5 }}>
                     <img
                       src="assets/img/home/grid4.svg"
                       className="img-fluid"
                       alt=""
-                      style={{ height: "100px" }}
+                      style={{ maxHeight: "100px" }}
                     />
                   </div>
-                  <div className="mx-3 my-1">
+                  <div className="mx-2 my-1">
                     <p
                       className="mb-1"
-                      style={{ fontWeight: "bold", fontSize: "13px" }}
+                      style={{ fontWeight: "bold", fontSize: "12px" }}
                     >
                       Doorprize
                       <span

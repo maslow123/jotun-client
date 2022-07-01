@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 export default function ContestRegister() {
   return (
     <div className="row justify-content-center">
@@ -8,9 +8,8 @@ export default function ContestRegister() {
           margin: 0,
           padding: 0,
           overflowX: "hidden",
-          overflowY: "clip",
           position: "relative",
-          paddingBottom: "50px",
+          minHeight: "700px",
         }}
       >
         <nav
@@ -41,10 +40,12 @@ export default function ContestRegister() {
           style={{
             backgroundRepeat: "no-repeat",
             position: "absolute",
+            height: "auto",
+            // backgroundAttachment: "fixed",
           }}
           alt=""
         />
-        <nav
+        <div
           className="pt-1 px-4"
           aria-label="breadcrumb"
           style={{
@@ -54,13 +55,15 @@ export default function ContestRegister() {
         >
           <ol className="breadcrumb">
             <li className="breadcrumb-item pt-2 mb-1 pb-0">
-              <i
-                className="fa fa-angle-left"
-                style={{ fontSize: "25px", color: "#ffc107" }}
-              ></i>
+              <a href="/home">
+                <i
+                  className="fa fa-angle-left"
+                  style={{ fontSize: "25px", color: "#ffc107" }}
+                ></i>
+              </a>
               <img
                 className="img-fluid mb-2 mx-3"
-                src="assets/img/icon/gift.svg"
+                src="assets/img/icon/lomba.png"
                 style={{ width: "30px", height: "30px" }}
               />
               <span className="text-center" style={{ fontWeight: "bold" }}>
@@ -68,12 +71,13 @@ export default function ContestRegister() {
               </span>
             </li>
           </ol>
-        </nav>
+        </div>
         <div className="container-fluid mt-5">
           <div
             id="carouselExampleIndicators"
             className="carousel slide"
             data-touch="true"
+            data-ride="carousel"
             data-interval="false"
             style={{
               // position: "absolute",
@@ -81,7 +85,7 @@ export default function ContestRegister() {
               marginTop: "-15px",
             }}
           >
-            <button
+            {/* <button
               className="carousel-control-prev"
               type="button"
               data-bs-target="#carouselExampleIndicators"
@@ -104,8 +108,11 @@ export default function ContestRegister() {
                 aria-hidden="true"
               ></span>
               <span className="visually-hidden">Next</span>
-            </button>
-            <div className="carousel-indicators" style={{ marginTop: "-20px" }}>
+            </button> */}
+            <div
+              className="carousel-indicators"
+              style={{ marginBottom: "-30px" }}
+            >
               <button
                 type="button"
                 data-bs-target="#carouselExampleIndicators"
@@ -117,7 +124,6 @@ export default function ContestRegister() {
                   width: "10px",
                   height: "10px",
                   borderRadius: "50%",
-                  marginBottom: "-100px",
                 }}
               ></button>
               <button
@@ -129,7 +135,6 @@ export default function ContestRegister() {
                   width: "10px",
                   height: "10px",
                   borderRadius: "50%",
-                  marginBottom: "-100px",
                 }}
               ></button>
             </div>
@@ -138,9 +143,18 @@ export default function ContestRegister() {
                 className="carousel-item active"
                 style={{ marginRight: "50px" }}
               >
-                <div className="card p-1" style={{ borderRadius: "8px" }}>
+                <div
+                  className="card p-1"
+                  style={{ borderRadius: "8px", maxHeight: "550px" }}
+                >
                   <div className="card-body">
-                    <p style={{ fontWeight: "bold", marginBottom: "-8px" }}>
+                    <p
+                      style={{
+                        fontWeight: "bold",
+                        marginBottom: "-8px",
+                        color: "#10193a",
+                      }}
+                    >
                       Lomba Mewarnai
                     </p>
                     <small className="text-muted" style={{ fontSize: "12px" }}>
@@ -150,11 +164,10 @@ export default function ContestRegister() {
                       <div className="col-12">
                         <img
                           src="assets/img/general/painting.svg"
-                          className="mt-3"
+                          className="img-fluid mt-3"
                           style={{
                             backgroundRepeat: "no-repeat",
                             borderRadius: "10px",
-                            height: "150px",
                           }}
                           alt=""
                         />
@@ -174,6 +187,7 @@ export default function ContestRegister() {
                               fontWeight: "800",
                               display: "flex",
                               justifyContent: "center",
+                              color: "#10193a",
                             }}
                           >
                             DAFTAR
@@ -194,35 +208,77 @@ export default function ContestRegister() {
                               justifyContent: "center",
                             }}
                           >
-                            <i
-                              className="fa fa-eye"
-                              style={{ fontSize: "20px", color: "#d8d8d8" }}
-                            ></i>
+                            <a
+                              href
+                              data-bs-toggle="modal"
+                              data-bs-target="#addModal"
+                            >
+                              <i
+                                className="fa fa-eye"
+                                style={{ fontSize: "20px", color: "#d8d8d8" }}
+                              ></i>
+                            </a>
                           </button>
                         </div>
+                      </div>
+                      <div className="crd col-11 mt-3 mb-3">
+                        <ul>
+                          <li className="mb-1" style={{ fontSize: "13px" }}>
+                            Acara Lomba dimulai jam 5:30 WIB di tempat
+                          </li>
+                          <li className="mb-1" style={{ fontSize: "13px" }}>
+                            Acara Lomba dimulai jam 5:30 WIB di
+                          </li>
+                          <li className="mb-1" style={{ fontSize: "13px" }}>
+                            Acara Lomba dimulai jam 5:30 WIB di tempat
+                          </li>
+                          <li className="mb-1" style={{ fontSize: "13px" }}>
+                            Acara Lomba dimulai jam 5:30 WIB di tempat
+                          </li>
+                          <li className="mb-1" style={{ fontSize: "13px" }}>
+                            Acara Lomba dimulai jam 5:30 WIB di tempat
+                          </li>
+                          <li className="mb-1" style={{ fontSize: "13px" }}>
+                            Acara Lomba dimulai jam 5:30 WIB di tempat
+                          </li>
+                          <li className="mb-1" style={{ fontSize: "13px" }}>
+                            Acara Lomba dimulai jam 5:30 WIB di tempat
+                          </li>
+                          <li className="mb-1" style={{ fontSize: "13px" }}>
+                            Acara Lomba dimulai jam 5:30 WIB di tempat
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="carousel-item">
-                <div className="card p-1" style={{ borderRadius: "8px" }}>
+                <div
+                  className="card p-1"
+                  style={{ borderRadius: "8px", maxHeight: "550px" }}
+                >
                   <div className="card-body">
-                    <p style={{ fontWeight: "bold", marginBottom: "-8px" }}>
-                      Lomba Mewarnai
+                    <p
+                      style={{
+                        fontWeight: "bold",
+                        marginBottom: "-8px",
+                        color: "#10193a",
+                      }}
+                    >
+                      Lomba Mewarnai Tote Bag
                     </p>
                     <small className="text-muted" style={{ fontSize: "12px" }}>
-                      Berlaku untuk usia 0 - 15 Tahun{" "}
+                      Berlaku untuk usia 11 - 25 Tahun
                     </small>
                     <div className="row">
                       <div className="col-12">
                         <img
                           src="assets/img/general/painting.svg"
-                          className="mt-3"
+                          className="img-fluid mt-3"
                           style={{
                             backgroundRepeat: "no-repeat",
                             borderRadius: "10px",
-                            height: "150px",
                           }}
                           alt=""
                         />
@@ -242,6 +298,7 @@ export default function ContestRegister() {
                               fontWeight: "800",
                               display: "flex",
                               justifyContent: "center",
+                              color: "#10193a",
                             }}
                           >
                             DAFTAR
@@ -269,10 +326,179 @@ export default function ContestRegister() {
                           </button>
                         </div>
                       </div>
+                      <div className="crd col-11 mt-3 mb-3">
+                        <ul>
+                          <li className="mb-1" style={{ fontSize: "13px" }}>
+                            Acara Lomba dimulai jam 5:30 WIB di tempat
+                          </li>
+                          <li className="mb-1" style={{ fontSize: "13px" }}>
+                            Acara Lomba dimulai jam 5:30 WIB di
+                          </li>
+                          <li className="mb-1" style={{ fontSize: "13px" }}>
+                            Acara Lomba dimulai jam 5:30 WIB di tempat
+                          </li>
+                          <li className="mb-1" style={{ fontSize: "13px" }}>
+                            Acara Lomba dimulai jam 5:30 WIB di tempat
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="addModal"
+        tabindex="-1"
+        aria-labelledby="addModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                style={{ float: "right", color: "red" }}
+              ></button>
+              <div className="row justify-content-center">
+                <div className="col-12">
+                  <p
+                    style={{
+                      fontWeight: "bold",
+                      marginBottom: "-8px",
+                      color: "#10193a",
+                    }}
+                  >
+                    Lomba Mewarnai
+                  </p>
+                  <small className="text-muted" style={{ fontSize: "12px" }}>
+                    Berlaku untuk usia 0 - 15 Tahun
+                  </small>
+                </div>
+                <div className="col-11">
+                  <div className="text-center d-grid">
+                    <button
+                      className="btn btn-warning btn-lg mt-3 btn-block"
+                      style={{
+                        paddingTop: "10px",
+                        paddingBottom: "10px",
+                        background: "#f9af02",
+                        textTransform: "uppercase",
+                        fontSize: "13px",
+                        fontWeight: "800",
+                        display: "flex",
+                        justifyContent: "center",
+                        color: "#10193a",
+                      }}
+                    >
+                      SIMPAN
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="crd col-12 mb-5">
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input ml-1"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault1"
+                    />
+                    <label
+                      class="form-check-label mx-3"
+                      for="flexRadioDefault1"
+                      style={{ fontSize: "14px" }}
+                    >
+                      Titania Wicaksono
+                    </label>
+                    <span
+                      className="mx-3"
+                      style={{ float: "right", fontSize: "14px" }}
+                    >
+                      22 Tahun
+                    </span>
+                  </div>
+                </li>
+                <li className="list-group-item">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input ml-1"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault1"
+                    />
+                    <label
+                      class="form-check-label mx-3"
+                      for="flexRadioDefault1"
+                      style={{ fontSize: "14px" }}
+                    >
+                      Arvy Wicaksono
+                    </label>
+                    <span
+                      className="mx-3"
+                      style={{ float: "right", fontSize: "14px" }}
+                    >
+                      22 Tahun
+                    </span>
+                  </div>
+                </li>
+                <li className="list-group-item">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input ml-1"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault1"
+                    />
+                    <label
+                      class="form-check-label mx-3"
+                      for="flexRadioDefault1"
+                      style={{ fontSize: "14px" }}
+                    >
+                      Navia Wicaksono
+                    </label>
+                    <span
+                      className="mx-3"
+                      style={{ float: "right", fontSize: "14px" }}
+                    >
+                      22 Tahun
+                    </span>
+                  </div>
+                </li>
+                <li className="list-group-item">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input ml-1"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault1"
+                    />
+                    <label
+                      class="form-check-label mx-3"
+                      for="flexRadioDefault1"
+                      style={{ fontSize: "14px" }}
+                    >
+                      Gilang Wicaksono
+                    </label>
+                    <span
+                      className="mx-3"
+                      style={{ float: "right", fontSize: "14px" }}
+                    >
+                      22 Tahun
+                    </span>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
