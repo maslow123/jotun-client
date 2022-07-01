@@ -1,3 +1,33 @@
 .carousel-indicators .active{
     background-color: #ffc107 !important;
   }
+
+.crd{
+overflow-y:scroll;
+max-height: 180px;    
+}
+.crd::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: white;
+}
+
+.crd::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
+	background-color: white;
+}
+input[type="radio"]:checked {
+    background-color: #f7af03;
+  }
+.modal-dialog {
+    position: absolute;
+    top: 120px;
+    right: 100px;
+    bottom: 0;
+    left: 0;
+    z-index: 10040;
+    overflow: auto;
+    overflow-y: auto;
+  }
