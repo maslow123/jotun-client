@@ -4,15 +4,14 @@ import { useNavigate } from "react-router-dom";
 export default function Home() {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
-
-  // useEffect(() => {
-  //   const data = JSON.parse(localStorage.getItem("user"));
-  //   if (!data) {
-  //     navigate('/login');
-  //     return
-  //   }
-  //   setUser({ ...data });
-  // };, []);
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("user"));
+    if (!data) {
+      navigate("/login");
+      return;
+    }
+    setUser({ ...data });
+  }, []);
   return (
     <div className="row justify-content-center">
       <div
