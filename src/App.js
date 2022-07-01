@@ -12,21 +12,23 @@ import "react-activity/dist/library.css";
 import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
 import "./custom.scss";
+import ContestRegister from "./pages/ContestRegister";
 
 const App = () => {
   return (
     <BrowserRouter>
       {/* <Topbar /> */}
-      
-      <ToastContainer hideProgressBar autoClose={3000}/>                 
+
+      <ToastContainer hideProgressBar autoClose={3000} />
       <div>
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
-          <Route exact path="/confirm-register" element={<ConfirmRegister /> } />
+          <Route exact path="/confirm-register" element={<ConfirmRegister />} />
           <Route exact path="/verif" element={<Verif />} />
           <Route exact path="/home" element={<Home />} />
+          <Route exact path="/contest-register" element={<ContestRegister />} />
         </Routes>
       </div>
       {/* <Footer /> */}

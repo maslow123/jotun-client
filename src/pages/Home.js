@@ -176,21 +176,26 @@ export default function Home() {
                     />
                   </div>
                   <div className="mx-3 my-1">
-                    <p
-                      className="mb-1"
-                      style={{ fontWeight: "bold", fontSize: "13px" }}
+                    <a
+                      href="/contest-register"
+                      style={{ textDecoration: "none", color: "#000" }}
                     >
-                      Daftar Lomba
-                      <span
-                        style={{ float: "right", textAlign: "right" }}
-                        className="mr-5"
+                      <p
+                        className="mb-1"
+                        style={{ fontWeight: "bold", fontSize: "13px" }}
                       >
-                        <i
-                          className="fa fa-angle-right "
-                          style={{ fontSize: "20px" }}
-                        ></i>
-                      </span>
-                    </p>
+                        Daftar Lomba
+                        <span
+                          style={{ float: "right", textAlign: "right" }}
+                          className="mr-5"
+                        >
+                          <i
+                            className="fa fa-angle-right "
+                            style={{ fontSize: "20px" }}
+                          ></i>
+                        </span>
+                      </p>
+                    </a>
                   </div>
                 </div>
               </div>
