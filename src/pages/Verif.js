@@ -36,7 +36,7 @@ export default function Verif() {
     setLoading(false);
   };
   const _handleResendTimer = () => {
-    setCount(30);
+    setCount(120);
     const timer = setInterval(() => {
       setCount((oldCount) => {
         const t = oldCount - 1;
