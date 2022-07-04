@@ -13,7 +13,6 @@ export default function Register() {
       confirm_phone_number: "",
       department: "",
       branches: "",
-      transportation: "",
       level: 0
   });
 
