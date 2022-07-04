@@ -34,7 +34,6 @@ export default function Login() {
 
       showToast('error', JSON.stringify(err));
     }
-
   }
 
   return (

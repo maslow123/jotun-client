@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ConfirmInvitation } from "../services";
+import { ConfirmInvitation, Users } from "../services";
 import { showToast } from "./utils/helper";
 
 export default function Verif() {
@@ -9,7 +9,9 @@ export default function Verif() {
   const [phoneNumber, _] = useState(localStorage.getItem('phone-number'));
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [loadingLogin, setLoadingLogin] = useState(false);
   const confirm_invitation = new ConfirmInvitation();
+  const user = new Users();
 
   useEffect(() => {
     const data = localStorage.getItem('phone-number');
@@ -48,9 +50,27 @@ export default function Verif() {
   };
   
 
-  const _goToLoginPage = () => {
-    navigate('/login');
-    localStorage.clear();
+  const _goToLoginPage = async () => {
+    try {
+      localStorage.clear();
+      setLoadingLogin(true);
+      const resp = await user.login({ phone_number: phoneNumber });
+      localStorage.setItem('user', JSON.stringify(resp.data));
+      localStorage.setItem('token', resp.token);
+      
+      setLoadingLogin(false);
+
+      navigate('/home');
+      
+    } catch(err) {
+      if (err.code === 401) {
+        showToast('error', 'Nomor telepon tidak terdaftar.')
+        setLoadingLogin(false);
+        return
+      }
+
+      showToast('error', JSON.stringify(err));
+    }
   };
 
   return (
@@ -129,6 +149,7 @@ export default function Verif() {
 
                   <div className="text-center d-grid mt-2 actions">
                     <button
+                      disabled={loadingLogin}
                       onClick={_goToLoginPage}
                       className="btn btn-warning btn-lg btn-block"
                       style={{

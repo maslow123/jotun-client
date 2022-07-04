@@ -1,25 +1,46 @@
 import React, { useEffect, useState } from "react";
-import { BRANCHES, DEPARTMENT_LIST } from "./utils/constants";
 import { showToast, validate } from "./utils/helper";
 import { useNavigate } from "react-router-dom";
+import { Master } from "../services";
+ 
 export default function Register() {
   const navigate = useNavigate();
-
+  const master_service = new Master();
+  const [isLoad, setLoad] = useState(false);
   const [payload, setPayload] = useState({    
       name: "",
       phone_number: "",
       confirm_phone_number: "",
       department: "",
       branches: "",
+      transportation: "",
       level: 0
   });
+
+  const [master, setMaster] = useState(null);
   useEffect(() => {
     // 
     const data = JSON.parse(localStorage.getItem('register-payload'));
     if (data) {
       setPayload({ ...data });
     }
+
+    const fetchDataMaster = async () => {
+      const resp = await master_service.list();
+      if (resp.code !== 200) {
+        return showToast('error', resp.message);
+      }
+
+      const masterData = resp.results;
+      setMaster({ ...masterData })
+      setLoad(true);
+    };
+    if (!isLoad) {
+      fetchDataMaster();
+    }
+
   }, []);
+
 
   const _handleSubmit = e => {
     e.preventDefault();
@@ -33,6 +54,8 @@ export default function Register() {
     }
 
     // save payload to localstorage
+    const p = { ...payload };
+    if ( Number(p.branches) !== 1) { delete p.transportation };
     localStorage.setItem('register-payload', JSON.stringify(payload));
     navigate('/confirm-register');
   };
@@ -115,6 +138,13 @@ export default function Register() {
                         Nama
                       </label>
                       <input
+                        onChange={(event) => {
+                          if (!(/^[a-zA-Z ]*$/.test(event.target.value))) {
+                            event.preventDefault();
+                            return
+                          }
+                          _handleChange(event);
+                        }}
                         required
                         type="text"
                         className="form-control p-2"
@@ -122,7 +152,6 @@ export default function Register() {
                         aria-label="name"
                         style={{ fontSize: "12px" }}
                         name="name"
-                        onChange={_handleChange}
                         value={payload.name}
                       />
                     </div>
@@ -137,6 +166,11 @@ export default function Register() {
                         Nomor Whatsapp anda
                       </label>
                       <input
+                        onKeyPress={(event) => {
+                          if (!/[0-9]/.test(event.key)) {
+                            event.preventDefault();
+                          }
+                        }}
                         required
                         type="text"
                         className="form-control p-2"
@@ -146,6 +180,7 @@ export default function Register() {
                         name="phone_number"
                         onChange={_handleChange}
                         value={payload.phone_number}
+
                       />
                     </div>
                     <div className="form-group">
@@ -159,6 +194,11 @@ export default function Register() {
                         Masukan kembali Nomor Whatsapp anda
                       </label>
                       <input
+                        onKeyPress={(event) => {
+                          if (!/[0-9]/.test(event.key)) {
+                            event.preventDefault();
+                          }
+                        }}
                         required
                         type="text"
                         className="form-control p-2"
@@ -194,12 +234,12 @@ export default function Register() {
                         <option selected disabled value="">
                           Pilih Departemen anda saat ini
                         </option>
-                        {DEPARTMENT_LIST.map((item) => (
+                        {master?.master_departments?.length && master.master_departments.map((item) => (
                           <option
-                            selected={payload.department === item}
-                            value={item}
+                            selected={payload.department === item.id}
+                            value={item.id}
                           >
-                            {item}
+                            {item.name}
                           </option>
                         ))}
                       </select>
@@ -228,16 +268,52 @@ export default function Register() {
                         <option selected disabled value="">
                           Pilih Kantor Cabang anda
                         </option>
-                        {BRANCHES.map((item) => (
+                        {master?.master_branches?.length && master.master_branches.map((item) => (
                           <option
-                            selected={payload.branches === item}
-                            value={item}
+                            selected={payload.branches === item.id}
+                            value={item.id}
                           >
-                            {item}
+                            {item.name}
                           </option>
                         ))}
                       </select>
                     </div>
+                    {Number(payload.branches) === 1 && (
+                      <div className="form-group">
+                        <label
+                          style={{
+                            fontWeight: "bold",
+                            color: "#010040",
+                            fontSize: "11px",
+                          }}
+                        >
+                          Transportasi
+                        </label>
+                        <select
+                          name="transportation"
+                          onChange={_handleChange}
+                          required
+                          className="form-select form-select-lg"
+                          style={{
+                            fontSize: "12px",
+                            border: "0px",
+                            boxShadow: "0px 2px #e3e3e3",
+                          }}
+                        >
+                          <option selected disabled value="">
+                            Pilih transportasi anda
+                          </option>
+                          {master?.master_transportations?.length && master.master_transportations.map((item) => (
+                            <option
+                              selected={payload.transportation === item.id}
+                              value={item.id}
+                            >
+                              {item.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    )} 
 
                     <div className="text-center d-grid mt-2 actions">
                       <button
