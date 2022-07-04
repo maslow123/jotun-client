@@ -1,7 +1,16 @@
+.body{
+  background:#eaeaea;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+}
 .carousel-indicators .active{
     background-color: #ffc107 !important;
   }
-
+/* .bg {
+  background-image: url('/assets/img/BG1.svg');
+  width:100%;
+} */
 .crd{
 overflow-y:scroll;
 max-height: 180px;    
@@ -15,19 +24,102 @@ max-height: 180px;
 .crd::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
-	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
 	background-color: white;
 }
 input[type="radio"]:checked {
     background-color: #f7af03;
   }
+  .bg-tr{
+    background:transparent;
+  }
 .modal-dialog {
     position: absolute;
-    top: 120px;
+    top: 330px;
     right: 100px;
     bottom: 0;
     left: 0;
     z-index: 10040;
-    overflow: auto;
-    overflow-y: auto;
+    overflow: hidden;
+    /* border-radius:10px; */
+    /* overflow-y: auto; */
   }
+.session1 {
+  position: relative;
+  overflow-y: scroll !important;
+  width:180%;
+  max-width:180%;
+  height: auto;
+}
+.session1 img{
+  width:100%;
+  height:auto;
+}
+.session1::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: red;
+}
+
+.session1::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: red;
+}
+.alpha {
+  /* color:white; */
+  -webkit-text-fill-color: #fff; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #12349e;
+  font-size: 20px;
+}
+.session2 {
+  position: relative;
+  overflow-y: scroll !important;
+  width:120%;
+  max-width:120%;
+  height: auto;
+}
+.session2 img{
+  width:100%;
+  height:auto;
+}
+.session2::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: transparent;
+}
+
+.session2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: transparent;
+}
+.session3 {
+  position: relative;
+  overflow-y: scroll !important;
+  width:120%;
+  max-width:120%;
+  height: auto;
+}
+.session3 img{
+  margin-left:-150px;
+  margin-top:-150px;
+  width:100%;
+  height:auto;
+}
+.session3::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: transparent;
+}
+
+.session3::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: transparent;
+}
+.custom {
+  position: relative;
+  marginTop: -150px;
+  float: right;
+}
