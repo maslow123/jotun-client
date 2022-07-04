@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ConfirmInvitation, Users } from "../services";
 import { showToast } from "./utils/helper";
-
+import Background from "./../BG1.svg";
 export default function Verif() {
   const navigate = useNavigate();
-  
-  const [phoneNumber, _] = useState(localStorage.getItem('phone-number'));
+
+  const [phoneNumber, _] = useState(localStorage.getItem("phone-number"));
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [loadingLogin, setLoadingLogin] = useState(false);
@@ -14,70 +14,69 @@ export default function Verif() {
   const user = new Users();
 
   useEffect(() => {
-    const data = localStorage.getItem('phone-number');
+    const data = localStorage.getItem("phone-number");
     if (!data) {
-      navigate('/register');
+      navigate("/register");
     }
   }, []);
-  
+
   const _handleResend = async () => {
     setLoading(true);
     const payload = {
-      phone_number: phoneNumber
+      phone_number: phoneNumber,
     };
 
-    const resp = await confirm_invitation.resend(payload)
+    const resp = await confirm_invitation.resend(payload);
     if (resp.code === 201) {
       _handleResendTimer();
     } else {
-      showToast('error', resp.message);
+      showToast("error", resp.message);
     }
 
     setLoading(false);
-  }
-  const _handleResendTimer = () => {    
+  };
+  const _handleResendTimer = () => {
     setCount(30);
     const timer = setInterval(() => {
       setCount((oldCount) => {
         const t = oldCount - 1;
         if (t < 0) {
-          clearInterval(timer);          
-          return 0
+          clearInterval(timer);
+          return 0;
         }
         return t;
       });
     }, 1000);
   };
-  
 
   const _goToLoginPage = async () => {
     try {
       localStorage.clear();
       setLoadingLogin(true);
       const resp = await user.login({ phone_number: phoneNumber });
-      localStorage.setItem('user', JSON.stringify(resp.data));
-      localStorage.setItem('token', resp.token);
-      
+      localStorage.setItem("user", JSON.stringify(resp.data));
+      localStorage.setItem("token", resp.token);
+
       setLoadingLogin(false);
 
-      navigate('/home');
-      
-    } catch(err) {
+      navigate("/home");
+    } catch (err) {
       if (err.code === 401) {
-        showToast('error', 'Nomor telepon tidak terdaftar.')
+        showToast("error", "Nomor telepon tidak terdaftar.");
         setLoadingLogin(false);
-        return
+        return;
       }
 
-      showToast('error', JSON.stringify(err));
+      showToast("error", JSON.stringify(err));
     }
   };
 
   return (
     <div className="row justify-content-center">
       <div
-        className="col-xs-12 col-sm-12 col-md-3 col-lg-3"
+        className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
         style={{
+          backgroundImage: `url(${Background})`,
           margin: 0,
           padding: 0,
           overflowX: "hidden",
@@ -110,12 +109,6 @@ export default function Verif() {
             />
           </div>
         </nav>
-        <img
-          src="assets/img/BG1.svg"
-          className="img-fluid"
-          style={{ backgroundRepeat: "no-repeat", position: "absolute" }}
-          alt=""
-        />
         <div className="container">
           <div className="row">
             <div className="col-12">

@@ -3,44 +3,44 @@ import { Spinner } from "react-activity";
 import { Users } from "../services";
 import { showToast } from "./utils/helper";
 import { useNavigate } from "react-router-dom";
-
+import Background from "./../BG1.svg";
 export default function Login() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [payload, setPayload] = useState({
-    phone_number: ''
+    phone_number: "",
   });
 
   const _handleSubmit = async (e) => {
     e.preventDefault();
     const user = new Users();
-    
+
     try {
       setLoading(true);
       const resp = await user.login(payload);
-      localStorage.setItem('user', JSON.stringify(resp.data));
-      localStorage.setItem('token', resp.token);
-      
+      localStorage.setItem("user", JSON.stringify(resp.data));
+      localStorage.setItem("token", resp.token);
+
       setLoading(false);
 
-      navigate('/home');
-      
-    } catch(err) {
+      navigate("/home");
+    } catch (err) {
       if (err.code === 401) {
-        showToast('error', 'Nomor telepon tidak terdaftar.')
+        showToast("error", "Nomor telepon tidak terdaftar.");
         setLoading(false);
-        return
+        return;
       }
 
-      showToast('error', JSON.stringify(err));
+      showToast("error", JSON.stringify(err));
     }
-  }
+  };
 
   return (
     <div className="row justify-content-center">
       <div
-        className="col-xs-12 col-sm-12 col-md-3 col-lg-3"
+        className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
         style={{
+          backgroundImage: `url(${Background})`,
           margin: 0,
           padding: 0,
           overflowX: "hidden",
@@ -73,12 +73,6 @@ export default function Login() {
             />
           </div>
         </nav>
-        <img
-          src="assets/img/BG1.svg"
-          className="img-fluid"
-          style={{ backgroundRepeat: "no-repeat", position: "absolute" }}
-          alt=""
-        />
         <div className="container">
           <div className="row" style={{ marginTop: "100px" }}>
             <div className="col-12">

@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Background from "./../BG1.svg";
 export default function Home() {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("user"));
-    if (!data) {
-      navigate("/login");
-      return;
-    }
-    setUser({ ...data });
-  }, []);
+  // useEffect(() => {
+  //   const data = JSON.parse(localStorage.getItem("user"));
+  //   if (!data) {
+  //     navigate("/login");
+  //     return;
+  //   }
+  //   setUser({ ...data });
+  // }, []);
   return (
     <div className="row justify-content-center">
       <div
-        className="col-xs-12 col-sm-12 col-md-3 col-lg-3"
+        className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 bg"
         style={{
+          backgroundImage: `url(${Background})`,
           margin: 0,
           padding: 0,
           overflowX: "hidden",
@@ -49,12 +50,6 @@ export default function Home() {
             />
           </div>
         </nav>
-        <img
-          src="assets/img/BG1.svg"
-          className="img-fluid"
-          style={{ backgroundRepeat: "no-repeat", position: "absolute" }}
-          alt=""
-        />
         <div className="container-fluid">
           <div className="row mt-2">
             <div className="col-12">
