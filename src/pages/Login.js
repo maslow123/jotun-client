@@ -44,9 +44,9 @@ export default function Login() {
           margin: 0,
           padding: 0,
           overflowX: "hidden",
-          // overflowY: "clip",
+          overflowY: "clip",
           position: "relative",
-          paddingBottom: "200px",
+          minHeight: "700px",
         }}
       >
         <nav

@@ -79,7 +79,7 @@ export default function Register() {
           overflowX: "hidden",
           overflowY: "clip",
           position: "relative",
-          paddingBottom: "50px",
+          minHeight: "700px",
         }}
       >
         <nav
