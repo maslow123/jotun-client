@@ -92,7 +92,7 @@ export default function ConfirmRegister() {
         bgColor="rgba(0,0,0,0.5)"
         spinnerColor="#9ee5f8"
         textColor="#FFF"
-        text="Data sedang diproses"
+        text={<>Data sedang diproses...<br/>Mohon tidak memuat ulang atau menutup halaman ini</>}
       />
       <div
         className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
