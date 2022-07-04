@@ -118,6 +118,11 @@ export default function Login() {
                         />
                       </span>
                       <input
+                        onKeyPress={(event) => {
+                          if (!/[0-9]/.test(event.key)) {
+                            event.preventDefault();
+                          }
+                        }}
                         type="text"
                         required
                         name="phone_number"

@@ -171,7 +171,14 @@ export default function ConfirmRegister() {
                         aria-label="name"
                         style={{ fontSize: "12px" }}
                         name={"name"}
-                        onChange={(e) => _handleChange(0, e)}
+                        value={payload.family_list[0].name}
+                        onChange={(event) => {
+                          if (!(/^[a-zA-Z ]*$/.test(event.target.value))) {
+                            event.preventDefault();
+                            return
+                          }
+                          _handleChange(0, event);
+                        }}
                       />
                     </div>
                     <div className="row">
@@ -193,7 +200,14 @@ export default function ConfirmRegister() {
                             aria-label="name"
                             style={{ fontSize: "12px" }}
                             name={"name"}
-                            onChange={(e) => _handleChange(1, e)}
+                            value={payload.family_list[1].name}
+                            onChange={(event) => {
+                              if (!(/^[a-zA-Z ]*$/.test(event.target.value))) {
+                                event.preventDefault();
+                                return
+                              }
+                              _handleChange(1, event);
+                            }}
                           />
                         </div>
                       </div>
@@ -249,7 +263,15 @@ export default function ConfirmRegister() {
                             aria-label="name"
                             style={{ fontSize: "12px" }}
                             name={"name"}
-                            onChange={(e) => _handleChange(2, e)}
+                            // onChange={(e) => _handleChange(2, e)}
+                            value={payload.family_list[2].name}
+                            onChange={(event) => {
+                              if (!(/^[a-zA-Z ]*$/.test(event.target.value))) {
+                                event.preventDefault();
+                                return
+                              }
+                              _handleChange(2, event);
+                            }}
                           />
                         </div>
                       </div>
@@ -305,7 +327,15 @@ export default function ConfirmRegister() {
                             aria-label="name"
                             style={{ fontSize: "12px" }}
                             name={"name"}
-                            onChange={(e) => _handleChange(3, e)}
+                            // onChange={(e) => _handleChange(3, e)}
+                            value={payload.family_list[3].name}
+                            onChange={(event) => {
+                              if (!(/^[a-zA-Z ]*$/.test(event.target.value))) {
+                                event.preventDefault();
+                                return
+                              }
+                              _handleChange(3, event);
+                            }}
                           />
                         </div>
                       </div>
@@ -361,7 +391,15 @@ export default function ConfirmRegister() {
                             aria-label="name"
                             style={{ fontSize: "12px" }}
                             name={"name"}
-                            onChange={(e) => _handleChange(4, e)}
+                            // onChange={(e) => _handleChange(4, e)}
+                            value={payload.family_list[4].name}
+                            onChange={(event) => {
+                              if (!(/^[a-zA-Z ]*$/.test(event.target.value))) {
+                                event.preventDefault();
+                                return
+                              }
+                              _handleChange(4, event);
+                            }}
                           />
                         </div>
                       </div>
@@ -417,7 +455,15 @@ export default function ConfirmRegister() {
                             aria-label="name"
                             style={{ fontSize: "12px" }}
                             name={"name"}
-                            onChange={(e) => _handleChange(5, e)}
+                            // onChange={(e) => _handleChange(5, e)}
+                            value={payload.family_list[5].name}
+                            onChange={(event) => {
+                              if (!(/^[a-zA-Z ]*$/.test(event.target.value))) {
+                                event.preventDefault();
+                                return
+                              }
+                              _handleChange(5, event);
+                            }}
                           />
                         </div>
                       </div>
