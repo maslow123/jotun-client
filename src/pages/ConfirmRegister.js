@@ -4,61 +4,59 @@ import { Users } from "../services";
 import { useNavigate } from "react-router-dom";
 import { AGES } from "./utils/constants";
 import { showToast } from "./utils/helper";
-
-export default function ConfirmRegister() {  
+import Background from "./../BG1.svg";
+export default function ConfirmRegister() {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
   const [payload, setPayload] = useState({
     family_list: [
       {
-        name: '',
-        age: 0
+        name: "",
+        age: 0,
       },
       {
-        name: '',
-        age: 0
+        name: "",
+        age: 0,
       },
       {
-        name: '',
-        age: 0
+        name: "",
+        age: 0,
       },
       {
-        name: '',
-        age: 0
+        name: "",
+        age: 0,
       },
       {
-        name: '',
-        age: 0
+        name: "",
+        age: 0,
       },
       {
-        name: '',
-        age: 0
-      }
-    ]
+        name: "",
+        age: 0,
+      },
+    ],
   });
 
-  
-
   useEffect(() => {
-    const data = localStorage.getItem('register-payload');
+    const data = localStorage.getItem("register-payload");
     if (!data) {
-      navigate('/register');
+      navigate("/register");
     }
   }, []);
 
   const _goToLoginPage = () => {
-    navigate('/login');
-  }
-  
-  const _handleSubmit = async e => {
-    e.preventDefault();    
-    const p1 = await JSON.parse(localStorage.getItem('register-payload'));
+    navigate("/login");
+  };
+
+  const _handleSubmit = async (e) => {
+    e.preventDefault();
+    const p1 = await JSON.parse(localStorage.getItem("register-payload"));
     const p2 = { ...payload };
 
     const data = {
       ...p1,
-      ...p2
+      ...p2,
     };
 
     // store to backend
@@ -67,19 +65,17 @@ export default function ConfirmRegister() {
     const resp = await user.register(data);
     setLoading(false);
     if (resp.code === 201) {
-      localStorage.setItem('phone-number', data.phone_number);
-      navigate('/verif');
-      return
+      localStorage.setItem("phone-number", data.phone_number);
+      navigate("/verif");
+      return;
     }
-    if (resp.message === 'phone-number-already-exists') {      
-      return showToast('error', 'Nomor handphone telah terdaftar.');
+    if (resp.message === "phone-number-already-exists") {
+      return showToast("error", "Nomor handphone telah terdaftar.");
     }
-    showToast('error', JSON.stringify(resp));
-
+    showToast("error", JSON.stringify(resp));
   };
 
   const _handleChange = (index, evt) => {
-    
     const value = evt.target.value;
     const name = evt.target.name;
 
@@ -99,8 +95,9 @@ export default function ConfirmRegister() {
         text="Data sedang diproses"
       />
       <div
-        className="col-xs-12 col-sm-12 col-md-3 col-lg-3"
+        className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
         style={{
+          backgroundImage: `url(${Background})`,
           margin: 0,
           padding: 0,
           overflowX: "hidden",
@@ -133,12 +130,6 @@ export default function ConfirmRegister() {
             />
           </div>
         </nav>
-        <img
-          src="assets/img/BG1.svg"
-          className="img-fluid"
-          style={{ backgroundRepeat: "no-repeat", position: "absolute" }}
-          alt=""
-        />
         <div className="container">
           <div className="row">
             <div className="col-12">

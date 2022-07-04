@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { showToast, validate } from "./utils/helper";
 import { useNavigate } from "react-router-dom";
 import { Master } from "../services";
- 
+import Background from "./../BG1.svg";
 export default function Register() {
   const navigate = useNavigate();
   const master_service = new Master();
@@ -70,8 +70,9 @@ export default function Register() {
   return (
     <div className="row justify-content-center">
       <div
-        className="col-xs-12 col-sm-12 col-md-3 col-lg-3"
+        className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
         style={{
+          backgroundImage: `url(${Background})`,
           margin: 0,
           padding: 0,
           overflowX: "hidden",
@@ -103,14 +104,6 @@ export default function Register() {
             />
           </div>
         </nav>
-        <img
-          src="assets/img/BG1.svg"
-          style={{
-            backgroundRepeat: "no-repeat",
-            position: "absolute",
-          }}
-          alt=""
-        />
         <div className="container">
           <div className="row">
             <div className="col-12">
@@ -138,9 +131,9 @@ export default function Register() {
                       </label>
                       <input
                         onChange={(event) => {
-                          if (!(/^[a-zA-Z ]*$/.test(event.target.value))) {
+                          if (!/^[a-zA-Z ]*$/.test(event.target.value)) {
                             event.preventDefault();
-                            return
+                            return;
                           }
                           _handleChange(event);
                         }}
@@ -179,7 +172,6 @@ export default function Register() {
                         name="phone_number"
                         onChange={_handleChange}
                         value={payload.phone_number}
-
                       />
                     </div>
                     <div className="form-group">
@@ -233,14 +225,15 @@ export default function Register() {
                         <option selected disabled value="">
                           Pilih Departemen anda saat ini
                         </option>
-                        {master?.master_departments?.length && master.master_departments.map((item) => (
-                          <option
-                            selected={payload.department === item.id}
-                            value={item.id}
-                          >
-                            {item.name}
-                          </option>
-                        ))}
+                        {master?.master_departments?.length &&
+                          master.master_departments.map((item) => (
+                            <option
+                              selected={payload.department === item.id}
+                              value={item.id}
+                            >
+                              {item.name}
+                            </option>
+                          ))}
                       </select>
                     </div>
                     <div className="form-group">
@@ -267,14 +260,15 @@ export default function Register() {
                         <option selected disabled value="">
                           Pilih Kantor Cabang anda
                         </option>
-                        {master?.master_branches?.length && master.master_branches.map((item) => (
-                          <option
-                            selected={payload.branches === item.id}
-                            value={item.id}
-                          >
-                            {item.name}
-                          </option>
-                        ))}
+                        {master?.master_branches?.length &&
+                          master.master_branches.map((item) => (
+                            <option
+                              selected={payload.branches === item.id}
+                              value={item.id}
+                            >
+                              {item.name}
+                            </option>
+                          ))}
                       </select>
                     </div>
                     {Number(payload.branches) === 1 && (
@@ -302,17 +296,18 @@ export default function Register() {
                           <option selected disabled value="">
                             Pilih transportasi anda
                           </option>
-                          {master?.master_transportations?.length && master.master_transportations.map((item) => (
-                            <option
-                              selected={payload.transportation === item.id}
-                              value={item.id}
-                            >
-                              {item.name}
-                            </option>
-                          ))}
+                          {master?.master_transportations?.length &&
+                            master.master_transportations.map((item) => (
+                              <option
+                                selected={payload.transportation === item.id}
+                                value={item.id}
+                              >
+                                {item.name}
+                              </option>
+                            ))}
                         </select>
                       </div>
-                    )} 
+                    )}
 
                     <div className="text-center d-grid mt-2 actions">
                       <button
