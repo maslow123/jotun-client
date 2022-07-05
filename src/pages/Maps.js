@@ -12,10 +12,12 @@ export default function Maps() {
   function click() {
     $("#session1Modal").modal({ backdrop: false, keyboard: false });
     // document.getElementById("btn").style.visibility = "hidden";
+    $(".list").hide();
     setSession("session2");
     $("#session1Modal").modal("show");
   }
   function close() {
+    $(".list").show();
     $("#session1Modal").modal({ backdrop: true, keyboard: true });
     setSession("session1");
     $("#session1Modal").modal("hide");
@@ -23,6 +25,7 @@ export default function Maps() {
   function change() {
     $("#session2Modal").modal({ backdrop: false, keyboard: false });
     setSession("session3");
+    $("#session1Modal").modal("hide");
     $("#session2Modal").modal("show");
   }
   function change2() {
@@ -86,7 +89,7 @@ export default function Maps() {
                   ></i>
                 </a>
                 <img
-                  className="img-fluid mb-2 mx-3"
+                  className="img-fluid mb-2 mx-2 subtitle"
                   src="assets/img/icon/location.png"
                   style={{ width: "30px", height: "30px" }}
                 />
@@ -102,10 +105,10 @@ export default function Maps() {
           <div className="container-fluid">
             <button
               onClick={click}
-              className="btn btn-warning"
+              className="btn btn-warning list"
               style={{
                 position: "relative",
-                marginTop: "-150px",
+                marginTop: "-140px",
                 float: "right",
               }}
               data-backdrop="false"
@@ -122,19 +125,28 @@ export default function Maps() {
         aria-labelledby="session1ModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog" style={{ overflow: "hidden" }}>
+        <div className="modal-dialog">
           <div className="modal-content">
-            <button
-              onClick={close}
-              className="btn btn-warning"
-              style={{
-                position: "relative",
-                float: "right",
-              }}
-              data-bs-dismiss="modal"
-            >
-              <i className="fa fa-list"></i>
-            </button>
+            <div class="modal-header">
+              <div className="col-12">
+                <button
+                  onClick={close}
+                  className="btn btn-warning"
+                  style={{
+                    // position: "relative",
+                    float: "right",
+                    width: "50px",
+                  }}
+                  data-bs-dismiss="modal"
+                >
+                  <img
+                    src="assets/img/icon/fullscreen.svg"
+                    width={20}
+                    height={20}
+                  />
+                </button>
+              </div>
+            </div>
             <div className="row">
               <div className="col-6" style={{ paddingRight: 0 }}>
                 <ul className="list-group list-group-flush">
@@ -145,7 +157,7 @@ export default function Maps() {
                       height={15}
                     /> */}
                     <span className="alpha">A</span>
-                    <span className="mx-3">Blasjasjd</span>
+                    <span className="mx-2 subtitle">Rgistrasi</span>
                   </li>
                   <li className="list-group-item">
                     {/* <img
@@ -154,7 +166,7 @@ export default function Maps() {
                       height={15}
                     /> */}
                     <span className="alpha">B</span>
-                    <span className="mx-3">Blasjasjd</span>
+                    <span className="mx-2 subtitle">Gate</span>
                   </li>
                   <li className="list-group-item">
                     {/* <img
@@ -163,7 +175,7 @@ export default function Maps() {
                       height={15}
                     /> */}
                     <span className="alpha">C</span>
-                    <span className="mx-3">Blasjasjd</span>
+                    <span className="mx-2 subtitle">Photobooth 180</span>
                   </li>
                   <li className="list-group-item">
                     {/* <img
@@ -172,7 +184,25 @@ export default function Maps() {
                       height={15}
                     /> */}
                     <span className="alpha">D</span>
-                    <span className="mx-3">Blasjasjd</span>
+                    <span className="mx-2 subtitle">Photobooth 360</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">E</span>
+                    <span className="mx-2 subtitle">Arcade Game</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">F</span>
+                    <span className="mx-2 subtitle">Claw Machine</span>
                   </li>
                 </ul>
                 <hr />
@@ -188,38 +218,46 @@ export default function Maps() {
                       width={15}
                       height={15}
                     /> */}
-                    <span className="alpha">D</span>
-                    <span className="mx-3">Blasjasjd</span>
-                  </li>
-                  <li className="list-group-item">
-                    {/* <img
-                      src="assets/img/alphabet/A.png"
-                      width={15}
-                      height={15}
-                    /> */}
-                    <span className="alpha">E</span>
-                    <span className="mx-3">Blasjasjd</span>
-                  </li>
-                  <li className="list-group-item">
-                    {/* <img
-                      src="assets/img/alphabet/A.png"
-                      width={15}
-                      height={15}
-                    /> */}
-                    <span className="alpha">F</span>
-                    <span className="mx-3">Blasjasjd</span>
-                  </li>
-                  <li className="list-group-item">
-                    {/* <img
-                      src="assets/img/alphabet/A.png"
-                      width={15}
-                      height={15}
-                    /> */}
                     <span className="alpha">G</span>
-                    <span className="mx-3">Blasjasjd</span>
+                    <span className="mx-2 subtitle">VR Game</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">H</span>
+                    <span className="mx-2 subtitle">Coloring Competition</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">I</span>
+                    <span className="mx-2 subtitle">Family Competition</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">J</span>
+                    <span className="mx-2 subtitle">Toddler Area</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">K</span>
+                    <span className="mx-2 subtitle">F&B Area</span>
                   </li>
                 </ul>
-                <hr />
               </div>
             </div>
             <div className="row justify-content-center">
@@ -235,6 +273,7 @@ export default function Maps() {
                       background: "#f9af02",
                       fontSize: "12px",
                       fontWeight: "bold",
+                      color: "#12349e",
                     }}
                   >
                     Artpreneur
@@ -252,9 +291,10 @@ export default function Maps() {
                       paddingTop: "10px",
                       paddingBottom: "10px",
                       background: "transparent",
-                      border: "1px solid black",
+                      border: "1px solid #12349e",
                       fontSize: "12px",
                       fontWeight: "bold",
+                      color: "#12349e",
                     }}
                   >
                     Raffles Ballrom
@@ -274,17 +314,26 @@ export default function Maps() {
       >
         <div className="modal-dialog" style={{ overflow: "hidden" }}>
           <div className="modal-content">
-            <button
-              onClick={close}
-              className="btn btn-warning"
-              style={{
-                position: "relative",
-                float: "right",
-              }}
-              data-bs-dismiss="modal"
-            >
-              <i className="fa fa-list"></i>
-            </button>
+            <div class="modal-header">
+              <div className="col-12">
+                <button
+                  onClick={close}
+                  className="btn btn-warning"
+                  style={{
+                    // position: "relative",
+                    float: "right",
+                    width: "50px",
+                  }}
+                  data-bs-dismiss="modal"
+                >
+                  <img
+                    src="assets/img/icon/fullscreen.svg"
+                    width={20}
+                    height={20}
+                  />
+                </button>
+              </div>
+            </div>
             <div className="row">
               <div className="col-6" style={{ paddingRight: 0 }}>
                 <ul className="list-group list-group-flush">
@@ -294,8 +343,8 @@ export default function Maps() {
                       width={15}
                       height={15}
                     /> */}
-                    <span className="alpha">A</span>
-                    <span className="mx-3">Blasjasjd</span>
+                    <span className="alpha">L</span>
+                    <span className="mx-2 subtitle">Photobooth</span>
                   </li>
                   <li className="list-group-item">
                     {/* <img
@@ -303,8 +352,8 @@ export default function Maps() {
                       width={15}
                       height={15}
                     /> */}
-                    <span className="alpha">B</span>
-                    <span className="mx-3">Blasjasjd</span>
+                    <span className="alpha">M</span>
+                    <span className="mx-2 subtitle">F&B Area</span>
                   </li>
                   <li className="list-group-item">
                     {/* <img
@@ -312,8 +361,8 @@ export default function Maps() {
                       width={15}
                       height={15}
                     /> */}
-                    <span className="alpha">C</span>
-                    <span className="mx-3">Blasjasjd</span>
+                    <span className="alpha">N</span>
+                    <span className="mx-2 subtitle">Main Stage</span>
                   </li>
                   <li className="list-group-item">
                     {/* <img
@@ -321,8 +370,26 @@ export default function Maps() {
                       width={15}
                       height={15}
                     /> */}
-                    <span className="alpha">D</span>
-                    <span className="mx-3">Blasjasjd</span>
+                    <span className="alpha">O</span>
+                    <span className="mx-2 subtitle">SideScreen</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">P</span>
+                    <span className="mx-2 subtitle">Jimmy Jip</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">Q</span>
+                    <span className="mx-2 subtitle">Seating Area</span>
                   </li>
                 </ul>
                 <hr />
@@ -338,8 +405,8 @@ export default function Maps() {
                       width={15}
                       height={15}
                     /> */}
-                    <span className="alpha">D</span>
-                    <span className="mx-3">Blasjasjd</span>
+                    <span className="alpha">R</span>
+                    <span className="mx-2 subtitle subtitle">FQH</span>
                   </li>
                 </ul>
                 {/* <hr /> */}
@@ -357,9 +424,10 @@ export default function Maps() {
                       paddingTop: "10px",
                       paddingBottom: "10px",
                       background: "transparent",
-                      border: "1px solid black",
+                      border: "1px solid #12349e",
                       fontSize: "12px",
                       fontWeight: "bold",
+                      color: "#12349e",
                     }}
                   >
                     Artpreneur
@@ -378,6 +446,7 @@ export default function Maps() {
                       background: "#f9af02",
                       fontSize: "12px",
                       fontWeight: "bold",
+                      color: "#12349e",
                     }}
                   >
                     Raffles Ballrom

@@ -32,13 +32,22 @@ input[type="radio"]:checked {
   .bg-tr{
     background:transparent;
   }
+.modal-header {
+  position:relative;
+  z-index:99999;
+  background: transparent;
+  float: right;
+}
+.modal-content {
+    z-index: 1100 !important;
+}
 .modal-dialog {
     position: absolute;
-    top: 330px;
+    top: 260px;
     right: 100px;
     bottom: 0;
     left: 0;
-    z-index: 10040;
+    z-index: 1040;
     overflow: hidden;
     /* border-radius:10px; */
     /* overflow-y: auto; */
@@ -70,7 +79,7 @@ input[type="radio"]:checked {
   -webkit-text-fill-color: #fff; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #12349e;
-  font-size: 20px;
+  font-size: 16px;
 }
 .session2 {
   position: relative;
@@ -122,4 +131,7 @@ input[type="radio"]:checked {
   position: relative;
   marginTop: -150px;
   float: right;
+}
+.subtitle{
+  font-size:12px;
 }

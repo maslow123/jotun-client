@@ -119,25 +119,25 @@ export default function Home() {
                   />
                 </div>
                 <div className="mx-2 my-1">
-                <a
+                  <a
                     href="/maps"
                     style={{ textDecoration: "none", color: "#000" }}
                   >
-                  <p
-                    className="mb-0"
-                    style={{ fontWeight: "bold", fontSize: "11px" }}
-                  >
-                    Denah Acara
-                    <span
-                      style={{ float: "right", textAlign: "right" }}
-                      className="mr-5"
+                    <p
+                      className="mb-0"
+                      style={{ fontWeight: "bold", fontSize: "11px" }}
                     >
-                      <i
-                        className="fa fa-angle-right "
-                        style={{ fontSize: "20px" }}
-                      ></i>
-                    </span>
-                  </p>
+                      Denah Acara
+                      <span
+                        style={{ float: "right", textAlign: "right" }}
+                        className="mr-5"
+                      >
+                        <i
+                          className="fa fa-angle-right "
+                          style={{ fontSize: "20px" }}
+                        ></i>
+                      </span>
+                    </p>
                   </a>
                 </div>
               </div>
@@ -163,22 +163,26 @@ export default function Home() {
                   />
                 </div>
                 <div className="mx-2 my-1">
-                  
-                  <p
-                    className="mb-0"
-                    style={{ fontWeight: "bold", fontSize: "11px" }}
+                  <a
+                    href="/event-schedule"
+                    style={{ textDecoration: "none", color: "#000" }}
                   >
-                    Jadwal Acara
-                    <span
-                      style={{ float: "right", textAlign: "right" }}
-                      className="mr-5"
+                    <p
+                      className="mb-0"
+                      style={{ fontWeight: "bold", fontSize: "11px" }}
                     >
-                      <i
-                        className="fa fa-angle-right "
-                        style={{ fontSize: "20px" }}
-                      ></i>
-                    </span>
-                  </p>
+                      Jadwal Acara
+                      <span
+                        style={{ float: "right", textAlign: "right" }}
+                        className="mr-5"
+                      >
+                        <i
+                          className="fa fa-angle-right "
+                          style={{ fontSize: "20px" }}
+                        ></i>
+                      </span>
+                    </p>
+                  </a>
                 </div>
               </div>
             </div>
