@@ -61,7 +61,7 @@ export default function Home() {
               />
             </div>
             <div className="col-12 mt-3 mb-2">
-              <div className="card mx-2" style={{ borderRadius: "8px" }}>
+              <div className="card" style={{ borderRadius: "8px" }}>
                 <div className="mx-4 my-2">
                   <span
                     style={{ float: "right", textAlign: "right" }}
@@ -97,142 +97,123 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="container-fluid">
-            <div className="d-flex justify-content-center mb-1">
+          <div className="d-flex justify-content-center mb-1">
+            <div
+              className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+              style={{ marginRight: 3, padding: 0 }}
+            >
               <div
-                className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
-                style={{ marginRight: 3, padding: 0 }}
+                className="card"
+                style={{
+                  borderRadius: "8px",
+                  maxWidth: "100%",
+                  overflow: "hidden",
+                }}
               >
-                <div
-                  className="card"
-                  style={{ borderRadius: "8px", minWidth: "100%" }}
-                >
-                  <div style={{ padding: 5 }}>
-                    <img
-                      src="assets/img/home/grid1.svg"
-                      className="img-fluid"
-                      alt=""
-                      style={{ maxHeight: "100px" }}
-                    />
-                  </div>
-                  <div className="mx-2 my-1">
-                    <p
-                      className="mb-1"
-                      style={{ fontWeight: "bold", fontSize: "12px" }}
-                    >
-                      Denah Acara
-                      <span
-                        style={{ float: "right", textAlign: "right" }}
-                        className="mr-5"
-                      >
-                        <i
-                          className="fa fa-angle-right "
-                          style={{ fontSize: "20px" }}
-                        ></i>
-                      </span>
-                    </p>
-                  </div>
+                <div className="text-center">
+                  <img
+                    src="assets/img/home/grid1.svg"
+                    alt=""
+                    width={150}
+                    height={100}
+                  />
                 </div>
-              </div>
-              <div
-                className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
-                style={{ marginLeft: 3, padding: 0 }}
-              >
-                <div
-                  className="card"
-                  style={{ borderRadius: "8px", minWidth: "100%" }}
-                >
-                  <div style={{ padding: 5 }}>
-                    <img
-                      src="assets/img/home/grid2.svg"
-                      className="img-fluid"
-                      alt=""
-                      style={{ maxHeight: "100px" }}
-                    />
-                  </div>
-                  <div className="mx-2 my-1">
-                    <p
-                      className="mb-1"
-                      style={{ fontWeight: "bold", fontSize: "12px" }}
+                <div className="mx-2 my-1">
+                <a
+                    href="/maps"
+                    style={{ textDecoration: "none", color: "#000" }}
+                  >
+                  <p
+                    className="mb-0"
+                    style={{ fontWeight: "bold", fontSize: "11px" }}
+                  >
+                    Denah Acara
+                    <span
+                      style={{ float: "right", textAlign: "right" }}
+                      className="mr-5"
                     >
-                      Jadwal Acara
-                      <span
-                        style={{ float: "right", textAlign: "right" }}
-                        className="mr-5"
-                      >
-                        <i
-                          className="fa fa-angle-right "
-                          style={{ fontSize: "20px" }}
-                        ></i>
-                      </span>
-                    </p>
-                  </div>
+                      <i
+                        className="fa fa-angle-right "
+                        style={{ fontSize: "20px" }}
+                      ></i>
+                    </span>
+                  </p>
+                  </a>
                 </div>
               </div>
             </div>
-            <div className="d-flex justify-content-center">
+            <div
+              className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+              style={{ marginLeft: 3, padding: 0 }}
+            >
               <div
-                className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
-                style={{ marginRight: 3, padding: 0 }}
+                className="card"
+                style={{
+                  borderRadius: "8px",
+                  maxWidth: "100%",
+                  overflow: "hidden",
+                }}
               >
-                <div
-                  className="card"
-                  style={{ borderRadius: "8px", minWidth: "100%" }}
-                >
-                  <div style={{ padding: 5 }}>
-                    <img
-                      src="assets/img/home/grid3.svg"
-                      className="img-fluid"
-                      alt=""
-                      style={{ maxHeight: "100px" }}
-                    />
-                  </div>
-                  <div className="mx-2 my-1">
-                    <a
-                      href="/contest-register"
-                      style={{ textDecoration: "none", color: "#000" }}
+                <div className="text-center">
+                  <img
+                    src="assets/img/home/grid2.svg"
+                    alt=""
+                    width={150}
+                    height={100}
+                  />
+                </div>
+                <div className="mx-2 my-1">
+                  
+                  <p
+                    className="mb-0"
+                    style={{ fontWeight: "bold", fontSize: "11px" }}
+                  >
+                    Jadwal Acara
+                    <span
+                      style={{ float: "right", textAlign: "right" }}
+                      className="mr-5"
                     >
-                      <p
-                        className="mb-1"
-                        style={{ fontWeight: "bold", fontSize: "12px" }}
-                      >
-                        Daftar Lomba
-                        <span
-                          style={{ float: "right", textAlign: "right" }}
-                          className="mr-5"
-                        >
-                          <i
-                            className="fa fa-angle-right "
-                            style={{ fontSize: "20px" }}
-                          ></i>
-                        </span>
-                      </p>
-                    </a>
-                  </div>
+                      <i
+                        className="fa fa-angle-right "
+                        style={{ fontSize: "20px" }}
+                      ></i>
+                    </span>
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="d-flex justify-content-center">
+            <div
+              className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+              style={{ marginRight: 3, padding: 0 }}
+            >
               <div
-                className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
-                style={{ marginLeft: 3, padding: 0 }}
+                className="card"
+                style={{
+                  borderRadius: "8px",
+                  maxWidth: "100%",
+                  overflow: "hidden",
+                }}
               >
-                <div
-                  className="card"
-                  style={{ borderRadius: "8px", minWidth: "100%" }}
-                >
-                  <div style={{ padding: 5 }}>
-                    <img
-                      src="assets/img/home/grid4.svg"
-                      className="img-fluid"
-                      alt=""
-                      style={{ maxHeight: "100px" }}
-                    />
-                  </div>
-                  <div className="mx-2 my-1">
+                <div className="text-center">
+                  <img
+                    src="assets/img/home/grid3.svg"
+                    alt=""
+                    width={150}
+                    height={100}
+                  />
+                </div>
+                <div className="mx-2 my-1">
+                  <a
+                    href="/contest-register"
+                    style={{ textDecoration: "none", color: "#000" }}
+                  >
                     <p
-                      className="mb-1"
-                      style={{ fontWeight: "bold", fontSize: "12px" }}
+                      className="mb-0"
+                      style={{ fontWeight: "bold", fontSize: "11px" }}
                     >
-                      Doorprize
+                      Daftar Lomba
                       <span
                         style={{ float: "right", textAlign: "right" }}
                         className="mr-5"
@@ -243,7 +224,46 @@ export default function Home() {
                         ></i>
                       </span>
                     </p>
-                  </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+              style={{ marginLeft: 3, padding: 0 }}
+            >
+              <div
+                className="card"
+                style={{
+                  borderRadius: "8px",
+                  maxWidth: "100%",
+                  overflow: "hidden",
+                }}
+              >
+                <div className="text-center">
+                  <img
+                    src="assets/img/home/grid4.svg"
+                    alt=""
+                    width={150}
+                    height={100}
+                  />
+                </div>
+                <div className="mx-2 my-1">
+                  <p
+                    className="mb-0"
+                    style={{ fontWeight: "bold", fontSize: "11px" }}
+                  >
+                    Doorprize
+                    <span
+                      style={{ float: "right", textAlign: "right" }}
+                      className="mr-5"
+                    >
+                      <i
+                        className="fa fa-angle-right "
+                        style={{ fontSize: "20px" }}
+                      ></i>
+                    </span>
+                  </p>
                 </div>
               </div>
             </div>
