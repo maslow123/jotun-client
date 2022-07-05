@@ -8,6 +8,7 @@ import ContestRegister from "./pages/ContestRegister";
 import Maps from "./pages/Maps";
 import EventSchedule from "./pages/eventSchedule";
 import Verif from "./pages/Verif";
+import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -32,6 +33,7 @@ const App = () => {
         <Route exact path="/contest-register" element={<ContestRegister />} />
         <Route exact path="/maps" element={<Maps />} />
         <Route exact path="/event-schedule" element={<EventSchedule />} />
+        <Route exact path="/profile" element={<Profile />} />
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>

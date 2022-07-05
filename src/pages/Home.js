@@ -4,14 +4,14 @@ import Background from "./../BG1.svg";
 export default function Home() {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("user"));
-    if (!data) {
-      navigate("/login");
-      return;
-    }
-    setUser({ ...data });
-  }, []);
+  // useEffect(() => {
+  //   const data = JSON.parse(localStorage.getItem("user"));
+  //   if (!data) {
+  //     navigate("/login");
+  //     return;
+  //   }
+  //   setUser({ ...data });
+  // }, []);
   return (
     <div className="row justify-content-center">
       <div
@@ -61,40 +61,45 @@ export default function Home() {
               />
             </div>
             <div className="col-12 mt-3 mb-2">
-              <div className="card" style={{ borderRadius: "8px" }}>
-                <div className="mx-4 my-2">
-                  <span
-                    style={{ float: "right", textAlign: "right" }}
-                    className="mt-3"
-                  >
-                    <i
-                      className="fa fa-angle-right "
-                      style={{ fontSize: "20px" }}
-                    ></i>
-                  </span>
-                  <p
-                    className="mb-0"
-                    style={{
-                      fontWeight: "bold",
-                      fontSize: "13px",
-                    }}
-                  >
-                    Hai, {user.name}
-                  </p>
+              <a
+                href="/profile"
+                style={{ textDecoration: "none", color: "#000" }}
+              >
+                <div className="card" style={{ borderRadius: "8px" }}>
+                  <div className="mx-4 my-2">
+                    <span
+                      style={{ float: "right", textAlign: "right" }}
+                      className="mt-3"
+                    >
+                      <i
+                        className="fa fa-angle-right "
+                        style={{ fontSize: "20px" }}
+                      ></i>
+                    </span>
+                    <p
+                      className="mb-0"
+                      style={{
+                        fontWeight: "bold",
+                        fontSize: "13px",
+                      }}
+                    >
+                      Hai, {user.name}
+                    </p>
 
-                  <p
-                    className="mb-0"
-                    style={{
-                      fontWeight: "bold",
-                      fontSize: "13px",
-                      color: "#010040",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Lihat profile
-                  </p>
+                    <p
+                      className="mb-0"
+                      style={{
+                        fontWeight: "bold",
+                        fontSize: "13px",
+                        color: "#010040",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Lihat profile
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
           <div className="d-flex justify-content-center mb-1">
