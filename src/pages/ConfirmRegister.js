@@ -292,8 +292,8 @@ export default function ConfirmRegister() {
                               {" "}
                               Pilih umur
                             </option>
-                            {AGES.map((age) => (
-                              <option value={age}>{age}</option>
+                            {AGES.map((age) => (                              
+                              <option value={age}>{age === 0 ? '0-1' : age} tahun</option>
                             ))}
                           </select>
                         </div>
@@ -356,8 +356,8 @@ export default function ConfirmRegister() {
                               {" "}
                               Pilih umur
                             </option>
-                            {AGES.map((age) => (
-                              <option value={age}>{age}</option>
+                            {AGES.map((age) => (                              
+                              <option value={age}>{age === 0 ? '0-1' : age} tahun</option>
                             ))}
                           </select>
                         </div>
@@ -420,8 +420,8 @@ export default function ConfirmRegister() {
                               {" "}
                               Pilih umur
                             </option>
-                            {AGES.map((age) => (
-                              <option value={age}>{age}</option>
+                            {AGES.map((age) => (                              
+                              <option value={age}>{age === 0 ? '0-1' : age} tahun</option>
                             ))}
                           </select>
                         </div>
@@ -484,8 +484,8 @@ export default function ConfirmRegister() {
                               {" "}
                               Pilih umur
                             </option>
-                            {AGES.map((age) => (
-                              <option value={age}>{age}</option>
+                            {AGES.map((age) => (                              
+                              <option value={age}>{age === 0 ? '0-1' : age} tahun</option>
                             ))}
                           </select>
                         </div>
