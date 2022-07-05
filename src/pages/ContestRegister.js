@@ -1,8 +1,108 @@
-import React from "react";
+import LoadingScreen from 'react-loading-screen';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import { Events, UserEvents } from "../services";
 import Background from "./../BG1.svg";
+import { showToast } from "./utils/helper";
 export default function ContestRegister() {
-  return (
+  const navigate = useNavigate();
+  const events = new Events();
+  const user_events = new UserEvents();
+
+  const [loading, setLoading] = useState(true);
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
+  const [loadingGetChildrenRegistered, setLoadingGetChildrenRegistered] = useState(false);
+  const [eventList, setEventList] = useState([]);
+  const [eventDetail, setEventDetail] = useState(null);
+  const [active, setActive] = useState(0);
+  const [family, setFamily] = useState();
+  const [children, setChildren] = useState(null);
+  const [childrenRegistered, setChildrenRegistered] = useState(null);
+  
+  useEffect(() => {        
+    const data = JSON.parse(localStorage.getItem("user"));
+    if (!data) {
+      navigate("/login");
+      return;
+    }
+
+    // get only children
+    data.family.splice(0, 1);
+
+    setFamily(data.family);
+    const fetchEvents = async () => {
+      const resp = await events.list();
+      if (resp.code !== 200) {
+        return showToast('error', resp.message);
+      }
+      const eventData = resp.results;
+      setEventList([...eventData]);
+
+      setLoading(false);
+    };
+
+    fetchEvents();
+  }, []);
+
+  const getChildrenRegistered = async (event) => {
+    setLoadingGetChildrenRegistered(true);
+    try {
+      
+      const resp = await user_events.getBySubEventID(event.sub_events[0].id);
+      setChildrenRegistered({ ...resp.results });
+      setLoadingGetChildrenRegistered(false);
+    } catch(error) {
+      console.error(error);
+      setLoadingGetChildrenRegistered(false);    
+    }
+  };
+
+  const getDetailEvent = async (event) => {
+    setEventDetail({ ...event });
+    await getChildrenRegistered(event);
+  };
+
+  const handleSubmitUserEvent = async () => {
+    const payload = {
+      family_id: children.id,
+      sub_event_id: eventDetail.sub_events[0].id
+    };
+
+    setLoadingSubmit(true);
+    try {
+      await user_events.create(payload);
+      
+      showToast('success', 'Data berhasil disimpan.')
+      setLoadingSubmit(false);
+      document.getElementById('closeModal').click();
+    } catch(err) {
+      console.error(err);
+      showToast('error', err.message);
+      setLoadingSubmit(false);
+    }
+  };
+
+  const handleChangeSlide = (event, i) => {
+    resetPayload();
+    getDetailEvent(event)
+    setActive(i);
+  }
+
+  const resetPayload = () => {
+    setEventDetail(null);
+    setChildrenRegistered(null);
+    setChildren(null);
+
+  };
+  return (    
     <div className="row justify-content-center">
+      <LoadingScreen
+        loading={loading}
+        bgColor="rgba(0,0,0,0.5)"
+        spinnerColor="#9ee5f8"
+        textColor="#FFF"
+        text={<>Sedang memuat data...</>}
+      />
       <div
         className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
         style={{
@@ -72,272 +172,157 @@ export default function ContestRegister() {
             data-ride="carousel"
             data-interval="false"
             style={{
-              // position: "absolute",
-
               marginTop: "-15px",
             }}
           >
-            {/* <button
-              className="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="prev"
-            >
-              <span
-                className="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button
-              className="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="next"
-            >
-              <span
-                className="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="visually-hidden">Next</span>
-            </button> */}
             <div
               className="carousel-indicators"
               style={{ marginBottom: "-30px" }}
             >
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="0"
-                className="active"
-                aria-current="true"
-                aria-label="Slide 1"
-                style={{
-                  width: "10px",
-                  height: "10px",
-                  borderRadius: "50%",
-                }}
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="1"
-                aria-label="Slide 2"
-                style={{
-                  width: "10px",
-                  height: "10px",
-                  borderRadius: "50%",
-                }}
-              ></button>
+              {eventList?.length > 0 && eventList.map((event, i) => (
+                <button
+                  onClick={() => handleChangeSlide(event, i)}
+                  key={i}
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide-to={`${active}`}
+                  className={`${active === i ? 'active' : ''} `}
+                  aria-current="true"
+                  aria-label={`Slide ${active}`}
+                  style={{
+                    width: "10px",
+                    height: "10px",
+                    borderRadius: "50%",
+                  }}
+                ></button>
+              ))}
             </div>
             <div className="carousel-inner">
-              <div
-                className="carousel-item active"
-                style={{ marginRight: "50px" }}
-              >
+              {/* start mapping data */}                              
+              <>
+              {!loading && eventList?.length > 0 && eventList.map((event, i) => (
                 <div
-                  className="card p-1"
-                  style={{ borderRadius: "8px", maxHeight: "550px" }}
+                  key={i}
+                  className={`carousel-item ${i === active ? 'active' : ''}`}
+                  style={{ marginRight: "50px" }}
                 >
-                  <div className="card-body">
-                    <p
-                      style={{
-                        fontWeight: "bold",
-                        marginBottom: "-8px",
-                        color: "#10193a",
-                      }}
-                    >
-                      Lomba Mewarnai
-                    </p>
-                    <small className="text-muted" style={{ fontSize: "12px" }}>
-                      Berlaku untuk usia 0 - 15 Tahun{" "}
-                    </small>
-                    <div className="row">
-                      <div className="col-12">
-                        <img
-                          src="assets/img/general/painting.svg"
-                          className="img-fluid mt-3"
-                          style={{
-                            backgroundRepeat: "no-repeat",
-                            borderRadius: "10px",
-                          }}
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-9" style={{ paddingRight: "0" }}>
-                        <div className="text-center d-grid">
-                          <button
-                            className="btn btn-warning btn-lg mt-3 btn-block"
+                  <div
+                    className="card p-1"
+                    style={{ borderRadius: "8px", maxHeight: "550px" }}
+                  >
+                    <div className="card-body">
+                      <p
+                        style={{
+                          fontWeight: "bold",
+                          marginBottom: "-8px",
+                          color: "#10193a",
+                        }}
+                      >
+                        {event.name}
+                      </p>
+                      <small className="text-muted" style={{ fontSize: "12px" }}>
+                        Berlaku untuk usia {event.category_age} Tahun{" "}
+                      </small>
+                      <div className="row">
+                        <div className="col-12">
+                          <img
+                            src={event.banner}
+                            className="img-fluid mt-3"
                             style={{
-                              paddingTop: "10px",
-                              paddingBottom: "10px",
-                              background: "#f9af02",
-                              textTransform: "uppercase",
-                              fontSize: "13px",
-                              fontWeight: "800",
-                              display: "flex",
-                              justifyContent: "center",
-                              color: "#10193a",
+                              backgroundRepeat: "no-repeat",
+                              borderRadius: "10px",
                             }}
-                          >
-                            DAFTAR
-                          </button>
+                            alt=""
+                          />
                         </div>
                       </div>
-                      <div className="col-3">
-                        <div className="text-center d-grid">
-                          <button
-                            className="btn btn-lg mt-3 btn-block"
-                            style={{
-                              paddingTop: "10px",
-                              paddingBottom: "10px",
-                              textTransform: "uppercase",
-                              fontSize: "13px",
-                              fontWeight: "800",
-                              display: "flex",
-                              justifyContent: "center",
-                            }}
-                          >
-                            <a
-                              href
-                              data-bs-toggle="modal"
-                              data-bs-target="#addModal"
+                      <div className="row">
+                        <div className="col-9" style={{ paddingRight: "0" }}>
+                          <div className="text-center d-grid">
+                            <button                     
+                              disabled={loadingGetChildrenRegistered}
+                              onClick={() =>  document.getElementById('openModal').click()}                             
+                              className="btn btn-warning btn-lg mt-3 btn-block"
+                              style={{
+                                paddingTop: "10px",
+                                paddingBottom: "10px",
+                                background: "#f9af02",
+                                textTransform: "uppercase",
+                                fontSize: "13px",
+                                fontWeight: "800",
+                                display: "flex",
+                                justifyContent: "center",
+                                color: "#10193a",
+                              }}
                             >
-                              <i
-                                className="fa fa-eye"
-                                style={{ fontSize: "20px", color: "#d8d8d8" }}
-                              ></i>
-                            </a>
-                          </button>
+                              DAFTAR
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                      <div className="crd col-11 mt-3 mb-3">
-                        <ul>
-                          <li className="mb-1" style={{ fontSize: "13px" }}>
-                            Acara Lomba dimulai jam 5:30 WIB di tempat
-                          </li>
-                          <li className="mb-1" style={{ fontSize: "13px" }}>
-                            Acara Lomba dimulai jam 5:30 WIB di
-                          </li>
-                          <li className="mb-1" style={{ fontSize: "13px" }}>
-                            Acara Lomba dimulai jam 5:30 WIB di tempat
-                          </li>
-                          <li className="mb-1" style={{ fontSize: "13px" }}>
-                            Acara Lomba dimulai jam 5:30 WIB di tempat
-                          </li>
-                          <li className="mb-1" style={{ fontSize: "13px" }}>
-                            Acara Lomba dimulai jam 5:30 WIB di tempat
-                          </li>
-                          <li className="mb-1" style={{ fontSize: "13px" }}>
-                            Acara Lomba dimulai jam 5:30 WIB di tempat
-                          </li>
-                          <li className="mb-1" style={{ fontSize: "13px" }}>
-                            Acara Lomba dimulai jam 5:30 WIB di tempat
-                          </li>
-                          <li className="mb-1" style={{ fontSize: "13px" }}>
-                            Acara Lomba dimulai jam 5:30 WIB di tempat
-                          </li>
-                        </ul>
+                        <div className="col-3">
+                          <div className="text-center d-grid">
+                            <button
+                              className="btn btn-lg mt-3 btn-block"
+                              style={{
+                                paddingTop: "10px",
+                                paddingBottom: "10px",
+                                textTransform: "uppercase",
+                                fontSize: "13px",
+                                fontWeight: "800",
+                                display: "flex",
+                                justifyContent: "center",
+                              }}
+                            >
+                              <a
+                                id="openModal"                                
+                                href
+                                data-bs-toggle="modal"
+                                data-bs-target="#addModal"
+                              >
+                                <i
+                                  className="fa fa-eye"
+                                  style={{ fontSize: "20px", color: childrenRegistered ? 'blue' : "#d8d8d8" }}
+                                ></i>
+                              </a>
+                            </button>
+                          </div>
+                        </div>
+                        <div className="crd col-11 mt-3 mb-3">
+                          <ul>
+                            <li className="mb-1" style={{ fontSize: "13px" }}>
+                              Acara Lomba dimulai jam 5:30 WIB di tempat
+                            </li>
+                            <li className="mb-1" style={{ fontSize: "13px" }}>
+                              Acara Lomba dimulai jam 5:30 WIB di
+                            </li>
+                            <li className="mb-1" style={{ fontSize: "13px" }}>
+                              Acara Lomba dimulai jam 5:30 WIB di tempat
+                            </li>
+                            <li className="mb-1" style={{ fontSize: "13px" }}>
+                              Acara Lomba dimulai jam 5:30 WIB di tempat
+                            </li>
+                            <li className="mb-1" style={{ fontSize: "13px" }}>
+                              Acara Lomba dimulai jam 5:30 WIB di tempat
+                            </li>
+                            <li className="mb-1" style={{ fontSize: "13px" }}>
+                              Acara Lomba dimulai jam 5:30 WIB di tempat
+                            </li>
+                            <li className="mb-1" style={{ fontSize: "13px" }}>
+                              Acara Lomba dimulai jam 5:30 WIB di tempat
+                            </li>
+                            <li className="mb-1" style={{ fontSize: "13px" }}>
+                              Acara Lomba dimulai jam 5:30 WIB di tempat
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="carousel-item">
-                <div
-                  className="card p-1"
-                  style={{ borderRadius: "8px", maxHeight: "550px" }}
-                >
-                  <div className="card-body">
-                    <p
-                      style={{
-                        fontWeight: "bold",
-                        marginBottom: "-8px",
-                        color: "#10193a",
-                      }}
-                    >
-                      Lomba Mewarnai Tote Bag
-                    </p>
-                    <small className="text-muted" style={{ fontSize: "12px" }}>
-                      Berlaku untuk usia 11 - 25 Tahun
-                    </small>
-                    <div className="row">
-                      <div className="col-12">
-                        <img
-                          src="assets/img/general/painting.svg"
-                          className="img-fluid mt-3"
-                          style={{
-                            backgroundRepeat: "no-repeat",
-                            borderRadius: "10px",
-                          }}
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-9" style={{ paddingRight: "0" }}>
-                        <div className="text-center d-grid">
-                          <button
-                            className="btn btn-warning btn-lg mt-3 btn-block"
-                            style={{
-                              paddingTop: "10px",
-                              paddingBottom: "10px",
-                              background: "#f9af02",
-                              textTransform: "uppercase",
-                              fontSize: "13px",
-                              fontWeight: "800",
-                              display: "flex",
-                              justifyContent: "center",
-                              color: "#10193a",
-                            }}
-                          >
-                            DAFTAR
-                          </button>
-                        </div>
-                      </div>
-                      <div className="col-3">
-                        <div className="text-center d-grid">
-                          <button
-                            className="btn btn-lg mt-3 btn-block"
-                            style={{
-                              paddingTop: "10px",
-                              paddingBottom: "10px",
-                              textTransform: "uppercase",
-                              fontSize: "13px",
-                              fontWeight: "800",
-                              display: "flex",
-                              justifyContent: "center",
-                            }}
-                          >
-                            <i
-                              className="fa fa-eye"
-                              style={{ fontSize: "20px", color: "#d8d8d8" }}
-                            ></i>
-                          </button>
-                        </div>
-                      </div>
-                      <div className="crd col-11 mt-3 mb-3">
-                        <ul>
-                          <li className="mb-1" style={{ fontSize: "13px" }}>
-                            Acara Lomba dimulai jam 5:30 WIB di tempat
-                          </li>
-                          <li className="mb-1" style={{ fontSize: "13px" }}>
-                            Acara Lomba dimulai jam 5:30 WIB di
-                          </li>
-                          <li className="mb-1" style={{ fontSize: "13px" }}>
-                            Acara Lomba dimulai jam 5:30 WIB di tempat
-                          </li>
-                          <li className="mb-1" style={{ fontSize: "13px" }}>
-                            Acara Lomba dimulai jam 5:30 WIB di tempat
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
+              </> 
+                
+              
             </div>
           </div>
         </div>
@@ -353,6 +338,8 @@ export default function ContestRegister() {
           <div class="modal-content">
             <div class="modal-body">
               <button
+                onClick={resetPayload}
+                id="closeModal"
                 type="button"
                 class="btn-close"
                 data-bs-dismiss="modal"
@@ -368,15 +355,17 @@ export default function ContestRegister() {
                       color: "#10193a",
                     }}
                   >
-                    Lomba Mewarnai
+                    {eventDetail?.name}
                   </p>
                   <small className="text-muted" style={{ fontSize: "12px" }}>
-                    Berlaku untuk usia 0 - 15 Tahun
+                    Berlaku untuk usia {eventDetail?.category_age} Tahun
                   </small>
                 </div>
                 <div className="col-11">
                   <div className="text-center d-grid">
                     <button
+                      disabled={(childrenRegistered !== null || loadingSubmit) ? true : false}
+                      onClick={() => childrenRegistered === null ? handleSubmitUserEvent() : {} }
                       className="btn btn-warning btn-lg mt-3 btn-block"
                       style={{
                         paddingTop: "10px",
@@ -398,98 +387,39 @@ export default function ContestRegister() {
             </div>
             <div className="crd col-12 mb-5">
               <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input ml-1"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault1"
-                    />
-                    <label
-                      class="form-check-label mx-3"
-                      for="flexRadioDefault1"
-                      style={{ fontSize: "14px" }}
-                    >
-                      Titania Wicaksono
-                    </label>
-                    <span
-                      className="mx-3"
-                      style={{ float: "right", fontSize: "14px" }}
-                    >
-                      22 Tahun
-                    </span>
-                  </div>
-                </li>
-                <li className="list-group-item">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input ml-1"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault1"
-                    />
-                    <label
-                      class="form-check-label mx-3"
-                      for="flexRadioDefault1"
-                      style={{ fontSize: "14px" }}
-                    >
-                      Arvy Wicaksono
-                    </label>
-                    <span
-                      className="mx-3"
-                      style={{ float: "right", fontSize: "14px" }}
-                    >
-                      22 Tahun
-                    </span>
-                  </div>
-                </li>
-                <li className="list-group-item">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input ml-1"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault1"
-                    />
-                    <label
-                      class="form-check-label mx-3"
-                      for="flexRadioDefault1"
-                      style={{ fontSize: "14px" }}
-                    >
-                      Navia Wicaksono
-                    </label>
-                    <span
-                      className="mx-3"
-                      style={{ float: "right", fontSize: "14px" }}
-                    >
-                      22 Tahun
-                    </span>
-                  </div>
-                </li>
-                <li className="list-group-item">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input ml-1"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault1"
-                    />
-                    <label
-                      class="form-check-label mx-3"
-                      for="flexRadioDefault1"
-                      style={{ fontSize: "14px" }}
-                    >
-                      Gilang Wicaksono
-                    </label>
-                    <span
-                      className="mx-3"
-                      style={{ float: "right", fontSize: "14px" }}
-                    >
-                      22 Tahun
-                    </span>
-                  </div>
-                </li>
+                {family?.length > 0 && family.map((child, i) => (
+                  <li className="list-group-item" key={i}>
+                    <div 
+                      class="form-check" 
+                      onClick={() => childrenRegistered === null ? setChildren({ ...child }) : {} }>
+                      <input
+                        disabled={childrenRegistered !== null ? true : false}
+                        class="form-check-input ml-1"
+                        type="radio"
+                        name="flexRadioDefault"
+                        id={`flexRadioDefault-${i}`}
+                        checked={
+                          childrenRegistered !== null
+                          ? childrenRegistered?.id === child.id
+                          : child.id === children?.id
+                        }
+                      />
+                      <label
+                        class="form-check-label mx-3"
+                        for={`flexRadioDefault-${i}`}
+                        style={{ fontSize: "14px", color: childrenRegistered?.id === child.id ? 'red' : 'black' }}
+                      >
+                        {child.name}
+                      </label>
+                      <span
+                        className="mx-3"
+                        style={{ float: "right", fontSize: "14px", color: childrenRegistered?.id === child.id ? 'red' : 'black' }}
+                      >
+                        {child.age} Tahun
+                      </span>
+                    </div>
+                  </li>
+                ))}               
               </ul>
             </div>
           </div>

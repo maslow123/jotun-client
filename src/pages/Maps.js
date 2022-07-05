@@ -7,7 +7,6 @@ global.jQuery = $;
 export default function Maps() {
   const [session, setSession] = useState("session1");
   useEffect(() => {
-    console.log(session);
     // Update the document title using the browser API
   });
   function click() {
