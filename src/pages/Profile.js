@@ -497,7 +497,8 @@ export default function Profile() {
             </div>
             <div className="col-6" style={{ paddingLeft: 0 }}>
               <div className="text-center d-grip mb-3">
-                <button
+                <a
+                  href="/logout"
                   className="btn btn-lg btn-block"
                   style={{
                     paddingLeft: "10px",
@@ -511,7 +512,7 @@ export default function Profile() {
                   }}
                 >
                   <i className="fa fa-sign-out mx-2"></i> Keluar Akun
-                </button>
+                </a>
               </div>
             </div>
           </div>
