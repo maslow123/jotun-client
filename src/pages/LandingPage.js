@@ -11,39 +11,46 @@ export default function LandingPage() {
         style={{
           margin: 0,
           padding: 0,
-          // overflow: "hidden",
+          overflowX: "hidden",
         }}
       >
         <div
           id="carouselExampleIndicators"
-          class="carousel slide"
-          data-touch="true"
-          data-interval="false"
+          className="carousel slide"
+          data-bs-touch="true"
+          data-bs-ride="carousel"
+          data-bs-interval="false"
         >
           <button
-            class="carousel-control-prev"
+            className="carousel-control-prev"
             type="button"
             data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev"
           >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Previous</span>
           </button>
           <button
-            class="carousel-control-next"
+            className="carousel-control-next"
             type="button"
             data-bs-target="#carouselExampleIndicators"
             data-bs-slide="next"
           >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Next</span>
           </button>
-          <div class="carousel-indicators" style={{ marginTop: "-20px" }}>
+          <div className="carousel-indicators" style={{ marginTop: "-20px" }}>
             <button
               type="button"
               data-bs-target="#carouselExampleIndicators"
               data-bs-slide-to="0"
-              class="active"
+              className="active"
               aria-current="true"
               aria-label="Slide 1"
               style={{
@@ -66,8 +73,8 @@ export default function LandingPage() {
               }}
             ></button>
           </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
+          <div className="carousel-inner">
+            <div className="carousel-item active">
               <div className="text-center">
                 <img
                   src="assets/img/landing_page/landing_page1.png"
@@ -77,7 +84,7 @@ export default function LandingPage() {
                 />
               </div>
             </div>
-            <div class="carousel-item">
+            <div className="carousel-item">
               <div className="text-center">
                 <img
                   src="assets/img/landing_page/landing_page2.png"
@@ -96,7 +103,7 @@ export default function LandingPage() {
           <div className="col-5 col-sm-5 col-md-5 col-lg-5">
             <div className="text-center d-grid">
               <a
-                onClick={() => navigate('/register')}
+                onClick={() => navigate("/register")}
                 className="btn btn-warning btn-lg btn-block"
                 style={{
                   paddingTop: "10px",
@@ -116,7 +123,7 @@ export default function LandingPage() {
           <div className="col-5 col-sm-5 col-md-5 col-lg-5">
             <div className="text-center d-grid">
               <a
-                onClick={() => navigate('/login')}
+                onClick={() => navigate("/login")}
                 className="btn btn-warning btn-lg btn-block"
                 style={{
                   paddingTop: "10px",
