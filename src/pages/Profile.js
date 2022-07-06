@@ -3,21 +3,21 @@ import Background from "./../BG1.svg";
 import { useNavigate } from "react-router-dom";
 import { BRANCHES, DEPARTMENTS, TRANSPORTATIONS } from "./utils/constants";
 
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default function Profile() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  useEffect(() => {
-    const data = localStorage.getItem("token");
-    if (!data) {
-      navigate("/login");
-    }
+  //   useEffect(() => {
+  //     const data = localStorage.getItem("token");
+  //     if (!data) {
+  //       navigate("/login");
+  //     }
 
-    const user = JSON.parse(localStorage.getItem("user"));
-    setUser({ ...user });
-  }, []);
+  //     const user = JSON.parse(localStorage.getItem("user"));
+  //     setUser({ ...user });
+  //   }, []);
   return (
     <div className="row justify-content-center">
       <div
@@ -42,7 +42,7 @@ export default function Profile() {
         >
           <div className="container-fluid">
             <img
-              onClick={() => navigate('/')}
+              onClick={() => navigate("/")}
               src="assets/img/logo/logo.svg"
               alt=""
               style={{
@@ -142,7 +142,7 @@ export default function Profile() {
                       style={{
                         borderRadius: "8px",
                         minHeight: "420px",
-                        maxHeight: "550px",
+                        maxHeight: "500px",
                       }}
                     >
                       <div className="card-body">
@@ -172,7 +172,7 @@ export default function Profile() {
                               </p>
                             </div>
                           </div>
-                          <div className="col-8 mt-3">
+                          <div className="col-8 mt-2">
                             <div className="text-center">
                               <p
                                 className="p-0 m-0"
@@ -222,7 +222,7 @@ export default function Profile() {
                       style={{
                         borderRadius: "8px",
                         minHeight: "420px",
-                        maxHeight: "550px",
+                        maxHeight: "500px",
                       }}
                     >
                       <div className="card-body">
@@ -361,7 +361,7 @@ export default function Profile() {
                       style={{
                         borderRadius: "8px",
                         minHeight: "420px",
-                        maxHeight: "550px",
+                        maxHeight: "500px",
                       }}
                     >
                       <div className="card-body">
