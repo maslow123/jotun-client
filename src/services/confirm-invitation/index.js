@@ -3,7 +3,7 @@ export default class ConfirmInvitation {
 
     resend = async (payload) => {
         return new Promise((resolve, reject) => {
-            fetch(`http://localhost:8080/api/v1/confirm-invitation/resend`, {
+            fetch(`${process.env.REACT_APP_SERVICE_URL}/confirm-invitation/resend`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

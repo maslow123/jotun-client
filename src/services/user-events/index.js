@@ -4,7 +4,7 @@ export default class UserEvents {
     getBySubEventID = async (subEventID) => {
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
-            fetch(`http://localhost:8080/api/v1/user-event/get/${subEventID}`, {
+            fetch(`${process.env.REACT_APP_SERVICE_URL}/user-event/get/${subEventID}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ export default class UserEvents {
     create = async (payload) => {
         const token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
-            fetch(`http://localhost:8080/api/v1/user-event/create`, {
+            fetch(`${process.env.REACT_APP_SERVICE_URL}/user-event/create`, {
                 method: 'POST',
                 body: JSON.stringify(payload),
                 headers: {

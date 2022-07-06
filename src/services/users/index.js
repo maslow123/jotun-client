@@ -3,7 +3,7 @@ export default class Users {
 
     register = async (payload) => {
         return new Promise((resolve, reject) => {
-            fetch(`http://localhost:8080/api/v1/user/register`, {
+            fetch(`${process.env.REACT_APP_SERVICE_URL}/user/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -27,7 +27,7 @@ export default class Users {
 
     login = async (payload) => {
         return new Promise((resolve, reject) => {
-            fetch(`http://localhost:8080/api/v1/user/login`, {
+            fetch(`${process.env.REACT_APP_SERVICE_URL}/user/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
