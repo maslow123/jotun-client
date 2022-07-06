@@ -4,19 +4,20 @@ import Background from "./../BG1.svg";
 export default function Home() {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("user"));
-    if (!data) {
-      navigate("/login");
-      return;
-    }
-    setUser({ ...data });
-  }, []);
+  // useEffect(() => {
+  //   const data = JSON.parse(localStorage.getItem("user"));
+  //   if (!data) {
+  //     navigate("/login");
+  //     return;
+  //   }
+  //   setUser({ ...data });
+  // }, []);
   return (
     <div className="row justify-content-center">
       <div
         className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 bg"
         style={{
+          width: "100%",
           backgroundImage: `url(${Background})`,
           margin: 0,
           padding: 0,
@@ -54,7 +55,7 @@ export default function Home() {
           <div className="row mt-2">
             <div className="col-12">
               <img
-                src="assets/img/general/KV.svg"
+                src="assets/img/general/KV.png"
                 className="img-fluid"
                 style={{ width: "100%", position: "relative" }}
                 alt=""
@@ -62,7 +63,7 @@ export default function Home() {
             </div>
             <div className="col-12 mt-3 mb-2">
               <a
-                onClick={() => navigate('/profile')}
+                onClick={() => navigate("/profile")}
                 style={{ textDecoration: "none", color: "#000" }}
               >
                 <div className="card" style={{ borderRadius: "8px" }}>
@@ -108,7 +109,7 @@ export default function Home() {
               style={{ marginRight: 3, padding: 0 }}
             >
               <div
-                className="card"
+                className="card p-1"
                 style={{
                   borderRadius: "8px",
                   maxWidth: "100%",
@@ -117,15 +118,15 @@ export default function Home() {
               >
                 <div className="text-center">
                   <img
-                    src="assets/img/home/grid1.svg"
+                    src="assets/img/home/grid1.png"
                     alt=""
                     width={150}
                     height={100}
                   />
                 </div>
                 <div className="mx-2 my-1">
-                  <a                    
-                    onClick={() => navigate('/maps')}
+                  <a
+                    onClick={() => navigate("/maps")}
                     style={{ textDecoration: "none", color: "#000" }}
                   >
                     <p
@@ -152,7 +153,7 @@ export default function Home() {
               style={{ marginLeft: 3, padding: 0 }}
             >
               <div
-                className="card"
+                className="card p-1"
                 style={{
                   borderRadius: "8px",
                   maxWidth: "100%",
@@ -161,7 +162,7 @@ export default function Home() {
               >
                 <div className="text-center">
                   <img
-                    src="assets/img/home/grid2.svg"
+                    src="assets/img/home/grid2.png"
                     alt=""
                     width={150}
                     height={100}
@@ -169,8 +170,7 @@ export default function Home() {
                 </div>
                 <div className="mx-2 my-1">
                   <a
-                    
-                    onClick={() => navigate('/event-schedule')}
+                    onClick={() => navigate("/event-schedule")}
                     style={{ textDecoration: "none", color: "#000" }}
                   >
                     <p
@@ -199,7 +199,7 @@ export default function Home() {
               style={{ marginRight: 3, padding: 0 }}
             >
               <div
-                className="card"
+                className="card p-1"
                 style={{
                   borderRadius: "8px",
                   maxWidth: "100%",
@@ -208,7 +208,7 @@ export default function Home() {
               >
                 <div className="text-center">
                   <img
-                    src="assets/img/home/grid3.svg"
+                    src="assets/img/home/grid3.png"
                     alt=""
                     width={150}
                     height={100}
@@ -216,7 +216,7 @@ export default function Home() {
                 </div>
                 <div className="mx-2 my-1">
                   <a
-                    onClick={() => navigate('/contest-register')}
+                    onClick={() => navigate("/contest-register")}
                     style={{ textDecoration: "none", color: "#000" }}
                   >
                     <p
@@ -243,7 +243,7 @@ export default function Home() {
               style={{ marginLeft: 3, padding: 0 }}
             >
               <div
-                className="card"
+                className="card p-1"
                 style={{
                   borderRadius: "8px",
                   maxWidth: "100%",
@@ -252,7 +252,7 @@ export default function Home() {
               >
                 <div className="text-center">
                   <img
-                    src="assets/img/home/grid4.svg"
+                    src="assets/img/home/grid4.png"
                     alt=""
                     width={150}
                     height={100}
