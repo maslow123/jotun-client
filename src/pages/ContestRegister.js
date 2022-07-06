@@ -152,7 +152,7 @@ export default function ContestRegister() {
         >
           <ol className="breadcrumb">
             <li className="breadcrumb-item pt-2 mb-1 pb-0">
-              <a onClick={() => navigate('/home')}>
+              <a onClick={() => navigate("/home")}>
                 <i
                   className="fa fa-angle-left"
                   style={{ fontSize: "25px", color: "#ffc107" }}
@@ -173,9 +173,9 @@ export default function ContestRegister() {
           <div
             id="carouselExampleIndicators"
             className="carousel slide"
-            data-touch="true"
-            data-ride="carousel"
-            data-interval="false"
+            data-bs-touch="true"
+            data-bs-ride="carousel"
+            data-bs-interval="false"
             style={{
               marginTop: "-15px",
             }}
