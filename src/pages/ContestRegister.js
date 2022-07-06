@@ -195,7 +195,7 @@ export default function ContestRegister() {
             </li>
           </ol>
         </div>
-        <div className="container-fluid">
+        <div className="container-fluid mt-1">
           <div
             id="carouselExampleIndicators"
             className="carousel slide"
