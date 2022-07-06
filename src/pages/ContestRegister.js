@@ -184,7 +184,7 @@ export default function ContestRegister() {
             </li>
           </ol>
         </div>
-        <div className="container-fluid mt-5">
+        <div className="container-fluid">
           <div
             id="carouselExampleIndicators"
             className="carousel slide"
@@ -195,24 +195,6 @@ export default function ContestRegister() {
               marginTop: "-15px",
             }}
           >
-            <button
-              className="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="prev"
-            >
-              <span
-                className="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button
-              className="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="next"
-            ></button>
             <div
               className="carousel-indicators"
               style={{ marginBottom: "-30px" }}
@@ -251,7 +233,7 @@ export default function ContestRegister() {
                     >
                       <div
                         className="card p-1"
-                        style={{ borderRadius: "8px", maxHeight: "550px" }}
+                        style={{ borderRadius: "8px", maxHeight: "500px" }}
                       >
                         <div className="card-body">
                           <p
@@ -270,7 +252,10 @@ export default function ContestRegister() {
                             Berlaku untuk usia {event.category_age} Tahun{" "}
                           </small>
                           <div className="row">
-                            <div className="col-12">
+                            <div
+                              className="col-12"
+                              style={{ minHeight: "200px" }}
+                            >
                               <LazyLoadImage
                                 effect="blur"
                                 src={event.banner}
@@ -368,7 +353,8 @@ export default function ContestRegister() {
                                   className="mb-1"
                                   style={{ fontSize: "13px" }}
                                 >
-                                  Pelaksanaan lomba akan dilaksanakan dalam beberapa sesi di hari H
+                                  Pelaksanaan lomba akan dilaksanakan dalam
+                                  beberapa sesi di hari H
                                 </li>
                                 <li
                                   className="mb-1"
@@ -392,7 +378,8 @@ export default function ContestRegister() {
                                   className="mb-1"
                                   style={{ fontSize: "13px" }}
                                 >
-                                  Setiap pemenang akan mendapatkan hadiah uang tunai sebesar Rp. 500.000
+                                  Setiap pemenang akan mendapatkan hadiah uang
+                                  tunai sebesar Rp. 500.000
                                 </li>
                               </ul>
                             </div>

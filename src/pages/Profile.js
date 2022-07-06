@@ -9,15 +9,15 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 export default function Profile() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  //   useEffect(() => {
-  //     const data = localStorage.getItem("token");
-  //     if (!data) {
-  //       navigate("/login");
-  //     }
+  useEffect(() => {
+    const data = localStorage.getItem("token");
+    if (!data) {
+      navigate("/login");
+    }
 
-  //     const user = JSON.parse(localStorage.getItem("user"));
-  //     setUser({ ...user });
-  //   }, []);
+    const user = JSON.parse(localStorage.getItem("user"));
+    setUser({ ...user });
+  }, []);
   return (
     <div className="row justify-content-center">
       <div
