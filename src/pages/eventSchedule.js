@@ -14,7 +14,7 @@ export default function EventSchedule() {
           overflowX: "hidden",
           position: "relative",
           minHeight: "700px",
-          background: `linear-gradient(0deg, rgba(255, 0, 150, 0.3), rgba(0, 0, 0, 0.5)), url(${Background})`,
+          background: `url(${Background})`,
         }}
       >
         <nav
@@ -50,7 +50,7 @@ export default function EventSchedule() {
         >
           <ol className="breadcrumb">
             <li className="breadcrumb-item pt-2 mb-1 pb-0">
-              <a onClick={() => navigate('/home')}>
+              <a onClick={() => navigate("/home")}>
                 <i
                   className="fa fa-angle-left"
                   style={{ fontSize: "25px", color: "#ffc107" }}
@@ -67,16 +67,337 @@ export default function EventSchedule() {
             </li>
           </ol>
         </div>
-        <div className="container-fluid mt-5">
-          <div
-            className="text-center"
-            style={{
-              background: "#fff",
-              borderRadius: "20px",
-              marginTop: "250px",
-            }}
-          >
-            <h4 style={{ fontWeight: "bold", color: "#000" }}>COMING SOON</h4>
+        <div className="px-2">
+          <div className="row">
+            <div className="col-12">
+              <div className="card">
+                <div className="px-2 py-2">
+                  <div className="row justify-content-center">
+                    <div className="col-8">
+                      <div className="d-grid">
+                        <button
+                          className="btn btn-warning btn-lg btn-block"
+                          style={{
+                            paddingLeft: "0px",
+                            paddingRight: "20px",
+                            paddingTop: "6px",
+                            paddingBottom: "6px",
+                            background: "transparent",
+                            border: "1px solid #eaeaea",
+                            fontSize: "12px",
+                            fontWeight: "bold",
+                            color: "#12349e",
+                          }}
+                        >
+                          <img
+                            width={20}
+                            height={20}
+                            className="mx-2"
+                            src="assets/img/icon/zoom.png"
+                          />
+                          <span
+                            className="mb-0 p-0"
+                            style={{
+                              fontSize: "11px",
+                              lineHeight: 2,
+                            }}
+                          >
+                            Masuk ke Zoom
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="card crd2"
+                style={{ maxHeight: "520px", overflowY: "scroll" }}
+              >
+                <ul class="list-group px-1 py-1">
+                  <li class="list-group-item my-1">
+                    <div className="row">
+                      <div className="col-2" style={{ paddingRight: 0 }}>
+                        <div className="circle-orange mt-1"></div>
+                      </div>
+                      <div className="col-10" style={{ paddingLeft: 0 }}>
+                        <p
+                          className="p-0 m-0"
+                          style={{ fontSize: "9px", color: "#12349e" }}
+                        >
+                          <i className="fa fa-clock mx-1"></i>8.00 09.00 (60m)
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Registrasi - Kedatangan Peserta di hotel
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "normal",
+                          }}
+                        >
+                          PIC Team Registrasi
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item my-1">
+                    <div className="row">
+                      <div className="col-2" style={{ paddingRight: 0 }}>
+                        <div className="circle-gray mt-1"></div>
+                      </div>
+                      <div className="col-10" style={{ paddingLeft: 0 }}>
+                        <p
+                          className="p-0 m-0"
+                          style={{ fontSize: "9px", color: "#12349e" }}
+                        >
+                          <i className="fa fa-clock mx-1"></i>8.00 09.00 (60m)
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Registrasi - Kedatangan Peserta di hotel
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "normal",
+                          }}
+                        >
+                          PIC Team Registrasi
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item my-1">
+                    <div className="row">
+                      <div className="col-2" style={{ paddingRight: 0 }}>
+                        <div className="circle-gray mt-1"></div>
+                      </div>
+                      <div className="col-10" style={{ paddingLeft: 0 }}>
+                        <p
+                          className="p-0 m-0"
+                          style={{ fontSize: "9px", color: "#12349e" }}
+                        >
+                          <i className="fa fa-clock mx-1"></i>8.00 09.00 (60m)
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Registrasi - Kedatangan Peserta di hotel
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "normal",
+                          }}
+                        >
+                          PIC Team Registrasi
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item my-1">
+                    <div className="row">
+                      <div className="col-2" style={{ paddingRight: 0 }}>
+                        <div className="circle-gray mt-1"></div>
+                      </div>
+                      <div className="col-10" style={{ paddingLeft: 0 }}>
+                        <p
+                          className="p-0 m-0"
+                          style={{ fontSize: "9px", color: "#12349e" }}
+                        >
+                          <i className="fa fa-clock mx-1"></i>8.00 09.00 (60m)
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Registrasi - Kedatangan Peserta di hotel
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "normal",
+                          }}
+                        >
+                          PIC Team Registrasi
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item my-1">
+                    <div className="row">
+                      <div className="col-2" style={{ paddingRight: 0 }}>
+                        <div className="circle-gray mt-1"></div>
+                      </div>
+                      <div className="col-10" style={{ paddingLeft: 0 }}>
+                        <p
+                          className="p-0 m-0"
+                          style={{ fontSize: "9px", color: "#12349e" }}
+                        >
+                          <i className="fa fa-clock mx-1"></i>8.00 09.00 (60m)
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Registrasi - Kedatangan Peserta di hotel
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "normal",
+                          }}
+                        >
+                          PIC Team Registrasi
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item my-1">
+                    <div className="row">
+                      <div className="col-2" style={{ paddingRight: 0 }}>
+                        <div className="circle-gray mt-1"></div>
+                      </div>
+                      <div className="col-10" style={{ paddingLeft: 0 }}>
+                        <p
+                          className="p-0 m-0"
+                          style={{ fontSize: "9px", color: "#12349e" }}
+                        >
+                          <i className="fa fa-clock mx-1"></i>8.00 09.00 (60m)
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Registrasi - Kedatangan Peserta di hotel
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "normal",
+                          }}
+                        >
+                          PIC Team Registrasi
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item my-1">
+                    <div className="row">
+                      <div className="col-2" style={{ paddingRight: 0 }}>
+                        <div className="circle-gray mt-1"></div>
+                      </div>
+                      <div className="col-10" style={{ paddingLeft: 0 }}>
+                        <p
+                          className="p-0 m-0"
+                          style={{ fontSize: "9px", color: "#12349e" }}
+                        >
+                          <i className="fa fa-clock mx-1"></i>8.00 09.00 (60m)
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Registrasi - Kedatangan Peserta di hotel
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "normal",
+                          }}
+                        >
+                          PIC Team Registrasi
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item my-1">
+                    <div className="row">
+                      <div className="col-2" style={{ paddingRight: 0 }}>
+                        <div className="circle-gray mt-1"></div>
+                      </div>
+                      <div className="col-10" style={{ paddingLeft: 0 }}>
+                        <p
+                          className="p-0 m-0"
+                          style={{ fontSize: "9px", color: "#12349e" }}
+                        >
+                          <i className="fa fa-clock mx-1"></i>8.00 09.00 (60m)
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Registrasi - Kedatangan Peserta di hotel
+                        </p>
+                        <p
+                          className="p-0 m-0"
+                          style={{
+                            fontSize: "9px",
+                            color: "#12349e",
+                            fontWeight: "normal",
+                          }}
+                        >
+                          PIC Team Registrasi
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
