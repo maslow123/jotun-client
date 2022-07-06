@@ -82,10 +82,19 @@ export default function ContestRegister() {
 
       showToast("success", "Data berhasil disimpan.");
       setLoadingSubmit(false);
-      document.getElementById("closeModal").click();
+      await getDetailEvent(eventDetail);
+      
+      document.getElementById("openModal").click()
     } catch (err) {
       console.error(err);
-      let error = err.message === 'children-already-registered' ? 'Data ini sudah terdaftar' : err.message;
+      let error = err.message;
+
+      if (err.message === 'children-already-registered') {
+        error = 'Data ini sudah terdaftar';
+      } else if (err.message === 'invalid-children-age') {
+        error = 'Umur anak tidak sesuai';
+      }
+
       showToast("error", error);
       setLoadingSubmit(false);
     }
@@ -102,14 +111,16 @@ export default function ContestRegister() {
   };
 
   const handleChangeSlide = (event, i) => {
-    resetPayload();
+    resetPayload(true);
     getDetailEvent(event);
     setActive(i);
   };
 
-  const resetPayload = () => {
+  const resetPayload = (changeSlide = false) => {
     setEventDetail(null);
-    setChildrenRegistered(null);
+    if (childrenRegistered !== null && changeSlide) {
+      setChildrenRegistered(null);
+    }
     setChildren(null);
   };
   return (
@@ -312,7 +323,6 @@ export default function ContestRegister() {
                                 >
                                   <a
                                     id="openModal"
-                                    href
                                     data-bs-toggle="modal"
                                     data-bs-target="#addModal"
                                   >
@@ -320,7 +330,7 @@ export default function ContestRegister() {
                                       className="fa fa-eye"
                                       style={{
                                         fontSize: "20px",
-                                        color: childrenRegistered
+                                        color: childrenRegistered !== null
                                           ? "blue"
                                           : "#d8d8d8",
                                       }}
@@ -404,7 +414,7 @@ export default function ContestRegister() {
           <div class="modal-content">
             <div class="modal-body">
               <button
-                onClick={resetPayload}
+                onClick={() => resetPayload(false)}
                 id="closeModal"
                 type="button"
                 class="btn-close"
