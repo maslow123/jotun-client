@@ -152,7 +152,7 @@ export default function ContestRegister() {
         >
           <ol className="breadcrumb">
             <li className="breadcrumb-item pt-2 mb-1 pb-0">
-              <a href="/home">
+              <a onClick={() => navigate('/home')}>
                 <i
                   className="fa fa-angle-left"
                   style={{ fontSize: "25px", color: "#ffc107" }}

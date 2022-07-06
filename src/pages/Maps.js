@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Background from "./../BG1.svg";
+import { useNavigate } from "react-router-dom";
 import $ from "jquery";
 window.jQuery = $;
 window.$ = $;
 global.jQuery = $;
 export default function Maps() {
+  const navigate = useNavigate();
   const [session, setSession] = useState("session1");
   useEffect(() => {
     // Update the document title using the browser API
@@ -82,7 +84,8 @@ export default function Maps() {
           >
             <ol className="breadcrumb">
               <li className="breadcrumb-item pt-2 mb-1 pb-0">
-                <a href="/home">
+                <a 
+                  onClick={() => navigate('/home')}>
                   <i
                     className="fa fa-angle-left"
                     style={{ fontSize: "25px", color: "#ffc107" }}

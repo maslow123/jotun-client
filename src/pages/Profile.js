@@ -61,7 +61,8 @@ export default function Profile() {
         >
           <ol className="breadcrumb">
             <li className="breadcrumb-item pt-2 mb-1 pb-0">
-              <a href="/home">
+              <a 
+                onClick={() => navigate('/home')}>
                 <i
                   className="fa fa-angle-left"
                   style={{ fontSize: "25px", color: "#ffc107" }}
@@ -515,7 +516,7 @@ export default function Profile() {
             <div className="col-6" style={{ paddingLeft: 0 }}>
               <div className="text-center d-grip mb-3">
                 <a
-                  href="/logout"
+                  onClick={() => navigate('/logout')}
                   className="btn btn-lg btn-block"
                   style={{
                     paddingLeft: "10px",

@@ -1,5 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 export default function Logout() {
+  const navigate = useNavigate();
+
+  const _goToLoginPage = () => {
+    localStorage.clear();
+
+    navigate('/login');
+  };
   return (
     <div className="row justify-content-center">
       <div
@@ -58,7 +66,7 @@ export default function Logout() {
                     <div className="col-6">
                       <div className="text-center d-grip">
                         <a
-                          href="/profile"
+                          onClick={() => navigate('/profile')}
                           className="btn btn-warning btn-lg btn-block"
                           style={{
                             paddingLeft: "40px",
@@ -78,6 +86,7 @@ export default function Logout() {
                     <div className="col-6" style={{ paddingLeft: 0 }}>
                       <div className="text-center d-grip">
                         <button
+                          onClick={_goToLoginPage}
                           className="btn btn-warning btn-lg btn-block"
                           style={{
                             paddingLeft: "35px",

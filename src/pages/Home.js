@@ -62,7 +62,7 @@ export default function Home() {
             </div>
             <div className="col-12 mt-3 mb-2">
               <a
-                href="/profile"
+                onClick={() => navigate('/profile')}
                 style={{ textDecoration: "none", color: "#000" }}
               >
                 <div className="card" style={{ borderRadius: "8px" }}>
@@ -124,8 +124,8 @@ export default function Home() {
                   />
                 </div>
                 <div className="mx-2 my-1">
-                  <a
-                    href="/maps"
+                  <a                    
+                    onClick={() => navigate('/maps')}
                     style={{ textDecoration: "none", color: "#000" }}
                   >
                     <p
@@ -169,7 +169,8 @@ export default function Home() {
                 </div>
                 <div className="mx-2 my-1">
                   <a
-                    href="/event-schedule"
+                    
+                    onClick={() => navigate('/event-schedule')}
                     style={{ textDecoration: "none", color: "#000" }}
                   >
                     <p
@@ -215,7 +216,7 @@ export default function Home() {
                 </div>
                 <div className="mx-2 my-1">
                   <a
-                    href="/contest-register"
+                    onClick={() => navigate('/contest-register')}
                     style={{ textDecoration: "none", color: "#000" }}
                   >
                     <p
