@@ -32,7 +32,7 @@ export default function Logout() {
         >
           <div className="container-fluid">
             <img
-              onClick={() => navigate('/')}
+              onClick={() => navigate("/")}
               src="assets/img/logo/logo.svg"
               alt=""
               style={{
@@ -50,7 +50,7 @@ export default function Logout() {
             <div className="col-12">
               <div className="card" style={{ borderRadius: "10px" }}>
                 <img
-                  src="assets/img/general/KV.svg"
+                  src="assets/img/general/KV.png"
                   className="img-fluid"
                   style={{ position: "relative", marginTop: "-45px" }}
                   alt=""
@@ -67,7 +67,7 @@ export default function Logout() {
                     <div className="col-6">
                       <div className="text-center d-grip">
                         <a
-                          onClick={() => navigate('/profile')}
+                          onClick={() => navigate("/profile")}
                           className="btn btn-warning btn-lg btn-block"
                           style={{
                             paddingLeft: "40px",
