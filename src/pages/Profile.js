@@ -141,7 +141,7 @@ export default function Profile() {
                       className="card p-1"
                       style={{
                         borderRadius: "8px",
-                        minHeight: "420px",
+                        minHeight: "450px",
                         maxHeight: "500px",
                       }}
                     >
@@ -221,7 +221,7 @@ export default function Profile() {
                       className="card p-1"
                       style={{
                         borderRadius: "8px",
-                        minHeight: "420px",
+                        minHeight: "450px",
                         maxHeight: "500px",
                       }}
                     >
@@ -360,7 +360,7 @@ export default function Profile() {
                       className="card p-1"
                       style={{
                         borderRadius: "8px",
-                        minHeight: "420px",
+                        minHeight: "450px",
                         maxHeight: "500px",
                       }}
                     >
