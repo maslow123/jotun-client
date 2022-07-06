@@ -7,20 +7,19 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 export default function Home() {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
-  // useEffect(() => {
-  //   const data = JSON.parse(localStorage.getItem("user"));
-  //   if (!data) {
-  //     navigate("/login");
-  //     return;
-  //   }
-  //   setUser({ ...data });
-  // }, []);
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("user"));
+    if (!data) {
+      navigate("/login");
+      return;
+    }
+    setUser({ ...data });
+  }, []);
   return (
     <div className="row justify-content-center">
       <div
-        className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 bg"
+        className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
         style={{
-          width: "100%",
           backgroundImage: `url(${Background})`,
           margin: 0,
           padding: 0,
