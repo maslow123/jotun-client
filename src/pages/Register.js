@@ -117,7 +117,7 @@ export default function Register() {
                       color: "#010040",
                     }}
                   >
-                    Daftar Diri
+                    Daftar
                   </h4>
                   <form onSubmit={_handleSubmit}>
                     <div className="form-group">
@@ -128,7 +128,7 @@ export default function Register() {
                           fontSize: "11px",
                         }}
                       >
-                        Nama
+                        Nama Karyawan
                       </label>
                       <input
                         onChange={(event) => {
@@ -183,7 +183,7 @@ export default function Register() {
                           fontSize: "11px",
                         }}
                       >
-                        Masukan kembali Nomor Whatsapp anda
+                        Konfirmasi Nomor Whatsapp anda
                       </label>
                       <input
                         onKeyPress={(event) => {
@@ -259,7 +259,7 @@ export default function Register() {
                         }}
                       >
                         <option selected disabled value="">
-                          Pilih Kantor Cabang anda
+                          Pilih Lokasi anda
                         </option>
                         {master?.master_branches?.length &&
                           master.master_branches.map((item) => (
