@@ -8,6 +8,7 @@ import ConfirmRegister from "./pages/ConfirmRegister";
 import ContestRegister from "./pages/ContestRegister";
 import Maps from "./pages/Maps";
 import EventSchedule from "./pages/eventSchedule";
+import Doorprize from "./pages/Doorprize";
 import Verif from "./pages/Verif";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
@@ -36,6 +37,7 @@ const App = () => {
         <Route exact path="/maps" element={<Maps />} />
         <Route exact path="/event-schedule" element={<EventSchedule />} />
         <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/doorprize" element={<Doorprize />} />
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>
