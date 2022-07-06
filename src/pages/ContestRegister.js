@@ -43,6 +43,7 @@ export default function ContestRegister() {
       const eventData = resp.results;
       setEventList([...eventData]);
 
+      await getDetailEvent(eventData[0]);
       setLoading(false);
     };
 
@@ -81,7 +82,8 @@ export default function ContestRegister() {
       document.getElementById("closeModal").click();
     } catch (err) {
       console.error(err);
-      showToast("error", err.message);
+      let error = err.message === 'children-already-registered' ? 'Data ini sudah terdaftar' : err.message;
+      showToast("error", error);
       setLoadingSubmit(false);
     }
   };
