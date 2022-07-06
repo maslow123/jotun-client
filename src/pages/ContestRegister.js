@@ -4,6 +4,9 @@ import { useNavigate } from "react-router";
 import { Events, UserEvents } from "../services";
 import Background from "./../BG1.svg";
 import { showToast } from "./utils/helper";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 import $ from "jquery";
 window.jQuery = $;
 window.$ = $;
@@ -159,7 +162,8 @@ export default function ContestRegister() {
                   style={{ fontSize: "25px", color: "#ffc107" }}
                 ></i>
               </a>
-              <img
+              <LazyLoadImage
+                effect='blur'
                 className="img-fluid mb-2 mx-3"
                 src="assets/img/icon/lomba.png"
                 style={{ width: "30px", height: "30px" }}
@@ -239,7 +243,8 @@ export default function ContestRegister() {
                           </small>
                           <div className="row">
                             <div className="col-12">
-                              <img
+                              <LazyLoadImage
+                                effect='blur'
                                 src={event.banner}
                                 className="img-fluid mt-3"
                                 style={{

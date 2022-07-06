@@ -44,6 +44,7 @@ export default function Register() {
 
   const _handleSubmit = e => {
     e.preventDefault();
+    if ( Number(payload.branches) !== 1) { delete payload.transportation };
     const errors = validate(payload);
     if (errors.length > 0) {
       const phoneNumberNotMatch = errors.find(err => err === 'phone-number-not-match');

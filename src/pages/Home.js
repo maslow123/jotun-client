@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Background from "./../BG1.svg";
+
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 export default function Home() {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
@@ -54,7 +57,8 @@ export default function Home() {
         <div className="container-fluid">
           <div className="row mt-2">
             <div className="col-12">
-              <img
+              <LazyLoadImage
+                effect="blur"
                 src="assets/img/general/KV.svg"
                 className="img-fluid"
                 style={{ width: "100%", position: "relative" }}
@@ -117,7 +121,8 @@ export default function Home() {
                 }}
               >
                 <div className="text-center">
-                  <img
+                  <LazyLoadImage
+                    effect="blur"
                     src="assets/img/home/grid1.svg"
                     alt=""
                     width={150}
@@ -161,7 +166,8 @@ export default function Home() {
                 }}
               >
                 <div className="text-center">
-                  <img
+                  <LazyLoadImage
+                    effect="blur"
                     src="assets/img/home/grid2.svg"
                     alt=""
                     width={150}
@@ -208,7 +214,8 @@ export default function Home() {
                 }}
               >
                 <div className="text-center">
-                  <img
+                  <LazyLoadImage
+                    effect="blur"
                     src="assets/img/home/grid3.svg"
                     alt=""
                     width={150}
@@ -252,7 +259,8 @@ export default function Home() {
                 }}
               >
                 <div className="text-center">
-                  <img
+                  <LazyLoadImage
+                    effect="blur"
                     src="assets/img/home/grid4.svg"
                     alt=""
                     width={150}

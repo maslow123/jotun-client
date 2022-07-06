@@ -3,6 +3,9 @@ import Background from "./../BG1.svg";
 import { useNavigate } from "react-router-dom";
 import { BRANCHES, DEPARTMENTS, TRANSPORTATIONS } from "./utils/constants";
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 export default function Profile() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
@@ -152,7 +155,8 @@ export default function Profile() {
                               >
                                 Tunjukan KODE QR pada saat kehadiran
                               </p>
-                              <img
+                              <LazyLoadImage
+                                effect="blur"
                                 src={user?.qr_code_url}
                                 className="img-fluid"
                               />
