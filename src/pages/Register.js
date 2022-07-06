@@ -7,13 +7,14 @@ export default function Register() {
   const navigate = useNavigate();
   const master_service = new Master();
   const [isLoad, setLoad] = useState(false);
-  const [payload, setPayload] = useState({    
-      name: "",
-      phone_number: "",
-      confirm_phone_number: "",
-      department: "",
-      branches: "",
-      level: 0
+  const [payload, setPayload] = useState({
+    name: "",
+    phone_number: "",
+    confirm_phone_number: "",
+    department: "",
+    branches: "",
+    transportation: "",
+    level: 0,
   });
 
   const [master, setMaster] = useState(null);

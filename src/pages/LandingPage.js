@@ -12,7 +12,6 @@ export default function LandingPage() {
           margin: 0,
           padding: 0,
           // overflow: "hidden",
-          minHeight: "700px",
         }}
       >
         <div
@@ -71,9 +70,9 @@ export default function LandingPage() {
             <div class="carousel-item active">
               <div className="text-center">
                 <img
-                  src="assets/img/landing_page/landing_page.svg"
+                  src="assets/img/landing_page/landing_page1.png"
                   className="img-fluid"
-                  style={{ backgroundRepeat: "no-repeat" }}
+                  style={{ backgroundRepeat: "no-repeat", marginTop: "-30px" }}
                   alt=""
                 />
               </div>
@@ -81,9 +80,9 @@ export default function LandingPage() {
             <div class="carousel-item">
               <div className="text-center">
                 <img
-                  src="assets/img/landing_page/landing_page.svg"
+                  src="assets/img/landing_page/landing_page2.png"
                   className="img-fluid"
-                  style={{ backgroundRepeat: "no-repeat" }}
+                  style={{ backgroundRepeat: "no-repeat", marginTop: "-30px" }}
                   alt=""
                 />
               </div>
@@ -92,7 +91,7 @@ export default function LandingPage() {
         </div>
         <div
           className="row justify-content-center"
-          style={{ position: "relative", marginTop: "-35px" }}
+          style={{ position: "relative", marginTop: "-55px" }}
         >
           <div className="col-5 col-sm-5 col-md-5 col-lg-5">
             <div className="text-center d-grid">
@@ -106,6 +105,7 @@ export default function LandingPage() {
                   textTransform: "uppercase",
                   fontSize: "13px",
                   fontWeight: "800",
+                  marginBottom: "10px",
                 }}
               >
                 Daftar
@@ -125,6 +125,7 @@ export default function LandingPage() {
                   textTransform: "uppercase",
                   fontSize: "13px",
                   fontWeight: "800",
+                  marginBottom: "10px",
                 }}
               >
                 Masuk

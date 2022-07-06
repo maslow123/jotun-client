@@ -2,7 +2,8 @@
   background:#eaeaea;
   margin:0;
   padding:0;
-  overflow:hidden;
+  overflow-y:scroll;
+  overflow-x:hidden;
 }
 .carousel-indicators .active{
     background-color: #ffc107 !important;
