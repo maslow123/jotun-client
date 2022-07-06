@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Background from "./../BG1.svg";
-export default function eventSchedule() {
+export default function EventSchedule() {
+  const navigate = useNavigate();
+
   return (
     <div className="row justify-content-center">
       <div
@@ -47,7 +50,7 @@ export default function eventSchedule() {
         >
           <ol className="breadcrumb">
             <li className="breadcrumb-item pt-2 mb-1 pb-0">
-              <a href="/home">
+              <a onClick={() => navigate('/home')}>
                 <i
                   className="fa fa-angle-left"
                   style={{ fontSize: "25px", color: "#ffc107" }}

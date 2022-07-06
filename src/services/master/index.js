@@ -3,7 +3,7 @@ export default class Master {
 
     list = async () => {
         return new Promise((resolve, reject) => {
-            fetch(`http://localhost:8080/api/v1/master/list`, {
+            fetch(`${process.env.REACT_APP_SERVICE_URL}/master/list`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

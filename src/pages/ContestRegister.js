@@ -43,6 +43,7 @@ export default function ContestRegister() {
       const eventData = resp.results;
       setEventList([...eventData]);
 
+      await getDetailEvent(eventData[0]);
       setLoading(false);
     };
 
@@ -81,7 +82,8 @@ export default function ContestRegister() {
       document.getElementById("closeModal").click();
     } catch (err) {
       console.error(err);
-      showToast("error", err.message);
+      let error = err.message === 'children-already-registered' ? 'Data ini sudah terdaftar' : err.message;
+      showToast("error", error);
       setLoadingSubmit(false);
     }
   };
@@ -150,7 +152,7 @@ export default function ContestRegister() {
         >
           <ol className="breadcrumb">
             <li className="breadcrumb-item pt-2 mb-1 pb-0">
-              <a href="/home">
+              <a onClick={() => navigate('/home')}>
                 <i
                   className="fa fa-angle-left"
                   style={{ fontSize: "25px", color: "#ffc107" }}

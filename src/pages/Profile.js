@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Background from "./../BG1.svg";
+import { useNavigate } from "react-router-dom";
+import { BRANCHES, DEPARTMENTS, TRANSPORTATIONS } from "./utils/constants";
+
 export default function Profile() {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const data = localStorage.getItem("token");
+    if (!data) {
+      navigate("/login");
+    }
+
+    const user = JSON.parse(localStorage.getItem('user'));
+    setUser({ ...user });
+  }, []);
   return (
     <div className="row justify-content-center">
       <div
@@ -47,7 +61,8 @@ export default function Profile() {
         >
           <ol className="breadcrumb">
             <li className="breadcrumb-item pt-2 mb-1 pb-0">
-              <a href="/home">
+              <a 
+                onClick={() => navigate('/home')}>
                 <i
                   className="fa fa-angle-left"
                   style={{ fontSize: "25px", color: "#ffc107" }}
@@ -138,7 +153,7 @@ export default function Profile() {
                                 Tunjukan KODE QR pada saat kehadiran
                               </p>
                               <img
-                                src="assets/img/general/qr.jpeg"
+                                src={user?.qr_code_url}
                                 className="img-fluid"
                               />
                             </div>
@@ -220,13 +235,13 @@ export default function Profile() {
                                 Nama
                               </label>
                               <input
+                                disabled
                                 required
                                 type="text"
                                 className="form-control p-2"
-                                placeholder="contoh : Ahmad Taufik"
                                 style={{ fontSize: "12px" }}
                                 name="name"
-                                value="blablaba"
+                                value={user?.name}
                               />
                             </div>
                             <div className="form-group">
@@ -240,13 +255,14 @@ export default function Profile() {
                                 Nomor Whatsapp anda
                               </label>
                               <input
+                                disabled
                                 required
                                 type="text"
                                 className="form-control p-2"
-                                placeholder="08237128323"
+                                
                                 style={{ fontSize: "12px" }}
                                 name="no_whatsapp"
-                                value="08237128323"
+                                value={user?.phone_number}
                               />
                             </div>
                             <div className="form-group">
@@ -260,13 +276,13 @@ export default function Profile() {
                                 Masukan kembali Nomor Whatsapp anda
                               </label>
                               <input
+                                disabled
                                 required
                                 type="text"
                                 className="form-control p-2"
-                                placeholder="08237128323"
                                 style={{ fontSize: "12px" }}
                                 name="no_whatsapp"
-                                value="08237128323"
+                                value={user?.phone_number}
                               />
                             </div>
                             <div className="form-group">
@@ -280,13 +296,13 @@ export default function Profile() {
                                 Departemen
                               </label>
                               <input
+                                disabled
                                 required
                                 type="text"
                                 className="form-control p-2"
-                                placeholder="Finance & IT"
                                 style={{ fontSize: "12px" }}
                                 name="departemen"
-                                value="Finance & IT"
+                                value={DEPARTMENTS[user?.department || '1']}
                               />
                             </div>
                             <div className="form-group">
@@ -300,35 +316,37 @@ export default function Profile() {
                                 Kantor Cabang
                               </label>
                               <input
+                                disabled
                                 required
                                 type="text"
                                 className="form-control p-2"
-                                placeholder="Jakarta & Tanggerang"
                                 style={{ fontSize: "12px" }}
                                 name="departemen"
-                                value="Jakarta & Tanggerang"
+                                value={BRANCHES[user?.branches || '1']}
                               />
                             </div>
-                            <div className="form-group">
-                              <label
-                                style={{
-                                  fontWeight: "bold",
-                                  color: "#010040",
-                                  fontSize: "11px",
-                                }}
-                              >
-                                Transportasi
-                              </label>
-                              <input
-                                required
-                                type="text"
-                                className="form-control p-2"
-                                placeholder="Kendaraan Pribadi (Mobil)"
-                                style={{ fontSize: "12px" }}
-                                name="departemen"
-                                value="Kendaraan Pribadi (Mobil)"
-                              />
-                            </div>
+                            {user?.branches === '1' && (
+                              <div className="form-group">
+                                <label
+                                  style={{
+                                    fontWeight: "bold",
+                                    color: "#010040",
+                                    fontSize: "11px",
+                                  }}
+                                >
+                                  Transportasi
+                                </label>
+                                <input
+                                  disabled
+                                  required
+                                  type="text"
+                                  className="form-control p-2"
+                                  style={{ fontSize: "12px" }}
+                                  name="departemen"
+                                  value={TRANSPORTATIONS[user?.transportation]}
+                                />
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -357,13 +375,13 @@ export default function Profile() {
                                 Nama Suami/Istri
                               </label>
                               <input
+                                disabled
                                 required
                                 type="text"
                                 className="form-control p-2"
-                                placeholder="contoh : Ahmad Taufik"
                                 style={{ fontSize: "12px" }}
                                 name="name"
-                                value="blablaba"
+                                value={user?.family[0]?.name}
                               />
                             </div>
                             <div className="form-group">
@@ -377,13 +395,13 @@ export default function Profile() {
                                 Nama Anak Pertama
                               </label>
                               <input
+                                disabled
                                 required
                                 type="text"
                                 className="form-control p-2"
-                                placeholder="Anak pertama"
                                 style={{ fontSize: "12px" }}
                                 name="first_child"
-                                value="Anak pertama"
+                                value={user?.family[1]?.name}
                               />
                             </div>
                             <div className="form-group">
@@ -397,13 +415,13 @@ export default function Profile() {
                                 Nama Anak Kedua
                               </label>
                               <input
+                                disabled
                                 required
                                 type="text"
                                 className="form-control p-2"
-                                placeholder="Anak Kedua"
                                 style={{ fontSize: "12px" }}
                                 name="second_child"
-                                value="Anak Kedua"
+                                value={user?.family[2]?.name}
                               />
                             </div>
                             <div className="form-group">
@@ -417,13 +435,13 @@ export default function Profile() {
                                 Nama Anak Ketiga
                               </label>
                               <input
+                                disabled
                                 required
                                 type="text"
                                 className="form-control p-2"
-                                placeholder="Anak Ketiga"
                                 style={{ fontSize: "12px" }}
                                 name="third_child"
-                                value="Anak Ketiga"
+                                value={user?.family[3]?.name}
                               />
                             </div>
                             <div className="form-group">
@@ -437,13 +455,13 @@ export default function Profile() {
                                 Nama Anak Keempat
                               </label>
                               <input
+                                disabled
                                 required
                                 type="text"
                                 className="form-control p-2"
-                                placeholder="Anak Keempat"
                                 style={{ fontSize: "12px" }}
                                 name="four_child"
-                                value="Anak Keempat"
+                                value={user?.family[4]?.name}
                               />
                             </div>
                             <div className="form-group">
@@ -457,13 +475,13 @@ export default function Profile() {
                                 Nama Anak Kelima
                               </label>
                               <input
+                                disabled
                                 required
                                 type="text"
                                 className="form-control p-2"
-                                placeholder="Anak Kelima"
                                 style={{ fontSize: "12px" }}
                                 name="five_child"
-                                value="Anak Kelima"
+                                value={user?.family[5]?.name}
                               />
                             </div>
                           </div>
@@ -498,7 +516,7 @@ export default function Profile() {
             <div className="col-6" style={{ paddingLeft: 0 }}>
               <div className="text-center d-grip mb-3">
                 <a
-                  href="/logout"
+                  onClick={() => navigate('/logout')}
                   className="btn btn-lg btn-block"
                   style={{
                     paddingLeft: "10px",

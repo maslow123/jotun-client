@@ -1,7 +1,9 @@
 import React from "react";
 import "./../style.css";
+import { useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
+  const navigate = useNavigate();
   return (
     <div className="row justify-content-center">
       <div
@@ -94,7 +96,7 @@ export default function LandingPage() {
           <div className="col-5 col-sm-5 col-md-5 col-lg-5">
             <div className="text-center d-grid">
               <a
-                href="/register"
+                onClick={() => navigate('/register')}
                 className="btn btn-warning btn-lg btn-block"
                 style={{
                   paddingTop: "10px",
@@ -114,7 +116,7 @@ export default function LandingPage() {
           <div className="col-5 col-sm-5 col-md-5 col-lg-5">
             <div className="text-center d-grid">
               <a
-                href="/login"
+                onClick={() => navigate('/login')}
                 className="btn btn-warning btn-lg btn-block"
                 style={{
                   paddingTop: "10px",

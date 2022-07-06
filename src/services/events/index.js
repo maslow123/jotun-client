@@ -3,7 +3,7 @@ export default class Events {
 
     list = async () => {
         return new Promise((resolve, reject) => {
-            fetch(`http://localhost:8080/api/v1/event/list`, {
+            fetch(`${process.env.REACT_APP_SERVICE_URL}/event/list`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
