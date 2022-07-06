@@ -91,6 +91,16 @@ export default function ContestRegister() {
     }
   };
 
+  const renderText = (event) => {
+    const text = {
+      6: 'mewarnai kertas dengan warna menarik dan rapih',
+      7: 'mewarnai totebag dengan warna menarik dan rapih',
+      8: 'menyusun puzzle dengan cepat'
+    };
+
+    return text[event.id];
+  };
+
   const handleChangeSlide = (event, i) => {
     resetPayload();
     getDetailEvent(event);
@@ -340,49 +350,49 @@ export default function ContestRegister() {
                                   className="mb-1"
                                   style={{ fontSize: "13px" }}
                                 >
-                                  Acara Lomba dimulai jam 5:30 WIB di tempat
+                                  Usia peserta {event.category_age} tahun
                                 </li>
                                 <li
                                   className="mb-1"
                                   style={{ fontSize: "13px" }}
                                 >
-                                  Acara Lomba dimulai jam 5:30 WIB di
+                                  Pendaftaran lomba akan ditutup H-5
                                 </li>
                                 <li
                                   className="mb-1"
                                   style={{ fontSize: "13px" }}
                                 >
-                                  Acara Lomba dimulai jam 5:30 WIB di tempat
+                                  Jadwal lomba setiap peserta akan diinfokan H-1
                                 </li>
                                 <li
                                   className="mb-1"
                                   style={{ fontSize: "13px" }}
                                 >
-                                  Acara Lomba dimulai jam 5:30 WIB di tempat
+                                  Pelaksanaan lomba akan dilaksanakan dalam beberapa sesi di hari H
                                 </li>
                                 <li
                                   className="mb-1"
                                   style={{ fontSize: "13px" }}
                                 >
-                                  Acara Lomba dimulai jam 5:30 WIB di tempat
+                                  Peserta diminta untuk {renderText(event)}
                                 </li>
                                 <li
                                   className="mb-1"
                                   style={{ fontSize: "13px" }}
                                 >
-                                  Acara Lomba dimulai jam 5:30 WIB di tempat
+                                  Waktu lomba persesi adalah 15 menit
                                 </li>
                                 <li
                                   className="mb-1"
                                   style={{ fontSize: "13px" }}
                                 >
-                                  Acara Lomba dimulai jam 5:30 WIB di tempat
+                                  Tim EO akan memilih 2 pemenang favorit
                                 </li>
                                 <li
                                   className="mb-1"
                                   style={{ fontSize: "13px" }}
                                 >
-                                  Acara Lomba dimulai jam 5:30 WIB di tempat
+                                  Setiap pemenang akan mendapatkan hadiah uang tunai sebesar Rp. 500.000
                                 </li>
                               </ul>
                             </div>

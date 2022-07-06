@@ -1,4 +1,4 @@
-const AGES = Array.from(Array(30).keys())
+const AGES = Array.from(Array(29).keys())
 const BRANCHES = {
     '1': 'Jakarta & Tangerang',
     '2':'Pekanbaru',
