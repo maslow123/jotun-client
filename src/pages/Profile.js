@@ -12,7 +12,7 @@ export default function Profile() {
       navigate("/login");
     }
 
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem("user"));
     setUser({ ...user });
   }, []);
   return (
@@ -62,8 +62,7 @@ export default function Profile() {
         >
           <ol className="breadcrumb">
             <li className="breadcrumb-item pt-2 mb-1 pb-0">
-              <a 
-                onClick={() => navigate('/home')}>
+              <a onClick={() => navigate("/home")}>
                 <i
                   className="fa fa-angle-left"
                   style={{ fontSize: "25px", color: "#ffc107" }}
@@ -86,9 +85,9 @@ export default function Profile() {
               <div
                 id="carouselExampleIndicators"
                 className="carousel slide"
-                data-touch="true"
-                data-ride="carousel"
-                data-interval="false"
+                data-bs-touch="true"
+                data-bs-ride="carousel"
+                data-bs-interval="false"
                 style={{
                   marginTop: "-15px",
                 }}
@@ -260,7 +259,6 @@ export default function Profile() {
                                 required
                                 type="text"
                                 className="form-control p-2"
-                                
                                 style={{ fontSize: "12px" }}
                                 name="no_whatsapp"
                                 value={user?.phone_number}
@@ -303,7 +301,7 @@ export default function Profile() {
                                 className="form-control p-2"
                                 style={{ fontSize: "12px" }}
                                 name="departemen"
-                                value={DEPARTMENTS[user?.department || '1']}
+                                value={DEPARTMENTS[user?.department || "1"]}
                               />
                             </div>
                             <div className="form-group">
@@ -323,10 +321,10 @@ export default function Profile() {
                                 className="form-control p-2"
                                 style={{ fontSize: "12px" }}
                                 name="departemen"
-                                value={BRANCHES[user?.branches || '1']}
+                                value={BRANCHES[user?.branches || "1"]}
                               />
                             </div>
-                            {user?.branches === '1' && (
+                            {user?.branches === "1" && (
                               <div className="form-group">
                                 <label
                                   style={{
@@ -517,7 +515,7 @@ export default function Profile() {
             <div className="col-6" style={{ paddingLeft: 0 }}>
               <div className="text-center d-grip mb-3">
                 <a
-                  onClick={() => navigate('/logout')}
+                  onClick={() => navigate("/logout")}
                   className="btn btn-lg btn-block"
                   style={{
                     paddingLeft: "10px",

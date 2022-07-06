@@ -93,7 +93,13 @@ export default function ConfirmRegister() {
         bgColor="rgba(0,0,0,0.5)"
         spinnerColor="#9ee5f8"
         textColor="#FFF"
-        text={<>Data sedang diproses...<br/>Mohon tidak memuat ulang atau menutup halaman ini</>}
+        text={
+          <>
+            Data sedang diproses...
+            <br />
+            Mohon tidak memuat ulang atau menutup halaman ini
+          </>
+        }
       />
       <div
         className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
@@ -166,16 +172,16 @@ export default function ConfirmRegister() {
                         name={"name"}
                         value={payload.family_list[0].name}
                         onChange={(event) => {
-                          if (!(/^[a-zA-Z ]*$/.test(event.target.value))) {
+                          if (!/^[a-zA-Z ]*$/.test(event.target.value)) {
                             event.preventDefault();
-                            return
+                            return;
                           }
                           _handleChange(0, event);
                         }}
                       />
                     </div>
                     <div className="row">
-                      <div className="col-8" style={{ paddingRight: 0 }}>
+                      <div className="col-7" style={{ paddingRight: 0 }}>
                         <div className="form-group">
                           <label
                             style={{
@@ -195,16 +201,16 @@ export default function ConfirmRegister() {
                             name={"name"}
                             value={payload.family_list[1].name}
                             onChange={(event) => {
-                              if (!(/^[a-zA-Z ]*$/.test(event.target.value))) {
+                              if (!/^[a-zA-Z ]*$/.test(event.target.value)) {
                                 event.preventDefault();
-                                return
+                                return;
                               }
                               _handleChange(1, event);
                             }}
                           />
                         </div>
                       </div>
-                      <div className="col-4">
+                      <div className="col-5" style={{ paddingLeft: 3 }}>
                         <div className="form-group">
                           <label
                             style={{
@@ -231,14 +237,16 @@ export default function ConfirmRegister() {
                               Pilih umur
                             </option>
                             {AGES.map((age) => (
-                              <option value={age}>{age === 0 ? '0-1' : age} tahun</option>
+                              <option value={age}>
+                                {age === 0 ? "0-1" : age} tahun
+                              </option>
                             ))}
                           </select>
                         </div>
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-8" style={{ paddingRight: 0 }}>
+                      <div className="col-7" style={{ paddingRight: 0 }}>
                         <div className="form-group">
                           <label
                             style={{
@@ -259,16 +267,16 @@ export default function ConfirmRegister() {
                             // onChange={(e) => _handleChange(2, e)}
                             value={payload.family_list[2].name}
                             onChange={(event) => {
-                              if (!(/^[a-zA-Z ]*$/.test(event.target.value))) {
+                              if (!/^[a-zA-Z ]*$/.test(event.target.value)) {
                                 event.preventDefault();
-                                return
+                                return;
                               }
                               _handleChange(2, event);
                             }}
                           />
                         </div>
                       </div>
-                      <div className="col-4">
+                      <div className="col-5" style={{ paddingLeft: 3 }}>
                         <div className="form-group">
                           <label
                             style={{
@@ -294,15 +302,17 @@ export default function ConfirmRegister() {
                               {" "}
                               Pilih umur
                             </option>
-                            {AGES.map((age) => (                              
-                              <option value={age}>{age === 0 ? '0-1' : age} tahun</option>
+                            {AGES.map((age) => (
+                              <option value={age}>
+                                {age === 0 ? "0-1" : age} tahun
+                              </option>
                             ))}
                           </select>
                         </div>
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-8" style={{ paddingRight: 0 }}>
+                      <div className="col-7" style={{ paddingRight: 0 }}>
                         <div className="form-group">
                           <label
                             style={{
@@ -323,16 +333,16 @@ export default function ConfirmRegister() {
                             // onChange={(e) => _handleChange(3, e)}
                             value={payload.family_list[3].name}
                             onChange={(event) => {
-                              if (!(/^[a-zA-Z ]*$/.test(event.target.value))) {
+                              if (!/^[a-zA-Z ]*$/.test(event.target.value)) {
                                 event.preventDefault();
-                                return
+                                return;
                               }
                               _handleChange(3, event);
                             }}
                           />
                         </div>
                       </div>
-                      <div className="col-4">
+                      <div className="col-5" style={{ paddingLeft: 3 }}>
                         <div className="form-group">
                           <label
                             style={{
@@ -358,15 +368,17 @@ export default function ConfirmRegister() {
                               {" "}
                               Pilih umur
                             </option>
-                            {AGES.map((age) => (                              
-                              <option value={age}>{age === 0 ? '0-1' : age} tahun</option>
+                            {AGES.map((age) => (
+                              <option value={age}>
+                                {age === 0 ? "0-1" : age} tahun
+                              </option>
                             ))}
                           </select>
                         </div>
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-8" style={{ paddingRight: 0 }}>
+                      <div className="col-7" style={{ paddingRight: 0 }}>
                         <div className="form-group">
                           <label
                             style={{
@@ -387,16 +399,16 @@ export default function ConfirmRegister() {
                             // onChange={(e) => _handleChange(4, e)}
                             value={payload.family_list[4].name}
                             onChange={(event) => {
-                              if (!(/^[a-zA-Z ]*$/.test(event.target.value))) {
+                              if (!/^[a-zA-Z ]*$/.test(event.target.value)) {
                                 event.preventDefault();
-                                return
+                                return;
                               }
                               _handleChange(4, event);
                             }}
                           />
                         </div>
                       </div>
-                      <div className="col-4">
+                      <div className="col-5" style={{ paddingLeft: 3 }}>
                         <div className="form-group">
                           <label
                             style={{
@@ -422,15 +434,17 @@ export default function ConfirmRegister() {
                               {" "}
                               Pilih umur
                             </option>
-                            {AGES.map((age) => (                              
-                              <option value={age}>{age === 0 ? '0-1' : age} tahun</option>
+                            {AGES.map((age) => (
+                              <option value={age}>
+                                {age === 0 ? "0-1" : age} tahun
+                              </option>
                             ))}
                           </select>
                         </div>
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col-8" style={{ paddingRight: 0 }}>
+                      <div className="col-7" style={{ paddingRight: 0 }}>
                         <div className="form-group">
                           <label
                             style={{
@@ -451,16 +465,16 @@ export default function ConfirmRegister() {
                             // onChange={(e) => _handleChange(5, e)}
                             value={payload.family_list[5].name}
                             onChange={(event) => {
-                              if (!(/^[a-zA-Z ]*$/.test(event.target.value))) {
+                              if (!/^[a-zA-Z ]*$/.test(event.target.value)) {
                                 event.preventDefault();
-                                return
+                                return;
                               }
                               _handleChange(5, event);
                             }}
                           />
                         </div>
                       </div>
-                      <div className="col-4">
+                      <div className="col-5" style={{ paddingLeft: 3 }}>
                         <div className="form-group">
                           <label
                             style={{
@@ -486,8 +500,10 @@ export default function ConfirmRegister() {
                               {" "}
                               Pilih umur
                             </option>
-                            {AGES.map((age) => (                              
-                              <option value={age}>{age === 0 ? '0-1' : age} tahun</option>
+                            {AGES.map((age) => (
+                              <option value={age}>
+                                {age === 0 ? "0-1" : age} tahun
+                              </option>
                             ))}
                           </select>
                         </div>
