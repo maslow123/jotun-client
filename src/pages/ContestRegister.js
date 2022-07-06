@@ -143,7 +143,7 @@ export default function ContestRegister() {
         >
           <div className="container-fluid">
             <img
-              onClick={() => navigate('/')}
+              onClick={() => navigate("/")}
               src="assets/img/logo/logo.svg"
               alt=""
               style={{
@@ -173,7 +173,7 @@ export default function ContestRegister() {
                 ></i>
               </a>
               <LazyLoadImage
-                effect='blur'
+                effect="blur"
                 className="img-fluid mb-2 mx-3"
                 src="assets/img/icon/lomba.png"
                 style={{ width: "30px", height: "30px" }}
@@ -195,6 +195,24 @@ export default function ContestRegister() {
               marginTop: "-15px",
             }}
           >
+            <button
+              className="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="prev"
+            >
+              <span
+                className="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button
+              className="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next"
+            ></button>
             <div
               className="carousel-indicators"
               style={{ marginBottom: "-30px" }}
@@ -254,7 +272,7 @@ export default function ContestRegister() {
                           <div className="row">
                             <div className="col-12">
                               <LazyLoadImage
-                                effect='blur'
+                                effect="blur"
                                 src={event.banner}
                                 className="img-fluid mt-3"
                                 style={{
