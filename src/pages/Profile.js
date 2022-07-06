@@ -208,7 +208,7 @@ export default function Profile() {
                                 className="p-0 m-0"
                                 style={{ fontSize: "11px", fontWeight: "bold" }}
                               >
-                                Paket anak sekolah
+                                Paket anak sekolah umur 3-18 tahun
                               </p>
                             </div>
                           </div>
