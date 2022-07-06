@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./../style.css";
 import { useNavigate } from "react-router-dom";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 export default function LandingPage() {
+  useEffect(() => {
+    localStorage.clear();
+  }, [])
   const navigate = useNavigate();
   return (
     <div className="row justify-content-center">
@@ -76,21 +81,23 @@ export default function LandingPage() {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <div className="text-center">
-                <img
+                <LazyLoadImage
                   src="assets/img/landing_page/landing_page1.png"
                   className="img-fluid"
                   style={{ backgroundRepeat: "no-repeat", marginTop: "-30px" }}
                   alt=""
+                  effect="blur"
                 />
               </div>
             </div>
             <div className="carousel-item">
               <div className="text-center">
-                <img
+                <LazyLoadImage
                   src="assets/img/landing_page/landing_page2.png"
                   className="img-fluid"
                   style={{ backgroundRepeat: "no-repeat", marginTop: "-30px" }}
                   alt=""
+                  effect="blur"
                 />
               </div>
             </div>

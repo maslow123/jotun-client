@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { ConfirmInvitation, Users } from "../services";
 import { showToast } from "./utils/helper";
 import Background from "./../BG1.svg";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 export default function Verif() {
   const navigate = useNavigate();
 
@@ -95,7 +97,8 @@ export default function Verif() {
           }}
         >
           <div className="container-fluid">
-            <img
+            <LazyLoadImage
+              onClick={() => navigate('/')}
               src="assets/img/logo/logo.svg"
               alt=""
               style={{
@@ -120,7 +123,7 @@ export default function Verif() {
                   >
                     <div className="col-12">
                       <div className="text-center">
-                        <img
+                        <LazyLoadImage
                           src="assets/img/icon/success.svg"
                           alt=""
                           className="mb-3"
