@@ -85,8 +85,7 @@ export default function Maps() {
           >
             <ol className="breadcrumb">
               <li className="breadcrumb-item pt-2 mb-1 pb-0">
-                <a 
-                  onClick={() => navigate('/home')}>
+                <a onClick={() => navigate("/home")}>
                   <i
                     className="fa fa-angle-left"
                     style={{ fontSize: "25px", color: "#ffc107" }}
@@ -144,7 +143,7 @@ export default function Maps() {
                   data-bs-dismiss="modal"
                 >
                   <img
-                    src="assets/img/icon/fullscreen.svg"
+                    src="assets/img/icon/fullscreen.png"
                     width={20}
                     height={20}
                   />
@@ -331,7 +330,7 @@ export default function Maps() {
                   data-bs-dismiss="modal"
                 >
                   <img
-                    src="assets/img/icon/fullscreen.svg"
+                    src="assets/img/icon/fullscreen.png"
                     width={20}
                     height={20}
                   />

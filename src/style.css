@@ -56,12 +56,14 @@ input[type="radio"]:checked {
 .session1 {
   position: relative;
   overflow-y: scroll !important;
-  width:180%;
-  max-width:180%;
+  width:120%;
+  max-width:120%;
   height: auto;
 }
 .session1 img{
-  width:100%;
+  overflow:scroll;
+  width:180%;
+  padding-right:100px;
   height:auto;
 }
 .session1::-webkit-scrollbar
@@ -134,7 +136,7 @@ input[type="radio"]:checked {
   float: right;
 }
 .subtitle{
-  font-size:12px;
+  font-size:10px;
 }
 .circle-orange{
   border-radius: 50px;
