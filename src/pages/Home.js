@@ -4,6 +4,7 @@ import Background from "./../BG1.svg";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { CITY } from "./utils/constants";
 export default function Home() {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
@@ -196,51 +197,54 @@ export default function Home() {
               </div>
             </div>
           </div>
+
           <div className="d-flex justify-content-center">
-            <div
-              className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
-              style={{ marginRight: 3, padding: 0 }}
-            >
+            {user?.branches === Number(CITY.Jakarta) && ( 
               <div
-                className="card p-1"
-                style={{
-                  borderRadius: "8px",
-                  maxWidth: "100%",
-                  overflow: "hidden",
-                }}
+                className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+                style={{ marginRight: 3, padding: 0 }}
               >
-                <div className="text-center">
-                  <img
-                    src="assets/img/home/grid3.png"
-                    alt=""
-                    width={150}
-                    height={100}
-                  />
-                </div>
-                <div className="mx-2 my-1">
-                  <a
-                    onClick={() => navigate("/contest-register")}
-                    style={{ textDecoration: "none", color: "#000" }}
-                  >
-                    <p
-                      className="mb-0"
-                      style={{ fontWeight: "bold", fontSize: "11px" }}
+                <div
+                  className="card p-1"
+                  style={{
+                    borderRadius: "8px",
+                    maxWidth: "100%",
+                    overflow: "hidden",
+                  }}
+                >
+                  <div className="text-center">
+                    <img
+                      src="assets/img/home/grid3.png"
+                      alt=""
+                      width={150}
+                      height={100}
+                    />
+                  </div>
+                  <div className="mx-2 my-1">
+                    <a
+                      onClick={() => navigate("/contest-register")}
+                      style={{ textDecoration: "none", color: "#000" }}
                     >
-                      Daftar Lomba
-                      <span
-                        style={{ float: "right", textAlign: "right" }}
-                        className="mr-5"
+                      <p
+                        className="mb-0"
+                        style={{ fontWeight: "bold", fontSize: "11px" }}
                       >
-                        <i
-                          className="fa fa-angle-right "
-                          style={{ fontSize: "20px" }}
-                        ></i>
-                      </span>
-                    </p>
-                  </a>
+                        Daftar Lomba
+                        <span
+                          style={{ float: "right", textAlign: "right" }}
+                          className="mr-5"
+                        >
+                          <i
+                            className="fa fa-angle-right "
+                            style={{ fontSize: "20px" }}
+                          ></i>
+                        </span>
+                      </p>
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </div>              
+            )}
             <div
               className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
               style={{ marginLeft: 3, padding: 0 }}
