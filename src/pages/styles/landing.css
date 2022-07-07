@@ -1,7 +1,455 @@
 .carousel .control-dots {
     bottom:85px !important;
   }
-  @media only screen and (max-width: 600px) {
+  .bwh {
+      width: 100%;
+      margin:0 !important;
+      background:#1616ab;
+      top: 0 ;
+      left: 0;
+      position: relative;
+      padding-top: 10px;
+      padding-bottom: 20px;
+      margin: 0;
+      /* padding:20px; */
+    }
+    .bg {
+        margin-top:-30px ;
+        width: 100% !important;
+    }
+    @media only screen and (min-width: 1695px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 88% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:0px;
+            width: 100% !important;
+        }
+    }
+    @media only screen and (max-width: 580px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 59% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 85% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:0px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 576px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 59% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 85% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 556px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 60% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 540px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 62% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 535px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 62% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 515px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 64% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 508px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 66% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 505px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 65% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 500px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 66% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 485px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 68% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 475px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 69% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 468px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 70% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 460px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 72% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 450px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 73% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 440px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 75% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 435px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 75% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 430px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 76% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 427px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 77% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 420px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 88% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:0px;
+            width: 90% !important;
+        }
+    }
+    @media only screen and (max-width: 415px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 83% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:0px;
+            width: 90% !important;
+        }
+    }
+    @media only screen and (max-width: 406px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 80.2% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:0px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 404px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 80% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:0px;
+            width: 85% !important;
+        }
+    }
+    @media only screen and (max-width: 400px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 90% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 95% !important;
+        }
+    }
+  /* @media only screen and (max-width: 600px) {
     .bwh {
         overflow:hidden;
         width:90% !important;
@@ -195,4 +643,4 @@
     margin-top:0px !important;
     width:100% !important;
   }
-}
+} */
