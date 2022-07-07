@@ -10,6 +10,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 import $ from "jquery";
+import { CITY } from './utils/constants';
 window.jQuery = $;
 window.$ = $;
 global.jQuery = $;
@@ -34,6 +35,10 @@ export default function ContestRegister() {
     if (!data) {
       navigate("/login");
       return;
+    }
+
+    if (data.branches !== Number(CITY.Jakarta)) {
+      navigate('/home');
     }
     $("#addModal").modal({ backdrop: "static", keyboard: false });
     // get only children

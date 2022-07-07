@@ -10,6 +10,10 @@ const BRANCHES = {
     '8':'Balikpapan'
 };
 
+const CITY = {
+    'Jakarta': 1
+};
+
 const DEPARTMENTS = {
     '1': 'Decorative Project',
     '2': 'Decorative Retail',
@@ -40,6 +44,7 @@ const TRANSPORTATIONS = {
 export {
     AGES,
     BRANCHES,
+    CITY,
     DEPARTMENTS,
     TRANSPORTATIONS
 };
