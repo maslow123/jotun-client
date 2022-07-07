@@ -2,19 +2,22 @@ html{
   background:#eaeaea;
   margin:0;
   padding:0;
-overflow:hidden;
+overflow-x:hidden;
+overflow-y:scroll;
 }
 body{
   background:#eaeaea;
   margin:0;
   padding:0;
-overflow:hidden;
+overflow-x:hidden;
+overflow-y:scroll;
 }
 #root{
   background:#eaeaea;
   margin:0;
   padding:0;
-overflow:hidden;
+overflow-x:hidden;
+overflow-y:scroll;
 }
 
 .carousel-indicators .active{
@@ -172,4 +175,7 @@ input[type="radio"]:checked {
 {
 	border-radius: 10px;
 	background-color: transparent;
+}
+.carousel .control-dots {
+  bottom:40px !important;
 }
