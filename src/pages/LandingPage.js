@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import "./../style.css";
+import "./styles/landing.css";
 import { useNavigate } from "react-router-dom";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -29,15 +30,15 @@ export default function LandingPage() {
           showArrows={false}
           showStatus={false}
         >
-          <div>
+          <div style={{ overflow: "scroll" }}>
             {" "}
             <LazyLoadImage
-              src="assets/img/landing_page/landing_page1.png"
+              className="bg"
+              src="assets/img/landing_page/landing_page3.png"
               style={{
                 backgroundRepeat: "no-repeat",
                 maxWidth: "100%",
-                maxHeight: "700px",
-                marginTop: "-30px",
+                width: "100%",
               }}
               alt=""
               effect="blur"
@@ -46,12 +47,12 @@ export default function LandingPage() {
           <div>
             {" "}
             <LazyLoadImage
+              className="bg"
               src="assets/img/landing_page/landing_page2.png"
               style={{
                 backgroundRepeat: "no-repeat",
                 maxWidth: "100%",
-                maxHeight: "700px",
-                marginTop: "-30px",
+                width: "100%",
               }}
               alt=""
               effect="blur"
@@ -152,12 +153,15 @@ export default function LandingPage() {
           </div>
         </div> */}
         <div
-          className="row justify-content-center sticky-bottom"
+          className="bwh row justify-content-center fixed-bottom"
           style={{
             position: "relative",
-            marginTop: "-50px",
+            marginTop: "-45px",
             overflow: "hidden",
-            marginBottom: "100px",
+            // marginBottom: "100px",
+            paddingTop: "10px",
+            paddingBottom: "15px",
+            background: "#1616ab",
           }}
         >
           <div className="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">

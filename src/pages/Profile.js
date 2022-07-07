@@ -4,22 +4,22 @@ import { useNavigate } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { BRANCHES, DEPARTMENTS, TRANSPORTATIONS } from "./utils/constants";
-
+import "./styles/profile.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default function Profile() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  useEffect(() => {
-    const data = localStorage.getItem("token");
-    if (!data) {
-      navigate("/login");
-    }
+  //   useEffect(() => {
+  //     const data = localStorage.getItem("token");
+  //     if (!data) {
+  //       navigate("/login");
+  //     }
 
-    const user = JSON.parse(localStorage.getItem("user"));
-    setUser({ ...user });
-  }, []);
+  //     const user = JSON.parse(localStorage.getItem("user"));
+  //     setUser({ ...user });
+  //   }, []);
   return (
     <div className="row justify-content-center">
       <div

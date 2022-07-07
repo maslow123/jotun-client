@@ -8,6 +8,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import "./styles/register.css";
 
 import $ from "jquery";
 import { CITY } from './utils/constants';
