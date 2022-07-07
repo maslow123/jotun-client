@@ -209,170 +209,168 @@ export default function ContestRegister() {
                   showArrows={false}
                   showStatus={false}
                 >
-                  <>
-                    {!loading &&
-                      eventList?.length > 0 &&
-                      eventList.map((event, i) => (
-                        <div
+                  {!loading &&
+                    eventList?.length > 0 &&
+                    eventList.map((event, i) => (
+                      <div
+                        style={{
+                          padding: "20px",
+                          background: "white",
+                          borderRadius: "10px",
+                          minHeight: "450px",
+                          maxHeight: "500px",
+                        }}
+                      >
+                        <p
                           style={{
-                            padding: "20px",
-                            background: "white",
-                            borderRadius: "10px",
-                            minHeight: "450px",
-                            maxHeight: "500px",
+                            fontWeight: "bold",
+                            marginBottom: "-8px",
+                            color: "#10193a",
                           }}
                         >
-                          <p
-                            style={{
-                              fontWeight: "bold",
-                              marginBottom: "-8px",
-                              color: "#10193a",
-                            }}
+                          {event.name}
+                        </p>
+                        <small
+                          className="text-muted"
+                          style={{ fontSize: "12px" }}
+                        >
+                          Berlaku untuk usia {event.category_age} Tahun{" "}
+                        </small>
+                        <div className="row">
+                          <div
+                            className="col-12"
+                            style={{ minHeight: "200px" }}
                           >
-                            {event.name}
-                          </p>
-                          <small
-                            className="text-muted"
-                            style={{ fontSize: "12px" }}
-                          >
-                            Berlaku untuk usia {event.category_age} Tahun{" "}
-                          </small>
-                          <div className="row">
-                            <div
-                              className="col-12"
-                              style={{ minHeight: "200px" }}
-                            >
-                              <LazyLoadImage
-                                effect="blur"
-                                src={event.banner}
-                                className="img-fluid mt-3"
-                                style={{
-                                  backgroundRepeat: "no-repeat",
-                                  borderRadius: "10px",
-                                }}
-                                alt=""
-                              />
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div
-                              className="col-9"
-                              style={{ paddingRight: "0" }}
-                            >
-                              <div className="text-center d-grid">
-                                <button
-                                  disabled={loadingGetChildrenRegistered}
-                                  onClick={() =>
-                                    document.getElementById("openModal").click()
-                                  }
-                                  className="btn btn-warning btn-lg mt-3 btn-block"
-                                  style={{
-                                    paddingTop: "10px",
-                                    paddingBottom: "10px",
-                                    background: "#f9af02",
-                                    textTransform: "uppercase",
-                                    fontSize: "13px",
-                                    fontWeight: "800",
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    color: "#10193a",
-                                  }}
-                                >
-                                  DAFTAR
-                                </button>
-                              </div>
-                            </div>
-                            <div className="col-3">
-                              <div className="text-center d-grid">
-                                <button
-                                  className="btn btn-lg mt-3 btn-block"
-                                  style={{
-                                    paddingTop: "10px",
-                                    paddingBottom: "10px",
-                                    textTransform: "uppercase",
-                                    fontSize: "13px",
-                                    fontWeight: "800",
-                                    display: "flex",
-                                    justifyContent: "center",
-                                  }}
-                                >
-                                  <a
-                                    id="openModal"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#addModal"
-                                  >
-                                    <i
-                                      className="fa fa-eye"
-                                      style={{
-                                        fontSize: "20px",
-                                        color:
-                                          childrenRegistered !== null
-                                            ? "blue"
-                                            : "#d8d8d8",
-                                      }}
-                                    ></i>
-                                  </a>
-                                </button>
-                              </div>
-                            </div>
-                            <div className="crd col-11 mt-3 mb-3">
-                              <ul>
-                                <li
-                                  className="mb-1"
-                                  style={{ fontSize: "13px" }}
-                                >
-                                  Usia peserta {event.category_age} tahun
-                                </li>
-                                <li
-                                  className="mb-1"
-                                  style={{ fontSize: "13px" }}
-                                >
-                                  Pendaftaran lomba akan ditutup H-5
-                                </li>
-                                <li
-                                  className="mb-1"
-                                  style={{ fontSize: "13px" }}
-                                >
-                                  Jadwal lomba setiap peserta akan diinfokan H-1
-                                </li>
-                                <li
-                                  className="mb-1"
-                                  style={{ fontSize: "13px" }}
-                                >
-                                  Pelaksanaan lomba akan dilaksanakan dalam
-                                  beberapa sesi di hari H
-                                </li>
-                                <li
-                                  className="mb-1"
-                                  style={{ fontSize: "13px" }}
-                                >
-                                  Peserta diminta untuk {renderText(event)}
-                                </li>
-                                <li
-                                  className="mb-1"
-                                  style={{ fontSize: "13px" }}
-                                >
-                                  Waktu lomba persesi adalah 15 menit
-                                </li>
-                                <li
-                                  className="mb-1"
-                                  style={{ fontSize: "13px" }}
-                                >
-                                  Tim EO akan memilih 2 pemenang favorit
-                                </li>
-                                <li
-                                  className="mb-1"
-                                  style={{ fontSize: "13px" }}
-                                >
-                                  Setiap pemenang akan mendapatkan hadiah uang
-                                  tunai sebesar Rp. 500.000
-                                </li>
-                              </ul>
-                            </div>
+                            <LazyLoadImage
+                              effect="blur"
+                              src={event.banner}
+                              className="img-fluid mt-3"
+                              style={{
+                                backgroundRepeat: "no-repeat",
+                                borderRadius: "10px",
+                              }}
+                              alt=""
+                            />
                           </div>
                         </div>
-                      ))}
-                  </>
+                        <div className="row">
+                          <div
+                            className="col-9"
+                            style={{ paddingRight: "0" }}
+                          >
+                            <div className="text-center d-grid">
+                              <button
+                                disabled={loadingGetChildrenRegistered}
+                                onClick={() =>
+                                  document.getElementById("openModal").click()
+                                }
+                                className="btn btn-warning btn-lg mt-3 btn-block"
+                                style={{
+                                  paddingTop: "10px",
+                                  paddingBottom: "10px",
+                                  background: "#f9af02",
+                                  textTransform: "uppercase",
+                                  fontSize: "13px",
+                                  fontWeight: "800",
+                                  display: "flex",
+                                  justifyContent: "center",
+                                  color: "#10193a",
+                                }}
+                              >
+                                DAFTAR
+                              </button>
+                            </div>
+                          </div>
+                          <div className="col-3">
+                            <div className="text-center d-grid">
+                              <button
+                                className="btn btn-lg mt-3 btn-block"
+                                style={{
+                                  paddingTop: "10px",
+                                  paddingBottom: "10px",
+                                  textTransform: "uppercase",
+                                  fontSize: "13px",
+                                  fontWeight: "800",
+                                  display: "flex",
+                                  justifyContent: "center",
+                                }}
+                              >
+                                <a
+                                  id="openModal"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#addModal"
+                                >
+                                  <i
+                                    className="fa fa-eye"
+                                    style={{
+                                      fontSize: "20px",
+                                      color:
+                                        childrenRegistered !== null
+                                          ? "blue"
+                                          : "#d8d8d8",
+                                    }}
+                                  ></i>
+                                </a>
+                              </button>
+                            </div>
+                          </div>
+                          <div className="crd col-11 mt-3 mb-3">
+                            <ul>
+                              <li
+                                className="mb-1"
+                                style={{ fontSize: "13px" }}
+                              >
+                                Usia peserta {event.category_age} tahun
+                              </li>
+                              <li
+                                className="mb-1"
+                                style={{ fontSize: "13px" }}
+                              >
+                                Pendaftaran lomba akan ditutup H-5
+                              </li>
+                              <li
+                                className="mb-1"
+                                style={{ fontSize: "13px" }}
+                              >
+                                Jadwal lomba setiap peserta akan diinfokan H-1
+                              </li>
+                              <li
+                                className="mb-1"
+                                style={{ fontSize: "13px" }}
+                              >
+                                Pelaksanaan lomba akan dilaksanakan dalam
+                                beberapa sesi di hari H
+                              </li>
+                              <li
+                                className="mb-1"
+                                style={{ fontSize: "13px" }}
+                              >
+                                Peserta diminta untuk {renderText(event)}
+                              </li>
+                              <li
+                                className="mb-1"
+                                style={{ fontSize: "13px" }}
+                              >
+                                Waktu lomba persesi adalah 15 menit
+                              </li>
+                              <li
+                                className="mb-1"
+                                style={{ fontSize: "13px" }}
+                              >
+                                Tim EO akan memilih 2 pemenang favorit
+                              </li>
+                              <li
+                                className="mb-1"
+                                style={{ fontSize: "13px" }}
+                              >
+                                Setiap pemenang akan mendapatkan hadiah uang
+                                tunai sebesar Rp. 500.000
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                 </Carousel>
               </div>
             </div>
