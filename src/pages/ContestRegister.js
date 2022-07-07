@@ -5,7 +5,9 @@ import { Events, UserEvents } from "../services";
 import Background from "./../BG1.svg";
 import { showToast } from "./utils/helper";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 import $ from "jquery";
 window.jQuery = $;
@@ -83,16 +85,16 @@ export default function ContestRegister() {
       showToast("success", "Data berhasil disimpan.");
       setLoadingSubmit(false);
       await getDetailEvent(eventDetail);
-      
-      document.getElementById("openModal").click()
+
+      document.getElementById("openModal").click();
     } catch (err) {
       console.error(err);
       let error = err.message;
 
-      if (err.message === 'children-already-registered') {
-        error = 'Data ini sudah terdaftar';
-      } else if (err.message === 'invalid-children-age') {
-        error = 'Umur anak tidak sesuai';
+      if (err.message === "children-already-registered") {
+        error = "Data ini sudah terdaftar";
+      } else if (err.message === "invalid-children-age") {
+        error = "Umur anak tidak sesuai";
       }
 
       showToast("error", error);
@@ -102,9 +104,9 @@ export default function ContestRegister() {
 
   const renderText = (event) => {
     const text = {
-      6: 'mewarnai kertas dengan warna menarik dan rapih',
-      7: 'mewarnai totebag dengan warna menarik dan rapih',
-      8: 'menyusun puzzle dengan cepat'
+      6: "mewarnai kertas dengan warna menarik dan rapih",
+      7: "mewarnai totebag dengan warna menarik dan rapih",
+      8: "menyusun puzzle dengan cepat",
     };
 
     return text[event.id];
@@ -196,57 +198,30 @@ export default function ContestRegister() {
           </ol>
         </div>
         <div className="container-fluid mt-1">
-          <div
-            id="carouselExampleIndicators"
-            className="carousel slide"
-            data-bs-touch="true"
-            data-bs-ride="carousel"
-            data-bs-interval="false"
-            style={{
-              marginTop: "-15px",
-            }}
-          >
-            <div
-              className="carousel-indicators"
-              style={{ marginBottom: "-30px" }}
-            >
-              {eventList?.length > 0 &&
-                eventList.map((event, i) => (
-                  <button
-                    onClick={() => handleChangeSlide(event, i)}
-                    key={i}
-                    type="button"
-                    data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide-to={`${active}`}
-                    className={`${active === i ? "active" : ""} `}
-                    aria-current="true"
-                    aria-label={`Slide ${active}`}
-                    style={{
-                      width: "10px",
-                      height: "10px",
-                      borderRadius: "50%",
-                    }}
-                  ></button>
-                ))}
-            </div>
-            <div className="carousel-inner">
-              {/* start mapping data */}
-              <>
-                {!loading &&
-                  eventList?.length > 0 &&
-                  eventList.map((event, i) => (
-                    <div
-                      key={i}
-                      className={`carousel-item ${
-                        i === active ? "active" : ""
-                      }`}
-                      style={{ marginRight: "50px" }}
-                    >
-                      <div
-                        className="card p-1"
-                        style={{ borderRadius: "8px", maxHeight: "500px" }}
-                      >
-                        <div className="card-body">
+          <div className="row">
+            <div className="col-12">
+              <div className="carousel-wrapper">
+                <Carousel
+                  infiniteLoop
+                  useKeyboardArrows
+                  swipeable
+                  showThumbs={false}
+                  showArrows={false}
+                  showStatus={false}
+                >
+                  <>
+                    {!loading &&
+                      eventList?.length > 0 &&
+                      eventList.map((event, i) => (
+                        <div
+                          style={{
+                            padding: "20px",
+                            background: "white",
+                            borderRadius: "10px",
+                            minHeight: "450px",
+                            maxHeight: "500px",
+                          }}
+                        >
                           <p
                             style={{
                               fontWeight: "bold",
@@ -330,9 +305,10 @@ export default function ContestRegister() {
                                       className="fa fa-eye"
                                       style={{
                                         fontSize: "20px",
-                                        color: childrenRegistered !== null
-                                          ? "blue"
-                                          : "#d8d8d8",
+                                        color:
+                                          childrenRegistered !== null
+                                            ? "blue"
+                                            : "#d8d8d8",
                                       }}
                                     ></i>
                                   </a>
@@ -395,10 +371,10 @@ export default function ContestRegister() {
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  ))}
-              </>
+                      ))}
+                  </>
+                </Carousel>
+              </div>
             </div>
           </div>
         </div>
