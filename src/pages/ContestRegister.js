@@ -315,7 +315,7 @@ export default function ContestRegister() {
                             </div>
                           </div>
                           <div className="crd col-11 mt-3 mb-3">
-                            <ul>
+                            <ul style={{ textAlign: 'left' }}>
                               <li
                                 className="mb-1"
                                 style={{ fontSize: "13px" }}
