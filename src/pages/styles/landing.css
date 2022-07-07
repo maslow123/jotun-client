@@ -1,0 +1,198 @@
+.carousel .control-dots {
+    bottom:85px !important;
+  }
+  @media only screen and (max-width: 600px) {
+    .bwh {
+        overflow:hidden;
+        width:90% !important;
+        display: block;
+        text-align: center;
+        margin-left:16px !important;
+    }
+  .bg {
+    margin-top:-30px;
+    width:90% !important;
+  }
+}
+  @media only screen and (max-width: 576px) {
+    .bwh {
+        overflow:hidden;
+        width:64% !important;
+        display: block;
+        text-align: center;
+        margin-left:108px !important;
+    }
+  .bg {
+    margin-top:-30px;
+    width:90% !important;
+  }
+}
+  @media only screen and (max-width: 565px) {
+    .bwh {
+        overflow:hidden;
+        width:66% !important;
+        display: block;
+        text-align: center;
+        margin-left:100px !important;
+    }
+  .bg {
+    margin-top:-30px;
+    width:90% !important;
+  }
+}
+  @media only screen and (max-width: 560px) {
+    .bwh {
+        overflow:hidden;
+        width:68% !important;
+        display: block;
+        text-align: center;
+        margin-left:90px !important;
+    }
+  .bg {
+    margin-top:-30px;
+    width:90% !important;
+  }
+}
+  @media only screen and (max-width: 541px) {
+    .bwh {
+        overflow:hidden;
+        width:68% !important;
+        display: block;
+        text-align: center;
+        margin-left:90px !important;
+    }
+  .bg {
+    margin-top:-30px;
+    width:90% !important;
+  }
+}
+  @media only screen and (max-width: 538px) {
+    .bwh {
+        overflow:hidden;
+        width:76% !important;
+        display: block;
+        text-align: center;
+        margin-left:62px !important;
+    }
+  .bg {
+    margin-top:-30px;
+    width:90% !important;
+  }
+}
+  @media only screen and (max-width: 535px) {
+    .bwh {
+        overflow:hidden;
+        width:69% !important;
+        display: block;
+        text-align: center;
+        margin-left:86px !important;
+    }
+  .bg {
+    margin-top:-30px;
+    width:90% !important;
+  }
+}
+  @media only screen and (max-width: 470px) {
+    .bwh {
+        overflow:hidden;
+        width:81% !important;
+        display: block;
+        text-align: center;
+        margin-left:45px !important;
+    }
+  .bg {
+    margin-top:-30px !important;
+    width:90% !important;
+  }
+}
+  @media only screen and (max-width: 450px) {
+    .bwh {
+        overflow:hidden;
+        width:90% !important;
+        display: block;
+        text-align: center;
+        margin-left:21px !important;
+    }
+  .bg {
+    margin-top:-30px !important;
+    width:90% !important;
+  }
+}
+  @media only screen and (max-width: 447px) {
+    .bwh {
+        overflow:hidden;
+        width:82% !important;
+        display: block;
+        text-align: center;
+        margin-left:43px !important;
+    }
+  .bg {
+    margin-top:-30px !important;
+    width:90% !important;
+  }
+}
+  @media only screen and (max-width: 435px) {
+    .bwh {
+        overflow:hidden;
+        width:84% !important;
+        display: block;
+        text-align: center;
+        margin-left:38px !important;
+    }
+  .bg {
+    margin-top:-30px !important;
+    width:90% !important;
+  }
+}
+  @media only screen and (max-width: 415px) {
+    .bwh {
+        overflow:hidden;
+        width:89% !important;
+        display: block;
+        text-align: center;
+        margin-left:25px !important;
+    }
+  .bg {
+    margin-top:-30px !important;
+    width:90% !important;
+  }
+}
+  @media only screen and (max-width: 400px) {
+    .bwh {
+        overflow:hidden;
+        width:90% !important;
+        display: block;
+        text-align: center;
+        margin-left:22px !important;
+    }
+  .bg {
+    margin-top:-30px !important;
+    width:90% !important;
+  }
+}
+  @media only screen and (max-width: 380px) {
+    .bwh {
+        overflow:hidden;
+        width:90% !important;
+        display: block;
+        text-align: center;
+        margin-left:19px !important;
+    }
+  .bg {
+    margin-top:-30px !important;
+    width:90% !important;
+  }
+}
+  @media only screen and (max-width: 305px) {
+    .bwh {
+        overflow:hidden;
+        width:100% !important;
+        display: block;
+        text-align: center;
+        margin-left:0px !important;
+    }
+  .bg {
+    margin-top:0px !important;
+    width:100% !important;
+  }
+}
