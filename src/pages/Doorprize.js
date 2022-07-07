@@ -28,7 +28,7 @@ export default function Doorprize() {
         >
           <div className="container-fluid">
             <img
-              onClick={() => navigate('/')}
+              onClick={() => navigate("/")}
               src="assets/img/logo/logo.svg"
               alt=""
               style={{
@@ -68,7 +68,19 @@ export default function Doorprize() {
             </li>
           </ol>
         </div>
-        <div
+        <div className="container-fluid" style={{ marginTop: "200px" }}>
+          <div
+            className="text-center"
+            style={{
+              background: "white",
+              padding: "5px",
+              borderRadius: "50px",
+            }}
+          >
+            <h2 style={{ fontWeight: "bold" }}>AKAN DATANG</h2>
+          </div>
+        </div>
+        {/* <div
           className="crd2 px-3"
           style={{ maxHeight: "600px", overflowY: "scroll" }}
         >
@@ -212,7 +224,7 @@ export default function Doorprize() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

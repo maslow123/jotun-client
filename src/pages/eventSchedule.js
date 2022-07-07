@@ -28,7 +28,7 @@ export default function EventSchedule() {
         >
           <div className="container-fluid">
             <img
-              onClick={() => navigate('/')}
+              onClick={() => navigate("/")}
               src="assets/img/logo/logo.svg"
               alt=""
               style={{
@@ -68,7 +68,19 @@ export default function EventSchedule() {
             </li>
           </ol>
         </div>
-        <div className="px-2">
+        <div className="container-fluid" style={{ marginTop: "200px" }}>
+          <div
+            className="text-center"
+            style={{
+              background: "white",
+              padding: "5px",
+              borderRadius: "50px",
+            }}
+          >
+            <h2 style={{ fontWeight: "bold" }}>AKAN DATANG</h2>
+          </div>
+        </div>
+        {/* <div className="px-2">
           <div className="row">
             <div className="col-12">
               <div className="card">
@@ -400,7 +412,7 @@ export default function EventSchedule() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

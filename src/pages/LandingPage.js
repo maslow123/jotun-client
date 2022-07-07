@@ -2,12 +2,14 @@ import React, { useEffect } from "react";
 import "./../style.css";
 import { useNavigate } from "react-router-dom";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default function LandingPage() {
   useEffect(() => {
     localStorage.clear();
-  }, [])
+  }, []);
   const navigate = useNavigate();
   return (
     <div className="row justify-content-center" style={{ overflowX: "hidden" }}>
@@ -19,7 +21,44 @@ export default function LandingPage() {
           overflowX: "hidden",
         }}
       >
-        <div
+        <Carousel
+          infiniteLoop
+          useKeyboardArrows
+          swipeable
+          showThumbs={false}
+          showArrows={false}
+          showStatus={false}
+        >
+          <div>
+            {" "}
+            <LazyLoadImage
+              src="assets/img/landing_page/landing_page1.png"
+              style={{
+                backgroundRepeat: "no-repeat",
+                maxWidth: "100%",
+                maxHeight: "700px",
+                marginTop: "-30px",
+              }}
+              alt=""
+              effect="blur"
+            />
+          </div>
+          <div>
+            {" "}
+            <LazyLoadImage
+              src="assets/img/landing_page/landing_page2.png"
+              style={{
+                backgroundRepeat: "no-repeat",
+                maxWidth: "100%",
+                maxHeight: "700px",
+                marginTop: "-30px",
+              }}
+              alt=""
+              effect="blur"
+            />
+          </div>
+        </Carousel>
+        {/* <div
           id="carouselExampleIndicators"
           className="carousel slide"
           data-bs-touch="true"
@@ -111,7 +150,7 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div
           className="row justify-content-center sticky-bottom"
           style={{

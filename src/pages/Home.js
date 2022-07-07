@@ -264,9 +264,9 @@ export default function Home() {
                 <div className="mx-2 my-1">
                   <p
                     className="mb-0"
-                    style={{ fontWeight: "bold", fontSize: "11px" }}
+                    style={{ fontWeight: "bold", fontSize: "10.5px" }}
                   >
-                    Doorprize
+                    Pemenang Undian
                     <span
                       style={{ float: "right", textAlign: "right" }}
                       className="mr-5"
