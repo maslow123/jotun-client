@@ -155,8 +155,9 @@ export default function LandingPage() {
           className="row justify-content-center sticky-bottom"
           style={{
             position: "relative",
-            marginTop: "-40px",
+            marginTop: "-50px",
             overflow: "hidden",
+            marginBottom: "100px",
           }}
         >
           <div className="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
