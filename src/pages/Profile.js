@@ -124,7 +124,7 @@ export default function Profile() {
                           </p>
                         </div>
                       </div>
-                      <div className="col-8 mt-2">
+                      <div className="col-10 mt-2">
                         <div className="text-center">
                           <p
                             className="p-0 m-0"
@@ -142,19 +142,15 @@ export default function Profile() {
                             className="p-0 m-0"
                             style={{ fontSize: "11px", fontWeight: "bold" }}
                           >
-                            Voucher Photobooth 180
+                            Voucher Photobooth 180 / Video Booth 360 (Pilih
+                            salah satu)
                           </p>
+
                           <p
                             className="p-0 m-0"
                             style={{ fontSize: "11px", fontWeight: "bold" }}
                           >
-                            Video Booth 360
-                          </p>
-                          <p
-                            className="p-0 m-0"
-                            style={{ fontSize: "11px", fontWeight: "bold" }}
-                          >
-                            Souvenir
+                            Suvenir
                           </p>
                           <p
                             className="p-0 m-0"

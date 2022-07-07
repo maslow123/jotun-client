@@ -62,7 +62,7 @@ export default function Maps() {
           >
             <div className="container-fluid">
               <img
-                onClick={() => navigate('/')}
+                onClick={() => navigate("/")}
                 src="assets/img/logo/logo.svg"
                 alt=""
                 style={{
@@ -102,7 +102,19 @@ export default function Maps() {
               </li>
             </ol>
           </div>
-          <div className={session}>
+          <div className="container-fluid" style={{ marginTop: "200px" }}>
+            <div
+              className="text-center"
+              style={{
+                background: "white",
+                padding: "5px",
+                borderRadius: "50px",
+              }}
+            >
+              <h2 style={{ fontWeight: "bold" }}>AKAN DATANG</h2>
+            </div>
+          </div>
+          {/* <div className={session}>
             <img src="assets/img/maps/default.png" />
           </div>
           <div className="container-fluid">
@@ -118,7 +130,7 @@ export default function Maps() {
             >
               <i className="fa fa-list"></i>
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
       <div
