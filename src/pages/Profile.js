@@ -142,8 +142,13 @@ export default function Profile() {
                             className="p-0 m-0"
                             style={{ fontSize: "11px", fontWeight: "bold" }}
                           >
-                            Voucher Photobooth 180 / Video Booth 360 (Pilih
-                            salah satu)
+                            Voucher Photobooth 180
+                          </p>
+                          <p
+                            className="p-0 m-0"
+                            style={{ fontSize: "11px", fontWeight: "bold" }}
+                          >
+                            Video Booth 180
                           </p>
 
                           <p
