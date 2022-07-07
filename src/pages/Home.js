@@ -108,6 +108,7 @@ export default function Home() {
             </div>
           </div>
           <div className="d-flex justify-content-center mb-1">
+          {user?.branches === Number(CITY.Jakarta) && ( 
             <div
               className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
               style={{ marginRight: 3, padding: 0 }}
@@ -152,6 +153,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          )}
             <div
               className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
               style={{ marginLeft: 3, padding: 0 }}

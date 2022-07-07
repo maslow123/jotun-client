@@ -11,7 +11,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import "./styles/register.css";
 
 import $ from "jquery";
-import { CITY } from './utils/constants';
+import { CITY, CONTEST_RULE } from './utils/constants';
 window.jQuery = $;
 window.$ = $;
 global.jQuery = $;
@@ -106,16 +106,6 @@ export default function ContestRegister() {
       showToast("error", error);
       setLoadingSubmit(false);
     }
-  };
-
-  const renderText = (event) => {
-    const text = {
-      6: "mewarnai kertas dengan warna menarik dan rapih",
-      7: "mewarnai totebag dengan warna menarik dan rapih",
-      8: "menyusun puzzle dengan cepat",
-    };
-
-    return text[event.id];
   };
 
   const handleChangeSlide = (event, i) => {
@@ -214,6 +204,9 @@ export default function ContestRegister() {
                   showThumbs={false}
                   showArrows={false}
                   showStatus={false}
+                  onChange={(number) => {
+                    handleChangeSlide(eventList[number], number)
+                  }}
                 >
                   {!loading &&
                     eventList?.length > 0 &&
@@ -322,56 +315,15 @@ export default function ContestRegister() {
                           </div>
                           <div className="crd col-11 mt-3 mb-3">
                             <ul style={{ textAlign: 'left' }}>
-                              <li
-                                className="mb-1"
-                                style={{ fontSize: "13px" }}
-                              >
-                                Usia peserta {event.category_age} tahun
-                              </li>
-                              <li
-                                className="mb-1"
-                                style={{ fontSize: "13px" }}
-                              >
-                                Pendaftaran lomba akan ditutup H-5
-                              </li>
-                              <li
-                                className="mb-1"
-                                style={{ fontSize: "13px" }}
-                              >
-                                Jadwal lomba setiap peserta akan diinfokan H-1
-                              </li>
-                              <li
-                                className="mb-1"
-                                style={{ fontSize: "13px" }}
-                              >
-                                Pelaksanaan lomba akan dilaksanakan dalam
-                                beberapa sesi di hari H
-                              </li>
-                              <li
-                                className="mb-1"
-                                style={{ fontSize: "13px" }}
-                              >
-                                Peserta diminta untuk {renderText(event)}
-                              </li>
-                              <li
-                                className="mb-1"
-                                style={{ fontSize: "13px" }}
-                              >
-                                Waktu lomba persesi adalah 15 menit
-                              </li>
-                              <li
-                                className="mb-1"
-                                style={{ fontSize: "13px" }}
-                              >
-                                Tim EO akan memilih 2 pemenang favorit
-                              </li>
-                              <li
-                                className="mb-1"
-                                style={{ fontSize: "13px" }}
-                              >
-                                Setiap pemenang akan mendapatkan hadiah uang
-                                tunai sebesar Rp. 500.000
-                              </li>
+                              {CONTEST_RULE.find(item => item.id === event.id).text.map((r, i) => (
+                                <li
+                                  key={i}
+                                  className="mb-1"
+                                  style={{ fontSize: "13px" }}
+                                >
+                                  {r}
+                                </li>
+                              ))}
                             </ul>
                           </div>
                         </div>
