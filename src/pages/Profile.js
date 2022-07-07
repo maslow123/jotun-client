@@ -188,21 +188,15 @@ export default function Profile() {
                               </p>
                               <p
                                 className="p-0 m-0"
-                                style={{ fontSize: "11px", fontWeight: "bold" }}
+                                style={{ fontSize: "8.5px", fontWeight: "bold" }}
                               >
-                                Voucher Photobooth 180
+                                Voucher Photobooth 180 / Video Booth 360 (Pilih salah satu)
                               </p>
                               <p
                                 className="p-0 m-0"
                                 style={{ fontSize: "11px", fontWeight: "bold" }}
                               >
-                                Video Booth 360
-                              </p>
-                              <p
-                                className="p-0 m-0"
-                                style={{ fontSize: "11px", fontWeight: "bold" }}
-                              >
-                                Souvenir
+                                Suvenir 
                               </p>
                               <p
                                 className="p-0 m-0"
