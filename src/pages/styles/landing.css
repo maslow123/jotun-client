@@ -1,6 +1,9 @@
 .carousel .control-dots {
     bottom:85px !important;
   }
+  .carousel .control-dots .dot {
+    background: #ffc107 !important;
+  }
   .bwh {
       width: 100%;
       margin:0 !important;
