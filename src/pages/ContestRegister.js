@@ -74,6 +74,7 @@ export default function ContestRegister() {
       const data= JSON.parse(localStorage.getItem('user'));
       data.family.splice(0, 1);
 
+      console.log(data.family);
       const f = family?.length > 0 ? family : data.family;
       var childNonRegisteredArr = []
       for (let i = 0; i < f.length; i++) {
@@ -88,6 +89,7 @@ export default function ContestRegister() {
       setLoadingGetChildrenRegistered(false);
     } catch (error) {
       console.error(error);
+      setChildNonRegistered([...family]);
       setLoadingGetChildrenRegistered(false);
     }
   };
@@ -117,9 +119,9 @@ export default function ContestRegister() {
       let error = err.message;
 
       if (err.message === "children-already-registered") {
-        error = "Data ini sudah terdaftar";
+        error = "Anak sudah terdaftar di lomba ini. 1 anak hanya bisa 1 lomba";
       } else if (err.message === "invalid-children-age") {
-        error = "Umur anak tidak sesuai";
+        error = "Usia anak melebih ketentuan persyaratan lomba.";
       } else if (err.message === "insufficient-slots") {
         error = "Maaf quota daftar lomba sudah habis";
       }
