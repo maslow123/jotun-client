@@ -3,6 +3,8 @@ html{
   /* #1718ae */
   margin:0;
   padding:0;
+  overflow-x:hidden;
+  overflow-y:scroll;
   height:auto !important
 }
 body{
@@ -12,52 +14,73 @@ body{
   padding:0;
   overflow-x:hidden;
   overflow-y:scroll;
-  height:auto !important
 }
 .bg-mobile{
   background:url('BG1.svg') !important;
-  background-repeat:no-repeat;
+  background-repeat:no-repeat !important;
+  overflow-y:scroll !important;
+  max-height:700px;
 }
+
 @media only screen and (min-width: 1200px) {
+  .img{
+    width:75% !important;
+    margin:auto !important;
+  }
+  .fixed-bottom{
+    position:fixed !important;
+    bottom: 0 !important;
+  }
+}
+@media only screen and (min-width: 540px) {
   .bg-mobile{
     background:url('bg-desktop.png') !important;
     background-repeat:no-repeat;
     background-size:cover !important;
+    overflow-y:scroll !important;
+    width:100% !important;
+  }
+  .img{
+    width:56% !important;
+    margin:auto !important;
+  }
+  .fixed-bottom{
+    position:fixed !important;
   }
 }
-/* .bg-desktop{
-  background:url('bg-desktop.png') !important;
-  background-repeat:no-repeat;
-  background-size:cover;
-  margin: 0;
-  padding: 0;
-  overflowX: hidden;
-  overflowY: clip;
-  position: relative;
-  height: 100%;
-} */
-#root{
-  background:#eaeaea;
-  margin:0;
-  padding:0;
-  overflow-x:hidden;
-  overflow-y:scroll;
-  height:auto !important
-}
-@media only screen and (min-width: 1695px) {
-  #root{
-    background:url('bg-desktop.png');
-    /* background:#eaeaea !important; */
-    width:100%;
-    height:auto;
-    background-size:cover;
-    background-repeat:no-repeat;
-    /* background:blue; */
-    margin:0;
-    padding:0;
-  overflow-x:hidden;
-  overflow-y:scroll;
+@media only screen and (min-width: 413px) {
+  .y{
+    height:900px !important;
+    max-height:900px !important;
   }
+  .fixed-bottom {
+   position:relative !important;
+  }
+
+}
+@media only screen and (min-width: 390px) {
+  .y{
+    height:800px !important;
+    max-height:800px !important;
+    overflow-y: hidden !important;
+  }
+  .fixed-bottom {
+    position:relative !important;
+    overflow-y: hidden !important;
+  }
+
+}
+@media only screen and (max-width: 360px) {
+  .y{
+    height:750px !important;
+    max-height:750px !important;
+    overflow-y: hidden !important;
+  }
+  .fixed-bottom {
+    position:relative !important;
+    overflow-y: hidden !important;
+  }
+
 }
 .carousel-indicators .active{
     background-color: #ffc107 !important;
@@ -214,4 +237,38 @@ input[type="radio"]:checked {
 {
 	border-radius: 10px;
 	background-color: transparent;
+}
+swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.swiper-pagination-bullet{
+  background:#f7af03 !important;
+
 }
