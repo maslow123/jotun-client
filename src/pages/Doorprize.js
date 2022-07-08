@@ -94,18 +94,6 @@ export default function Doorprize() {
             </li>
           </ol>
         </div>
-        {/* <div className="container-fluid" style={{ marginTop: "200px" }}>
-          <div
-            className="text-center"
-            style={{
-              background: "white",
-              padding: "5px",
-              borderRadius: "50px",
-            }}
-          >
-            <h2 style={{ fontWeight: "bold" }}>AKAN DATANG</h2>
-          </div>
-        </div> */}
         <div
           className="crd2 px-3"
           style={{ maxHeight: "600px", overflowY: "scroll" }}
@@ -129,6 +117,7 @@ export default function Doorprize() {
               >
                 <div
                   className="card"
+                  onClick={() => navigate('/raffle-winner')}
                   style={{
                     borderRadius: "8px",
                     maxWidth: "100%",

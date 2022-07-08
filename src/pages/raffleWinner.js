@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Background from "./../BG2.png";
+// import Background from "./../BG2.png";
+import Background from "./../BG1.svg";
 export default function RaffleWinner() {
   const navigate = useNavigate();
 
@@ -16,6 +17,7 @@ export default function RaffleWinner() {
           position: "relative",
           minHeight: "700px",
           backgroundRepeat: "no-repeat",
+          // background: `url(${Background})`,
           background: `url(${Background})`,
         }}
       >
@@ -53,7 +55,7 @@ export default function RaffleWinner() {
         >
           <ol className="breadcrumb">
             <li className="breadcrumb-item pt-2 mb-1 pb-0">
-              <a onClick={() => navigate("/home")}>
+              <a onClick={() => navigate("/doorprize")}>
                 <i
                   className="fa fa-angle-left"
                   style={{ fontSize: "25px", color: "#ffc107" }}
@@ -70,7 +72,19 @@ export default function RaffleWinner() {
             </li>
           </ol>
         </div>
-        <div className="container-fluid">
+        <div className="container-fluid" style={{ marginTop: "200px" }}>
+          <div
+            className="text-center"
+            style={{
+              background: "white",
+              padding: "5px",
+              borderRadius: "50px",
+            }}
+          >
+            <h2 style={{ fontWeight: "bold" }}>AKAN DATANG</h2>
+          </div>
+        </div>
+        {/* <div className="container-fluid">
           <div className="row justify-content-center">
             <div className="col-10">
               <img src="/assets/img/general/nmax.jpeg" className="img-fluid" />
@@ -114,7 +128,7 @@ export default function RaffleWinner() {
               </ul>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
