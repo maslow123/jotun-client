@@ -19,7 +19,7 @@ import "react-activity/dist/library.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import "./custom.scss";
-import Test from "./pages/Test";
+// import Test from "./pages/Test";
 
 const App = () => {
   return (
@@ -41,7 +41,7 @@ const App = () => {
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/doorprize" element={<Doorprize />} />
         <Route exact path="/raffle-winner" element={<RaffleWinner />} />
-        <Route exact path="/test" element={<Test />} />
+        {/* <Route exact path="/test" element={<Test />} /> */}
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>
