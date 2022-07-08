@@ -41,12 +41,12 @@ export default function Maps() {
     <>
       <div className="row justify-content-center">
         <div
-          className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
+          className="bg-mobile col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-12"
           style={{
-            backgroundImage: `url(${Background})`,
             margin: 0,
             padding: 0,
             overflowX: "hidden",
+            //   overflowY: "clip",
             position: "relative",
             minHeight: "700px",
           }}
@@ -117,7 +117,7 @@ export default function Maps() {
           {/* <div className={session}>
             <img src="assets/img/maps/default.png" />
           </div>
-          <div className="container-fluid">
+          <div className="container-fluid mb">
             <button
               onClick={click}
               className="btn btn-warning list"

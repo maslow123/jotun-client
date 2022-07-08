@@ -38,9 +38,8 @@ export default function Login() {
   return (
     <div className="row justify-content-center">
       <div
-        className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
+        className="bg-mobile col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-12"
         style={{
-          backgroundImage: `url(${Background})`,
           margin: 0,
           padding: 0,
           overflowX: "hidden",
@@ -60,7 +59,7 @@ export default function Login() {
         >
           <div className="container-fluid">
             <img
-              onClick={() => navigate('/')}
+              onClick={() => navigate("/")}
               src="assets/img/logo/logo.svg"
               alt=""
               style={{
@@ -75,8 +74,11 @@ export default function Login() {
           </div>
         </nav>
         <div className="container">
-          <div className="row" style={{ marginTop: "100px" }}>
-            <div className="col-12">
+          <div
+            className="row justify-content-center"
+            style={{ marginTop: "100px" }}
+          >
+            <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
               <div className="card m-3" style={{ borderRadius: "8px" }}>
                 <div className="card-body">
                   <h1
@@ -154,7 +156,7 @@ export default function Login() {
                         Anda belum mendaftar? Daftar sekarang
                       </p>
                       <a
-                        onClick={() => navigate('/register')}
+                        onClick={() => navigate("/register")}
                         className="btn btn-lg"
                         style={{
                           paddingTop: "10px",
