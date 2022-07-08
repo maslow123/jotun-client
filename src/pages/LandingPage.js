@@ -20,8 +20,7 @@ export default function LandingPage() {
           margin: 0,
           padding: 0,
           minHeight: "700px",
-          overflowY: "scroll",
-          overflowX: "hidden",
+          overflow: "hidden",
         }}
       >
         <Carousel
@@ -32,7 +31,7 @@ export default function LandingPage() {
           showArrows={false}
           showStatus={false}
         >
-          <div style={{ overflow: "scroll" }}>
+          <div style={{ overflow: "hidden" }}>
             {" "}
             <LazyLoadImage
               className="bg"
