@@ -193,16 +193,16 @@ export default function ContestRegister() {
             </li>
           </ol>
         </div>
-        <div className="container-fluid mt-1">
+        <div className="container-fluid mt-1 mb-5">
           <div className="row">
             <div className="col-12">
               <div className="carousel-wrapper">
                 <Carousel
                   infiniteLoop
                   useKeyboardArrows
-                  swipeable
+                  swipeable={false}
                   showThumbs={false}
-                  showArrows={false}
+                  showArrows
                   showStatus={false}
                   onChange={(number) => {
                     handleChangeSlide(eventList[number], number);
@@ -217,7 +217,8 @@ export default function ContestRegister() {
                           background: "white",
                           borderRadius: "10px",
                           minHeight: "450px",
-                          maxHeight: "600px",
+                          maxHeight: "650px",
+                          textAlign: "left",
                         }}
                       >
                         <p
@@ -310,7 +311,7 @@ export default function ContestRegister() {
                               </button>
                             </div>
                           </div>
-                          <div className="crd col-11 mt-3 mb-3">
+                          <div className="crd col-11 mt-3 mb-5">
                             <ul style={{ textAlign: "left" }}>
                               {CONTEST_RULE.find(
                                 (item) => item.id === event.id
