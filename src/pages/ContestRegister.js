@@ -89,7 +89,16 @@ export default function ContestRegister() {
       setLoadingGetChildrenRegistered(false);
     } catch (error) {
       console.error(error);
-      setChildNonRegistered([...family]);
+      let d = [];
+      if (!family) {        
+        const data= await JSON.parse(localStorage.getItem('user'));
+        data.family.splice(0, 1);
+
+        d = [...data.family];
+      } else {
+        d = [...family];
+      }
+      setChildNonRegistered([...d]);
       setLoadingGetChildrenRegistered(false);
     }
   };
