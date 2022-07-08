@@ -19,9 +19,8 @@ export default function Home() {
   return (
     <div className="row justify-content-center">
       <div
-        className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
+        className="bg-mobile col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-12"
         style={{
-          backgroundImage: `url(${Background})`,
           margin: 0,
           padding: 0,
           overflowX: "hidden",
@@ -56,8 +55,8 @@ export default function Home() {
           </div>
         </nav>
         <div className="container-fluid">
-          <div className="row mt-2">
-            <div className="col-12">
+          <div className="row justify-content-center mt-2">
+            <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
               <img
                 src="assets/img/general/KV.png"
                 className="img-fluid"
@@ -65,97 +64,97 @@ export default function Home() {
                 alt=""
               />
             </div>
-            <div className="col-12 mt-3 mb-2">
-              <a
-                onClick={() => navigate("/profile")}
-                style={{ textDecoration: "none", color: "#000" }}
-              >
-                <div className="card" style={{ borderRadius: "8px" }}>
-                  <div className="mx-4 my-2">
-                    <span
-                      style={{ float: "right", textAlign: "right" }}
-                      className="mt-3"
-                    >
-                      <i
-                        className="fa fa-angle-right "
-                        style={{ fontSize: "20px" }}
-                      ></i>
-                    </span>
-                    <p
-                      className="mb-0"
-                      style={{
-                        fontWeight: "bold",
-                        fontSize: "13px",
-                      }}
-                    >
-                      Hai, {user.name}
-                    </p>
-
-                    <p
-                      className="mb-0"
-                      style={{
-                        fontWeight: "bold",
-                        fontSize: "13px",
-                        color: "#010040",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      Lihat profile
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div className="d-flex justify-content-center mb-1">
-          {user?.branches === Number(CITY.Jakarta) && ( 
-            <div
-              onClick={() => navigate("/maps")}
-              className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
-              style={{ marginRight: 3, padding: 0 }}
-            >
-              <div
-                className="card p-1"
-                style={{
-                  borderRadius: "8px",
-                  maxWidth: "100%",
-                  overflow: "hidden",
-                }}
-              >
-                <div className="text-center">
-                  <img
-                    src="assets/img/home/grid1.png"
-                    alt=""
-                    width={150}
-                    height={100}
-                  />
-                </div>
-                <div className="mx-2 my-1">
-                  <a
-                    style={{ textDecoration: "none", color: "#000" }}
-                  >
-                    <p
-                      className="mb-0"
-                      style={{ fontWeight: "bold", fontSize: "11px" }}
-                    >
-                      Denah Acara
+            <div className="row justify-content-center mt-2">
+              <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 mt-3 mb-2">
+                <a
+                  onClick={() => navigate("/profile")}
+                  style={{ textDecoration: "none", color: "#000" }}
+                >
+                  <div className="card" style={{ borderRadius: "8px" }}>
+                    <div className="mx-4 my-2">
                       <span
                         style={{ float: "right", textAlign: "right" }}
-                        className="mr-5"
+                        className="mt-3"
                       >
                         <i
                           className="fa fa-angle-right "
                           style={{ fontSize: "20px" }}
                         ></i>
                       </span>
-                    </p>
-                  </a>
-                </div>
+                      <p
+                        className="mb-0"
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: "13px",
+                        }}
+                      >
+                        Hai, {user.name}
+                      </p>
+
+                      <p
+                        className="mb-0"
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: "13px",
+                          color: "#010040",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        Lihat profile
+                      </p>
+                    </div>
+                  </div>
+                </a>
               </div>
             </div>
-          )}
+          </div>
+          <div className="d-flex justify-content-center mb-1">
+            {user?.branches === Number(CITY.Jakarta) && (
+              <div
+                onClick={() => navigate("/maps")}
+                className="col-5 col-xs-5 col-sm-5 col-md-5 col-lg-2 col-xl-2"
+                style={{ marginRight: 3, padding: 0 }}
+              >
+                <div
+                  className="card p-1"
+                  style={{
+                    borderRadius: "8px",
+                    maxWidth: "100%",
+                    overflow: "hidden",
+                  }}
+                >
+                  <div className="text-center">
+                    <img
+                      src="assets/img/home/grid1.png"
+                      alt=""
+                      width={150}
+                      height={100}
+                    />
+                  </div>
+                  <div className="mx-2 my-1">
+                    <a style={{ textDecoration: "none", color: "#000" }}>
+                      <p
+                        className="mb-0"
+                        style={{ fontWeight: "bold", fontSize: "11px" }}
+                      >
+                        Denah Acara
+                        <span
+                          style={{ float: "right", textAlign: "right" }}
+                          className="mr-5"
+                        >
+                          <i
+                            className="fa fa-angle-right "
+                            style={{ fontSize: "20px" }}
+                          ></i>
+                        </span>
+                      </p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
             <div
-              className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+              className="col-5 col-xs-5 col-sm-5 col-md-5 col-lg-2 col-xl-2"
               style={{ marginLeft: 3, padding: 0 }}
             >
               <div
@@ -176,9 +175,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="mx-2 my-1">
-                  <a
-                    style={{ textDecoration: "none", color: "#000" }}
-                  >
+                  <a style={{ textDecoration: "none", color: "#000" }}>
                     <p
                       className="mb-0"
                       style={{ fontWeight: "bold", fontSize: "11px" }}
@@ -201,9 +198,9 @@ export default function Home() {
           </div>
 
           <div className="d-flex justify-content-center">
-            {user?.branches === Number(CITY.Jakarta) && ( 
+            {user?.branches === Number(CITY.Jakarta) && (
               <div
-                className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+                className="col-5 col-xs-5 col-sm-5 col-md-5 col-lg-2 col-xl-2"
                 style={{ marginRight: 3, padding: 0 }}
               >
                 <div
@@ -224,9 +221,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="mx-2 my-1">
-                    <a
-                      style={{ textDecoration: "none", color: "#000" }}
-                    >
+                    <a style={{ textDecoration: "none", color: "#000" }}>
                       <p
                         className="mb-0"
                         style={{ fontWeight: "bold", fontSize: "11px" }}
@@ -245,14 +240,13 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-              </div>              
+              </div>
             )}
             <div
-              className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
+              className="col-5 col-xs-5 col-sm-5 col-md-5 col-lg-2 col-xl-2"
               style={{ marginLeft: 3, padding: 0 }}
             >
               <div
-              
                 onClick={() => navigate("/doorprize")}
                 className="card p-1"
                 style={{
