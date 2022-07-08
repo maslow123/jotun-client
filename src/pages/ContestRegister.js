@@ -71,13 +71,17 @@ export default function ContestRegister() {
       setChildrenRegistered([...resp.results]);
 
       // set child non registered
+      const data= JSON.parse(localStorage.getItem('user'));
+      data.family.splice(0, 1);
+
+      const f = family?.length > 0 ? family : data.family;
       var childNonRegisteredArr = []
-      for (let i = 0; i < family.length; i++) {
+      for (let i = 0; i < f.length; i++) {
         let found = false // flag
         for (let j = 0; j < resp.results.length && !found; j++) {
-          found = family[i].id === resp.results[j].id
+          found = f[i].id === resp.results[j].id
         }        
-        if (!found) childNonRegisteredArr.push(family[i])
+        if (!found) childNonRegisteredArr.push(f[i])
       }
 
       setChildNonRegistered([...childNonRegisteredArr])
