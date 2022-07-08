@@ -3,6 +3,10 @@ import { showToast, validate } from "./utils/helper";
 import { useNavigate } from "react-router-dom";
 import { Master } from "../services";
 import Background from "./../BG1.svg";
+import $ from "jquery";
+window.jQuery = $;
+window.$ = $;
+global.jQuery = $;
 export default function Register() {
   const navigate = useNavigate();
   const master_service = new Master();
@@ -18,9 +22,9 @@ export default function Register() {
   });
 
   const [master, setMaster] = useState(null);
+  const [bg, setBg] = useState(null);
   useEffect(() => {
-    // 
-    const data = JSON.parse(localStorage.getItem('register-payload'));
+    const data = JSON.parse(localStorage.getItem("register-payload"));
     if (data) {
       setPayload({ ...data });
     }
@@ -28,41 +32,47 @@ export default function Register() {
     const fetchDataMaster = async () => {
       const resp = await master_service.list();
       if (resp.code !== 200) {
-        return showToast('error', resp.message);
+        return showToast("error", resp.message);
       }
 
       const masterData = resp.results;
-      setMaster({ ...masterData })
+      setMaster({ ...masterData });
       setLoad(true);
     };
     if (!isLoad) {
       fetchDataMaster();
     }
-
   }, []);
 
-
-  const _handleSubmit = e => {
+  const _handleSubmit = (e) => {
     e.preventDefault();
-    if ( Number(payload.branches) !== 1) { delete payload.transportation };
+    if (Number(payload.branches) !== 1) {
+      delete payload.transportation;
+    }
     const errors = validate(payload);
     if (errors.length > 0) {
-      const phoneNumberNotMatch = errors.find(err => err === 'phone-number-not-match');
+      const phoneNumberNotMatch = errors.find(
+        (err) => err === "phone-number-not-match"
+      );
       if (phoneNumberNotMatch) {
-        return showToast('error', 'Nomor whatsapp tidak sama, harap periksa kembali');
+        return showToast(
+          "error",
+          "Nomor whatsapp tidak sama, harap periksa kembali"
+        );
       }
-      return showToast('error', JSON.stringify(errors));
+      return showToast("error", JSON.stringify(errors));
     }
 
     // save payload to localstorage
     const p = { ...payload };
-    if ( Number(p.branches) !== 1) { delete p.transportation };
-    localStorage.setItem('register-payload', JSON.stringify(payload));
-    navigate('/confirm-register');
+    if (Number(p.branches) !== 1) {
+      delete p.transportation;
+    }
+    localStorage.setItem("register-payload", JSON.stringify(payload));
+    navigate("/confirm-register");
   };
 
-  const _handleChange = evt => {
-    
+  const _handleChange = (evt) => {
     const value = evt.target.value;
     const name = evt.target.name;
 
@@ -72,9 +82,8 @@ export default function Register() {
   return (
     <div className="row justify-content-center">
       <div
-        className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
+        className="bg-mobile col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-12"
         style={{
-          backgroundImage: `url(${Background})`,
           margin: 0,
           padding: 0,
           overflowX: "hidden",
@@ -94,7 +103,7 @@ export default function Register() {
         >
           <div className="container-fluid">
             <img
-              onClick={() => navigate('/')}
+              onClick={() => navigate("/")}
               src="assets/img/logo/logo.svg"
               alt=""
               style={{
@@ -108,8 +117,8 @@ export default function Register() {
           </div>
         </nav>
         <div className="container">
-          <div className="row">
-            <div className="col-12">
+          <div className="row justify-content-center">
+            <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
               <div className="card m-3" style={{ borderRadius: "8px" }}>
                 <div className="card-body">
                   <h4
@@ -334,7 +343,7 @@ export default function Register() {
                         Anda sudah mendaftar? Masuk sekarang
                       </p>
                       <a
-                        onClick={() => navigate('/login')}
+                        onClick={() => navigate("/login")}
                         className="btn btn-lg"
                         style={{
                           paddingTop: "10px",
