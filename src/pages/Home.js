@@ -252,6 +252,8 @@ export default function Home() {
               style={{ marginLeft: 3, padding: 0 }}
             >
               <div
+              
+                onClick={() => navigate("/doorprize")}
                 className="card p-1"
                 style={{
                   borderRadius: "8px",

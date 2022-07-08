@@ -148,7 +148,7 @@ export default function Profile() {
                             className="p-0 m-0"
                             style={{ fontSize: "11px", fontWeight: "bold" }}
                           >
-                            Video Booth 180
+                            Video Booth 360
                           </p>
 
                           <p

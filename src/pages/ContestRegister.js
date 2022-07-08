@@ -101,6 +101,8 @@ export default function ContestRegister() {
         error = "Data ini sudah terdaftar";
       } else if (err.message === "invalid-children-age") {
         error = "Umur anak tidak sesuai";
+      } else if (err.message === "insufficient-slots") {
+        error = "Maaf quota daftar lomba sudah habis";
       }
 
       showToast("error", error);

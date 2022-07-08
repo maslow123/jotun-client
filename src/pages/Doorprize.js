@@ -3,7 +3,33 @@ import { useNavigate } from "react-router-dom";
 import Background from "./../BG1.svg";
 export default function Doorprize() {
   const navigate = useNavigate();
-
+  const assets = [
+    {
+      name: 'Yamaha N-MAX',
+      stock: 2,
+      image: 'nmax.png'
+    },
+    {
+      name: 'Honda Genio',
+      stock: 3,
+      image: 'genio.png'
+    },                
+    {
+      name: 'ASUS LAPTOP A416KA INTEL N4500 8GB 256GB FHD',
+      stock: 15,
+      image: 'asus.png'
+    },    
+    {
+      name: 'Sepeda Lipat PACIFIC Blitz 3.0',
+      stock: 10,
+      image: 'sepeda.png'
+    },
+    {
+      name: 'Samsung Galaxy A13',
+      stock: 35,
+      image: 'samsung.png'
+    },        
+  ];
   return (
     <div className="row justify-content-center">
       <div
@@ -68,19 +94,7 @@ export default function Doorprize() {
             </li>
           </ol>
         </div>
-        <div className="container-fluid" style={{ marginTop: "200px" }}>
-          <div
-            className="text-center"
-            style={{
-              background: "white",
-              padding: "5px",
-              borderRadius: "50px",
-            }}
-          >
-            <h2 style={{ fontWeight: "bold" }}>AKAN DATANG</h2>
-          </div>
-        </div>
-        {/* <div
+        <div
           className="crd2 px-3"
           style={{ maxHeight: "600px", overflowY: "scroll" }}
         >
@@ -95,136 +109,45 @@ export default function Doorprize() {
             </div>
           </div>
           <div className="row justify-content-center mb-1">
-            <div
-              className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-5"
-              style={{ padding: 5 }}
-            >
+            {assets.map((item, i) => (
               <div
-                className="card"
-                style={{
-                  borderRadius: "8px",
-                  maxWidth: "100%",
-                  overflow: "hidden",
-                }}
+                key={i}
+                className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-5"
+                style={{ padding: 5 }}
               >
-                <div className="text-center my-3">
-                  <img
-                    src="assets/img/general/nmax.jpeg"
-                    alt=""
-                    width={150}
-                    height={100}
-                  />
-                </div>
-                <div className="mx-2 my-1">
-                  <div className="text-center">
-                    <p
-                      className="mb-2"
-                      style={{ fontWeight: "normal", fontSize: "11px" }}
-                    >
-                      <b>2</b> Yamaha N-MAX
-                    </p>
+                <div
+                  className="card"
+                  onClick={() => navigate('/raffle-winner')}
+                  style={{
+                    borderRadius: "8px",
+                    maxWidth: "100%",
+                    height: 200,
+                    overflow: "hidden",
+                  }}
+                >
+                  <div className="text-center my-3">
+                    <img
+                      src={`assets/img/doorprize/${item.image}`}
+                      alt=""
+                      width={100}
+                      height={100}
+                    />
+                  </div>
+                  <div className="mx-2 my-1">
+                    <div className="text-center">
+                      <p
+                        className="mb-2"
+                        style={{ fontWeight: "normal", fontSize: "11px" }}
+                      >
+                        <b>{item.stock}</b> {item.name}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-5"
-              style={{ padding: 5 }}
-            >
-              <div
-                className="card"
-                style={{
-                  borderRadius: "8px",
-                  maxWidth: "100%",
-                  overflow: "hidden",
-                }}
-              >
-                <div className="text-center my-3">
-                  <img
-                    src="assets/img/general/nmax.jpeg"
-                    alt=""
-                    width={150}
-                    height={100}
-                  />
-                </div>
-                <div className="mx-2 my-1">
-                  <div className="text-center">
-                    <p
-                      className="mb-2"
-                      style={{ fontWeight: "normal", fontSize: "11px" }}
-                    >
-                      <b>2</b> Yamaha N-MAX
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-5"
-              style={{ padding: 5 }}
-            >
-              <div
-                className="card"
-                style={{
-                  borderRadius: "8px",
-                  maxWidth: "100%",
-                  overflow: "hidden",
-                }}
-              >
-                <div className="text-center my-3">
-                  <img
-                    src="assets/img/general/nmax.jpeg"
-                    alt=""
-                    width={150}
-                    height={100}
-                  />
-                </div>
-                <div className="mx-2 my-1">
-                  <div className="text-center">
-                    <p
-                      className="mb-2"
-                      style={{ fontWeight: "normal", fontSize: "11px" }}
-                    >
-                      <b>2</b> Yamaha N-MAX
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-5"
-              style={{ padding: 5 }}
-            >
-              <div
-                className="card"
-                style={{
-                  borderRadius: "8px",
-                  maxWidth: "100%",
-                  overflow: "hidden",
-                }}
-              >
-                <div className="text-center my-3">
-                  <img
-                    src="assets/img/general/nmax.jpeg"
-                    alt=""
-                    width={150}
-                    height={100}
-                  />
-                </div>
-                <div className="mx-2 my-1">
-                  <div className="text-center">
-                    <p
-                      className="mb-2"
-                      style={{ fontWeight: "normal", fontSize: "11px" }}
-                    >
-                      <b>2</b> Yamaha N-MAX
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );
