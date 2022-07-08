@@ -386,7 +386,7 @@
         }
         .bwh {
             position:relative !important;
-            max-width: 83% !important;
+            max-width: 85% !important;
             width:100% !important;
         }
         .btn {
@@ -435,6 +435,42 @@
         }
     }
     @media only screen and (max-width: 400px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 90% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:-30px;
+            width: 95% !important;
+        }
+    }
+    @media only screen and (max-width: 393px) {
+        .carousel .control-dots {
+            bottom:100px !important;
+        }
+        .bwh {
+            position:relative !important;
+            max-width: 90% !important;
+            width:100% !important;
+        }
+        .btn {
+            max-width: 100% !important;
+            width:100% !important;
+        }
+        .bg {
+            margin-top:0px;
+            width: 95% !important;
+        }
+    }
+    @media only screen and (max-width: 375px) {
         .carousel .control-dots {
             bottom:100px !important;
         }

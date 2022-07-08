@@ -19,7 +19,7 @@ export default function LandingPage() {
         style={{
           margin: 0,
           padding: 0,
-          minHeight: "700px",
+          minHeight: "auto",
           overflow: "hidden",
         }}
       >
