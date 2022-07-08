@@ -9,6 +9,7 @@ import ContestRegister from "./pages/ContestRegister";
 import Maps from "./pages/Maps";
 import EventSchedule from "./pages/eventSchedule";
 import Doorprize from "./pages/Doorprize";
+import RaffleWinner from "./pages/raffleWinner";
 import Verif from "./pages/Verif";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
@@ -18,6 +19,7 @@ import "react-activity/dist/library.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import "./custom.scss";
+import Test from "./pages/Test";
 
 const App = () => {
   return (
@@ -38,6 +40,8 @@ const App = () => {
         <Route exact path="/event-schedule" element={<EventSchedule />} />
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/doorprize" element={<Doorprize />} />
+        <Route exact path="/raffle-winner" element={<RaffleWinner />} />
+        <Route exact path="/test" element={<Test />} />
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>
