@@ -525,12 +525,14 @@ export default function ConfirmRegister() {
                       >
                         Lanjut
                       </button>
-                      <p
+                      
+                      <div
                         className="mt-3 mb-3"
                         style={{ fontSize: "10px", color: "grey" }}
                       >
-                        Anda sudah mendaftar? Masuk sekarang
-                      </p>
+                        <input type="checkbox" />
+                        <label style={{ marginLeft: 10 }}>Belum berkeluarga</label>
+                      </div>
                       <button
                         className="btn btn-lg"
                         onClick={_goToLoginPage}
