@@ -23,14 +23,14 @@ export default function Profile() {
   return (
     <div className="row justify-content-center">
       <div
-        className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
+        className="bg-mobile col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-12"
         style={{
           margin: 0,
           padding: 0,
           overflowX: "hidden",
+          overflowY: "clip",
           position: "relative",
           minHeight: "700px",
-          background: `url(${Background})`,
         }}
       >
         <nav
@@ -84,16 +84,16 @@ export default function Profile() {
             </li>
           </ol>
         </div>
-        <div className="container-fluid mt-2">
-          <div className="row">
-            <div className="col-12">
+        <div className="container-fluid mt-2 mb-5">
+          <div className="row justify-content-center">
+            <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
               <div className="carousel-wrapper">
                 <Carousel
                   infiniteLoop
                   useKeyboardArrows
                   swipeable
                   showThumbs={false}
-                  showArrows={false}
+                  showArrows={true}
                   showStatus={false}
                 >
                   <div

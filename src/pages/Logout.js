@@ -10,15 +10,15 @@ export default function Logout() {
   };
   return (
     <div className="row justify-content-center">
-      <div
-        className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
+ <div
+        className="bg-mobile col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-12"
         style={{
           margin: 0,
           padding: 0,
           overflowX: "hidden",
+          overflowY: "clip",
           position: "relative",
           minHeight: "700px",
-          background: "#fcb300",
         }}
       >
         <nav
@@ -46,8 +46,8 @@ export default function Logout() {
           </div>
         </nav>
         <div className="container-fluid" style={{ marginTop: "60px" }}>
-          <div className="row justify-content-center">
-            <div className="col-12">
+        <div className="row justify-content-center">
+            <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
               <div className="card" style={{ borderRadius: "10px" }}>
                 <img
                   src="assets/img/general/KV.png"

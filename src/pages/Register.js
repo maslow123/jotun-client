@@ -3,6 +3,7 @@ import { showToast, validate } from "./utils/helper";
 import { useNavigate } from "react-router-dom";
 import { Master } from "../services";
 import Background from "./../BG1.svg";
+import "./../style.css";
 import $ from "jquery";
 window.jQuery = $;
 window.$ = $;

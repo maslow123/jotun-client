@@ -33,14 +33,14 @@ export default function Doorprize() {
   return (
     <div className="row justify-content-center">
       <div
-        className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
+        className="bg-mobile col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-12"
         style={{
           margin: 0,
           padding: 0,
           overflowX: "hidden",
+          overflowY: "clip",
           position: "relative",
           minHeight: "700px",
-          background: `url(${Background})`,
         }}
       >
         <nav
@@ -98,8 +98,8 @@ export default function Doorprize() {
           className="crd2 px-3"
           style={{ maxHeight: "600px", overflowY: "scroll" }}
         >
-          <div className="row mt-2 mb-2">
-            <div className="col-12">
+          <div className="row justify-content-center">
+            <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
               <img
                 src="assets/img/general/700jt.png"
                 className="img-fluid"
@@ -108,16 +108,16 @@ export default function Doorprize() {
               />
             </div>
           </div>
-          <div className="row justify-content-center mb-1">
+          <div className="row justify-content-center mb-5">
             {assets.map((item, i) => (
               <div
                 key={i}
-                className="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-5"
+                className="col-xs-6 col-sm-6 col-md-6 col-lg-2 col-xl-2 col-5"
                 style={{ padding: 5 }}
               >
                 <div
                   className="card"
-                  onClick={() => navigate('/raffle-winner')}
+                  onClick={() => navigate("/raffle-winner")}
                   style={{
                     borderRadius: "8px",
                     maxWidth: "100%",

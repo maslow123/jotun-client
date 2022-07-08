@@ -40,12 +40,52 @@ body{
     overflow-y:scroll !important;
     width:100% !important;
   }
+  .session1 {
+    position: relative;
+    overflow-y: scroll !important;
+    width:100% !important;
+    max-width:100% !important;
+    height: auto;
+  }
+  .session1 img{
+    overflow:scroll;
+    width:90% !important;
+    padding-left:50px !important;
+    padding-bottom:50px !important;
+    height:auto;
+  }
+  .session2 {
+    position: relative;
+    overflow-y: scroll !important;
+    width:100% !important;
+    max-width:100% !important;
+    height: auto;
+  }
+  .session2 img{
+    width:70% !important;
+    height:auto;
+  }
+  .session3 {
+    position: relative;
+    overflow-y: scroll !important;
+    width:100% !important;
+    max-width:100% !important;
+    height: auto;
+  }
+  .session3 img{
+    margin-left:370px !important;
+    margin-top:-150px;
+    width:70% !important;
+    height:auto;
+  }
   .img{
     width:56% !important;
     margin:auto !important;
   }
   .fixed-bottom{
     position:fixed !important;
+    margin: auto !important;
+    width:23.6% !important;
   }
 }
 @media only screen and (min-width: 413px) {
@@ -246,7 +286,7 @@ swiper {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-
+overflow:hidden !important;
   /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
@@ -261,7 +301,9 @@ swiper {
   -webkit-align-items: center;
   align-items: center;
 }
-
+.swiper-container {
+  overflow: visible !important;
+}
 .swiper-slide img {
   display: block;
   width: 100%;

@@ -102,9 +102,8 @@ export default function ConfirmRegister() {
         }
       />
       <div
-        className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3"
+        className="bg-mobile col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-12"
         style={{
-          backgroundImage: `url(${Background})`,
           margin: 0,
           padding: 0,
           overflowX: "hidden",
@@ -139,8 +138,8 @@ export default function ConfirmRegister() {
           </div>
         </nav>
         <div className="container">
-          <div className="row">
-            <div className="col-12">
+        <div className="row justify-content-center">
+            <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
               <div className="card m-3" style={{ borderRadius: "8px" }}>
                 <div className="card-body">
                   <h4
