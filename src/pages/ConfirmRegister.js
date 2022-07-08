@@ -512,6 +512,7 @@ export default function ConfirmRegister() {
 
                     <div className="text-center d-grid mt-2 actions">
                       <button
+                        disabled={!(payload.family_list.filter(item => item.name !== '').length > 0)}
                         type="submit"
                         className="btn btn-warning btn-lg btn-block"
                         style={{
@@ -525,14 +526,27 @@ export default function ConfirmRegister() {
                       >
                         Lanjut
                       </button>
-                      
-                      <div
+                      <button
+                        disabled={!(payload.family_list.every(item => item.name === ''))}
+                        type="submit"
+                        className="btn btn-warning btn-lg btn-block mt-3"
+                        style={{                        
+                          paddingTop: "10px",
+                          paddingBottom: "10px",
+                          background: "#f9af02",
+                          textTransform: "uppercase",
+                          fontSize: "13px",
+                          fontWeight: "800",
+                        }}
+                      >
+                        BELUM BERKELUARGA
+                      </button>
+                      <p
                         className="mt-3 mb-3"
                         style={{ fontSize: "10px", color: "grey" }}
                       >
-                        <input type="checkbox" />
-                        <label style={{ marginLeft: 10 }}>Belum berkeluarga</label>
-                      </div>
+                        Anda sudah mendaftar? Masuk sekarang
+                      </p>
                       <button
                         className="btn btn-lg"
                         onClick={_goToLoginPage}
