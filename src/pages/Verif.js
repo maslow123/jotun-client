@@ -98,7 +98,7 @@ export default function Verif() {
         >
           <div className="container-fluid">
             <LazyLoadImage
-              onClick={() => navigate('/')}
+              // onClick={() => navigate('/')}
               src="assets/img/logo/logo.svg"
               alt=""
               style={{
