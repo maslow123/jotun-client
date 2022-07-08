@@ -6,7 +6,7 @@ export default function Logout() {
   const _goToLoginPage = () => {
     localStorage.clear();
 
-    navigate('/login');
+    navigate('/');
   };
   return (
     <div className="row justify-content-center">

@@ -31,6 +31,8 @@ export default function ContestRegister() {
   const [family, setFamily] = useState();
   const [children, setChildren] = useState(null);
   const [childrenRegistered, setChildrenRegistered] = useState(null);
+  const [mode, setMode] = useState(0); // 0 is register, 1 is view
+  const [childNonRegistered, setChildNonRegistered] = useState([]);
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("user"));
@@ -66,10 +68,37 @@ export default function ContestRegister() {
     setLoadingGetChildrenRegistered(true);
     try {
       const resp = await user_events.getBySubEventID(event.sub_events[0].id);
-      setChildrenRegistered({ ...resp.results });
+      setChildrenRegistered([...resp.results]);
+
+      // set child non registered
+      const data= JSON.parse(localStorage.getItem('user'));
+      data.family.splice(0, 1);
+
+      console.log(data.family);
+      const f = family?.length > 0 ? family : data.family;
+      var childNonRegisteredArr = []
+      for (let i = 0; i < f.length; i++) {
+        let found = false // flag
+        for (let j = 0; j < resp.results.length && !found; j++) {
+          found = f[i].id === resp.results[j].id
+        }        
+        if (!found) childNonRegisteredArr.push(f[i])
+      }
+
+      setChildNonRegistered([...childNonRegisteredArr])
       setLoadingGetChildrenRegistered(false);
     } catch (error) {
       console.error(error);
+      let d = [];
+      if (!family) {        
+        const data= await JSON.parse(localStorage.getItem('user'));
+        data.family.splice(0, 1);
+
+        d = [...data.family];
+      } else {
+        d = [...family];
+      }
+      setChildNonRegistered([...d]);
       setLoadingGetChildrenRegistered(false);
     }
   };
@@ -99,9 +128,9 @@ export default function ContestRegister() {
       let error = err.message;
 
       if (err.message === "children-already-registered") {
-        error = "Data ini sudah terdaftar";
+        error = "Anak sudah terdaftar di lomba ini. 1 anak hanya bisa 1 lomba";
       } else if (err.message === "invalid-children-age") {
-        error = "Umur anak tidak sesuai";
+        error = "Usia anak melebih ketentuan persyaratan lomba.";
       } else if (err.message === "insufficient-slots") {
         error = "Maaf quota daftar lomba sudah habis";
       }
@@ -117,11 +146,9 @@ export default function ContestRegister() {
     setActive(i);
   };
 
-  const resetPayload = (changeSlide = false) => {
+  const resetPayload = (changeSlide = false) => {    
     setEventDetail(null);
-    if (childrenRegistered !== null && changeSlide) {
-      setChildrenRegistered(null);
-    }
+    setChildrenRegistered(null);
     setChildren(null);
   };
   return (
@@ -201,6 +228,7 @@ export default function ContestRegister() {
             <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
               <div className="carousel-wrapper">
                 <Carousel
+                  selectedItem={active}
                   infiniteLoop
                   useKeyboardArrows
                   swipeable={false}
@@ -259,11 +287,13 @@ export default function ContestRegister() {
                         <div className="row">
                           <div className="col-9" style={{ paddingRight: "0" }}>
                             <div className="text-center d-grid">
-                              <button
+                              <a
+                                data-bs-toggle="modal"
+                                data-bs-target="#addModal"
                                 disabled={loadingGetChildrenRegistered}
-                                onClick={() =>
-                                  document.getElementById("openModal").click()
-                                }
+                                onClick={() => {
+                                  setMode(0);
+                                }}
                                 className="btn btn-warning btn-lg mt-3 btn-block"
                                 style={{
                                   paddingTop: "10px",
@@ -278,7 +308,7 @@ export default function ContestRegister() {
                                 }}
                               >
                                 DAFTAR
-                              </button>
+                              </a>
                             </div>
                           </div>
                           <div className="col-3">
@@ -296,6 +326,9 @@ export default function ContestRegister() {
                                 }}
                               >
                                 <a
+                                  onClick={() => {
+                                    setMode(1);
+                                  }}
                                   id="openModal"
                                   data-bs-toggle="modal"
                                   data-bs-target="#addModal"
@@ -338,6 +371,7 @@ export default function ContestRegister() {
           </div>
         </div>
       </div>
+      {/* EYE MODAL */}
       <div
         class="modal fade"
         id="addModal"
@@ -349,7 +383,7 @@ export default function ContestRegister() {
           <div class="modal-content">
             <div class="modal-body">
               <button
-                onClick={() => resetPayload(false)}
+                // onClick={() => resetPayload(false)}
                 id="closeModal"
                 type="button"
                 class="btn-close"
@@ -375,16 +409,9 @@ export default function ContestRegister() {
                 <div className="col-11">
                   <div className="text-center d-grid">
                     <button
-                      disabled={
-                        childrenRegistered !== null || loadingSubmit
-                          ? true
-                          : false
-                      }
-                      onClick={() =>
-                        childrenRegistered === null
-                          ? handleSubmitUserEvent()
-                          : {}
-                      }
+                      disabled={mode === 1 || loadingSubmit || childNonRegistered?.length < 1}
+                      onClick={() => mode === 0 ? handleSubmitUserEvent() : null}
+                      
                       className="btn btn-warning btn-lg mt-3 btn-block"
                       style={{
                         paddingTop: "10px",
@@ -405,39 +432,66 @@ export default function ContestRegister() {
               </div>
             </div>
             <div className="crd col-12 mb-5">
-              <ul className="list-group list-group-flush">
-                {family?.length > 0 &&
-                  family.map((child, i) => (
+              <ul className="list-group list-group-flush">              
+                {
+                mode === 0
+                ? childNonRegistered?.length > 0 &&
+                  childNonRegistered.map((child, i) => (
                     <li className="list-group-item" key={i}>
                       <div
                         class="form-check"
                         onClick={() =>
-                          childrenRegistered === null
-                            ? setChildren({ ...child })
-                            : {}
+                          setChildren({ ...child })
                         }
                       >
+
                         <input
-                          disabled={childrenRegistered !== null ? true : false}
+                          checked={children?.id === child.id}
                           class="form-check-input ml-1"
                           type="radio"
                           name="flexRadioDefault"
+                          id={`flexRadioDefault-${i}`}                          
+                        />
+                        <label
+                          class="form-check-label mx-3"
+                          for={`flexRadioDefault-${i}`}
+                          style={{
+                            fontSize: "14px",                            
+                          }}
+                        >
+                          {child.name}
+                        </label>
+                        <span
+                          className="mx-3"
+                          style={{
+                            float: "right",
+                            fontSize: "14px",                           
+                          }}
+                        >
+                          {child.age} Tahun
+                        </span>
+                      </div>
+                    </li>
+                  ))                                  
+                : 
+                childrenRegistered?.length > 0 &&
+                  childrenRegistered.map((child, i) => (
+                    <li className="list-group-item" key={i}>
+                      <div class="form-check">
+
+                        <input
+                          class="form-check-input ml-1"
+                          type="checkbox"
+                          name="flexRadioDefault"
                           id={`flexRadioDefault-${i}`}
-                          checked={
-                            childrenRegistered !== null
-                              ? childrenRegistered?.id === child.id
-                              : child.id === children?.id
-                          }
+                          checked
                         />
                         <label
                           class="form-check-label mx-3"
                           for={`flexRadioDefault-${i}`}
                           style={{
                             fontSize: "14px",
-                            color:
-                              childrenRegistered?.id === child.id
-                                ? "red"
-                                : "black",
+                            color: 'red'
                           }}
                         >
                           {child.name}
@@ -447,22 +501,22 @@ export default function ContestRegister() {
                           style={{
                             float: "right",
                             fontSize: "14px",
-                            color:
-                              childrenRegistered?.id === child.id
-                                ? "red"
-                                : "black",
+                            color: 'red'
                           }}
                         >
                           {child.age} Tahun
                         </span>
                       </div>
                     </li>
-                  ))}
+                  ))                                               
+                }                
               </ul>
             </div>
           </div>
         </div>
       </div>
+
+      
     </div>
   );
 }
