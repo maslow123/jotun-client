@@ -121,8 +121,7 @@ export default function Doorprize() {
                   style={{
                     borderRadius: "8px",
                     maxWidth: "100%",
-                    maxHeight: 200,
-                    height: 180,
+                    height: 200,
                     overflow: "hidden",
                   }}
                 >
