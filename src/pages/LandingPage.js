@@ -102,7 +102,7 @@ export default function LandingPage() {
             }}
           >
             <div className="row justify-content-center">
-              <div className="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-2 col-xl-2">
+              <div className="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                 <div className="text-center d-grid">
                   <a
                     onClick={() => navigate("/register")}
@@ -121,7 +121,7 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <div className="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-2 col-xl-2">
+              <div className="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                 <div className="text-center d-grid">
                   <a
                     onClick={() => navigate("/login")}
