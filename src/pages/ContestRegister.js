@@ -205,7 +205,7 @@ export default function ContestRegister() {
                   showArrows={false}
                   showStatus={false}
                   onChange={(number) => {
-                    handleChangeSlide(eventList[number], number)
+                    handleChangeSlide(eventList[number], number);
                   }}
                 >
                   {!loading &&
@@ -217,7 +217,7 @@ export default function ContestRegister() {
                           background: "white",
                           borderRadius: "10px",
                           minHeight: "450px",
-                          maxHeight: "500px",
+                          maxHeight: "600px",
                         }}
                       >
                         <p
@@ -253,10 +253,7 @@ export default function ContestRegister() {
                           </div>
                         </div>
                         <div className="row">
-                          <div
-                            className="col-9"
-                            style={{ paddingRight: "0" }}
-                          >
+                          <div className="col-9" style={{ paddingRight: "0" }}>
                             <div className="text-center d-grid">
                               <button
                                 disabled={loadingGetChildrenRegistered}
@@ -314,8 +311,10 @@ export default function ContestRegister() {
                             </div>
                           </div>
                           <div className="crd col-11 mt-3 mb-3">
-                            <ul style={{ textAlign: 'left' }}>
-                              {CONTEST_RULE.find(item => item.id === event.id).text.map((r, i) => (
+                            <ul style={{ textAlign: "left" }}>
+                              {CONTEST_RULE.find(
+                                (item) => item.id === event.id
+                              ).text.map((r, i) => (
                                 <li
                                   key={i}
                                   className="mb-1"

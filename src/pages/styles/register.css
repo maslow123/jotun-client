@@ -1,5 +1,7 @@
 .carousel .control-dots {
     z-index:1 !important;
-    margin-bottom:-50px !important;
+    margin-bottom:-80px !important;
   }
-  
+  .carousel .control-dots .dot {
+    background: #ffc107 !important;
+  }
