@@ -158,8 +158,9 @@ export default function LandingPage() {
           className="row justify-content-center"
           style={{
             position: "relative",
-            marginTop: "-45px",
+            marginTop: "-1px",
             overflowX: "hidden",
+            border: 0,
             // marginBottom: "100px",
             // background: "#1616ab",
           }}
