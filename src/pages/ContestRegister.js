@@ -9,6 +9,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import "./styles/register.css";
+import "./styles/contest-register.css";
 
 import $ from "jquery";
 import { CITY, CONTEST_RULE } from './utils/constants';

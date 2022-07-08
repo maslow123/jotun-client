@@ -443,7 +443,7 @@ export default function Profile() {
             </div>
           </div>
           <div className="row justify-content-center mt-5">
-            <div className="col-6" style={{ paddingRight: 0 }}>
+            {/* <div className="col-6" style={{ paddingRight: 0 }}>
               <div className="text-center d-grip mb-3">
                 <button
                   className="btn btn-lg btn-block"
@@ -461,7 +461,7 @@ export default function Profile() {
                   <i className="fa fa-rotate-right mx-1"></i> Kirim ulang kode
                 </button>
               </div>
-            </div>
+            </div> */}
             <div className="col-6" style={{ paddingLeft: 0 }}>
               <div className="text-center d-grip mb-3">
                 <a

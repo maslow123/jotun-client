@@ -1,0 +1,31 @@
+.carousel.carousel-slider .control-arrow {
+    bottom: 40%;
+    background-color: transparent !important;
+
+}
+.carousel .control-next.control-arrow:before {
+    border-left: 8px solid rgb(249, 175, 2);
+    margin-left: 10px;
+    background-color: transparent !important;
+}
+
+.carousel .control-arrow:before, .carousel.carousel-slider .control-arrow:before {
+    margin: auto;
+    background-color: transparent !important;
+}
+
+.carousel .control-prev.control-arrow:before {
+    border-right: 8px solid rgb(249, 175, 2);
+    margin-right: 10px;
+}
+
+.carousel .control-prev.control-arrow::after {
+    background-color: transparent !important;
+}
+
+.carousel.carousel-slider .control-arrow::after {
+    background-color: transparent !important;
+}
+.carousel .control-arrow, .carousel.carousel-slider .control-arrow {
+    opacity: 1;
+}

@@ -110,6 +110,7 @@ export default function Home() {
           <div className="d-flex justify-content-center mb-1">
           {user?.branches === Number(CITY.Jakarta) && ( 
             <div
+              onClick={() => navigate("/maps")}
               className="col-xs-6 col-sm-6 col-md-6 col-lg-6"
               style={{ marginRight: 3, padding: 0 }}
             >
@@ -131,7 +132,6 @@ export default function Home() {
                 </div>
                 <div className="mx-2 my-1">
                   <a
-                    onClick={() => navigate("/maps")}
                     style={{ textDecoration: "none", color: "#000" }}
                   >
                     <p
@@ -159,6 +159,7 @@ export default function Home() {
               style={{ marginLeft: 3, padding: 0 }}
             >
               <div
+                onClick={() => navigate("/event-schedule")}
                 className="card p-1"
                 style={{
                   borderRadius: "8px",
@@ -176,7 +177,6 @@ export default function Home() {
                 </div>
                 <div className="mx-2 my-1">
                   <a
-                    onClick={() => navigate("/event-schedule")}
                     style={{ textDecoration: "none", color: "#000" }}
                   >
                     <p
@@ -207,6 +207,7 @@ export default function Home() {
                 style={{ marginRight: 3, padding: 0 }}
               >
                 <div
+                  onClick={() => navigate("/contest-register")}
                   className="card p-1"
                   style={{
                     borderRadius: "8px",
@@ -224,7 +225,6 @@ export default function Home() {
                   </div>
                   <div className="mx-2 my-1">
                     <a
-                      onClick={() => navigate("/contest-register")}
                       style={{ textDecoration: "none", color: "#000" }}
                     >
                       <p
