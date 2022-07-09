@@ -182,7 +182,7 @@ export default function ContestRegister() {
         >
           <div className="container-fluid">
             <img
-              // onClick={() => navigate("/")}
+              onClick={() => navigate("/")}
               src="assets/img/logo/logo.svg"
               alt=""
               style={{
@@ -409,9 +409,14 @@ export default function ContestRegister() {
                 <div className="col-11">
                   <div className="text-center d-grid">
                     <button
-                      disabled={mode === 1 || loadingSubmit || childNonRegistered?.length < 1}
-                      onClick={() => mode === 0 ? handleSubmitUserEvent() : null}
-                      
+                      disabled={
+                        mode === 1 ||
+                        loadingSubmit ||
+                        childNonRegistered?.length < 1
+                      }
+                      onClick={() =>
+                        mode === 0 ? handleSubmitUserEvent() : null
+                      }
                       className="btn btn-warning btn-lg mt-3 btn-block"
                       style={{
                         paddingTop: "10px",
@@ -432,91 +437,82 @@ export default function ContestRegister() {
               </div>
             </div>
             <div className="crd col-12 mb-5">
-              <ul className="list-group list-group-flush">              
-                {
-                mode === 0
-                ? childNonRegistered?.length > 0 &&
-                  childNonRegistered.map((child, i) => (
-                    <li className="list-group-item" key={i}>
-                      <div
-                        class="form-check"
-                        onClick={() =>
-                          setChildren({ ...child })
-                        }
-                      >
-
-                        <input
-                          checked={children?.id === child.id}
-                          class="form-check-input ml-1"
-                          type="radio"
-                          name="flexRadioDefault"
-                          id={`flexRadioDefault-${i}`}                          
-                        />
-                        <label
-                          class="form-check-label mx-3"
-                          for={`flexRadioDefault-${i}`}
-                          style={{
-                            fontSize: "14px",                            
-                          }}
+              <ul className="list-group list-group-flush">
+                {mode === 0
+                  ? childNonRegistered?.length > 0 &&
+                    childNonRegistered.map((child, i) => (
+                      <li className="list-group-item" key={i}>
+                        <div
+                          class="form-check"
+                          onClick={() => setChildren({ ...child })}
                         >
-                          {child.name}
-                        </label>
-                        <span
-                          className="mx-3"
-                          style={{
-                            float: "right",
-                            fontSize: "14px",                           
-                          }}
-                        >
-                          {child.age} Tahun
-                        </span>
-                      </div>
-                    </li>
-                  ))                                  
-                : 
-                childrenRegistered?.length > 0 &&
-                  childrenRegistered.map((child, i) => (
-                    <li className="list-group-item" key={i}>
-                      <div class="form-check">
-
-                        <input
-                          class="form-check-input ml-1"
-                          type="checkbox"
-                          name="flexRadioDefault"
-                          id={`flexRadioDefault-${i}`}
-                          checked
-                        />
-                        <label
-                          class="form-check-label mx-3"
-                          for={`flexRadioDefault-${i}`}
-                          style={{
-                            fontSize: "14px",
-                            color: 'red'
-                          }}
-                        >
-                          {child.name}
-                        </label>
-                        <span
-                          className="mx-3"
-                          style={{
-                            float: "right",
-                            fontSize: "14px",
-                            color: 'red'
-                          }}
-                        >
-                          {child.age} Tahun
-                        </span>
-                      </div>
-                    </li>
-                  ))                                               
-                }                
+                          <input
+                            checked={children?.id === child.id}
+                            class="form-check-input ml-1"
+                            type="radio"
+                            name="flexRadioDefault"
+                            id={`flexRadioDefault-${i}`}
+                          />
+                          <label
+                            class="form-check-label mx-3"
+                            for={`flexRadioDefault-${i}`}
+                            style={{
+                              fontSize: "14px",
+                            }}
+                          >
+                            {child.name}
+                          </label>
+                          <span
+                            className="mx-3"
+                            style={{
+                              float: "right",
+                              fontSize: "14px",
+                            }}
+                          >
+                            {child.age} Tahun
+                          </span>
+                        </div>
+                      </li>
+                    ))
+                  : childrenRegistered?.length > 0 &&
+                    childrenRegistered.map((child, i) => (
+                      <li className="list-group-item" key={i}>
+                        <div class="form-check">
+                          <input
+                            class="form-check-input ml-1"
+                            type="checkbox"
+                            name="flexRadioDefault"
+                            id={`flexRadioDefault-${i}`}
+                            checked
+                          />
+                          <label
+                            class="form-check-label mx-3"
+                            for={`flexRadioDefault-${i}`}
+                            style={{
+                              fontSize: "14px",
+                              color: "red",
+                            }}
+                          >
+                            {child.name}
+                          </label>
+                          <span
+                            className="mx-3"
+                            style={{
+                              float: "right",
+                              fontSize: "14px",
+                              color: "red",
+                            }}
+                          >
+                            {child.age} Tahun
+                          </span>
+                        </div>
+                      </li>
+                    ))}
               </ul>
             </div>
           </div>
         </div>
       </div>
-
-      
     </div>
   );
 }
