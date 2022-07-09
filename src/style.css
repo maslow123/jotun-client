@@ -94,19 +94,18 @@ body{
     max-height:900px !important;
   }
   .fixed-bottom {
-   position:relative !important;
+   position:fixed !important;
   }
 
 }
 @media only screen and (min-width: 390px) {
   .y{
-    height:800px !important;
-    max-height:800px !important;
-    overflow-y: hidden !important;
+    height:700px !important;
+    max-height:700px !important;
   }
   .fixed-bottom {
-    position:relative !important;
-    overflow-y: hidden !important;
+    position:fixed !important;
+    bottom:160px !important;
   }
 
 }
@@ -114,11 +113,10 @@ body{
   .y{
     height:750px !important;
     max-height:750px !important;
-    overflow-y: hidden !important;
   }
   .fixed-bottom {
-    position:relative !important;
-    overflow-y: hidden !important;
+    position:fixed !important;
+    bottom:100px !important;
   }
 
 }
