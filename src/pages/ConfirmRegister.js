@@ -123,7 +123,7 @@ export default function ConfirmRegister() {
         >
           <div className="container-fluid">
             <img
-              // onClick={() => navigate('/')}
+              onClick={() => navigate("/")}
               src="assets/img/logo/logo.svg"
               alt=""
               style={{
@@ -138,7 +138,7 @@ export default function ConfirmRegister() {
           </div>
         </nav>
         <div className="container">
-        <div className="row justify-content-center">
+          <div className="row justify-content-center">
             <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
               <div className="card m-3" style={{ borderRadius: "8px" }}>
                 <div className="card-body">
@@ -511,7 +511,13 @@ export default function ConfirmRegister() {
 
                     <div className="text-center d-grid mt-2 actions">
                       <button
-                        disabled={!(payload.family_list.filter(item => item.name !== '').length > 0)}
+                        disabled={
+                          !(
+                            payload.family_list.filter(
+                              (item) => item.name !== ""
+                            ).length > 0
+                          )
+                        }
                         type="submit"
                         className="btn btn-warning btn-lg btn-block"
                         style={{
@@ -526,10 +532,12 @@ export default function ConfirmRegister() {
                         Lanjut
                       </button>
                       <button
-                        disabled={!(payload.family_list.every(item => item.name === ''))}
+                        disabled={
+                          !payload.family_list.every((item) => item.name === "")
+                        }
                         type="submit"
                         className="btn btn-warning btn-lg btn-block mt-3"
-                        style={{                        
+                        style={{
                           paddingTop: "10px",
                           paddingBottom: "10px",
                           background: "#f9af02",
