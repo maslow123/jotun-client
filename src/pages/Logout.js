@@ -10,7 +10,7 @@ export default function Logout() {
   };
   return (
     <div className="row justify-content-center">
- <div
+      <div
         className="bg-mobile col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-12"
         style={{
           margin: 0,
@@ -32,7 +32,7 @@ export default function Logout() {
         >
           <div className="container-fluid">
             <img
-              // onClick={() => navigate("/")}
+              onClick={() => navigate("/")}
               src="assets/img/logo/logo.svg"
               alt=""
               style={{
@@ -46,7 +46,7 @@ export default function Logout() {
           </div>
         </nav>
         <div className="container-fluid" style={{ marginTop: "60px" }}>
-        <div className="row justify-content-center">
+          <div className="row justify-content-center">
             <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
               <div className="card" style={{ borderRadius: "10px" }}>
                 <img

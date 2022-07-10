@@ -59,7 +59,7 @@ export default function Login() {
         >
           <div className="container-fluid">
             <img
-              // onClick={() => navigate('/')}
+              onClick={() => navigate("/")}
               src="assets/img/logo/logo.svg"
               alt=""
               style={{
