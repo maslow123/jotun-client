@@ -128,9 +128,9 @@ export default function ContestRegister() {
       let error = err.message;
 
       if (err.message === "children-already-registered") {
-        error = "Anak sudah terdaftar di lomba ini. 1 anak hanya bisa 1 lomba";
+        error = `${err.data.childName} sudah terdaftar di ${err.data.eventName}. 1 anak hanya bisa 1 lomba`;
       } else if (err.message === "invalid-children-age") {
-        error = "Usia anak melebih ketentuan persyaratan lomba.";
+        error = "Usia anak tidak sesuai persyaratan lomba";
       } else if (err.message === "insufficient-slots") {
         error = "Maaf quota daftar lomba sudah habis";
       }
@@ -468,7 +468,7 @@ export default function ContestRegister() {
                             fontSize: "14px",                           
                           }}
                         >
-                          {child.age} Tahun
+                          {child.age === 0 ? '0-1' : child.age} Tahun
                         </span>
                       </div>
                     </li>

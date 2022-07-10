@@ -105,7 +105,7 @@ body{
     overflow-y: hidden !important;
   }
   .fixed-bottom {
-    position:relative !important;
+    position:fixed !important;
     overflow-y: hidden !important;
   }
 
