@@ -3,7 +3,7 @@ import Background from "./../BG1.svg";
 import { useNavigate } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { BRANCHES, DEPARTMENTS, TRANSPORTATIONS } from "./utils/constants";
+import { BRANCHES, CITY, DEPARTMENTS, TRANSPORTATIONS } from "./utils/constants";
 import "./styles/profile.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -20,6 +20,647 @@ export default function Profile() {
     const user = JSON.parse(localStorage.getItem("user"));
     setUser({ ...user });
   }, []);
+
+  const renderContent = () => (
+      <Carousel
+      infiniteLoop
+      useKeyboardArrows
+      swipeable
+      showThumbs={false}
+      showArrows={true}
+      showStatus={false}                  
+    >      
+      <div
+        style={{
+          padding: "20px",
+          background: "white",
+          borderRadius: "10px",
+          minHeight: "450px",
+          textAlign: "left",
+        }}
+      >
+        <div className="row justify-content-center">
+          <div className="col-12">
+            <div className="form-group">
+              <label
+                style={{
+                  fontWeight: "bold",
+                  color: "#010040",
+                  fontSize: "11px",
+                }}
+              >
+                Nama
+              </label>
+              <input
+                disabled
+                required
+                type="text"
+                className="form-control p-2"
+                style={{ fontSize: "12px" }}
+                name="name"
+                value={user?.name}
+              />
+            </div>
+            <div className="form-group">
+              <label
+                style={{
+                  fontWeight: "bold",
+                  color: "#010040",
+                  fontSize: "11px",
+                }}
+              >
+                Nomor Whatsapp anda
+              </label>
+              <input
+                disabled
+                required
+                type="text"
+                className="form-control p-2"
+                style={{ fontSize: "12px" }}
+                name="no_whatsapp"
+                value={user?.phone_number}
+              />
+            </div>
+            <div className="form-group">
+              <label
+                style={{
+                  fontWeight: "bold",
+                  color: "#010040",
+                  fontSize: "11px",
+                }}
+              >
+                Masukan kembali Nomor Whatsapp anda
+              </label>
+              <input
+                disabled
+                required
+                type="text"
+                className="form-control p-2"
+                style={{ fontSize: "12px" }}
+                name="no_whatsapp"
+                value={user?.phone_number}
+              />
+            </div>
+            <div className="form-group">
+              <label
+                style={{
+                  fontWeight: "bold",
+                  color: "#010040",
+                  fontSize: "11px",
+                }}
+              >
+                Departemen
+              </label>
+              <input
+                disabled
+                required
+                type="text"
+                className="form-control p-2"
+                style={{ fontSize: "12px" }}
+                name="departemen"
+                value={DEPARTMENTS[user?.department || "1"]}
+              />
+            </div>
+            <div className="form-group">
+              <label
+                style={{
+                  fontWeight: "bold",
+                  color: "#010040",
+                  fontSize: "11px",
+                }}
+              >
+                Kantor Cabang
+              </label>
+              <input
+                disabled
+                required
+                type="text"
+                className="form-control p-2"
+                style={{ fontSize: "12px" }}
+                name="departemen"
+                value={BRANCHES[user?.branches || "1"]}
+              />
+            </div>
+            {user?.branches === "1" && (
+              <div className="form-group">
+                <label
+                  style={{
+                    fontWeight: "bold",
+                    color: "#010040",
+                    fontSize: "11px",
+                  }}
+                >
+                  Transportasi
+                </label>
+                <input
+                  disabled
+                  required
+                  type="text"
+                  className="form-control p-2"
+                  style={{ fontSize: "12px" }}
+                  name="departemen"
+                  value={TRANSPORTATIONS[user?.transportation]}
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div
+        style={{
+          padding: "20px",
+          background: "white",
+          borderRadius: "10px",
+          minHeight: "450px",
+          textAlign: "left",
+        }}
+      >
+        <div className="row justify-content-center">
+          <div className="col-12">
+            <div className="form-group">
+              <label
+                style={{
+                  fontWeight: "bold",
+                  color: "#010040",
+                  fontSize: "11px",
+                }}
+              >
+                Nama Suami/Istri
+              </label>
+              <input
+                disabled
+                required
+                type="text"
+                className="form-control p-2"
+                style={{ fontSize: "12px" }}
+                name="name"
+                value={user?.family[0]?.name}
+              />
+            </div>
+            <div className="form-group">
+              <label
+                style={{
+                  fontWeight: "bold",
+                  color: "#010040",
+                  fontSize: "11px",
+                }}
+              >
+                Nama Anak Pertama
+              </label>
+              <input
+                disabled
+                required
+                type="text"
+                className="form-control p-2"
+                style={{ fontSize: "12px" }}
+                name="first_child"
+                value={user?.family[1]?.name}
+              />
+            </div>
+            <div className="form-group">
+              <label
+                style={{
+                  fontWeight: "bold",
+                  color: "#010040",
+                  fontSize: "11px",
+                }}
+              >
+                Nama Anak Kedua
+              </label>
+              <input
+                disabled
+                required
+                type="text"
+                className="form-control p-2"
+                style={{ fontSize: "12px" }}
+                name="second_child"
+                value={user?.family[2]?.name}
+              />
+            </div>
+            <div className="form-group">
+              <label
+                style={{
+                  fontWeight: "bold",
+                  color: "#010040",
+                  fontSize: "11px",
+                }}
+              >
+                Nama Anak Ketiga
+              </label>
+              <input
+                disabled
+                required
+                type="text"
+                className="form-control p-2"
+                style={{ fontSize: "12px" }}
+                name="third_child"
+                value={user?.family[3]?.name}
+              />
+            </div>
+            <div className="form-group">
+              <label
+                style={{
+                  fontWeight: "bold",
+                  color: "#010040",
+                  fontSize: "11px",
+                }}
+              >
+                Nama Anak Keempat
+              </label>
+              <input
+                disabled
+                required
+                type="text"
+                className="form-control p-2"
+                style={{ fontSize: "12px" }}
+                name="four_child"
+                value={user?.family[4]?.name}
+              />
+            </div>
+            <div className="form-group">
+              <label
+                style={{
+                  fontWeight: "bold",
+                  color: "#010040",
+                  fontSize: "11px",
+                }}
+              >
+                Nama Anak Kelima
+              </label>
+              <input
+                disabled
+                required
+                type="text"
+                className="form-control p-2"
+                style={{ fontSize: "12px" }}
+                name="five_child"
+                value={user?.family[5]?.name}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Carousel>
+  );
+
+  const renderFullContent = () => (
+    <Carousel
+    infiniteLoop
+    useKeyboardArrows
+    swipeable
+    showThumbs={false}
+    showArrows={true}
+    showStatus={false}                  
+  >
+    
+    {(Number(user?.branches) === CITY.Jakarta) && (
+      <div
+        style={{
+          padding: "20px",
+          background: "white",
+          borderRadius: "10px",
+          minHeight: "450px",
+        }}
+      >
+        
+        <div className="row justify-content-center">
+          <div className="col-8">
+            <div className="text-center">
+              <p className="mb-0" style={{ fontWeight: "bold" }}>
+                Tunjukkan KODE QR pada saat kehadiran
+              </p>
+              <LazyLoadImage
+                effect="blur"
+                src={user?.qr_code_url}
+                className="img-fluid"
+              />
+            </div>
+          </div>
+          <div className="col-8">
+            <div className="text-center">
+              <p className="p-0 m-0" style={{ fontSize: "11px" }}>
+                Kode QR juga dapat digunakan untuk pengambilan :
+              </p>
+            </div>
+          </div>
+          <div className="col-10 mt-2">
+            <div className="text-center">
+              <p
+                className="p-0 m-0"
+                style={{ fontSize: "11px", fontWeight: "bold" }}
+              >
+                Snack anak 1-12 Tahun
+              </p>
+              <p
+                className="p-0 m-0"
+                style={{ fontSize: "11px", fontWeight: "bold" }}
+              >
+                Penukaran koin permainan
+              </p>
+              <p
+                className="p-0 m-0"
+                style={{ fontSize: "11px", fontWeight: "bold" }}
+              >
+                Voucher Photobooth 180
+              </p>
+              <p
+                className="p-0 m-0"
+                style={{ fontSize: "11px", fontWeight: "bold" }}
+              >
+                Video Booth 360
+              </p>
+
+              <p
+                className="p-0 m-0"
+                style={{ fontSize: "11px", fontWeight: "bold" }}
+              >
+                Suvenir
+              </p>
+              <p
+                className="p-0 m-0"
+                style={{ fontSize: "11px", fontWeight: "bold" }}
+              >
+                Paket anak sekolah umur 3-18 tahun
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+    <div
+      style={{
+        padding: "20px",
+        background: "white",
+        borderRadius: "10px",
+        minHeight: "450px",
+        textAlign: "left",
+      }}
+    >
+      <div className="row justify-content-center">
+        <div className="col-12">
+          <div className="form-group">
+            <label
+              style={{
+                fontWeight: "bold",
+                color: "#010040",
+                fontSize: "11px",
+              }}
+            >
+              Nama
+            </label>
+            <input
+              disabled
+              required
+              type="text"
+              className="form-control p-2"
+              style={{ fontSize: "12px" }}
+              name="name"
+              value={user?.name}
+            />
+          </div>
+          <div className="form-group">
+            <label
+              style={{
+                fontWeight: "bold",
+                color: "#010040",
+                fontSize: "11px",
+              }}
+            >
+              Nomor Whatsapp anda
+            </label>
+            <input
+              disabled
+              required
+              type="text"
+              className="form-control p-2"
+              style={{ fontSize: "12px" }}
+              name="no_whatsapp"
+              value={user?.phone_number}
+            />
+          </div>
+          <div className="form-group">
+            <label
+              style={{
+                fontWeight: "bold",
+                color: "#010040",
+                fontSize: "11px",
+              }}
+            >
+              Masukan kembali Nomor Whatsapp anda
+            </label>
+            <input
+              disabled
+              required
+              type="text"
+              className="form-control p-2"
+              style={{ fontSize: "12px" }}
+              name="no_whatsapp"
+              value={user?.phone_number}
+            />
+          </div>
+          <div className="form-group">
+            <label
+              style={{
+                fontWeight: "bold",
+                color: "#010040",
+                fontSize: "11px",
+              }}
+            >
+              Departemen
+            </label>
+            <input
+              disabled
+              required
+              type="text"
+              className="form-control p-2"
+              style={{ fontSize: "12px" }}
+              name="departemen"
+              value={DEPARTMENTS[user?.department || "1"]}
+            />
+          </div>
+          <div className="form-group">
+            <label
+              style={{
+                fontWeight: "bold",
+                color: "#010040",
+                fontSize: "11px",
+              }}
+            >
+              Kantor Cabang
+            </label>
+            <input
+              disabled
+              required
+              type="text"
+              className="form-control p-2"
+              style={{ fontSize: "12px" }}
+              name="departemen"
+              value={BRANCHES[user?.branches || "1"]}
+            />
+          </div>
+          {user?.branches === "1" && (
+            <div className="form-group">
+              <label
+                style={{
+                  fontWeight: "bold",
+                  color: "#010040",
+                  fontSize: "11px",
+                }}
+              >
+                Transportasi
+              </label>
+              <input
+                disabled
+                required
+                type="text"
+                className="form-control p-2"
+                style={{ fontSize: "12px" }}
+                name="departemen"
+                value={TRANSPORTATIONS[user?.transportation]}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <div
+      style={{
+        padding: "20px",
+        background: "white",
+        borderRadius: "10px",
+        minHeight: "450px",
+        textAlign: "left",
+      }}
+    >
+      <div className="row justify-content-center">
+        <div className="col-12">
+          <div className="form-group">
+            <label
+              style={{
+                fontWeight: "bold",
+                color: "#010040",
+                fontSize: "11px",
+              }}
+            >
+              Nama Suami/Istri
+            </label>
+            <input
+              disabled
+              required
+              type="text"
+              className="form-control p-2"
+              style={{ fontSize: "12px" }}
+              name="name"
+              value={user?.family[0]?.name}
+            />
+          </div>
+          <div className="form-group">
+            <label
+              style={{
+                fontWeight: "bold",
+                color: "#010040",
+                fontSize: "11px",
+              }}
+            >
+              Nama Anak Pertama
+            </label>
+            <input
+              disabled
+              required
+              type="text"
+              className="form-control p-2"
+              style={{ fontSize: "12px" }}
+              name="first_child"
+              value={user?.family[1]?.name}
+            />
+          </div>
+          <div className="form-group">
+            <label
+              style={{
+                fontWeight: "bold",
+                color: "#010040",
+                fontSize: "11px",
+              }}
+            >
+              Nama Anak Kedua
+            </label>
+            <input
+              disabled
+              required
+              type="text"
+              className="form-control p-2"
+              style={{ fontSize: "12px" }}
+              name="second_child"
+              value={user?.family[2]?.name}
+            />
+          </div>
+          <div className="form-group">
+            <label
+              style={{
+                fontWeight: "bold",
+                color: "#010040",
+                fontSize: "11px",
+              }}
+            >
+              Nama Anak Ketiga
+            </label>
+            <input
+              disabled
+              required
+              type="text"
+              className="form-control p-2"
+              style={{ fontSize: "12px" }}
+              name="third_child"
+              value={user?.family[3]?.name}
+            />
+          </div>
+          <div className="form-group">
+            <label
+              style={{
+                fontWeight: "bold",
+                color: "#010040",
+                fontSize: "11px",
+              }}
+            >
+              Nama Anak Keempat
+            </label>
+            <input
+              disabled
+              required
+              type="text"
+              className="form-control p-2"
+              style={{ fontSize: "12px" }}
+              name="four_child"
+              value={user?.family[4]?.name}
+            />
+          </div>
+          <div className="form-group">
+            <label
+              style={{
+                fontWeight: "bold",
+                color: "#010040",
+                fontSize: "11px",
+              }}
+            >
+              Nama Anak Kelima
+            </label>
+            <input
+              disabled
+              required
+              type="text"
+              className="form-control p-2"
+              style={{ fontSize: "12px" }}
+              name="five_child"
+              value={user?.family[5]?.name}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </Carousel>
+  );
   return (
     <div className="row justify-content-center">
       <div
@@ -88,380 +729,11 @@ export default function Profile() {
           <div className="row justify-content-center">
             <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
               <div className="carousel-wrapper">
-                <Carousel
-                  infiniteLoop
-                  useKeyboardArrows
-                  swipeable
-                  showThumbs={false}
-                  showArrows={true}
-                  showStatus={false}
-                >
-                  <div
-                    style={{
-                      padding: "20px",
-                      background: "white",
-                      borderRadius: "10px",
-                      minHeight: "450px",
-                    }}
-                  >
-                    <div className="row justify-content-center">
-                      <div className="col-8">
-                        <div className="text-center">
-                          <p className="mb-0" style={{ fontWeight: "bold" }}>
-                            Tunjukan KODE QR pada saat kehadiran
-                          </p>
-                          <LazyLoadImage
-                            effect="blur"
-                            src={user?.qr_code_url}
-                            className="img-fluid"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-8">
-                        <div className="text-center">
-                          <p className="p-0 m-0" style={{ fontSize: "11px" }}>
-                            Kode QR juga dapat digunakan untuk pengambilan :
-                          </p>
-                        </div>
-                      </div>
-                      <div className="col-10 mt-2">
-                        <div className="text-center">
-                          <p
-                            className="p-0 m-0"
-                            style={{ fontSize: "11px", fontWeight: "bold" }}
-                          >
-                            Snack anak 1-12 Tahun
-                          </p>
-                          <p
-                            className="p-0 m-0"
-                            style={{ fontSize: "11px", fontWeight: "bold" }}
-                          >
-                            Penukaran koin permainan
-                          </p>
-                          <p
-                            className="p-0 m-0"
-                            style={{ fontSize: "11px", fontWeight: "bold" }}
-                          >
-                            Voucher Photobooth 180
-                          </p>
-                          <p
-                            className="p-0 m-0"
-                            style={{ fontSize: "11px", fontWeight: "bold" }}
-                          >
-                            Video Booth 360
-                          </p>
-
-                          <p
-                            className="p-0 m-0"
-                            style={{ fontSize: "11px", fontWeight: "bold" }}
-                          >
-                            Suvenir
-                          </p>
-                          <p
-                            className="p-0 m-0"
-                            style={{ fontSize: "11px", fontWeight: "bold" }}
-                          >
-                            Paket anak sekolah umur 3-18 tahun
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      padding: "20px",
-                      background: "white",
-                      borderRadius: "10px",
-                      minHeight: "450px",
-                      textAlign: "left",
-                    }}
-                  >
-                    <div className="row justify-content-center">
-                      <div className="col-12">
-                        <div className="form-group">
-                          <label
-                            style={{
-                              fontWeight: "bold",
-                              color: "#010040",
-                              fontSize: "11px",
-                            }}
-                          >
-                            Nama
-                          </label>
-                          <input
-                            disabled
-                            required
-                            type="text"
-                            className="form-control p-2"
-                            style={{ fontSize: "12px" }}
-                            name="name"
-                            value={user?.name}
-                          />
-                        </div>
-                        <div className="form-group">
-                          <label
-                            style={{
-                              fontWeight: "bold",
-                              color: "#010040",
-                              fontSize: "11px",
-                            }}
-                          >
-                            Nomor Whatsapp anda
-                          </label>
-                          <input
-                            disabled
-                            required
-                            type="text"
-                            className="form-control p-2"
-                            style={{ fontSize: "12px" }}
-                            name="no_whatsapp"
-                            value={user?.phone_number}
-                          />
-                        </div>
-                        <div className="form-group">
-                          <label
-                            style={{
-                              fontWeight: "bold",
-                              color: "#010040",
-                              fontSize: "11px",
-                            }}
-                          >
-                            Masukan kembali Nomor Whatsapp anda
-                          </label>
-                          <input
-                            disabled
-                            required
-                            type="text"
-                            className="form-control p-2"
-                            style={{ fontSize: "12px" }}
-                            name="no_whatsapp"
-                            value={user?.phone_number}
-                          />
-                        </div>
-                        <div className="form-group">
-                          <label
-                            style={{
-                              fontWeight: "bold",
-                              color: "#010040",
-                              fontSize: "11px",
-                            }}
-                          >
-                            Departemen
-                          </label>
-                          <input
-                            disabled
-                            required
-                            type="text"
-                            className="form-control p-2"
-                            style={{ fontSize: "12px" }}
-                            name="departemen"
-                            value={DEPARTMENTS[user?.department || "1"]}
-                          />
-                        </div>
-                        <div className="form-group">
-                          <label
-                            style={{
-                              fontWeight: "bold",
-                              color: "#010040",
-                              fontSize: "11px",
-                            }}
-                          >
-                            Kantor Cabang
-                          </label>
-                          <input
-                            disabled
-                            required
-                            type="text"
-                            className="form-control p-2"
-                            style={{ fontSize: "12px" }}
-                            name="departemen"
-                            value={BRANCHES[user?.branches || "1"]}
-                          />
-                        </div>
-                        {user?.branches === "1" && (
-                          <div className="form-group">
-                            <label
-                              style={{
-                                fontWeight: "bold",
-                                color: "#010040",
-                                fontSize: "11px",
-                              }}
-                            >
-                              Transportasi
-                            </label>
-                            <input
-                              disabled
-                              required
-                              type="text"
-                              className="form-control p-2"
-                              style={{ fontSize: "12px" }}
-                              name="departemen"
-                              value={TRANSPORTATIONS[user?.transportation]}
-                            />
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    style={{
-                      padding: "20px",
-                      background: "white",
-                      borderRadius: "10px",
-                      minHeight: "450px",
-                      textAlign: "left",
-                    }}
-                  >
-                    <div className="row justify-content-center">
-                      <div className="col-12">
-                        <div className="form-group">
-                          <label
-                            style={{
-                              fontWeight: "bold",
-                              color: "#010040",
-                              fontSize: "11px",
-                            }}
-                          >
-                            Nama Suami/Istri
-                          </label>
-                          <input
-                            disabled
-                            required
-                            type="text"
-                            className="form-control p-2"
-                            style={{ fontSize: "12px" }}
-                            name="name"
-                            value={user?.family[0]?.name}
-                          />
-                        </div>
-                        <div className="form-group">
-                          <label
-                            style={{
-                              fontWeight: "bold",
-                              color: "#010040",
-                              fontSize: "11px",
-                            }}
-                          >
-                            Nama Anak Pertama
-                          </label>
-                          <input
-                            disabled
-                            required
-                            type="text"
-                            className="form-control p-2"
-                            style={{ fontSize: "12px" }}
-                            name="first_child"
-                            value={user?.family[1]?.name}
-                          />
-                        </div>
-                        <div className="form-group">
-                          <label
-                            style={{
-                              fontWeight: "bold",
-                              color: "#010040",
-                              fontSize: "11px",
-                            }}
-                          >
-                            Nama Anak Kedua
-                          </label>
-                          <input
-                            disabled
-                            required
-                            type="text"
-                            className="form-control p-2"
-                            style={{ fontSize: "12px" }}
-                            name="second_child"
-                            value={user?.family[2]?.name}
-                          />
-                        </div>
-                        <div className="form-group">
-                          <label
-                            style={{
-                              fontWeight: "bold",
-                              color: "#010040",
-                              fontSize: "11px",
-                            }}
-                          >
-                            Nama Anak Ketiga
-                          </label>
-                          <input
-                            disabled
-                            required
-                            type="text"
-                            className="form-control p-2"
-                            style={{ fontSize: "12px" }}
-                            name="third_child"
-                            value={user?.family[3]?.name}
-                          />
-                        </div>
-                        <div className="form-group">
-                          <label
-                            style={{
-                              fontWeight: "bold",
-                              color: "#010040",
-                              fontSize: "11px",
-                            }}
-                          >
-                            Nama Anak Keempat
-                          </label>
-                          <input
-                            disabled
-                            required
-                            type="text"
-                            className="form-control p-2"
-                            style={{ fontSize: "12px" }}
-                            name="four_child"
-                            value={user?.family[4]?.name}
-                          />
-                        </div>
-                        <div className="form-group">
-                          <label
-                            style={{
-                              fontWeight: "bold",
-                              color: "#010040",
-                              fontSize: "11px",
-                            }}
-                          >
-                            Nama Anak Kelima
-                          </label>
-                          <input
-                            disabled
-                            required
-                            type="text"
-                            className="form-control p-2"
-                            style={{ fontSize: "12px" }}
-                            name="five_child"
-                            value={user?.family[5]?.name}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Carousel>
+                {Number(user?.branches === CITY.Jakarta) ? renderFullContent() : renderContent()}
               </div>
             </div>
           </div>
-          <div className="row justify-content-center mt-5">
-            {/* <div className="col-6" style={{ paddingRight: 0 }}>
-              <div className="text-center d-grip mb-3">
-                <button
-                  className="btn btn-lg btn-block"
-                  style={{
-                    paddingLeft: "5px",
-                    paddingRight: "20px",
-                    paddingTop: "10px",
-                    paddingBottom: "10px",
-                    background: "#fff",
-                    fontSize: "10px",
-                    fontWeight: "bold",
-                    color: "#000",
-                  }}
-                >
-                  <i className="fa fa-rotate-right mx-1"></i> Kirim ulang kode
-                </button>
-              </div>
-            </div> */}
+          <div className="row justify-content-center mt-5">           
             <div className="col-6" style={{ paddingLeft: 0 }}>
               <div className="text-center d-grip mb-3">
                 <a
