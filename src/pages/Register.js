@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { showToast, validate } from "./utils/helper";
 import { useNavigate } from "react-router-dom";
-import { Master, Users } from "../services";
+import { Master } from "../services";
 import Background from "./../BG1.svg";
 import "./../style.css";
 import $ from "jquery";
-import { CITY } from "./utils/constants";
-import LoadingScreen from 'react-loading-screen';
 window.jQuery = $;
 window.$ = $;
 global.jQuery = $;
@@ -26,7 +24,6 @@ export default function Register() {
 
   const [master, setMaster] = useState(null);
   const [bg, setBg] = useState(null);
-  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("register-payload"));
     if (data) {
@@ -48,7 +45,7 @@ export default function Register() {
     }
   }, []);
 
-  const _handleSubmit = async (e) => {
+  const _handleSubmit = (e) => {
     e.preventDefault();
     if (Number(payload.branches) !== 1) {
       delete payload.transportation;
@@ -72,29 +69,6 @@ export default function Register() {
     if (Number(p.branches) !== 1) {
       delete p.transportation;
     }
-
-    if (Number(payload.branches) !== Number(CITY.Jakarta)) {
-      // store to backend
-      const user = new Users();
-      setLoading(true);
-      const resp = await user.register(payload);
-      if (resp.code === 201) {
-        // login User
-        const resp = await user.login({ phone_number: payload.phone_number });
-        localStorage.setItem("user", JSON.stringify(resp.data));
-        localStorage.setItem("token", resp.token);
-        setLoading(false);
-        navigate("/home");
-        return;
-      }
-      if (resp.message === "phone-number-already-exists") {
-        setLoading(false);
-        return showToast("error", "Nomor handphone telah terdaftar.");
-      }
-      setLoading(false);
-      showToast("error", JSON.stringify(resp));
-      return
-    }
     localStorage.setItem("register-payload", JSON.stringify(payload));
     navigate("/confirm-register");
   };
@@ -108,19 +82,6 @@ export default function Register() {
 
   return (
     <div className="row justify-content-center">
-       <LoadingScreen
-        loading={loading}
-        bgColor="rgba(0,0,0,0.5)"
-        spinnerColor="#9ee5f8"
-        textColor="#FFF"
-        text={
-          <>
-            Data sedang diproses...
-            <br />
-            Mohon tidak memuat ulang atau menutup halaman ini
-          </>
-        }
-      />
       <div
         className="bg-mobile col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-12"
         style={{
@@ -143,7 +104,7 @@ export default function Register() {
         >
           <div className="container-fluid">
             <img
-              onClick={() => navigate("/")}
+              // onClick={() => navigate("/")}
               src="assets/img/logo/logo.svg"
               alt=""
               style={{

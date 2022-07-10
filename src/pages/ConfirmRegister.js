@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import LoadingScreen from 'react-loading-screen';
 import { Users } from "../services";
 import { useNavigate } from "react-router-dom";
-import { AGES } from "./utils/constants";
+import { AGES, CITY } from "./utils/constants";
 import { showToast } from "./utils/helper";
 import Background from "./../BG1.svg";
 export default function ConfirmRegister() {
@@ -66,6 +66,30 @@ export default function ConfirmRegister() {
     const resp = await user.register(data);
     setLoading(false);
     if (resp.code === 201) {
+      if (Number(data.branches) !== CITY.Jakarta) {
+        console.log({ data });
+        try {
+          localStorage.clear();
+          // setLoadingLogin(true);
+          const resp = await user.login({ phone_number: data.phone_number });
+          localStorage.setItem("user", JSON.stringify(resp.data));
+          localStorage.setItem("token", resp.token);
+    
+          // setLoadingLogin(false);
+    
+          navigate("/home");
+        } catch (err) {
+          if (err.code === 401) {
+            showToast("error", "Nomor telepon tidak terdaftar.");
+            // setLoadingLogin(false);
+            return;
+          }
+    
+          showToast("error", JSON.stringify(err));
+        }
+
+        return
+      }
       localStorage.setItem("phone-number", data.phone_number);
       navigate("/verif");
       return;
