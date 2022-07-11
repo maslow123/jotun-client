@@ -109,7 +109,7 @@ export default function Home() {
             </div>
           </div>
           <div className="d-flex justify-content-center mb-1">
-            {user?.branches === Number(CITY.Jakarta) && (
+            {(user?.branches === Number(CITY.Jakarta)) && (
               <div
                 onClick={() => navigate("/maps")}
                 className="col-5 col-xs-5 col-sm-5 col-md-5 col-lg-2 col-xl-2"

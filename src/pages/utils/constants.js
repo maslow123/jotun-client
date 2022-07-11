@@ -7,7 +7,8 @@ const BRANCHES = {
     '5':'Medan',
     '6':'Surabaya',
     '7':'Batam',
-    '8':'Balikpapan'
+    '8':'Balikpapan',
+    '9': 'Lainnya'
 };
 
 const CITY = {
