@@ -26,6 +26,7 @@ body{
 
 @media only screen and (min-width: 1200px) {
   .img{
+    padding-top:60px !important;
     width:90% !important;
     margin:auto !important;
   }
@@ -42,6 +43,8 @@ body{
     background-size:cover !important;
     background-position:center !important;
     overflow-y:scroll !important;
+    height:100% !important;
+
   }
   .session1 {
     position: relative;
@@ -81,10 +84,13 @@ body{
     width:70% !important;
     height:auto;
   }
+  
   .img{
-    /* margin-top:50px !important; */
-    width:90% !important;
+    padding-top:50px !important;
+    width:100% !important;
     margin:auto !important;
+    overflow:scroll !important;
+    
   }
   /* .fixed-bottom{
     position:fixed !important;
@@ -321,4 +327,11 @@ overflow:hidden !important;
 .swiper-pagination-bullet{
   background:#f7af03 !important;
 
+}
+.swiper-button-prev {
+  color: #f7af03; 
+}
+
+.swiper-button-next {
+  color: #f7af03; 
 }

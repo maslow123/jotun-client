@@ -6,9 +6,10 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 // import { Carousel } from "react-responsive-carousel";
 // import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
+import { Pagination, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 import "react-lazy-load-image-component/src/effects/blur.css";
 import $ from "jquery";
@@ -35,7 +36,7 @@ export default function LandingPage() {
     <>
       <div
         className="row justify-content-center"
-        style={{ overflowX: "hidden" }}
+        style={{ overflowX: "hidden", maxHeight: "700px" }}
       >
         <div
           className="bg-mobile col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-12 y"
@@ -51,14 +52,84 @@ export default function LandingPage() {
             // paddingBottom:'100px'
           }}
         >
+          {width >= 768 ? (
+            <nav
+              className="navbar navbar-light fixed-top navbar-expand"
+              style={{
+                background: "#010040",
+                position: "fixed",
+                height: "auto",
+                overflow: "hidden",
+              }}
+            >
+              <div className="container-fluid py-1">
+                <img
+                  onClick={() => navigate("/")}
+                  src="assets/img/logo/logo.svg"
+                  alt=""
+                  style={{
+                    // position: "absolute",
+                    width: "100px",
+                    // display: "block",
+                  }}
+                />
+                <div className="row justify-content-center">
+                  <div className="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-5 col-xl-5">
+                    <div className="text-center d-grid">
+                      <a
+                        onClick={() => navigate("/register")}
+                        className="btn btn-warning btn-block"
+                        style={{
+                          paddingTop: "7px",
+                          paddingBottom: "7px",
+                          paddingRight: "20px",
+                          paddingLeft: "20px",
+                          background: "#f9af02",
+                          textTransform: "uppercase",
+                          fontSize: "12px",
+                          fontWeight: "800",
+                        }}
+                      >
+                        Daftar
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-5 col-xl-5">
+                    <div className="text-center d-grid">
+                      <a
+                        onClick={() => navigate("/login")}
+                        className="btn btn-warning btn-block"
+                        style={{
+                          paddingTop: "7px",
+                          paddingBottom: "7px",
+                          paddingRight: "20px",
+                          paddingLeft: "20px",
+                          background: "#f9af02",
+                          textTransform: "uppercase",
+                          fontSize: "12px",
+                          fontWeight: "800",
+                        }}
+                      >
+                        Masuk
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          ) : (
+            <></>
+          )}
           <Swiper
             slidesPerView={1}
             centeredSlides={true}
             grabCursor={true}
+            navigation={width >= 768 ? true : false}
             pagination={{
               clickable: true,
             }}
-            modules={[Pagination]}
+            modules={[Pagination, Navigation]}
             className="mySwiper"
           >
             <SwiperSlide>
@@ -168,18 +239,7 @@ export default function LandingPage() {
               </div>
             </nav>
           ) : (
-            <nav
-              class="navbar fixed-top"
-              style={{
-                background: "#0117ae",
-              }}
-            >
-              <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                  Fixed top
-                </a>
-              </div>
-            </nav>
+            <></>
           )}
         </div>
       </div>
