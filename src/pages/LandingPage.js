@@ -36,7 +36,7 @@ export default function LandingPage() {
     <>
       <div
         className="row justify-content-center"
-        style={{ overflowX: "hidden", maxHeight: "700px" }}
+        style={{ overflowX: "hidden", maxHeight: "750px" }}
       >
         <div
           className="bg-mobile col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-12 y"
