@@ -23,7 +23,10 @@ body{
   background-position:center !important;
   max-height:700px;
 }
-
+.x {
+  overflowX: hidden !important;
+   /* maxHeight: 700px; */
+}
 @media only screen and (min-width: 1200px) {
   .img{
     padding-top:60px !important;
@@ -44,7 +47,6 @@ body{
     background-position:center !important;
     overflow-y:scroll !important;
     height:100% !important;
-
   }
   .session1 {
     position: relative;
@@ -87,9 +89,10 @@ body{
   
   .img{
     padding-top:50px !important;
-    width:100% !important;
+    width:90% !important;
     margin:auto !important;
     overflow:scroll !important;
+    padding-bottom: 50px !important;
     
   }
   /* .fixed-bottom{
@@ -99,6 +102,10 @@ body{
   } */
   .y{
    overflow-y:scroll !important;
+  }
+  .x {
+    overflowX: hidden !important;
+     maxHeight: 800px !important;
   }
 }
 @media only screen and (min-width: 413px) {
