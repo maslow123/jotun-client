@@ -19,12 +19,14 @@ body{
   background:url('BG1.svg') !important;
   background-repeat:no-repeat !important;
   overflow-y:scroll !important;
+  background-size:cover !important;
+  background-position:center !important;
   max-height:700px;
 }
 
 @media only screen and (min-width: 1200px) {
   .img{
-    width:75% !important;
+    width:90% !important;
     margin:auto !important;
   }
   .fixed-bottom{
@@ -32,13 +34,14 @@ body{
     bottom: 0 !important;
   }
 }
-@media only screen and (min-width: 540px) {
+@media only screen and (min-width: 768px) {
   .bg-mobile{
-    background:url('bg-desktop.png') !important;
-    background-repeat:no-repeat;
-    background-size:cover !important;
-    overflow-y:scroll !important;
     width:100% !important;
+    background:url('bg-desktop.png') !important;
+    background-repeat:no-repeat !important;
+    background-size:cover !important;
+    background-position:center !important;
+    overflow-y:scroll !important;
   }
   .session1 {
     position: relative;
@@ -79,19 +82,24 @@ body{
     height:auto;
   }
   .img{
-    width:56% !important;
+    /* margin-top:50px !important; */
+    width:90% !important;
     margin:auto !important;
   }
-  .fixed-bottom{
+  /* .fixed-bottom{
     position:fixed !important;
     margin: auto !important;
     width:23.6% !important;
+  } */
+  .y{
+   overflow-y:scroll !important;
   }
 }
 @media only screen and (min-width: 413px) {
   .y{
     height:900px !important;
     max-height:900px !important;
+    margin:auto !important;
   }
   .fixed-bottom {
    position:relative !important;
@@ -102,7 +110,7 @@ body{
   .y{
     height:800px !important;
     max-height:800px !important;
-    overflow-y: hidden !important;
+    overflow-y: hidden !important; 
   }
   .fixed-bottom {
     position:fixed !important;
