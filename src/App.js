@@ -20,6 +20,8 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import "./custom.scss";
 import Test from "./pages/Test";
+import Snack from "./pages/scan/Snack";
+import School from "./pages/scan/School";
 
 const App = () => {
   return (
@@ -41,6 +43,10 @@ const App = () => {
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/doorprize" element={<Doorprize />} />
         <Route exact path="/raffle-winner" element={<RaffleWinner />} />
+
+        <Route exact path="/venue/snack" element={<Snack />} />
+        <Route exact path="/venue/school" element={<School />} />
+
         <Route exact path="/test" element={<Test />} />
       </Routes>
       {/* <Footer /> */}

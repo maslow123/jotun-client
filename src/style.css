@@ -27,6 +27,9 @@ body{
   overflowX: hidden !important;
    /* maxHeight: 700px; */
 }
+.snack {
+  display:inline !important;
+}
 @media only screen and (min-width: 1200px) {
   .img{
     padding-top:60px !important;
@@ -39,6 +42,7 @@ body{
   }
 }
 @media only screen and (min-width: 768px) {
+  
   .bg-mobile{
     width:100% !important;
     background:url('bg-desktop.png') !important;
@@ -109,6 +113,7 @@ body{
   }
 }
 @media only screen and (min-width: 413px) {
+
   .y{
     height:900px !important;
     max-height:900px !important;
@@ -129,9 +134,13 @@ body{
     position:fixed !important;
     overflow-y: hidden !important;
   }
+  
 
 }
 @media only screen and (max-width: 360px) {
+  .snack {
+    display:none !important;
+  }
   .y{
     height:750px !important;
     max-height:750px !important;
