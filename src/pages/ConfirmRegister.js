@@ -53,7 +53,10 @@ export default function ConfirmRegister() {
     e.preventDefault();
     const p1 = await JSON.parse(localStorage.getItem("register-payload"));
     const p2 = { family_list: [] };
-    p2.family_list = payload.family_list.filter(item => item.name !== '');
+    p2.family_list = payload.family_list.map((item, i) => {
+      if (i === 0) return { ...item}
+      if (item.name !== '') return { ...item }
+    }).filter(item => item);
 
     const data = {
       ...p1,
