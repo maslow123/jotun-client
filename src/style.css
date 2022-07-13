@@ -191,7 +191,7 @@ input[type="radio"]:checked {
 }
 .modal-dialog {
     position: absolute;
-    top: 260px;
+    top: 200px;
     right: 100px;
     bottom: 0;
     left: 0;
@@ -229,7 +229,7 @@ input[type="radio"]:checked {
   -webkit-text-fill-color: #fff; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #12349e;
-  font-size: 16px;
+  font-size: 14px;
 }
 .session2 {
   position: relative;
@@ -261,8 +261,8 @@ input[type="radio"]:checked {
   height: auto;
 }
 .session3 img{
-  margin-left:-150px;
-  margin-top:-150px;
+  margin-left:-100px;
+  margin-top:-90px;
   width:100%;
   height:auto;
 }

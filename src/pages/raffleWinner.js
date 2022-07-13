@@ -15,7 +15,7 @@ export default function RaffleWinner() {
           padding: 0,
           overflowX: "hidden",
           position: "relative",
-          minHeight: "700px",
+          minHeight: "900px",
           backgroundRepeat: "no-repeat",
           // background: `url(${Background})`,
           background: `url(${Background})`,
