@@ -48,7 +48,7 @@ export default function Maps() {
             overflowX: "hidden",
             //   overflowY: "clip",
             position: "relative",
-            minHeight: "700px",
+            minHeight: "900px",
           }}
         >
           <nav
@@ -115,7 +115,7 @@ export default function Maps() {
             </div>
           </div>
           {/* <div className={session}>
-            <img src="assets/img/maps/default.png" />
+            <img src="assets/img/maps/maps.png" />
           </div>
           <div className="container-fluid mb">
             <button
@@ -160,6 +160,9 @@ export default function Maps() {
                     height={20}
                   />
                 </button>
+                <h5 className="mb-0 mx-0" style={{ fontWeight: "bold" }}>
+                  Artpreneur
+                </h5>
               </div>
             </div>
             <div className="row">
@@ -172,7 +175,7 @@ export default function Maps() {
                       height={15}
                     /> */}
                     <span className="alpha">A</span>
-                    <span className="mx-2 subtitle">Rgistrasi</span>
+                    <span className="mx-2 subtitle">Registrasi</span>
                   </li>
                   <li className="list-group-item">
                     {/* <img
@@ -181,7 +184,7 @@ export default function Maps() {
                       height={15}
                     /> */}
                     <span className="alpha">B</span>
-                    <span className="mx-2 subtitle">Gate</span>
+                    <span className="mx-2 subtitle">Welcoming Landmark</span>
                   </li>
                   <li className="list-group-item">
                     {/* <img
@@ -190,7 +193,7 @@ export default function Maps() {
                       height={15}
                     /> */}
                     <span className="alpha">C</span>
-                    <span className="mx-2 subtitle">Photobooth 180</span>
+                    <span className="mx-2 subtitle">Information Desk</span>
                   </li>
                   <li className="list-group-item">
                     {/* <img
@@ -199,7 +202,7 @@ export default function Maps() {
                       height={15}
                     /> */}
                     <span className="alpha">D</span>
-                    <span className="mx-2 subtitle">Photobooth 360</span>
+                    <span className="mx-2 subtitle">Photobooth 180</span>
                   </li>
                   <li className="list-group-item">
                     {/* <img
@@ -208,7 +211,7 @@ export default function Maps() {
                       height={15}
                     /> */}
                     <span className="alpha">E</span>
-                    <span className="mx-2 subtitle">Arcade Game</span>
+                    <span className="mx-2 subtitle">Photobooth 180</span>
                   </li>
                   <li className="list-group-item">
                     {/* <img
@@ -217,7 +220,25 @@ export default function Maps() {
                       height={15}
                     /> */}
                     <span className="alpha">F</span>
+                    <span className="mx-2 subtitle">Photobooth 360</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">G</span>
                     <span className="mx-2 subtitle">Claw Machine</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">H</span>
+                    <span className="mx-2 subtitle">VR Game</span>
                   </li>
                 </ul>
                 <hr />
@@ -233,16 +254,7 @@ export default function Maps() {
                       width={15}
                       height={15}
                     /> */}
-                    <span className="alpha">G</span>
-                    <span className="mx-2 subtitle">VR Game</span>
-                  </li>
-                  <li className="list-group-item">
-                    {/* <img
-                      src="assets/img/alphabet/A.png"
-                      width={15}
-                      height={15}
-                    /> */}
-                    <span className="alpha">H</span>
+                    <span className="alpha">I</span>
                     <span className="mx-2 subtitle">Coloring Competition</span>
                   </li>
                   <li className="list-group-item">
@@ -251,17 +263,8 @@ export default function Maps() {
                       width={15}
                       height={15}
                     /> */}
-                    <span className="alpha">I</span>
-                    <span className="mx-2 subtitle">Family Competition</span>
-                  </li>
-                  <li className="list-group-item">
-                    {/* <img
-                      src="assets/img/alphabet/A.png"
-                      width={15}
-                      height={15}
-                    /> */}
                     <span className="alpha">J</span>
-                    <span className="mx-2 subtitle">Toddler Area</span>
+                    <span className="mx-2 subtitle">Kiddie Rides</span>
                   </li>
                   <li className="list-group-item">
                     {/* <img
@@ -270,7 +273,43 @@ export default function Maps() {
                       height={15}
                     /> */}
                     <span className="alpha">K</span>
+                    <span className="mx-2 subtitle">Toddler Area</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">L</span>
                     <span className="mx-2 subtitle">F&B Area</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">M</span>
+                    <span className="mx-2 subtitle">Mushola</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">N</span>
+                    <span className="mx-2 subtitle">Storage & Souvenir</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">O</span>
+                    <span className="mx-2 subtitle">R. Menyusui</span>
                   </li>
                 </ul>
               </div>
@@ -347,6 +386,9 @@ export default function Maps() {
                     height={20}
                   />
                 </button>
+                <h5 className="mb-0 mx-0" style={{ fontWeight: "bold" }}>
+                  Raffles Ballrom
+                </h5>
               </div>
             </div>
             <div className="row">
@@ -358,44 +400,8 @@ export default function Maps() {
                       width={15}
                       height={15}
                     /> */}
-                    <span className="alpha">L</span>
-                    <span className="mx-2 subtitle">Photobooth</span>
-                  </li>
-                  <li className="list-group-item">
-                    {/* <img
-                      src="assets/img/alphabet/A.png"
-                      width={15}
-                      height={15}
-                    /> */}
-                    <span className="alpha">M</span>
-                    <span className="mx-2 subtitle">F&B Area</span>
-                  </li>
-                  <li className="list-group-item">
-                    {/* <img
-                      src="assets/img/alphabet/A.png"
-                      width={15}
-                      height={15}
-                    /> */}
-                    <span className="alpha">N</span>
-                    <span className="mx-2 subtitle">Main Stage</span>
-                  </li>
-                  <li className="list-group-item">
-                    {/* <img
-                      src="assets/img/alphabet/A.png"
-                      width={15}
-                      height={15}
-                    /> */}
-                    <span className="alpha">O</span>
-                    <span className="mx-2 subtitle">SideScreen</span>
-                  </li>
-                  <li className="list-group-item">
-                    {/* <img
-                      src="assets/img/alphabet/A.png"
-                      width={15}
-                      height={15}
-                    /> */}
                     <span className="alpha">P</span>
-                    <span className="mx-2 subtitle">Jimmy Jip</span>
+                    <span className="mx-2 subtitle">Registration</span>
                   </li>
                   <li className="list-group-item">
                     {/* <img
@@ -404,6 +410,60 @@ export default function Maps() {
                       height={15}
                     /> */}
                     <span className="alpha">Q</span>
+                    <span className="mx-2 subtitle">Welcoming Landmark</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">R</span>
+                    <span className="mx-2 subtitle">Photobooth</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">S</span>
+                    <span className="mx-2 subtitle">F&B Area</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">T</span>
+                    <span className="mx-2 subtitle">Main Stage</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">U</span>
+                    <span className="mx-2 subtitle">FOH</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">V</span>
+                    <span className="mx-2 subtitle">Jimmy Hip</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">W</span>
                     <span className="mx-2 subtitle">Seating Area</span>
                   </li>
                 </ul>
@@ -420,8 +480,55 @@ export default function Maps() {
                       width={15}
                       height={15}
                     /> */}
-                    <span className="alpha">R</span>
-                    <span className="mx-2 subtitle subtitle">FQH</span>
+                    <span className="alpha">1</span>
+                    <span className="mx-2 subtitle subtitle">R. Istirahat</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">2</span>
+                    <span className="mx-2 subtitle subtitle">R. Artis 1</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">3</span>
+                    <span className="mx-2 subtitle subtitle">R. Artis 2</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">4</span>
+                    <span className="mx-2 subtitle subtitle">
+                      R. VIP & Angklung
+                    </span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">5</span>
+                    <span className="mx-2 subtitle subtitle">R. EO</span>
+                  </li>
+                  <li className="list-group-item">
+                    {/* <img
+                      src="assets/img/alphabet/A.png"
+                      width={15}
+                      height={15}
+                    /> */}
+                    <span className="alpha">6</span>
+                    <span className="mx-2 subtitle subtitle">R. JOTUN</span>
                   </li>
                 </ul>
                 {/* <hr /> */}

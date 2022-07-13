@@ -18,7 +18,7 @@ export default function Logout() {
           overflowX: "hidden",
           overflowY: "clip",
           position: "relative",
-          minHeight: "700px",
+          minHeight: "900px",
         }}
       >
         <nav
