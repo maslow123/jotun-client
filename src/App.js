@@ -32,6 +32,9 @@ import ErrorSchool from "./pages/scan/error/School";
 import SuccessPlaying from "./pages/scan/success/Playing";
 import ErrorPlaying from "./pages/scan/error/Playing";
 
+import SuccessSouvenir from "./pages/scan/success/Souvenir";
+import ErrorSouvenir from "./pages/scan/error/Souvenir";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -68,6 +71,13 @@ const App = () => {
           element={<SuccessPlaying />}
         />
         <Route exact path="/venue/playing/error" element={<ErrorPlaying />} />
+
+        <Route
+          exact
+          path="/venue/souvenir/success"
+          element={<SuccessSouvenir />}
+        />
+        <Route exact path="/venue/souvenir/error" element={<ErrorSouvenir />} />
 
         <Route exact path="/test" element={<Test />} />
       </Routes>
