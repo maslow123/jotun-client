@@ -15,17 +15,13 @@ body{
   overflow-x:hidden;
   overflow-y:scroll;
 }
-#root{
-  width:100% !important;
-  height:100% !important;
-}
+
 .bg-mobile{
   background:url('BG1.svg') !important;
   background-repeat:no-repeat !important;
   overflow-y:scroll !important;
   background-size:cover !important;
   background-position:center !important;
-  max-height:700px;
 }
 .x {
   overflowX: hidden !important;
@@ -71,7 +67,7 @@ body{
     background-size:cover !important;
     background-position:center !important;
     overflow-y:scroll !important;
-    height:100% !important;
+    height:auto !important;
   }
   .session1 {
     position: relative;

@@ -136,7 +136,7 @@ export default function ConfirmRegister() {
           overflowX: "hidden",
           overflowY: "clip",
           position: "relative",
-          minHeight: "900px",
+          minHeight: "1008px",
         }}
       >
         <nav
