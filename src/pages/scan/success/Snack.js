@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Background from "./../../../bgscan/success/snack.png";
+import Background from "./../../../bgscan/background/snack.png";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-export default function Snack() {
+export default function Welcome() {
   const navigate = useNavigate();
   return (
     <div className="row justify-content-center">
@@ -18,22 +18,42 @@ export default function Snack() {
           overflowY: "scroll",
         }}
       >
-        <div>
-          <div
-            className="row justify-content-center"
-            style={{
-              position: "absolute",
-              bottom: 150,
-              left: 0,
-              right: 0,
-              overflow: "hidden",
-            }}
-          >
-            <div className="col-8 col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xl-7 mt-5">
+        <div className="container-fluid" style={{ marginTop: "150px" }}>
+          <div className="row justify-content-center">
+            <div className="col"></div>
+            <div className="col-2 col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+              <img
+                src="/assets/img/icon/success.png"
+                className="mb-4"
+                width={120}
+              />
+            </div>
+          </div>
+          <div className="row justify-content-center">
+            <div className="col-10 col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
               <div className="text-center">
-                <h1 className="mb-0 fontscan">Firdawuz</h1>
-                <h1 className="mb-0 fontscan">Powder Departemen</h1>
-                <h1 className="mb-0 fontscan">Jakarta</h1>
+                <h2 className="mb-3 header2" style={{ fontSize: "48px" }}>
+                  <i>Selamat menikmati snack buat kamu family jotun</i>
+                </h2>
+                <h2 className="mb-5 subheader2" style={{ fontSize: "30px" }}>
+                  Firdawuz <br /> Powder Departemen <br />
+                  Jakarta
+                </h2>
+                <h2 className="mb-0 subheader2" style={{ fontSize: "30px" }}>
+                  Chelsea firdawuz - 12 tahun
+                </h2>
+                <h2 className="mb-0 subheader2" style={{ fontSize: "30px" }}>
+                  Chelsea firdawuz - 12 tahun
+                </h2>
+                <h2 className="mb-0 subheader2" style={{ fontSize: "30px" }}>
+                  Chelsea firdawuz - 12 tahun
+                </h2>
+                <h2 className="mb-0 subheader2" style={{ fontSize: "30px" }}>
+                  Chelsea firdawuz - 12 tahun
+                </h2>
+                <h2 className="mb-0 subheader2" style={{ fontSize: "30px" }}>
+                  Chelsea firdawuz - 12 tahun
+                </h2>
               </div>
             </div>
           </div>

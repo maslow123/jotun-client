@@ -4,7 +4,7 @@ import Background from "./../../../bgscan/background/souvenir.png";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-export default function Welcome() {
+export default function Souvenir() {
   const navigate = useNavigate();
   return (
     <div className="row justify-content-center">
@@ -25,7 +25,10 @@ export default function Welcome() {
                 <h2 className="mb-3 header" style={{ fontSize: "100px" }}>
                   <i>
                     Pengambilan <br />
-                    <span style={{ fontSize: "90px" }}> Suvenir</span>
+                    <span style={{ fontSize: "90px", fontWeight: "normal" }}>
+                      {" "}
+                      Suvenir
+                    </span>
                   </i>
                 </h2>
               </div>
