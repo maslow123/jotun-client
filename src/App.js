@@ -32,6 +32,7 @@ import ErrorSchool from "./pages/scan/error/School";
 
 import SuccessPlaying from "./pages/scan/success/Playing";
 import ErrorPlaying from "./pages/scan/error/Playing";
+import IddlePlaying from "./pages/scan/iddle/Playing";
 
 import SuccessSouvenir from "./pages/scan/success/Souvenir";
 import ErrorSouvenir from "./pages/scan/error/Souvenir";
@@ -81,6 +82,7 @@ const App = () => {
           element={<SuccessPlaying />}
         />
         <Route exact path="/venue/playing/error" element={<ErrorPlaying />} />
+        <Route exact path="/venue/iddle-playing" element={<IddlePlaying />} />
 
         <Route
           exact

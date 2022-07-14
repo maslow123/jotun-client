@@ -4,7 +4,7 @@ import Background from "./../../../bgscan/background/snack.png";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-export default function Welcome() {
+export default function Snack() {
   const navigate = useNavigate();
   return (
     <div className="row justify-content-center">
