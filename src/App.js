@@ -22,6 +22,7 @@ import "./custom.scss";
 import Test from "./pages/Test";
 import SuccessPhoto from "./pages/scan/success/Photo";
 import ErrorPhoto from "./pages/scan/error/Photo";
+import IddlePhoto from "./pages/scan/iddle/Photo";
 
 import SuccessSnack from "./pages/scan/success/Snack";
 import ErrorSnack from "./pages/scan/error/Snack";
@@ -69,6 +70,7 @@ const App = () => {
 
         <Route exact path="/venue/photo/success" element={<SuccessPhoto />} />
         <Route exact path="/venue/photo/error" element={<ErrorPhoto />} />
+        <Route exact path="/venue/iddle-photo" element={<IddlePhoto />} />
 
         <Route exact path="/venue/snack/success" element={<SuccessSnack />} />
         <Route exact path="/venue/snack/error" element={<ErrorSnack />} />
