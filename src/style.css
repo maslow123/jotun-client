@@ -15,6 +15,10 @@ body{
   overflow-x:hidden;
   overflow-y:scroll;
 }
+#root{
+  width:100% !important;
+  height:100% !important;
+}
 .bg-mobile{
   background:url('BG1.svg') !important;
   background-repeat:no-repeat !important;
@@ -29,6 +33,23 @@ body{
 }
 .snack {
   display:inline !important;
+}
+.bg-scan{
+  background:url('bgscan/photo.png') !important;
+  width:100% !important;
+  background-repeat:no-repeat !important;
+  background-size:cover !important;
+  background-position:center !important;
+  overflow-y:scroll !important;
+  height:100% !important;
+}
+.fontscan{
+  font-size: 65px;
+  font-weight:900 !important;
+  text-transform: uppercase !important;
+  /* color:#fff; */
+  -webkit-text-stroke: 4px black;
+  -webkit-text-fill-color: white;
 }
 @media only screen and (min-width: 1200px) {
   .img{
