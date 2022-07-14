@@ -24,6 +24,8 @@ import SuccessPhoto from "./pages/scan/success/Photo";
 import ErrorPhoto from "./pages/scan/error/Photo";
 import SuccessSnack from "./pages/scan/success/Snack";
 import ErrorSnack from "./pages/scan/error/Snack";
+import SuccessSchool from "./pages/scan/success/School";
+import ErrorSchool from "./pages/scan/error/School";
 
 const App = () => {
   return (
@@ -51,6 +53,9 @@ const App = () => {
 
         <Route exact path="/venue/snack/success" element={<SuccessSnack />} />
         <Route exact path="/venue/snack/error" element={<ErrorSnack />} />
+
+        <Route exact path="/venue/school/success" element={<SuccessSchool />} />
+        <Route exact path="/venue/school/error" element={<ErrorSchool />} />
 
         <Route exact path="/test" element={<Test />} />
       </Routes>
