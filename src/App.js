@@ -22,6 +22,7 @@ import "./custom.scss";
 import Test from "./pages/Test";
 import Snack from "./pages/scan/Snack";
 import School from "./pages/scan/School";
+import Photo from "./pages/scan/success/Photo";
 
 const App = () => {
   return (
@@ -46,6 +47,7 @@ const App = () => {
 
         <Route exact path="/venue/snack" element={<Snack />} />
         <Route exact path="/venue/school" element={<School />} />
+        <Route exact path="/venue/photo/success" element={<Photo />} />
 
         <Route exact path="/test" element={<Test />} />
       </Routes>
