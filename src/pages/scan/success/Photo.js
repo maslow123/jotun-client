@@ -13,8 +13,6 @@ export default function Photo() {
         style={{
           margin: 0,
           padding: 0,
-          minHeight: "900px",
-          maxHeight: "990px",
           overflowX: "hidden",
           overflowY: "scroll",
         }}
