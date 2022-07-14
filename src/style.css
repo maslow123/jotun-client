@@ -31,7 +31,6 @@ body{
   display:inline !important;
 }
 .bg-scan{
-  background:url('bgscan/photo.png') !important;
   width:100% !important;
   background-repeat:no-repeat !important;
   background-size:cover !important;
@@ -48,6 +47,7 @@ body{
   -webkit-text-fill-color: white;
 }
 @media only screen and (min-width: 1200px) {
+
   .img{
     padding-top:60px !important;
     width:90% !important;
