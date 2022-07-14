@@ -35,7 +35,7 @@ export default function Welcome() {
                 <h2 className="mb-3 header2" style={{ fontSize: "54px" }}>
                   {/* <i>
                     Mohon maaf penukaran hanya berlaku bagi yang memiliki anak
-                    usia 3 - 18 tahun
+                    usia 1 - 12 tahun
                   </i> */}
                   <i>Sudah pernah menukarkan sebelumnya</i>
                 </h2>

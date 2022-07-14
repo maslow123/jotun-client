@@ -29,6 +29,7 @@ import IddleSnack from "./pages/scan/iddle/Snack";
 
 import SuccessSchool from "./pages/scan/success/School";
 import ErrorSchool from "./pages/scan/error/School";
+import IddleSchool from "./pages/scan/iddle/School";
 
 import SuccessPlaying from "./pages/scan/success/Playing";
 import ErrorPlaying from "./pages/scan/error/Playing";
@@ -75,6 +76,7 @@ const App = () => {
 
         <Route exact path="/venue/school/success" element={<SuccessSchool />} />
         <Route exact path="/venue/school/error" element={<ErrorSchool />} />
+        <Route exact path="/venue/iddle-school" element={<IddleSchool />} />
 
         <Route
           exact
