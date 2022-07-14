@@ -382,3 +382,17 @@ overflow:hidden !important;
   font-weight:bold !important;
   color:#fff;
 }
+.header2{
+  font-family: 'Gotham Bold', sans-serif !important;
+  text-transform: uppercase !important;
+  font-size:70px;
+  font-weight:900 !important;
+  color:#000080;
+}
+.subheader2{
+  font-family: 'Verdana', sans-serif !important;
+  text-transform: uppercase !important;
+  font-size:65px;
+  font-weight:bold !important;
+  color:#000080;
+}
