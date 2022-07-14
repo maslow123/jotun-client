@@ -7,9 +7,9 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 export default function Photo() {
   const navigate = useNavigate();
   return (
-    <div className="row justify-content-center">
+    <div className="row justify-content-center" style={{ background: "red" }}>
       <div
-        className="bg-scan col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-12"
+        className="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-12"
         style={{
           margin: 0,
           padding: 0,

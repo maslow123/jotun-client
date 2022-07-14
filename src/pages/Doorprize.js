@@ -40,7 +40,7 @@ export default function Doorprize() {
           overflowX: "hidden",
           overflowY: "clip",
           position: "relative",
-          minHeight: "900px",
+          minHeight: "1008px",
         }}
       >
         <nav

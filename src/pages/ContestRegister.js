@@ -168,7 +168,7 @@ export default function ContestRegister() {
           overflowX: "hidden",
           overflowY: "clip",
           position: "relative",
-          minHeight: "700px",
+          minHeight: "1008px",
         }}
       >
         <nav
@@ -469,7 +469,7 @@ export default function ContestRegister() {
                               fontSize: "14px",
                             }}
                           >
-                            {child.age === 0 ? '0-1' : child.age} Tahun
+                            {child.age === 0 ? "0-1" : child.age} Tahun
                           </span>
                         </div>
                       </li>
