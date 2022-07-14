@@ -30,7 +30,7 @@ export default function Photo() {
               <div className="text-center">
                 <h2 className="mb-3 header" style={{ fontSize: "48px" }}>
                   <i>
-                    Selamat berfotoFamily Jotun <br /> jangan lupa posting di
+                    Selamat berfoto Family Jotun <br /> jangan lupa posting di
                     socmed kebahagiaan kamu
                   </i>
                 </h2>
