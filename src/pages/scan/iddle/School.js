@@ -18,30 +18,18 @@ export default function School() {
           overflowY: "scroll",
         }}
       >
-        <div className="container-fluid" style={{ marginTop: "150px" }}>
-          <div className="row justify-content-center">
-            <div className="col"></div>
-            <div className="col-2 col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-              <img
-                src="/assets/img/icon/cancel.png"
-                className="mb-4"
-                width={120}
-              />
-            </div>
-          </div>
+        <div className="container-fluid" style={{ marginTop: "360px" }}>
           <div className="row justify-content-center">
             <div className="col-10 col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
               <div className="text-center">
-                <h2 className="mb-3 header" style={{ fontSize: "54px" }}>
-                  {/* <i>
-                    Mohon maaf penukaran hanya berlaku bagi yang memiliki anak
-                    usia 3 - 18 tahun
-                  </i> */}
-                  <i>Sudah pernah menukarkan sebelumnya</i>
-                </h2>
-                <h2 className="mb-3 subheader">
-                  Firdawuz <br /> Powder Departemen <br />
-                  Jakarta
+                <h2 className="mb-3 header" style={{ fontSize: "100px" }}>
+                  <i>
+                    Pengambilan <br />
+                    <span style={{ fontSize: "80px", fontWeight: "normal" }}>
+                      {" "}
+                      paket Anak sekolah <br /> Umur 3 - 18 tahun
+                    </span>
+                  </i>
                 </h2>
               </div>
             </div>
