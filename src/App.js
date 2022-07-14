@@ -38,6 +38,10 @@ import ErrorSouvenir from "./pages/scan/error/Souvenir";
 import SuccessVideo from "./pages/scan/success/Video";
 import ErrorVideo from "./pages/scan/error/Video";
 
+import SuccessWelcome from "./pages/scan/success/Welcome";
+import SuccessWelcomeBack from "./pages/scan/success/WelcomeBack";
+import ErrorWelcome from "./pages/scan/error/Welcome";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -84,6 +88,18 @@ const App = () => {
 
         <Route exact path="/venue/video/success" element={<SuccessVideo />} />
         <Route exact path="/venue/video/error" element={<ErrorVideo />} />
+
+        <Route
+          exact
+          path="/venue/welcome/success"
+          element={<SuccessWelcome />}
+        />
+        <Route
+          exact
+          path="/venue/welcomeback/success"
+          element={<SuccessWelcomeBack />}
+        />
+        <Route exact path="/venue/welcome/error" element={<ErrorWelcome />} />
 
         <Route exact path="/test" element={<Test />} />
       </Routes>
