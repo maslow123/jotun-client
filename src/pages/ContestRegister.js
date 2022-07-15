@@ -74,7 +74,6 @@ export default function ContestRegister() {
       const data= JSON.parse(localStorage.getItem('user'));
       data.family.splice(0, 1);
 
-      console.log(data.family);
       const f = family?.length > 0 ? family : data.family;
       var childNonRegisteredArr = []
       for (let i = 0; i < f.length; i++) {

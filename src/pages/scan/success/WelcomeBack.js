@@ -4,8 +4,19 @@ import Background from "./../../../bgscan/background/iddle-welcome.png";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { BRANCHES, DEPARTMENTS } from "../../utils/constants";
 export default function WelcomeBack() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const user = localStorage.getItem('user-scan');
+    if (!user) {
+      return navigate('/venue/iddle-welcome');
+    }
+
+    setUser(JSON.parse(user));
+
+  }, []);
   return (
     <div className="row justify-content-center">
       <div
@@ -34,8 +45,8 @@ export default function WelcomeBack() {
                   </i>
                 </h2>
                 <h2 className="mb-3 subheader">
-                  Firdawuz <br /> Powder Departemen <br />
-                  Jakarta
+                {user?.name} <br /> {DEPARTMENTS[user?.department]} <br />
+                  {BRANCHES[user?.branches]}
                 </h2>
               </div>
             </div>

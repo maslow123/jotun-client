@@ -4,8 +4,37 @@ import Background from "./../../../bgscan/background/snack.png";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { BRANCHES, DEPARTMENTS } from "../../utils/constants";
 export default function Welcome() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState('');
+  useEffect(() => {
+    const user = localStorage.getItem('user-scan');
+    let err = localStorage.getItem('error');
+    if (!user) {
+      return navigate('/venue/iddle-snack');
+    }
+
+    if (err) {
+      console.log(err);
+      switch(err) {
+        case 'invalid-children-age':
+          err = 'Mohon maaf penukaran hanya berlaku bagi yang memiliki anak usia 1 - 12 tahun';
+          break;
+        case 'invalid-attendance':
+          err = 'Anda belum terdaftar'
+        default:
+          break;
+      }
+
+      setError(err);
+    }
+
+    setUser(JSON.parse(user));
+
+  }, []);
+  
   return (
     <div className="row justify-content-center">
       <div
@@ -32,17 +61,15 @@ export default function Welcome() {
           <div className="row justify-content-center">
             <div className="col-10 col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
               <div className="text-center">
-                <h2 className="mb-3 header2" style={{ fontSize: "54px" }}>
-                  {/* <i>
-                    Mohon maaf penukaran hanya berlaku bagi yang memiliki anak
-                    usia 1 - 12 tahun
-                  </i> */}
-                  <i>Sudah pernah menukarkan sebelumnya</i>
+                <h2 className="mb-3 header2" style={{ fontSize: "54px" }}>                  
+                  <i>{error}</i>
                 </h2>
-                <h2 className="mb-3 subheader2">
-                  Firdawuz <br /> Powder Departemen <br />
-                  Jakarta
-                </h2>
+                {error !== 'Anda belum terdaftar' && (
+                  <h2 className="mb-3 subheader2">
+                    {user?.name} <br /> {DEPARTMENTS[user?.department]} <br />
+                    {BRANCHES[user?.branches]}
+                  </h2>
+                )}
               </div>
             </div>
           </div>

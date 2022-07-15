@@ -70,7 +70,6 @@ export default function ConfirmRegister() {
     setLoading(false);
     if (resp.code === 201) {
       if (Number(data.branches) !== CITY.Jakarta) {
-        console.log({ data });
         try {
           localStorage.clear();
           // setLoadingLogin(true);

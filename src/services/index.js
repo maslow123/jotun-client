@@ -3,11 +3,13 @@ import ConfirmInvitation from './confirm-invitation';
 import Master from './master';
 import Events from './events';
 import UserEvents from './user-events';
+import Scan from './scan';
 
 export { 
     Users,
     ConfirmInvitation,
     Master,
     Events,
-    UserEvents
+    UserEvents,
+    Scan
 };

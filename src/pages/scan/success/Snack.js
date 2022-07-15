@@ -6,6 +6,16 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 export default function Snack() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const user = localStorage.getItem('user-scan');
+    if (!user) {
+      // return navigate('/venue/iddle-welcome');
+    }
+
+    setUser(JSON.parse(user));
+
+  }, []);
   return (
     <div className="row justify-content-center">
       <div

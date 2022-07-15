@@ -2,15 +2,50 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Background from "./../../../bgscan/background/photo.png";
 import { QrReader } from "react-qr-reader";
+import { Scan } from "../../../services";
 
 export default function Photo() {
   const [data, setData] = useState("No result");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
-    if (data !== "No result") {
-      return navigate("/venue/photo/success");
+    localStorage.clear();
+  }, [])
+
+  const _onResult = async (r, e) => {
+    if (!!r) {
+      const payload = {
+        code: 'FOTO',
+        key: r.text
+      };
+      
+      try {
+        if (!loading) {
+          setLoading(true);
+          const scan = new Scan();
+          const resp = await scan.doScan(payload);
+  
+          if (resp.status === 200) {
+            // save user data to localstorage
+            localStorage.setItem('user-scan', JSON.stringify(resp.data.user))
+            if (resp.state === 'new') {
+              return navigate('/venue/photo/success');            
+            }          
+            return navigate('/venue/photo/error');                 
+          }
+          setLoading(false);
+        }
+      } catch(e) {        
+        console.log({ e });
+        localStorage.setItem('error', e.message)
+        if (e.status === 422) {          
+          localStorage.setItem('user-scan', JSON.stringify(e.data.user))
+        }
+        setLoading(false);
+        return navigate('/venue/photo/error');    
+      }
     }
-  });
+  }
   return (
     <div className="row justify-content-center">
       <div
@@ -42,15 +77,7 @@ export default function Photo() {
               <div className="bgqr">
                 <QrReader
                   className="qr"
-                  onResult={(result, error) => {
-                    if (!!result) {
-                      setData(result?.text);
-                    }
-
-                    if (!!error) {
-                      console.info(error);
-                    }
-                  }}
+                  onResult={_onResult}
                   style={{ width: "100%" }}
                 />
               </div>
