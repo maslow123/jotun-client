@@ -32,7 +32,7 @@ export default function School() {
                     Pengambilan <br />
                     <span style={{ fontSize: "80px", fontWeight: "normal" }}>
                       {" "}
-                      paket Anak sekolah <br /> Umur 3 - 18 tahun
+                      paket Anak sekolah
                     </span>
                   </i>
                 </h2>
