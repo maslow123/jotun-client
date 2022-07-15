@@ -47,6 +47,7 @@ import IddleVideo from "./pages/scan/iddle/Video";
 import SuccessWelcome from "./pages/scan/success/Welcome";
 import SuccessWelcomeBack from "./pages/scan/success/WelcomeBack";
 import ErrorWelcome from "./pages/scan/error/Welcome";
+import IddleWelcome from "./pages/scan/iddle/Welcome";
 
 const App = () => {
   return (
@@ -112,6 +113,7 @@ const App = () => {
           element={<SuccessWelcomeBack />}
         />
         <Route exact path="/venue/welcome/error" element={<ErrorWelcome />} />
+        <Route exact path="/venue/iddle-welcome" element={<IddleWelcome />} />
 
         <Route exact path="/test" element={<Test />} />
       </Routes>
