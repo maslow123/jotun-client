@@ -5,14 +5,89 @@ import { QrReader } from "react-qr-reader";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { Scan } from "../../../services";
 export default function Souvenir() {
   const [data, setData] = useState("No result");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
-    if (data !== "No result") {
-      return navigate("/venue/souvenir/success");
+    // const doScan = async () => {
+    //   const payload = {
+    //     code: 'SOUVENIR',
+    //     key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiI2MjgxNjgzNDYzMSIsIm5hbWUiOiJaZW5pdGhhIGZpdHJpYXRpIiwiaWF0IjoxNjU3MzMyNDI2LCJleHAiOjE2NTc0MTg4MjZ9.lTlrw7eyj5URWqOwU5pFYjAoPhcv5K9kp4evfnwqMGM'
+    //   };
+      
+    //   try {
+    //     if (!loading) {
+    //       setLoading(true);
+    //       const scan = new Scan();
+    //       const resp = await scan.doScan(payload);
+          
+    //       console.log({ resp });
+    //       if (resp.status === 200) {
+    //         // save user data to localstorage
+    //         localStorage.setItem('user-scan', JSON.stringify(resp.data))
+    //         if (resp.state === 'new') {
+    //           return navigate('/venue/souvenir/success');            
+    //         }       
+            
+    //         localStorage.setItem('state', resp.state);   
+    //         return navigate('/venue/souvenir/error');                 
+    //       }
+    //       setLoading(false);
+    //     }
+    //   } catch(e) {        
+    //     console.log({ e });
+    //     localStorage.setItem('error', e.message)
+    //     if (e.status === 422) {          
+    //       localStorage.setItem('user-scan', JSON.stringify(e.data.user))
+    //     }
+    //     setLoading(false);
+    //     return navigate('/venue/souvenir/error');    
+    //   }
+    // };
+
+    // doScan();
+    localStorage.clear();
+  }, [])
+
+  const _onResult = async (r, e) => {
+    if (!!r) {
+      const payload = {
+        code: 'SOUVENIR',
+        key: r.text
+      };
+      
+      try {
+        if (!loading) {
+          setLoading(true);
+          const scan = new Scan();
+          const resp = await scan.doScan(payload);
+          
+          console.log({ resp });
+          if (resp.status === 200) {
+            // save user data to localstorage
+            localStorage.setItem('user-scan', JSON.stringify(resp.data))
+            if (resp.state === 'new') {
+              return navigate('/venue/souvenir/success');            
+            }       
+            
+            localStorage.setItem('state', resp.state);   
+            return navigate('/venue/souvenir/error');                 
+          }
+          setLoading(false);
+        }
+      } catch(e) {        
+        console.log({ e });
+        localStorage.setItem('error', e.message)
+        if (e.status === 422) {          
+          localStorage.setItem('user-scan', JSON.stringify(e.data.user))
+        }
+        setLoading(false);
+        return navigate('/venue/souvenir/error');    
+      }
     }
-  });
+  }
   return (
     <div className="row justify-content-center">
       <div
@@ -44,15 +119,7 @@ export default function Souvenir() {
               <div className="bgqr">
                 <QrReader
                   className="qr"
-                  onResult={(result, error) => {
-                    if (!!result) {
-                      setData(result?.text);
-                    }
-
-                    if (!!error) {
-                      console.info(error);
-                    }
-                  }}
+                  onResult={_onResult}
                   style={{ width: "100%" }}
                 />
               </div>

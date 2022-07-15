@@ -9,12 +9,14 @@ export default function Welcome() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [error, setError] = useState('');
+  const [status, setStatus] = useState('');
   useEffect(() => {
     const user = localStorage.getItem('user-scan');
+    const state = localStorage.getItem('state');
     let err = localStorage.getItem('error');
-    if (!user) {
-      return navigate('/venue/iddle-snack');
-    }
+    // if (!user) {
+    //   return navigate('/venue/iddle-snack');
+    // }
 
     if (err) {
       console.log(err);
@@ -30,6 +32,11 @@ export default function Welcome() {
 
       setError(err);
     }
+
+    if (state === 'update') {
+      setError('SUDAH PERNAH MENUKARKAN SEBELUMNYA');
+    }
+    setStatus(state);
 
     setUser(JSON.parse(user));
 
@@ -64,10 +71,10 @@ export default function Welcome() {
                 <h2 className="mb-3 header2" style={{ fontSize: "54px" }}>                  
                   <i>{error}</i>
                 </h2>
-                {error !== 'Anda belum terdaftar' && (
+                {(error !== 'Anda belum terdaftar' && status !== 'update') && (
                   <h2 className="mb-3 subheader2">
-                    {user?.name} <br /> {DEPARTMENTS[user?.department]} <br />
-                    {BRANCHES[user?.branches]}
+                    {user?.user?.name} <br /> {DEPARTMENTS[user?.user?.department]} <br />
+                    {BRANCHES[user?.user?.branches]}
                   </h2>
                 )}
               </div>

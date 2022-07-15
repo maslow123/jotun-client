@@ -2,15 +2,87 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Background from "./../../../bgscan/background/school.png";
 import { QrReader } from "react-qr-reader";
+import { Scan } from "../../../services";
 
 export default function School() {
   const [data, setData] = useState("No result");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
-    if (data !== "No result") {
-      return navigate("/venue/school/success");
+    // const doScan = async () => {
+    //   const payload = {
+    //     code: 'PAKET_SEKOLAH',
+    //     key: 'eyffGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiI2MjgxNjgzNDYzMSIsIm5hbWUiOiJaZW5pdGhhIGZpdHJpYXRpIiwiaWF0IjoxNjU3MzMyNDI2LCJleHAiOjE2NTc0MTg4MjZ9.lTlrw7eyj5URWqOwU5pFYjAoPhcv5K9kp4evfnwqMGM'
+    //   };
+      
+    //   try {
+    //     if (!loading) {
+    //       setLoading(true);
+    //       const scan = new Scan();
+    //       const resp = await scan.doScan(payload);
+          
+    //       console.log({ resp });
+    //       if (resp.status === 200) {
+    //         // save user data to localstorage
+    //         localStorage.setItem('user-scan', JSON.stringify(resp.data))
+    //         if (resp.state === 'new') {
+    //           return navigate('/venue/school/success');            
+    //         }       
+            
+    //         localStorage.setItem('state', resp.state);   
+    //         return navigate('/venue/school/error');                 
+    //       }
+    //       setLoading(false);
+    //     }
+    //   } catch(e) {        
+    //     console.log({ e });
+    //     localStorage.setItem('error', e.message)
+    //     if (e.status === 422) {          
+    //       localStorage.setItem('user-scan', JSON.stringify(e.data.user))
+    //     }
+    //     setLoading(false);
+    //     return navigate('/venue/school/error');    
+    //   }
+    // };
+
+    // doScan();
+    localStorage.clear();
+  }, [])
+
+  const _onResult = async (r, e) => {
+    if (!!r) {
+      const payload = {
+        code: 'FOTO',
+        key: r.text
+      };
+      
+      try {
+        if (!loading) {
+          setLoading(true);
+          const scan = new Scan();
+          const resp = await scan.doScan(payload);
+  
+          if (resp.status === 200) {
+            // save user data to localstorage
+            localStorage.setItem('user-scan', JSON.stringify(resp.data.user))
+            if (resp.state === 'new') {
+              return navigate('/venue/photo/success');            
+            }          
+            return navigate('/venue/photo/error');                 
+          }
+          setLoading(false);
+        }
+      } catch(e) {        
+        console.log({ e });
+        localStorage.setItem('error', e.message)
+        if (e.status === 422) {          
+          localStorage.setItem('user-scan', JSON.stringify(e.data.user))
+        }
+        setLoading(false);
+        return navigate('/venue/photo/error');    
+      }
     }
-  });
+  }
   return (
     <div className="row justify-content-center">
       <div
@@ -42,15 +114,7 @@ export default function School() {
               <div className="bgqr">
                 <QrReader
                   className="qr"
-                  onResult={(result, error) => {
-                    if (!!result) {
-                      setData(result?.text);
-                    }
-
-                    if (!!error) {
-                      console.info(error);
-                    }
-                  }}
+                  onResult={_onResult}
                   style={{ width: "100%" }}
                 />
               </div>

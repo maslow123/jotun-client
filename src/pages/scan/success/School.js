@@ -4,8 +4,19 @@ import Background from "./../../../bgscan/background/school.png";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { BRANCHES, DEPARTMENTS } from "../../utils/constants";
 export default function School() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const user = localStorage.getItem('user-scan');
+    if (!user) {
+      return navigate('/venue/iddle-welcome');
+    }
+
+    setUser(JSON.parse(user));
+
+  }, []);
   return (
     <div className="row justify-content-center">
       <div
@@ -36,24 +47,15 @@ export default function School() {
                   <i>Selamat bersekolah untuk family jotun</i>
                 </h2>
                 <h2 className="mb-5 subheader" style={{ fontSize: "30px" }}>
-                  Firdawuz <br /> Powder Departemen <br />
-                  Jakarta
+                  {user?.user?.name} <br /> {DEPARTMENTS[user?.user?.department]} <br />
+                  {BRANCHES[user?.user?.branches]}
                 </h2>
-                <h2 className="mb-0 subheader" style={{ fontSize: "30px" }}>
-                  Chelsea firdawuz - 12 tahun
-                </h2>
-                <h2 className="mb-0 subheader" style={{ fontSize: "30px" }}>
-                  Chelsea firdawuz - 12 tahun
-                </h2>
-                <h2 className="mb-0 subheader" style={{ fontSize: "30px" }}>
-                  Chelsea firdawuz - 12 tahun
-                </h2>
-                <h2 className="mb-0 subheader" style={{ fontSize: "30px" }}>
-                  Chelsea firdawuz - 12 tahun
-                </h2>
-                <h2 className="mb-0 subheader" style={{ fontSize: "30px" }}>
-                  Chelsea firdawuz - 12 tahun
-                </h2>
+                {/* Mapping children */}
+                {user?.children?.length > 0 && user?.children.map((child, i) => (
+                  <h2 className="mb-0 subheader" style={{ fontSize: "30px" }} key={i}>
+                    {child.name} - {child.age} tahun
+                  </h2>
+                ))}
               </div>
             </div>
           </div>

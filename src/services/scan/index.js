@@ -13,7 +13,7 @@ export default class Users {
             .then(res => {
                 res.json()
                 .then(data => {
-                    if(data.code === 200) {
+                    if(data.status === 200) {
                         return resolve(data);
                     }
                     reject(data);

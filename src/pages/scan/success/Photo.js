@@ -4,8 +4,30 @@ import Background from "./../../../bgscan/background/photo.png";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { BRANCHES, DEPARTMENTS } from "../../utils/constants";
 export default function Photo() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    let redirect = false;
+    const interval = setInterval(() => {
+      if (!redirect) {
+        redirect = true;
+      }
+      if (redirect) {     
+        clearInterval(interval);
+        return navigate('/venue/iddle-video');
+      }
+    }, 3000);
+    const user = localStorage.getItem('user-scan');
+    if (!user) {
+      return navigate('/venue/iddle-photo');
+    }
+
+    setUser(JSON.parse(user));
+
+  }, []);
+
   return (
     <div className="row justify-content-center">
       <div
@@ -35,8 +57,8 @@ export default function Photo() {
                   </i>
                 </h2>
                 <h2 className="mb-3 subheader">
-                  Firdawuz <br /> Powder Departemen <br />
-                  Jakarta
+                  {user?.user?.name} <br /> {DEPARTMENTS[user?.user?.department]} <br />
+                  {BRANCHES[user?.user?.branches]}
                 </h2>
               </div>
             </div>
