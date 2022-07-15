@@ -32,7 +32,7 @@ export default function Playing() {
                     Pengambilan <br />
                     <span style={{ fontSize: "90px", fontWeight: "normal" }}>
                       {" "}
-                      Koin game
+                      Voucher mesin capit
                     </span>
                   </i>
                 </h2>
