@@ -539,11 +539,12 @@ export default function ConfirmRegister() {
                     <div className="text-center d-grid mt-2 actions">
                       <button
                         disabled={
-                          !(
+                          (!(
                             payload.family_list.filter(
                               (item) => item.name !== ""
                             ).length > 0
-                          )
+                          ) 
+                          || loading)
                         }
                         type="submit"
                         className="btn btn-warning btn-lg btn-block"
@@ -560,7 +561,7 @@ export default function ConfirmRegister() {
                       </button>
                       <button
                         disabled={
-                          !payload.family_list.every((item) => item.name === "")
+                          (!payload.family_list.every((item) => item.name === "") || loading)
                         }
                         type="submit"
                         className="btn btn-warning btn-lg btn-block mt-3"
