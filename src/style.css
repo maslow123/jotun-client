@@ -396,3 +396,15 @@ overflow:hidden !important;
   font-weight:bold !important;
   color:#000080;
 }
+.bgqr {
+  border-radius: 10px;
+  /* border: 10px solid white; */
+  width: 400px !important;
+  height: 300px !important;
+  overflow: hidden !important;
+  margin: auto !important;
+}
+.qr {
+  opacity: 10%;
+  margin-top: -50px !important;
+}
