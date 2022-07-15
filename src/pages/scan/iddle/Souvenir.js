@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Background from "./../../../bgscan/background/souvenir.png";
+import { QrReader } from "react-qr-reader";
 
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 export default function Souvenir() {
+  const [data, setData] = useState("No result");
   const navigate = useNavigate();
+  useEffect(() => {
+    if (data !== "No result") {
+      return navigate("/venue/souvenir/success");
+    }
+  });
   return (
     <div className="row justify-content-center">
       <div
@@ -18,9 +25,9 @@ export default function Souvenir() {
           overflowY: "scroll",
         }}
       >
-        <div className="container-fluid" style={{ marginTop: "360px" }}>
+        <div className="container-fluid" style={{ marginTop: "300px" }}>
           <div className="row justify-content-center">
-            <div className="col-10 col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+            <div className="col-10 col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mb-0">
               <div className="text-center">
                 <h2 className="mb-3 header" style={{ fontSize: "100px" }}>
                   <i>
@@ -32,6 +39,31 @@ export default function Souvenir() {
                   </i>
                 </h2>
               </div>
+            </div>
+            <div className="col-3">
+              <div className="bgqr">
+                <QrReader
+                  className="qr"
+                  onResult={(result, error) => {
+                    if (!!result) {
+                      setData(result?.text);
+                    }
+
+                    if (!!error) {
+                      console.info(error);
+                    }
+                  }}
+                  style={{ width: "100%" }}
+                />
+              </div>
+              {/* <div className="text-center">
+                <h3
+                  className="subheader mt-3"
+                  style={{ fontWeight: "normal", fontSize: "30px" }}
+                >
+                  SCAN DISINI
+                </h3>
+              </div> */}
             </div>
           </div>
         </div>
