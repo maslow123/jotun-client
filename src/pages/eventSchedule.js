@@ -183,7 +183,7 @@ export default function EventSchedule() {
                               className="p-0 m-0"
                               style={{ fontSize: "9px", color: "#12349e" }}
                             >
-                              <i className="fa fa-clock mx-1"></i>{schedule.time_start} {schedule.time_end}
+                              <i className="fa fa-clock mx-1"></i>{schedule.time_start}-{schedule.time_end}
                             </p>
                             <p
                               className="p-0 m-0"
