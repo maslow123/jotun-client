@@ -32,7 +32,7 @@ export default function Welcome() {
       console.log(err);
       switch(err) {
         case 'invalid-attendance':
-          err = 'Anda belum terdaftar'
+          err = "Anda belum terdaftar pada daftar kehadiran";
         default:
           break;
       }

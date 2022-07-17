@@ -102,7 +102,7 @@ export default function Maps() {
               </li>
             </ol>
           </div>
-          <div className="container-fluid" style={{ marginTop: "200px" }}>
+          {/* <div className="container-fluid" style={{ marginTop: "200px" }}>
             <div
               className="text-center"
               style={{
@@ -113,8 +113,8 @@ export default function Maps() {
             >
               <h2 style={{ fontWeight: "bold" }}>AKAN DATANG</h2>
             </div>
-          </div>
-          {/* <div className={session}>
+          </div> */}
+          <div className={session}>
             <img src="assets/img/maps/maps.png" />
           </div>
           <div className="container-fluid mb">
@@ -130,7 +130,7 @@ export default function Maps() {
             >
               <i className="fa fa-list"></i>
             </button>
-          </div> */}
+          </div>
         </div>
       </div>
       <div
