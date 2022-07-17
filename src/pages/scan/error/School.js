@@ -35,10 +35,8 @@ export default function School() {
         case 'invalid-children-age':
           err = 'Mohon maaf penukaran hanya berlaku bagi yang memiliki anak usia 3 - 18 tahun';
           break;
-        case 'invalid-attendance':
-        case 'invalid-token':
-          err = "Anda belum terdaftar pada daftar kehadiran";
         default:
+          err = "Anda belum terdaftar pada daftar kehadiran";
           break;
       }
 

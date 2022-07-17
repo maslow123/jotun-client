@@ -24,9 +24,9 @@ export default function Welcome() {
     const user = localStorage.getItem('user-scan');
     const state = localStorage.getItem('state');
     let err = localStorage.getItem('error');
-    if (!err) {      
-      return navigate('/venue/iddle-snack');
-    }
+    // if (!err) {      
+    //   return navigate('/venue/iddle-snack');
+    // }
 
     if (err) {
       console.log(err);
@@ -34,10 +34,8 @@ export default function Welcome() {
         case 'invalid-children-age':
           err = 'Mohon maaf penukaran hanya berlaku bagi yang memiliki anak usia 1 - 12 tahun';
           break;
-        case 'invalid-attendance':
-        case 'invalid-token':
-          err = "Anda belum terdaftar pada daftar kehadiran";
         default:
+          err = "Anda belum terdaftar pada daftar kehadiran";
           break;
       }
 

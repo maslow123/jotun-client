@@ -30,15 +30,7 @@ export default function Video() {
 
     if (err) {
       console.log(err);
-      switch(err) {
-        case 'invalid-attendance':
-        case 'invalid-token':
-          err = "Anda belum terdaftar pada daftar kehadiran";
-        default:
-          break;
-      }
-
-      setError(err);
+      setError('Anda belum terdaftar pada daftar kehadiran');
     }
 
     if (state === 'update') {

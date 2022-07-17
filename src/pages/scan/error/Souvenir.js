@@ -29,16 +29,8 @@ export default function Welcome() {
     // }
 
     if (err) {
-      console.log(err);
-      switch(err) {
-        case 'invalid-attendance':
-        case 'invalid-token':
-          err = "Anda belum terdaftar pada daftar kehadiran";
-        default:
-          break;
-      }
-
-      setError(err);
+      console.log(err);      
+      setError('Anda belum terdaftar pada daftar kehadiran');
     }
 
     if (state === 'update') {
