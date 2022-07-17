@@ -128,6 +128,11 @@ body{
     overflowX: hidden !important;
      maxHeight: 800px !important;
   }
+  .session1 img{
+    overflow:scroll;
+    width:180%;
+    padding-right:200px !important;
+  }
 }
 @media only screen and (min-width: 413px) {
 
@@ -228,7 +233,6 @@ input[type="radio"]:checked {
   overflow:scroll;
   width:180%;
   padding-right:100px;
-  height:auto;
 }
 .session1::-webkit-scrollbar
 {
@@ -407,4 +411,14 @@ overflow:hidden !important;
 .qr {
   opacity: 10%;
   margin-top: -50px !important;
+}
+.list{
+  position: relative !important;
+  margin-top: -10px !important;
+  float: right !important;
+}
+.list-desktop{
+  position: relative !important;
+  margin-top: -280px !important;
+  float: right !important;
 }

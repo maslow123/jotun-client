@@ -7,8 +7,16 @@ window.$ = $;
 global.jQuery = $;
 export default function Maps() {
   const navigate = useNavigate();
+  const [width, setWidth] = useState(window.innerWidth);
+  const handleWindowSizeChange = () => {
+    setWidth(window.innerWidth);
+  };
   const [session, setSession] = useState("session1");
   useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
     // Update the document title using the browser API
   });
   function click() {
@@ -46,7 +54,7 @@ export default function Maps() {
             margin: 0,
             padding: 0,
             overflowX: "hidden",
-            //   overflowY: "clip",
+            overflowY: "clip",
             position: "relative",
             minHeight: "1008px",
           }}
@@ -120,12 +128,11 @@ export default function Maps() {
           <div className="container-fluid mb">
             <button
               onClick={click}
-              className="btn btn-warning list"
-              style={{
-                position: "relative",
-                marginTop: "-140px",
-                float: "right",
-              }}
+              className={
+                width >= 768
+                  ? "btn btn-warning list-desktop"
+                  : "btn btn-warning list"
+              }
               data-backdrop="false"
             >
               <i className="fa fa-list"></i>
