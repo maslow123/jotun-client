@@ -25,7 +25,7 @@ export default function Welcome() {
           err = 'Mohon maaf penukaran hanya berlaku bagi yang memiliki anak usia 1 - 12 tahun';
           break;
         case 'invalid-attendance':
-          err = 'Anda belum terdaftar'
+          err = "Anda belum terdaftar pada daftar kehadiran";
         default:
           break;
       }
