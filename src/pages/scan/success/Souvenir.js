@@ -16,7 +16,7 @@ export default function Souvenir() {
       }
       if (redirect) {     
         clearInterval(interval);
-        return navigate('/venue/iddle-video');
+        return navigate('/venue/iddle-souvenir');
       }
     }, 3000);
     const user = localStorage.getItem('user-scan');

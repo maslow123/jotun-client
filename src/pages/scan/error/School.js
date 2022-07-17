@@ -11,6 +11,17 @@ export default function School() {
   const [error, setError] = useState('');
   const [status, setStatus] = useState('');
   useEffect(() => {
+    let redirect = false;
+    const interval = setInterval(() => {
+      if (!redirect) {
+        redirect = true;
+      }
+      if (redirect) {     
+        clearInterval(interval);
+        return navigate('/venue/iddle-school');
+      }
+    }, 3000);
+
     const user = localStorage.getItem('user-scan');
     const state = localStorage.getItem('state');
     let err = localStorage.getItem('error');
@@ -25,6 +36,7 @@ export default function School() {
           err = 'Mohon maaf penukaran hanya berlaku bagi yang memiliki anak usia 3 - 18 tahun';
           break;
         case 'invalid-attendance':
+        case 'invalid-token':
           err = "Anda belum terdaftar pada daftar kehadiran";
         default:
           break;
@@ -82,7 +94,7 @@ export default function School() {
                 <h2 className="mb-3 header" style={{ fontSize: "54px" }}>                  
                   <i>{error}</i>
                 </h2>
-                {(error !== 'Anda belum terdaftar' && status !== 'update') && (
+                {(error !== 'Anda belum terdaftar') && (
                   <h2 className="mb-3 subheader2">
                     {user?.user?.name} <br /> {DEPARTMENTS[user?.user?.department]} <br />
                     {BRANCHES[user?.user?.branches]}

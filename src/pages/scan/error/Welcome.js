@@ -6,6 +6,18 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 export default function Welcome() {
   const navigate = useNavigate();
+  useEffect(() => {
+    let redirect = false;
+    const interval = setInterval(() => {
+      if (!redirect) {
+        redirect = true;
+      }
+      if (redirect) {     
+        clearInterval(interval);
+        return navigate('/venue/iddle-welcome');
+      }
+    }, 3000);
+  }, [])
   return (
     <div className="row justify-content-center">
       <div

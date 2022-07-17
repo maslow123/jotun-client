@@ -18,10 +18,11 @@ export default function Photo() {
       }
       if (redirect) {     
         clearInterval(interval);
-        return navigate('/venue/iddle-video');
+        return navigate('/venue/iddle-photo');
       }
     }, 3000);
     const user = localStorage.getItem('user-scan');
+    console.log({ user })
     const state = localStorage.getItem('state');
     let err = localStorage.getItem('error');
     // if (!user) {
@@ -32,6 +33,7 @@ export default function Photo() {
       console.log(err);
       switch(err) {
         case 'invalid-attendance':
+        case 'invalid-token':
           err = "Anda belum terdaftar pada daftar kehadiran";
         default:
           break;
@@ -76,7 +78,7 @@ export default function Photo() {
                 <h2 className="mb-3 header" style={{ fontSize: "54px" }}>                  
                   <i>{error}</i>
                 </h2>
-                {(error !== 'Anda belum terdaftar' && status !== 'update') && (
+                {(error !== 'Anda belum terdaftar') && (
                   <h2 className="mb-3 subheader2">
                     {user?.user?.name} <br /> {DEPARTMENTS[user?.user?.department]} <br />
                     {BRANCHES[user?.user?.branches]}

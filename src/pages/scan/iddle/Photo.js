@@ -29,8 +29,9 @@ export default function Photo() {
               return navigate('/venue/photo/success');            
             }       
             
+            localStorage.setItem('error', resp.message);
             localStorage.setItem('state', resp.state);   
-            return navigate('/venue/photo/error');                 
+            // return navigate('/venue/photo/error');                 
           }
           setLoading(false);
         }
@@ -41,7 +42,7 @@ export default function Photo() {
           localStorage.setItem('user-scan', JSON.stringify(e.data.user))
         }
         setLoading(false);
-        return navigate('/venue/photo/error');    
+        // return navigate('/venue/photo/error');    
       }
     };
 
@@ -61,13 +62,17 @@ export default function Photo() {
           setLoading(true);
           const scan = new Scan();
           const resp = await scan.doScan(payload);
-  
+          
+          console.log({ resp });
           if (resp.status === 200) {
             // save user data to localstorage
-            localStorage.setItem('user-scan', JSON.stringify(resp.data.user))
+            localStorage.setItem('user-scan', JSON.stringify(resp.data))
             if (resp.state === 'new') {
               return navigate('/venue/photo/success');            
-            }          
+            }       
+            
+            localStorage.setItem('error', resp.message);
+            localStorage.setItem('state', resp.state);   
             return navigate('/venue/photo/error');                 
           }
           setLoading(false);
@@ -79,7 +84,6 @@ export default function Photo() {
           localStorage.setItem('user-scan', JSON.stringify(e.data.user))
         }
         setLoading(false);
-        return navigate('/venue/photo/error');    
       }
     }
   }

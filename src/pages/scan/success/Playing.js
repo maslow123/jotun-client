@@ -16,14 +16,14 @@ export default function Playing() {
       }
       if (redirect) {     
         clearInterval(interval);
-        return navigate('/venue/iddle-video');
+        return navigate('/venue/iddle-playing');
       }
     }, 3000);
     const user = localStorage.getItem('user-scan');
-    if (!user) {
-      return navigate('/venue/iddle-playing');
-    }
-
+    // if (!user) {
+    //   return navigate('/venue/iddle-playing');
+    // }
+    console.log(JSON.parse(user));
     setUser(JSON.parse(user));
 
   }, []);

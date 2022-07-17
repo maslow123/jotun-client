@@ -11,12 +11,22 @@ export default function Welcome() {
   const [error, setError] = useState('');
   const [status, setStatus] = useState('');
   useEffect(() => {
+    let redirect = false;
+    const interval = setInterval(() => {
+      if (!redirect) {
+        redirect = true;
+      }
+      if (redirect) {     
+        clearInterval(interval);
+        return navigate('/venue/iddle-snack');
+      }
+    }, 3000);
     const user = localStorage.getItem('user-scan');
     const state = localStorage.getItem('state');
     let err = localStorage.getItem('error');
-    // if (!user) {
-    //   return navigate('/venue/iddle-snack');
-    // }
+    if (!err) {      
+      return navigate('/venue/iddle-snack');
+    }
 
     if (err) {
       console.log(err);
@@ -25,6 +35,7 @@ export default function Welcome() {
           err = 'Mohon maaf penukaran hanya berlaku bagi yang memiliki anak usia 1 - 12 tahun';
           break;
         case 'invalid-attendance':
+        case 'invalid-token':
           err = "Anda belum terdaftar pada daftar kehadiran";
         default:
           break;
@@ -71,7 +82,7 @@ export default function Welcome() {
                 <h2 className="mb-3 header2" style={{ fontSize: "54px" }}>                  
                   <i>{error}</i>
                 </h2>
-                {(error !== 'Anda belum terdaftar' && status !== 'update') && (
+                {(error !== 'Anda belum terdaftar') && (
                   <h2 className="mb-3 subheader2">
                     {user?.user?.name} <br /> {DEPARTMENTS[user?.user?.department]} <br />
                     {BRANCHES[user?.user?.branches]}

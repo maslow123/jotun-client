@@ -32,6 +32,7 @@ export default function Video() {
       console.log(err);
       switch(err) {
         case 'invalid-attendance':
+        case 'invalid-token':
           err = "Anda belum terdaftar pada daftar kehadiran";
         default:
           break;
@@ -83,7 +84,7 @@ export default function Video() {
                 <h2 className="mb-3 header" style={{ fontSize: "54px" }}>                  
                   <i>{error}</i>
                 </h2>
-                {(error !== 'Anda belum terdaftar' && status !== 'update') && (
+                {(error !== 'Anda belum terdaftar') && (
                   <h2 className="mb-3 subheader">
                     {user?.user?.name} <br /> {DEPARTMENTS[user?.user?.department]} <br />
                     {BRANCHES[user?.user?.branches]}

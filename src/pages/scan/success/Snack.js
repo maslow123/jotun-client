@@ -9,9 +9,19 @@ export default function Snack() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   useEffect(() => {
+    let redirect = false;
+    const interval = setInterval(() => {
+      if (!redirect) {
+        redirect = true;
+      }
+      if (redirect) {     
+        clearInterval(interval);
+        return navigate('/venue/iddle-snack');
+      }
+    }, 3000);
     const user = localStorage.getItem('user-scan');
     if (!user) {
-      return navigate('/venue/iddle-welcome');
+      return navigate('/venue/iddle-snack');
     }
 
     setUser(JSON.parse(user));

@@ -76,7 +76,7 @@ export default function EventSchedule() {
             />
           </div>
         </nav>
-        {/* <div
+        <div
           className="pt-1 px-4"
           aria-label="breadcrumb"
           style={{
@@ -103,7 +103,7 @@ export default function EventSchedule() {
             </li>
           </ol>
         </div>
-        <div className="container-fluid" style={{ marginTop: "200px" }}>
+        {/* <div className="container-fluid" style={{ marginTop: "200px" }}>
           <div
             className="text-center"
             style={{

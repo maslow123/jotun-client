@@ -8,6 +8,17 @@ import { BRANCHES, DEPARTMENTS } from "../../utils/constants";
 export default function Welcome() {
   const [user, setUser] = useState(null);
   useEffect(() => {
+    let redirect = false;
+    const interval = setInterval(() => {
+      if (!redirect) {
+        redirect = true;
+      }
+      if (redirect) {     
+        clearInterval(interval);
+        return navigate('/venue/iddle-welcome');
+      }
+    }, 3000);
+    
     const user = localStorage.getItem('user-scan');
     if (!user) {
       return navigate('/venue/iddle-welcome');
