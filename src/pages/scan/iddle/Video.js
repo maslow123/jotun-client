@@ -63,7 +63,6 @@ export default function Video() {
           const scan = new Scan();
           const resp = await scan.doScan(payload);
           
-          console.log({ resp });
           if (resp.status === 200) {
             // save user data to localstorage
             localStorage.setItem('user-scan', JSON.stringify(resp.data))
@@ -77,7 +76,6 @@ export default function Video() {
           setLoading(false);
         }
       } catch(e) {        
-        console.log({ e });
         localStorage.setItem('error', e.message)
         if (e.status === 422) {          
           localStorage.setItem('user-scan', JSON.stringify(e.data.user))

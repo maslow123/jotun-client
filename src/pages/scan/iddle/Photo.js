@@ -11,42 +11,40 @@ export default function Photo() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
-    const doScan = async () => {
-      const payload = {
-        code: 'FOTO',
-        key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiI2MjgxNjgzNDYzMSIsIm5hbWUiOiJaZW5pdGhhIGZpdHJpYXRpIiwiaWF0IjoxNjU3MzMyNDI2LCJleHAiOjE2NTc0MTg4MjZ9.lTlrw7eyj5URWqOwU5pFYjAoPhcv5K9kp4evfnwqMGM'
-      };
+    // const doScan = async () => {
+    //   const payload = {
+    //     code: 'FOTO',
+    //     key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiI2MjgxNjgzNDYzMSIsIm5hbWUiOiJaZW5pdGhhIGZpdHJpYXRpIiwiaWF0IjoxNjU3MzMyNDI2LCJleHAiOjE2NTc0MTg4MjZ9.lTlrw7eyj5URWqOwU5pFYjAoPhcv5K9kp4evfnwqMGM'
+    //   };
       
-      try {
-        if (!loading) {
-          setLoading(true);
-          const scan = new Scan();
-          const resp = await scan.doScan(payload);
+    //   try {
+    //     if (!loading) {
+    //       setLoading(true);
+    //       const scan = new Scan();
+    //       const resp = await scan.doScan(payload);
           
-          console.log({ resp });
-          if (resp.status === 200) {
-            // save user data to localstorage
-            localStorage.setItem('user-scan', JSON.stringify(resp.data))
-            if (resp.state === 'new') {
-              return navigate('/venue/photo/success');            
-            }       
+    //       if (resp.status === 200) {
+    //         // save user data to localstorage
+    //         localStorage.setItem('user-scan', JSON.stringify(resp.data))
+    //         if (resp.state === 'new') {
+    //           return navigate('/venue/photo/success');            
+    //         }       
             
-            localStorage.setItem('error', resp.message);
-            localStorage.setItem('state', resp.state);   
-            // return navigate('/venue/photo/error');                 
-          }
-          setLoading(false);
-        }
-      } catch(e) {        
-        console.log({ e });
-        localStorage.setItem('error', e.message)
-        if (e.status === 422) {          
-          localStorage.setItem('user-scan', JSON.stringify(e.data.user))
-        }
-        setLoading(false);
-        // return navigate('/venue/photo/error');    
-      }
-    };
+    //         localStorage.setItem('error', resp.message);
+    //         localStorage.setItem('state', resp.state);   
+    //         // return navigate('/venue/photo/error');                 
+    //       }
+    //       setLoading(false);
+    //     }
+    //   } catch(e) {        
+    //     localStorage.setItem('error', e.message)
+    //     if (e.status === 422) {          
+    //       localStorage.setItem('user-scan', JSON.stringify(e.data.user))
+    //     }
+    //     setLoading(false);
+    //     // return navigate('/venue/photo/error');    
+    //   }
+    // };
 
     // doScan();
     localStorage.clear();
@@ -65,7 +63,6 @@ export default function Photo() {
           const scan = new Scan();
           const resp = await scan.doScan(payload);
           
-          console.log({ resp });
           if (resp.status === 200) {
             // save user data to localstorage
             localStorage.setItem('user-scan', JSON.stringify(resp.data))
@@ -80,12 +77,12 @@ export default function Photo() {
           setLoading(false);
         }
       } catch(e) {        
-        console.log({ e });
         localStorage.setItem('error', e.message)
         if (e.status === 422) {          
           localStorage.setItem('user-scan', JSON.stringify(e.data.user))
         }
         setLoading(false);
+        return navigate('/venue/photo/error');    
       }
     }
   }

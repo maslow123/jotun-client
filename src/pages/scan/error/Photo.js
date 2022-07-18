@@ -22,7 +22,6 @@ export default function Photo() {
       }
     }, 3000);
     const user = localStorage.getItem('user-scan');
-    console.log({ user })
     const state = localStorage.getItem('state');
     let err = localStorage.getItem('error');
     // if (!user) {

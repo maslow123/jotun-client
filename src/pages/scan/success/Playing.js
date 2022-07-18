@@ -23,7 +23,6 @@ export default function Playing() {
     // if (!user) {
     //   return navigate('/venue/iddle-playing');
     // }
-    console.log(JSON.parse(user));
     setUser(JSON.parse(user));
 
   }, []);

@@ -65,7 +65,7 @@ export default function School() {
   
           if (resp.status === 200) {
             // save user data to localstorage
-            localStorage.setItem('user-scan', JSON.stringify(resp.data.user))
+            localStorage.setItem('user-scan', JSON.stringify(resp.data))
             if (resp.state === 'new') {
               return navigate('/venue/school/success');            
             }          
@@ -80,7 +80,7 @@ export default function School() {
           localStorage.setItem('user-scan', JSON.stringify(e.data.user))
         }
         setLoading(false);
-        return navigate('/venue/photo/error');    
+        return navigate('/venue/school/error');    
       }
     }
   }
