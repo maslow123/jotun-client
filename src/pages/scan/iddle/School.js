@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Background from "./../../../bgscan/background/school.png";
 import { QrReader } from "react-qr-reader";
 import { Scan } from "../../../services";
+import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 export default function School() {
   const [data, setData] = useState("No result");
@@ -49,7 +50,7 @@ export default function School() {
     localStorage.clear();
   }, [])
 
-  const _onResult = async (r, e) => {
+  const _onResult = async (e, r) => {
     if (!!r) {
       const payload = {
         code: 'FOTO',
@@ -112,9 +113,10 @@ export default function School() {
             </div>
             <div className="col-3">
               <div className="bgqr">
-                <QrReader
+                <BarcodeScannerComponent
                   className="qr"
-                  onResult={_onResult}
+                  onUpdate={_onResult}
+                  // onResult={_onResult}
                   style={{ width: "100%" }}
                 />
               </div>

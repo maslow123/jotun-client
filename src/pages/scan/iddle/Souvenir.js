@@ -6,6 +6,7 @@ import { QrReader } from "react-qr-reader";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { Scan } from "../../../services";
+import BarcodeScannerComponent from "react-qr-barcode-scanner";
 export default function Souvenir() {
   const [data, setData] = useState("No result");
   const [loading, setLoading] = useState(false);
@@ -51,7 +52,7 @@ export default function Souvenir() {
     localStorage.clear();
   }, [])
 
-  const _onResult = async (r, e) => {
+  const _onResult = async (e, r) => {
     if (!!r) {
       const payload = {
         code: 'SOUVENIR',
@@ -117,9 +118,10 @@ export default function Souvenir() {
             </div>
             <div className="col-3">
               <div className="bgqr">
-                <QrReader
+                <BarcodeScannerComponent
                   className="qr"
-                  onResult={_onResult}
+                  onUpdate={_onResult}
+                  // onResult={_onResult}
                   style={{ width: "100%" }}
                 />
               </div>
