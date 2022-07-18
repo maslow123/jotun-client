@@ -53,7 +53,7 @@ export default function School() {
   const _onResult = async (e, r) => {
     if (!!r) {
       const payload = {
-        code: 'FOTO',
+        code: 'PAKET_SEKOLAH',
         key: r.text
       };
       
@@ -67,9 +67,9 @@ export default function School() {
             // save user data to localstorage
             localStorage.setItem('user-scan', JSON.stringify(resp.data.user))
             if (resp.state === 'new') {
-              return navigate('/venue/photo/success');            
+              return navigate('/venue/school/success');            
             }          
-            return navigate('/venue/photo/error');                 
+            return navigate('/venue/school/error');                 
           }
           setLoading(false);
         }

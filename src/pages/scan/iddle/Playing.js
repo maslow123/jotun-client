@@ -53,7 +53,7 @@ export default function Playing() {
   const _onResult = async (e, r) => {
     if (!!r) {
       const payload = {
-        code: 'FOTO',
+        code: 'VOUCHER_BERMAIN',
         key: r.text
       };
       

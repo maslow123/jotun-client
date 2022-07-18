@@ -22,7 +22,7 @@ export default function School() {
 
     const user = localStorage.getItem('user-scan');
     if (!user) {
-      return navigate('/venue/iddle-welcome');
+      return navigate('/venue/iddle-school');
     }
 
     setUser(JSON.parse(user));

@@ -21,7 +21,7 @@ export default function Video() {
     }, 3000);
     const user = localStorage.getItem('user-scan');
     if (!user) {
-      return navigate('/venue/iddle-souvenir');
+      return navigate('/venue/iddle-video');
     }
 
     setUser(JSON.parse(user));

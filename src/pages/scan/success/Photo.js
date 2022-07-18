@@ -16,7 +16,7 @@ export default function Photo() {
       }
       if (redirect) {     
         clearInterval(interval);
-        return navigate('/venue/iddle-video');
+        return navigate('/venue/iddle-photo');
       }
     }, 3000);
     const user = localStorage.getItem('user-scan');
