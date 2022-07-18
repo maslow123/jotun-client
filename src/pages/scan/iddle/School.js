@@ -69,6 +69,7 @@ export default function School() {
             if (resp.state === 'new') {
               return navigate('/venue/school/success');            
             }          
+            localStorage.setItem('state', resp.state); 
             return navigate('/venue/school/error');                 
           }
           setLoading(false);
