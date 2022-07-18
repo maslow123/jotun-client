@@ -2,13 +2,10 @@ import React from "react";
 export default function Topbar() {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-light">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            Navbar
-          </a>
-          <span className="navbar-toggler-icon"></span>
-        </div>
+      <nav className="navbar top-navbar navbar-light bg-light px-5">
+        <a className="btn border-0" id="menu-btn">
+          <i className="fa fa-list"></i>
+        </a>
       </nav>
     </div>
   );
