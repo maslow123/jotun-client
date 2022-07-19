@@ -87,7 +87,10 @@ export default function ContestRegister() {
 
         // setChildNonRegistered([...childNonRegisteredArr])
       
-        const f = family?.length > 0 ? family : data.family;
+        const f = family?.length > 0 ? [...family] : [...data.family];
+        for (let i in f) {
+          delete f[i].is_registered;
+        }
         var childNonRegisteredArr = []
         for (let i = 0; i < f.length; i++) {
           let found = false // flag
@@ -112,6 +115,10 @@ export default function ContestRegister() {
         d = [...data.family];
       } else {
         d = [...family];
+      }
+
+      for (let i in d) {
+        delete d[i].is_registered;
       }
       setChildNonRegistered([...d]);
       setLoadingGetChildrenRegistered(false);
@@ -407,7 +414,7 @@ export default function ContestRegister() {
           <div class="modal-content">
             <div class="modal-body">
               <button
-                // onClick={() => resetPayload(false)}
+                onClick={() => resetPayload(false)} // for tmp
                 id="closeModal"
                 type="button"
                 class="btn-close"
