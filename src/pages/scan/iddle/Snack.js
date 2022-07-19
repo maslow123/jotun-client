@@ -4,7 +4,7 @@ import Background from "./../../../bgscan/background/snack.png";
 import { QrReader } from "react-qr-reader";
 import { Scan } from "../../../services";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
-
+import FadeIn from "react-fade-in";
 export default function Snack() {
   const [data, setData] = useState("No result");
   const [show, setShow] = useState("show");
@@ -104,64 +104,66 @@ export default function Snack() {
           overflowY: "scroll",
         }}
       >
-        <div className="container-fluid" style={{ marginTop: "300px" }}>
-          <div className="row justify-content-center">
-            <div className="col-10 col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mb-0">
-              <div className="text-center">
-                <h2 className="mb-3 header2" style={{ fontSize: "100px" }}>
-                  <i>
-                    Pengambilan <br />
-                    <span style={{ fontSize: "80px", fontWeight: "normal" }}>
-                      {" "}
-                      Snack Anak <br /> Umur 1 - 12 tahun
-                    </span>
-                  </i>
-                </h2>
+        <FadeIn>
+          <div className="container-fluid" style={{ marginTop: "300px" }}>
+            <div className="row justify-content-center">
+              <div className="col-10 col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mb-0">
+                <div className="text-center">
+                  <h2 className="mb-3 header2" style={{ fontSize: "100px" }}>
+                    <i>
+                      Pengambilan <br />
+                      <span style={{ fontSize: "80px", fontWeight: "normal" }}>
+                        {" "}
+                        Snack Anak <br /> Umur 1 - 12 tahun
+                      </span>
+                    </i>
+                  </h2>
+                </div>
+              </div>
+              <div className="col-3">
+                {show === "hide" ? (
+                  <>
+                    <div className="bgqr2">
+                      <BarcodeScannerComponent
+                        className="qr2"
+                        onUpdate={_onResult}
+                        // onResult={_onResult}
+                        style={{ width: "100%" }}
+                      />
+                    </div>
+                    <div className="text-center">
+                      <button className="btn btn-light btn-lg" onClick={_show}>
+                        Show cam
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="bgqr">
+                      <BarcodeScannerComponent
+                        className="qr"
+                        onUpdate={_onResult}
+                        // onResult={_onResult}
+                        style={{ width: "100%" }}
+                      />
+                    </div>
+                    <div className="text-center">
+                      <h3
+                        className="subheader mt-3"
+                        style={{ fontWeight: "normal", fontSize: "30px" }}
+                      >
+                        SCAN DISINI
+                      </h3>
+                      <button className="btn btn-light btn-lg" onClick={hide}>
+                        Hide
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
-            <div className="col-3">
-              {show === "hide" ? (
-                <>
-                  <div className="bgqr2">
-                    <BarcodeScannerComponent
-                      className="qr2"
-                      onUpdate={_onResult}
-                      // onResult={_onResult}
-                      style={{ width: "100%" }}
-                    />
-                  </div>
-                  <div className="text-center">
-                    <button className="btn btn-light btn-lg" onClick={_show}>
-                      Show cam
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="bgqr">
-                    <BarcodeScannerComponent
-                      className="qr"
-                      onUpdate={_onResult}
-                      // onResult={_onResult}
-                      style={{ width: "100%" }}
-                    />
-                  </div>
-                  <div className="text-center">
-                    <h3
-                      className="subheader mt-3"
-                      style={{ fontWeight: "normal", fontSize: "30px" }}
-                    >
-                      SCAN DISINI
-                    </h3>
-                    <button className="btn btn-light btn-lg" onClick={hide}>
-                      Hide
-                    </button>
-                  </div>
-                </>
-              )}
-            </div>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </div>
   );
