@@ -12,11 +12,11 @@ export default function Welcome() {
       if (!redirect) {
         redirect = true;
       }
-      if (redirect) {     
+      if (redirect) {
         clearInterval(interval);
-        return navigate('/venue/iddle-welcome');
+        return navigate("/venue/iddle-welcome");
       }
-    }, 3000);
+    }, 5000);
   }, [])
   return (
     <div className="row justify-content-center">

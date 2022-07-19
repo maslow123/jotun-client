@@ -14,11 +14,11 @@ export default function Video() {
       if (!redirect) {
         redirect = true;
       }
-      if (redirect) {     
+      if (redirect) {
         clearInterval(interval);
-        return navigate('/venue/iddle-video');
+        return navigate("/venue/iddle-video");
       }
-    }, 3000);
+    }, 5000);
     const user = localStorage.getItem('user-scan');
     if (!user) {
       return navigate('/venue/iddle-video');

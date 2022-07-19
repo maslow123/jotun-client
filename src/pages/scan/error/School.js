@@ -16,11 +16,11 @@ export default function School() {
       if (!redirect) {
         redirect = true;
       }
-      if (redirect) {     
+      if (redirect) {
         clearInterval(interval);
-        return navigate('/venue/iddle-school');
+        return navigate("/venue/iddle-school");
       }
-    }, 3000);
+    }, 5000);
 
     const user = localStorage.getItem('user-scan');
     const state = localStorage.getItem('state');

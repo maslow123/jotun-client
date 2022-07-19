@@ -14,11 +14,11 @@ export default function Snack() {
       if (!redirect) {
         redirect = true;
       }
-      if (redirect) {     
+      if (redirect) {
         clearInterval(interval);
-        return navigate('/venue/iddle-snack');
+        return navigate("/venue/iddle-snack");
       }
-    }, 3000);
+    }, 5000);
     const user = localStorage.getItem('user-scan');
     if (!user) {
       return navigate('/venue/iddle-snack');
