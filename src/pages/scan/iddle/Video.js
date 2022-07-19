@@ -7,6 +7,7 @@ import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 export default function Video() {
   const [data, setData] = useState("No result");
+  const [show, setShow] = useState("show");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
@@ -15,34 +16,34 @@ export default function Video() {
     //     code: 'VIDEO',
     //     key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiI2MjgxNjgzNDYzMSIsIm5hbWUiOiJaZW5pdGhhIGZpdHJpYXRpIiwiaWF0IjoxNjU3MzMyNDI2LCJleHAiOjE2NTc0MTg4MjZ9.lTlrw7eyj5URWqOwU5pFYjAoPhcv5K9kp4evfnwqMGM'
     //   };
-      
+
     //   try {
     //     if (!loading) {
     //       setLoading(true);
     //       const scan = new Scan();
     //       const resp = await scan.doScan(payload);
-          
+
     //       console.log({ resp });
     //       if (resp.status === 200) {
     //         // save user data to localstorage
     //         localStorage.setItem('user-scan', JSON.stringify(resp.data))
     //         if (resp.state === 'new') {
-    //           return navigate('/venue/video/success');            
-    //         }       
-            
-    //         localStorage.setItem('state', resp.state);   
-    //         return navigate('/venue/video/error');                 
+    //           return navigate('/venue/video/success');
+    //         }
+
+    //         localStorage.setItem('state', resp.state);
+    //         return navigate('/venue/video/error');
     //       }
     //       setLoading(false);
     //     }
-    //   } catch(e) {        
+    //   } catch(e) {
     //     console.log({ e });
     //     localStorage.setItem('error', e.message)
-    //     if (e.status === 422) {          
+    //     if (e.status === 422) {
     //       localStorage.setItem('user-scan', JSON.stringify(e.data.user))
     //     }
     //     setLoading(false);
-    //     return navigate('/venue/video/error');    
+    //     return navigate('/venue/video/error');
     //   }
     // };
 
@@ -53,38 +54,44 @@ export default function Video() {
   const _onResult = async (e, r) => {
     if (!!r) {
       const payload = {
-        code: 'VIDEO',
-        key: r.text
+        code: "VIDEO",
+        key: r.text,
       };
-      
+
       try {
         if (!loading) {
           setLoading(true);
           const scan = new Scan();
           const resp = await scan.doScan(payload);
-          
+
           if (resp.status === 200) {
             // save user data to localstorage
-            localStorage.setItem('user-scan', JSON.stringify(resp.data))
-            if (resp.state === 'new') {
-              return navigate('/venue/video/success');            
-            }       
-            
-            localStorage.setItem('state', resp.state);   
-            return navigate('/venue/video/error');                 
+            localStorage.setItem("user-scan", JSON.stringify(resp.data));
+            if (resp.state === "new") {
+              return navigate("/venue/video/success");
+            }
+
+            localStorage.setItem("state", resp.state);
+            return navigate("/venue/video/error");
           }
           setLoading(false);
         }
-      } catch(e) {        
-        localStorage.setItem('error', e.message)
-        if (e.status === 422) {          
-          localStorage.setItem('user-scan', JSON.stringify(e.data.user))
+      } catch (e) {
+        localStorage.setItem("error", e.message);
+        if (e.status === 422) {
+          localStorage.setItem("user-scan", JSON.stringify(e.data.user));
         }
         setLoading(false);
-        return navigate('/venue/video/error');    
+        return navigate("/venue/video/error");
       }
     }
-  }
+  };
+  const hide = () => {
+    return setShow("hide");
+  };
+  const _show = () => {
+    return setShow("show");
+  };
   return (
     <div className="row justify-content-center">
       <div
@@ -113,22 +120,45 @@ export default function Video() {
               </div>
             </div>
             <div className="col-3">
-              <div className="bgqr">
-                <BarcodeScannerComponent
-                  className="qr"
-                  onUpdate={_onResult}
-                  // onResult={_onResult}
-                  style={{ width: "100%" }}
-                />
-              </div>
-              {/* <div className="text-center">
-                <h3
-                  className="subheader mt-3"
-                  style={{ fontWeight: "normal", fontSize: "30px" }}
-                >
-                  SCAN DISINI
-                </h3>
-              </div> */}
+              {show === "hide" ? (
+                <>
+                  <div className="bgqr2">
+                    <BarcodeScannerComponent
+                      className="qr2"
+                      onUpdate={_onResult}
+                      // onResult={_onResult}
+                      style={{ width: "100%" }}
+                    />
+                  </div>
+                  <div className="text-center">
+                    <button className="btn btn-light btn-lg" onClick={_show}>
+                      Show cam
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="bgqr">
+                    <BarcodeScannerComponent
+                      className="qr"
+                      onUpdate={_onResult}
+                      // onResult={_onResult}
+                      style={{ width: "100%" }}
+                    />
+                  </div>
+                  <div className="text-center">
+                    <h3
+                      className="subheader mt-3"
+                      style={{ fontWeight: "normal", fontSize: "30px" }}
+                    >
+                      SCAN DISINI
+                    </h3>
+                    <button className="btn btn-light btn-lg" onClick={hide}>
+                      Hide
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

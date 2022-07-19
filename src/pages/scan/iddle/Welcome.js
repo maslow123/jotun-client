@@ -7,46 +7,51 @@ import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 export default function Welcome() {
   const [data, setData] = useState("No result");
+  const [show, setShow] = useState("show");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.clear();
-  }, [])
+  }, []);
 
   const _onResult = async (e, r) => {
-    console.log({e}, {r});
+    console.log({ e }, { r });
     if (!!r) {
       const payload = {
-        code: 'KEHADIRAN',
-        key: r.text
+        code: "KEHADIRAN",
+        key: r.text,
       };
-      
+
       try {
         if (!loading) {
           setLoading(true);
           const scan = new Scan();
           const resp = await scan.doScan(payload);
-  
+
           if (resp.status === 200) {
             // save user data to localstorage
-            localStorage.setItem('user-scan', JSON.stringify(resp.data.user))
-            if (resp.state === 'update') {
+            localStorage.setItem("user-scan", JSON.stringify(resp.data.user));
+            if (resp.state === "update") {
               // welcome back
-              return navigate('/venue/welcomeback/success');            
+              return navigate("/venue/welcomeback/success");
             }
             // welcome
-            return navigate('/venue/welcome/success');
-            
+            return navigate("/venue/welcome/success");
           }
           setLoading(false);
         }
-      } catch(e) {
-        
+      } catch (e) {
         setLoading(false);
-        return navigate('/venue/welcome/error');
+        return navigate("/venue/welcome/error");
       }
     }
-  }
+  };
+  const hide = () => {
+    return setShow("hide");
+  };
+  const _show = () => {
+    return setShow("show");
+  };
   return (
     <div className="row justify-content-center">
       <div
@@ -69,22 +74,45 @@ export default function Welcome() {
               </div>
             </div>
             <div className="col-3">
-              <div className="bgqr">
-                <BarcodeScannerComponent
-                  className="qr"
-                  onUpdate={_onResult}
-                  // onResult={_onResult}
-                  style={{ width: "100%" }}
-                />
-              </div>
-              {/* <div className="text-center">
-                <h3
-                  className="subheader mt-3"
-                  style={{ fontWeight: "normal", fontSize: "30px" }}
-                >
-                  SCAN DISINI
-                </h3>
-              </div> */}
+              {show === "hide" ? (
+                <>
+                  <div className="bgqr2">
+                    <BarcodeScannerComponent
+                      className="qr2"
+                      onUpdate={_onResult}
+                      // onResult={_onResult}
+                      style={{ width: "100%" }}
+                    />
+                  </div>
+                  <div className="text-center">
+                    <button className="btn btn-light btn-lg" onClick={_show}>
+                      Show cam
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="bgqr">
+                    <BarcodeScannerComponent
+                      className="qr"
+                      onUpdate={_onResult}
+                      // onResult={_onResult}
+                      style={{ width: "100%" }}
+                    />
+                  </div>
+                  <div className="text-center">
+                    <h3
+                      className="subheader mt-3"
+                      style={{ fontWeight: "normal", fontSize: "30px" }}
+                    >
+                      SCAN DISINI
+                    </h3>
+                    <button className="btn btn-light btn-lg" onClick={hide}>
+                      Hide
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

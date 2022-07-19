@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { MDBDataTableV5 } from "mdbreact";
+// import { MDBDataTableV5 } from "mdbreact";
 export default function Dashboard() {
   const [datatable, setDatatable] = React.useState({
     columns: [
@@ -148,13 +148,13 @@ export default function Dashboard() {
               Create
             </button>
             <div className="table-responsive">
-              <MDBDataTableV5
+              {/* <MDBDataTableV5
                 hover
                 entriesOptions={[5, 20, 25]}
                 entries={5}
                 pagesAmount={4}
                 data={datatable}
-              />
+              /> */}
             </div>
           </div>
         </div>
