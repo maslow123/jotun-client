@@ -7,6 +7,7 @@ import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 export default function School() {
   const [data, setData] = useState("No result");
+  const [show, setShow] = useState("show");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
@@ -85,6 +86,12 @@ export default function School() {
       }
     }
   }
+  const hide = () => {
+    return setShow("hide");
+  };
+  const _show = () => {
+    return setShow("show");
+  };
   return (
     <div className="row justify-content-center">
       <div
@@ -113,22 +120,45 @@ export default function School() {
               </div>
             </div>
             <div className="col-3">
-              <div className="bgqr">
-                <BarcodeScannerComponent
-                  className="qr"
-                  onUpdate={_onResult}
-                  // onResult={_onResult}
-                  style={{ width: "100%" }}
-                />
-              </div>
-              {/* <div className="text-center">
-                <h3
-                  className="subheader mt-3"
-                  style={{ fontWeight: "normal", fontSize: "30px" }}
-                >
-                  SCAN DISINI
-                </h3>
-              </div> */}
+              {show === "hide" ? (
+                <>
+                  <div className="bgqr2">
+                    <BarcodeScannerComponent
+                      className="qr2"
+                      onUpdate={_onResult}
+                      // onResult={_onResult}
+                      style={{ width: "100%" }}
+                    />
+                  </div>
+                  <div className="text-center">
+                    <button className="btn btn-light btn-lg" onClick={_show}>
+                      Show cam
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="bgqr">
+                    <BarcodeScannerComponent
+                      className="qr"
+                      onUpdate={_onResult}
+                      // onResult={_onResult}
+                      style={{ width: "100%" }}
+                    />
+                  </div>
+                  <div className="text-center">
+                    <h3
+                      className="subheader mt-3"
+                      style={{ fontWeight: "normal", fontSize: "30px" }}
+                    >
+                      SCAN DISINI
+                    </h3>
+                    <button className="btn btn-light btn-lg" onClick={hide}>
+                      Hide
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

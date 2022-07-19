@@ -378,6 +378,7 @@ overflow:hidden !important;
   font-size:70px;
   font-weight:900 !important;
   color:#feff00;
+  animation: fadeIn 5s !important; 
 }
 .subheader{
   font-family: 'Verdana', sans-serif !important;
@@ -385,6 +386,7 @@ overflow:hidden !important;
   font-size:65px;
   font-weight:bold !important;
   color:#fff;
+  animation: fadeIn 5s !important; 
 }
 .header2{
   font-family: 'Gotham Bold', sans-serif !important;
@@ -402,14 +404,22 @@ overflow:hidden !important;
 }
 .bgqr {
   border-radius: 10px;
-  /* border: 10px solid white; */
+  border: 10px solid white;
   width: 400px !important;
   height: 300px !important;
   overflow: hidden !important;
   margin: auto !important;
 }
+.bgqr2 {
+ 
+  opacity: 10% !important;
+}
 .qr {
-  opacity: 10%;
+  opacity: 100%;
+  margin-top: -50px !important;
+}
+.qr2 {
+  opacity: 10% !important;
   margin-top: -50px !important;
 }
 .list{
@@ -428,7 +438,7 @@ overflow:hidden !important;
   position: fixed;
   margin-left: -300px;
   background-color: #fcb300;
-  transition: 0.5s;
+  transition: 0.5s !important;
 }
 .nav-link {
   padding:20px !important;
