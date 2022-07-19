@@ -74,17 +74,33 @@ export default function ContestRegister() {
       const data= JSON.parse(localStorage.getItem('user'));
       data.family.splice(0, 1);
 
-      const f = family?.length > 0 ? family : data.family;
-      var childNonRegisteredArr = []
-      for (let i = 0; i < f.length; i++) {
-        let found = false // flag
-        for (let j = 0; j < resp.results.length && !found; j++) {
-          found = f[i].id === resp.results[j].id
-        }        
-        if (!found) childNonRegisteredArr.push(f[i])
-      }
+      // for handle non registered...
+        // const f = family?.length > 0 ? family : data.family;
+        // var childNonRegisteredArr = []
+        // for (let i = 0; i < f.length; i++) {
+        //   let found = false // flag
+        //   for (let j = 0; j < resp.results.length && !found; j++) {
+        //     found = f[i].id === resp.results[j].id
+        //   }        
+        //   if (!found) childNonRegisteredArr.push(f[i])
+        // }
 
-      setChildNonRegistered([...childNonRegisteredArr])
+        // setChildNonRegistered([...childNonRegisteredArr])
+      
+        const f = family?.length > 0 ? family : data.family;
+        var childNonRegisteredArr = []
+        for (let i = 0; i < f.length; i++) {
+          let found = false // flag
+          for (let j = 0; j < resp.results.length && !found; j++) {
+            found = f[i].id === resp.results[j].id
+          }        
+          if (found) {
+            f[i].is_registered = true;
+          }
+        }
+
+        console.log(f);
+      setChildNonRegistered(f);
       setLoadingGetChildrenRegistered(false);
     } catch (error) {
       console.error(error);
@@ -452,20 +468,22 @@ export default function ContestRegister() {
                       <li className="list-group-item" key={i}>
                         <div
                           class="form-check"
-                          onClick={() => setChildren({ ...child })}
+                          // onClick={() => setChildren({ ...child })} // for tmp
                         >
                           <input
-                            checked={children?.id === child.id}
+                            disabled // for tmp
+                            checked={child.is_registered}
                             class="form-check-input ml-1"
                             type="radio"
-                            name="flexRadioDefault"
+                            // name="flexRadioDefault" // for tmp
                             id={`flexRadioDefault-${i}`}
                           />
                           <label
                             class="form-check-label mx-1"
-                            for={`flexRadioDefault-${i}`}
+                            for={`flexRadioDefault-${i}`}                          
                             style={{
                               fontSize: "13px",
+                              color: child.is_registered ? 'red' : 'black' // for tmp
                             }}
                           >
                             {child.name}
