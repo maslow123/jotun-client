@@ -284,7 +284,7 @@ export default function ContestRegister() {
                           </div>
                         </div>
                         <div className="row">
-                          <div className="col-9" style={{ paddingRight: "0" }}>
+                          <div className="col-12">
                             <div className="text-center d-grid">
                               <a
                                 data-bs-toggle="modal"
@@ -306,11 +306,19 @@ export default function ContestRegister() {
                                   color: "#10193a",
                                 }}
                               >
-                                DAFTAR
+                                LIHAT JADWAL ANAK{" "}
+                                <i
+                                  className="fa fa-eye mx-3"
+                                  style={{
+                                    float: "right",
+                                    fontSize: "20px",
+                                    color: "#10193a",
+                                  }}
+                                ></i>
                               </a>
                             </div>
                           </div>
-                          <div className="col-3">
+                          {/* <div className="col-3">
                             <div className="text-center d-grid">
                               <button
                                 className="btn btn-lg mt-3 btn-block"
@@ -345,7 +353,7 @@ export default function ContestRegister() {
                                 </a>
                               </button>
                             </div>
-                          </div>
+                          </div> */}
                           <div className="crd col-11 mt-3 mb-5">
                             <ul style={{ textAlign: "left" }}>
                               {CONTEST_RULE.find(
@@ -416,11 +424,11 @@ export default function ContestRegister() {
                       onClick={() =>
                         mode === 0 ? handleSubmitUserEvent() : null
                       }
-                      className="btn btn-warning btn-lg mt-3 btn-block"
+                      className="btn btn-lg mt-3 btn-block"
                       style={{
                         paddingTop: "10px",
                         paddingBottom: "10px",
-                        background: "#f9af02",
+                        background: "#eaeaea",
                         textTransform: "uppercase",
                         fontSize: "13px",
                         fontWeight: "800",
@@ -453,22 +461,32 @@ export default function ContestRegister() {
                             id={`flexRadioDefault-${i}`}
                           />
                           <label
-                            class="form-check-label mx-3"
+                            class="form-check-label mx-1"
                             for={`flexRadioDefault-${i}`}
                             style={{
-                              fontSize: "14px",
+                              fontSize: "13px",
                             }}
                           >
                             {child.name}
                           </label>
+
                           <span
-                            className="mx-3"
+                            className="mx-1"
                             style={{
                               float: "right",
-                              fontSize: "14px",
+                              fontSize: "13px",
                             }}
                           >
                             {child.age === 0 ? "0-1" : child.age} Tahun
+                          </span>
+                          <span
+                            class="mx-4"
+                            style={{
+                              float: "right",
+                              fontSize: "13px",
+                            }}
+                          >
+                            09.00
                           </span>
                         </div>
                       </li>
