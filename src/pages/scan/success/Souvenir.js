@@ -14,11 +14,11 @@ export default function Souvenir() {
       if (!redirect) {
         redirect = true;
       }
-      if (redirect) {     
+      if (redirect) {
         clearInterval(interval);
-        return navigate('/venue/iddle-souvenir');
+        return navigate("/venue/iddle-souvenir");
       }
-    }, 3000);
+    }, 5000);
     const user = localStorage.getItem('user-scan');
     if (!user) {
       return navigate('/venue/iddle-souvenir');

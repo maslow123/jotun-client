@@ -16,11 +16,11 @@ export default function Photo() {
       if (!redirect) {
         redirect = true;
       }
-      if (redirect) {     
+      if (redirect) {
         clearInterval(interval);
-        return navigate('/venue/iddle-photo');
+        return navigate("/venue/iddle-photo");
       }
-    }, 3000);
+    }, 5000);
     const user = localStorage.getItem('user-scan');
     const state = localStorage.getItem('state');
     let err = localStorage.getItem('error');
