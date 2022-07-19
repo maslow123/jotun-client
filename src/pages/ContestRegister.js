@@ -108,6 +108,7 @@ export default function ContestRegister() {
   };
 
   const handleSubmitUserEvent = async () => {
+    // return null;
     const payload = {
       family_id: children.id,
       sub_event_id: eventDetail.sub_events[0].id,
@@ -486,7 +487,7 @@ export default function ContestRegister() {
                               fontSize: "13px",
                             }}
                           >
-                            09.00
+                            -
                           </span>
                         </div>
                       </li>
