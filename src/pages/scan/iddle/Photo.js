@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Background from "./../../../bgscan/background/photo.png";
 import { QrReader } from "react-qr-reader";
@@ -48,6 +48,7 @@ export default function Photo() {
     // };
 
     // doScan();
+    inputRef.current.focus();
     localStorage.clear();
   }, []);
 
@@ -87,12 +88,48 @@ export default function Photo() {
       }
     }
   };
+
+  const onResult = async (value) => {
+    const payload = {
+      code: "FOTO",
+      key: value,
+    };
+
+    try {
+      if (!loading) {
+        setLoading(true);
+        const scan = new Scan();
+        const resp = await scan.doScan(payload);
+
+        if (resp.status === 200) {
+          // save user data to localstorage
+          localStorage.setItem("user-scan", JSON.stringify(resp.data));
+          if (resp.state === "new") {
+            return navigate("/venue/photo/success");
+          }
+
+          localStorage.setItem("error", resp.message);
+          localStorage.setItem("state", resp.state);
+          return navigate("/venue/photo/error");
+        }
+        setLoading(false);
+      }
+    } catch (e) {
+      localStorage.setItem("error", e.message);
+      if (e.status === 422) {
+        localStorage.setItem("user-scan", JSON.stringify(e.data.user));
+      }
+      setLoading(false);
+      return navigate("/venue/photo/error");
+    }
+  };
   const hide = () => {
     return setShow("hide");
   };
   const _show = () => {
     return setShow("show");
   };
+  const inputRef = useRef(null);
   return (
     <div className="row justify-content-center">
       <div
@@ -119,6 +156,12 @@ export default function Photo() {
                       </span>
                     </i>
                   </h2>
+                  <input ref={inputRef} type="text" style={{ width: 0, height: 0, position: 'absolute', bottom: -100 }} onKeyPress={(e) => {
+                    if (e.key.trim() === 'Enter') {
+                      onResult(e.target.value);
+                      e.target.value = '';
+                    }
+                  }}/>
                 </div>
               </div>
               <div className="col-3">

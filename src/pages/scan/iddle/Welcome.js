@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Background from "./../../../bgscan/background/iddle-welcome.png";
 import { QrReader } from "react-qr-reader";
@@ -11,11 +11,12 @@ export default function Welcome() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
+    inputRef.current.focus();
     localStorage.clear();
   }, []);
 
   const _onResult = async (e, r) => {
-    console.log({ e }, { r });
+    // console.log({ e }, { r });
     if (!!r) {
       const payload = {
         code: "KEHADIRAN",
@@ -46,12 +47,45 @@ export default function Welcome() {
       }
     }
   };
+
+  const onResult = async (val) => {
+    // console.log({ e }, { r });
+    const payload = {
+      code: "KEHADIRAN",
+      key: val,
+    };
+
+    try {
+      if (!loading) {
+        setLoading(true);
+        const scan = new Scan();
+        const resp = await scan.doScan(payload);
+
+        if (resp.status === 200) {
+          // save user data to localstorage
+          localStorage.setItem("user-scan", JSON.stringify(resp.data.user));
+          if (resp.state === "update") {
+            // welcome back
+            return navigate("/venue/welcomeback/success");
+          }
+          // welcome
+          return navigate("/venue/welcome/success");
+        }
+        setLoading(false);
+      }
+    } catch (e) {
+      setLoading(false);
+      return navigate("/venue/welcome/error");
+    }
+  };
   const hide = () => {
     return setShow("hide");
   };
   const _show = () => {
     return setShow("show");
   };
+
+  const inputRef = useRef(null);
   return (
     <div className="row justify-content-center">
       <div
@@ -71,6 +105,12 @@ export default function Welcome() {
                 <div className="text-center">
                   <h2 className="mb-3 header" style={{ fontSize: "100px" }}>
                     <i>Daftar kehadiran</i>
+                    <input ref={inputRef} type="text" style={{ width: 0, height: 0, position: 'absolute', bottom: -100 }} onKeyPress={(e) => {
+                      if (e.key.trim() === 'Enter') {
+                        onResult(e.target.value);
+                        e.target.value = '';
+                      }
+                    }}/>
                   </h2>
                 </div>
               </div>
