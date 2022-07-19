@@ -108,7 +108,7 @@ export default function ContestRegister() {
   };
 
   const handleSubmitUserEvent = async () => {
-    // return null;
+    return null;
     const payload = {
       family_id: children.id,
       sub_event_id: eventDetail.sub_events[0].id,
@@ -438,7 +438,7 @@ export default function ContestRegister() {
                         color: "#10193a",
                       }}
                     >
-                      SIMPAN
+                      PENDAFTARAN DITUTUP
                     </button>
                   </div>
                 </div>
