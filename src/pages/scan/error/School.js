@@ -59,19 +59,18 @@ export default function School() {
           background: `url(${Background})`,
           margin: 0,
           padding: 0,
-          overflowX: "hidden",
-          overflowY: "scroll",
+          overflow: "hidden",
         }}
       >
         <FadeIn>
-          <div className="container-fluid" style={{ marginTop: "150px" }}>
+          <div className="container-fluid content-scan">
             <div className="row justify-content-center">
               <div className="col"></div>
               <div className="col-2 col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
                 <img
                   src="/assets/img/icon/cancel.png"
                   className="mb-4"
-                  width={120}
+                  width={100}
                 />
               </div>
             </div>
@@ -90,7 +89,7 @@ export default function School() {
                   Jakarta
                 </h2> */}
 
-                  <h2 className="mb-3 header" style={{ fontSize: "54px" }}>
+                  <h2 className="mb-3 header" style={{fontSize:'45px'}}>
                     <i>{error}</i>
                   </h2>
                   {error !== "Anda belum terdaftar" && (

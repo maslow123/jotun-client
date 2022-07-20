@@ -87,7 +87,10 @@ export default function Welcome() {
 
   const inputRef = useRef(null);
   return (
-    <div className="row justify-content-center" onClick={() => inputRef.current.focus()}>
+    <div
+      className="row justify-content-center"
+      onClick={() => inputRef.current.focus()}
+    >
       <div
         className="bg-scan col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12"
         style={{
@@ -99,18 +102,23 @@ export default function Welcome() {
         }}
       >
         <FadeIn>
-          <div className="container-fluid" style={{ marginTop: "300px" }}>
+          <div className="container-fluid content-scan-iddle">
             <div className="row justify-content-center">
               <div className="col-10 col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mb-0">
                 <div className="text-center">
-                  <h2 className="mb-3 header" style={{ fontSize: "100px" }}>
+                  <h2 className="mb-3 header">
                     <i>Daftar kehadiran</i>
-                    <input ref={inputRef} type="text" style={{ width: 0, height: 0, position: 'absolute', bottom: -100 }} onKeyPress={(e) => {
-                      if (e.key.trim() === 'Enter') {
-                        onResult(e.target.value);
-                        e.target.value = '';
-                      }
-                    }}/>
+                    <input
+                      ref={inputRef}
+                      type="text"
+                      style={{ width: 0, height: 0, position: "absolute" }}
+                      onKeyPress={(e) => {
+                        if (e.key.trim() === "Enter") {
+                          onResult(e.target.value);
+                          e.target.value = "";
+                        }
+                      }}
+                    />
                   </h2>
                 </div>
               </div>
@@ -126,7 +134,7 @@ export default function Welcome() {
                       />
                     </div>
                     <div className="text-center">
-                      <button className="btn btn-light btn-lg" onClick={_show}>
+                      <button className="btn btn-light btn-md" onClick={_show}>
                         Show cam
                       </button>
                     </div>
@@ -142,13 +150,7 @@ export default function Welcome() {
                       />
                     </div>
                     <div className="text-center">
-                      <h3
-                        className="subheader mt-3"
-                        style={{ fontWeight: "normal", fontSize: "30px" }}
-                      >
-                        SCAN DISINI
-                      </h3>
-                      <button className="btn btn-light btn-lg" onClick={hide}>
+                      <button className="btn btn-light btn-md" onClick={hide}>
                         Hide
                       </button>
                     </div>
