@@ -133,7 +133,7 @@ export default function Souvenir() {
   
   const inputRef = useRef(null);
   return (
-    <div className="row justify-content-center">
+    <div className="row justify-content-center" onClick={() => inputRef.current.focus()}>
       <div
         className="bg-scan col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12"
         style={{

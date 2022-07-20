@@ -10,46 +10,47 @@ export default function Snack() {
   const [show, setShow] = useState("show");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const inputRef = useRef(null);
   useEffect(() => {
-    // const doScan = async () => {
-    //   const payload = {
-    //     code: 'SNACK',
-    //     key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiI2MjgxNjgzNDYzMSIsIm5hbWUiOiJaZW5pdGhhIGZpdHJpYXRpIiwiaWF0IjoxNjU3MzMyNDI2LCJleHAiOjE2NTc0MTg4MjZ9.lTlrw7eyj5URWqOwU5pFYjAoPhcv5K9kp4evfnwqMGM'
-    //   };
+    const doScan = async () => {
+      const payload = {
+        code: 'SNACK',
+        key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiI2Mjg3ODAzODI0NjQ0IiwibmFtZSI6IkZhYmlsYSBOdXIgRmFsYmkiLCJpYXQiOjE2NTc4MDgxNTF9.qEc3N6DdW-bF4ErY_9fbIgtHiTeNdpXZhGTgqZmsDqE'
+      };
 
-    //   try {
-    //     if (!loading) {
-    //       setLoading(true);
-    //       const scan = new Scan();
-    //       const resp = await scan.doScan(payload);
+      try {
+        if (!loading) {
+          setLoading(true);
+          const scan = new Scan();
+          const resp = await scan.doScan(payload);
 
-    //       console.log({ resp });
-    //       if (resp.status === 200) {
-    //         // save user data to localstorage
-    //         localStorage.setItem('user-scan', JSON.stringify(resp.data))
-    //         if (resp.state === 'new') {
-    //           return navigate('/venue/snack/success');
-    //         }
+          console.log({ resp });
+          if (resp.status === 200) {
+            // save user data to localstorage
+            localStorage.setItem('user-scan', JSON.stringify(resp.data))
+            if (resp.state === 'new') {
+              return navigate('/venue/snack/success');
+            }
 
-    //         localStorage.setItem('state', resp.state);
-    //         return navigate('/venue/snack/error');
-    //       }
-    //       setLoading(false);
-    //     }
-    //   } catch(e) {
-    //     console.log({ e });
-    //     localStorage.setItem('error', e.message)
-    //     if (e.status === 422) {
-    //       localStorage.setItem('user-scan', JSON.stringify(e.data.user))
-    //     }
-    //     setLoading(false);
-    //     return navigate('/venue/snack/error');
-    //   }
-    // };
+            localStorage.setItem('state', resp.state);
+            return navigate('/venue/snack/error');
+          }
+          setLoading(false);
+        }
+      } catch(e) {
+        console.log({ e });
+        localStorage.setItem('error', e.message)
+        if (e.status === 422) {
+          localStorage.setItem('user-scan', JSON.stringify(e.data))
+        }
+        setLoading(false);
+        return navigate('/venue/snack/error');
+      }
+    };
 
-    // doScan();
-    inputRef.current.focus();
-    localStorage.clear();
+    doScan();
+    // inputRef.current.focus();
+    // localStorage.clear();
   }, []);
 
   const _onResult = async (e, r) => {
@@ -114,7 +115,7 @@ export default function Snack() {
     } catch (e) {
       localStorage.setItem("error", e.message);
       if (e.status === 422) {
-        localStorage.setItem("user-scan", JSON.stringify(e.data.user));
+        localStorage.setItem("user-scan", JSON.stringify(e.data));
       }
       setLoading(false);
       return navigate("/venue/snack/error");
@@ -126,9 +127,8 @@ export default function Snack() {
   const _show = () => {
     return setShow("show");
   };
-  const inputRef = useRef(null);
   return (
-    <div className="row justify-content-center">
+    <div className="row justify-content-center" onClick={() => inputRef.current.focus()}>
       <div
         className="bg-scan col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12"
         style={{
@@ -153,7 +153,7 @@ export default function Snack() {
                       </span>
                     </i>
                   </h2>
-                  <input ref={inputRef} type="text" style={{ width: 0, height: 0, position: 'absolute', bottom: -100 }} onKeyPress={(e) => {
+                  <input autoFocus ref={inputRef} type="text" style={{ width: 0, height: 0, position: 'absolute', bottom: -100 }} onKeyPress={(e) => {
                     if (e.key.trim() === 'Enter') {
                       onResult(e.target.value);
                       e.target.value = '';

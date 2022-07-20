@@ -46,7 +46,7 @@ export default function Welcome() {
       setError('SUDAH PERNAH MENUKARKAN SEBELUMNYA');
     }
     setStatus(state);
-
+    console.log(JSON.parse(user));
     setUser(JSON.parse(user));
 
   }, []);
