@@ -135,25 +135,24 @@ export default function Video() {
           background: `url(${Background})`,
           margin: 0,
           padding: 0,
-          overflowX: "hidden",
-          overflowY: "scroll",
+          overflow: "hidden",
         }}
       >
         <FadeIn>
-          <div className="container-fluid" style={{ marginTop: "360px" }}>
+          <div className="container-fluid content-scan-iddle">
             <div className="row justify-content-center">
               <div className="col-10 col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mb-0">
                 <div className="text-center">
-                  <h2 className="mb-3 header" style={{ fontSize: "100px" }}>
+                  <h2 className="mb-3 header">
                     <i>
                       Pengambilan <br />
-                      <span style={{ fontSize: "90px", fontWeight: "normal" }}>
+                      <span style={{ fontSize: "50px", fontWeight: "normal" }}>
                         {" "}
                         Voucher video booth 360
                       </span>
                     </i>
                   </h2>
-                  <input ref={inputRef} type="text" style={{ width: 0, height: 0, position: 'absolute', bottom: -100 }} onKeyPress={(e) => {
+                  <input ref={inputRef} type="text" style={{ width: 0, height: 0, position: 'absolute' }} onKeyPress={(e) => {
                     if (e.key.trim() === 'Enter') {
                       onResult(e.target.value);
                       e.target.value = '';
@@ -173,7 +172,7 @@ export default function Video() {
                       />
                     </div>
                     <div className="text-center">
-                      <button className="btn btn-light btn-lg" onClick={_show}>
+                      <button className="btn btn-light btn-md" onClick={_show}>
                         Show cam
                       </button>
                     </div>
@@ -189,13 +188,8 @@ export default function Video() {
                       />
                     </div>
                     <div className="text-center">
-                      <h3
-                        className="subheader mt-3"
-                        style={{ fontWeight: "normal", fontSize: "30px" }}
-                      >
-                        SCAN DISINI
-                      </h3>
-                      <button className="btn btn-light btn-lg" onClick={hide}>
+                     
+                      <button className="btn btn-light btn-md" onClick={hide}>
                         Hide
                       </button>
                     </div>

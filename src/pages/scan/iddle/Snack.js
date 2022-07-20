@@ -128,37 +128,49 @@ export default function Snack() {
     return setShow("show");
   };
   return (
-    <div className="row justify-content-center" onClick={() => inputRef.current.focus()}>
+    <div
+      className="row justify-content-center"
+      onClick={() => inputRef.current.focus()}
+    >
       <div
         className="bg-scan col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12"
         style={{
           background: `url(${Background})`,
           margin: 0,
           padding: 0,
-          overflowX: "hidden",
-          overflowY: "scroll",
+          overflow: "hidden",
         }}
       >
         <FadeIn>
-          <div className="container-fluid" style={{ marginTop: "300px" }}>
+          <div className="container-fluid content-scan-iddle">
             <div className="row justify-content-center">
               <div className="col-10 col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 mb-0">
                 <div className="text-center">
-                  <h2 className="mb-3 header2" style={{ fontSize: "100px" }}>
+                  <h2 className="mb-3 header2">
                     <i>
                       Pengambilan <br />
-                      <span style={{ fontSize: "80px", fontWeight: "normal" }}>
+                      <span style={{ fontSize: "50px", fontWeight: "normal" }}>
                         {" "}
                         Snack Anak <br /> Umur 1 - 12 tahun
                       </span>
                     </i>
                   </h2>
-                  <input autoFocus ref={inputRef} type="text" style={{ width: 0, height: 0, position: 'absolute', bottom: -100 }} onKeyPress={(e) => {
-                    if (e.key.trim() === 'Enter') {
-                      onResult(e.target.value);
-                      e.target.value = '';
-                    }
-                  }}/>
+                  <input
+                    autoFocus
+                    ref={inputRef}
+                    type="text"
+                    style={{
+                      width: 0,
+                      height: 0,
+                      position: "absolute",
+                    }}
+                    onKeyPress={(e) => {
+                      if (e.key.trim() === "Enter") {
+                        onResult(e.target.value);
+                        e.target.value = "";
+                      }
+                    }}
+                  />
                 </div>
               </div>
               <div className="col-3">
@@ -173,7 +185,7 @@ export default function Snack() {
                       />
                     </div>
                     <div className="text-center">
-                      <button className="btn btn-light btn-lg" onClick={_show}>
+                      <button className="btn btn-light btn-md" onClick={_show}>
                         Show cam
                       </button>
                     </div>
@@ -189,13 +201,7 @@ export default function Snack() {
                       />
                     </div>
                     <div className="text-center">
-                      <h3
-                        className="subheader mt-3"
-                        style={{ fontWeight: "normal", fontSize: "30px" }}
-                      >
-                        SCAN DISINI
-                      </h3>
-                      <button className="btn btn-light btn-lg" onClick={hide}>
+                      <button className="btn btn-light btn-md" onClick={hide}>
                         Hide
                       </button>
                     </div>
