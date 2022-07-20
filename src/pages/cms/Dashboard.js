@@ -10,8 +10,8 @@ export default function Dashboard() {
     columns: [
       {
         name: "No",
-        selector: row => row.id,
-        width: 100,
+        selector: row => row.no,
+        width: '50',
         sortable: true
       },
       {
@@ -124,7 +124,11 @@ export default function Dashboard() {
       setLoading(true);
       const resp = await user_service.list();
       let rows = [];
-      for (let row of resp.results) {
+      for (let [i, row] of resp.results.entries()) {
+        row.no = i + 1;
+        row.qr_code_url = (
+          <a target="_blank" href={`${row.qr_code_url}`}>{row.qr_code_url}</a>
+        )
         row.option = (
           <>
             <i
@@ -173,10 +177,11 @@ export default function Dashboard() {
     setLoading(true);
     try {
       const resp = await user_service.register(payload);
-      console.log(typeof resp.code);
       if (resp.code === 201) {        
         showToast('success', 'Data berhasil ditambahkan');
         setLoading(false);
+        await fetchUserList();
+        resetPayload();
         document.getElementById('closeAddModal').click();
         return
       }
@@ -210,6 +215,41 @@ export default function Dashboard() {
 
     setPayload({ ...payload, family_list: [...p] });
   };
+
+  const resetPayload = () => {
+    for(let i in payload) {
+      if (i === 'family_list') {
+        payload[i] = [
+          {
+            name: "",
+            age: 0,
+          },
+          {
+            name: "",
+            age: 0,
+          },
+          {
+            name: "",
+            age: 0,
+          },
+          {
+            name: "",
+            age: 0,
+          },
+          {
+            name: "",
+            age: 0,
+          },
+          {
+            name: "",
+            age: 0,
+          },
+        ];
+        continue;
+      }
+      payload[i] = '';
+    }
+  }
 
   return (
     <>
