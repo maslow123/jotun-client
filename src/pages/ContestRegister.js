@@ -492,7 +492,7 @@ export default function ContestRegister() {
                             id={`flexRadioDefault-${i}`}
                           />
                           <label
-                            class="form-check-label mx-1"
+                            class="form-check-label mx-1 w-30"
                             for={`flexRadioDefault-${i}`}                          
                             style={{
                               fontSize: "13px",
@@ -518,7 +518,7 @@ export default function ContestRegister() {
                               fontSize: "13px",
                             }}
                           >
-                            {child.is_registered && child?.start_time?.slice(0, 5) || '-'} s/d {child?.end_time?.slice(0, 5) || '-'}
+                            {child?.start_time?.slice(0, 5) || '-'} s/d {child?.end_time?.slice(0, 5) || '-'}
                           </span>
                         </div>
                       </li>
