@@ -479,47 +479,61 @@ export default function ContestRegister() {
                   ? childNonRegistered?.length > 0 &&
                     childNonRegistered.map((child, i) => (
                       <li className="list-group-item" key={i}>
-                        <div
-                          class="form-check"
-                          // onClick={() => setChildren({ ...child })} // for tmp
-                        >
-                          <input
-                            disabled // for tmp
-                            // checked={child.is_registered}
-                            class="form-check-input ml-1"
-                            type="radio"
-                            // name="flexRadioDefault" // for tmp
-                            id={`flexRadioDefault-${i}`}
-                          />
-                          <label
-                            class="form-check-label mx-1 w-30"
-                            for={`flexRadioDefault-${i}`}                          
-                            style={{
-                              fontSize: "13px",
-                              color: child.is_registered ? 'red' : 'black' // for tmp
-                            }}
+                        <div className="row">
+                          <div className="col-5" style={{ paddingRight: 0 }}>
+                            <div
+                              class="form-check"
+                              // onClick={() => setChildren({ ...child })} // for tmp
+                            >
+                              <input
+                                disabled // for tmp
+                                // checked={child.is_registered}
+                                class="form-check-input ml-1"
+                                type="radio"
+                                // name="flexRadioDefault" // for tmp
+                                id={`flexRadioDefault-${i}`}
+                              />
+                              <label
+                                class="form-check-label mx-1 w-30"
+                                for={`flexRadioDefault-${i}`}
+                                style={{
+                                  fontSize: "12px",
+                                  color: child.is_registered ? "red" : "black", // for tmp
+                                }}
+                              >
+                                {child.name}
+                              </label>
+                            </div>
+                          </div>
+                          <div
+                            className="col-5"
+                            style={{ paddingLeft: 0, paddingRight: 0 }}
                           >
-                            {child.name}
-                          </label>
-
-                          <span
-                            className="mx-1"
-                            style={{
-                              float: "right",
-                              fontSize: "13px",
-                            }}
+                            <span
+                              class="mx-4"
+                              style={{
+                                float: "right",
+                                fontSize: "12px",
+                              }}
+                            >
+                              {child?.start_time?.slice(0, 5) || "-"} s/d{" "}
+                              {child?.end_time?.slice(0, 5) || "-"}
+                            </span>
+                          </div>
+                          <div
+                            className="col-2"
+                            style={{ paddingLeft: 0, paddingRight: 0 }}
                           >
-                            {child.age === 0 ? "0-1" : child.age} Tahun
-                          </span>
-                          <span
-                            class="mx-4"
-                            style={{
-                              float: "right",
-                              fontSize: "13px",
-                            }}
-                          >
-                            {child?.start_time?.slice(0, 5) || '-'} s/d {child?.end_time?.slice(0, 5) || '-'}
-                          </span>
+                            <span
+                              className="mx-1"
+                              style={{
+                                float: "right",
+                                fontSize: "12px",
+                              }}
+                            >
+                              {child.age === 0 ? "0-1" : child.age} Tahun
+                            </span>
+                          </div>
                         </div>
                       </li>
                     ))
