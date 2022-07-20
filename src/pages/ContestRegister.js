@@ -96,6 +96,10 @@ export default function ContestRegister() {
           let found = false // flag
           for (let j = 0; j < resp.results.length && !found; j++) {
             found = f[i].id === resp.results[j].id
+            if (found) {
+              f[i].start_time = resp.results[j].start_time;
+              f[i].end_time = resp.results[j].end_time;
+            }
           }        
           if (found) {
             f[i].is_registered = true;
@@ -119,6 +123,8 @@ export default function ContestRegister() {
 
       for (let i in d) {
         delete d[i].is_registered;
+        delete d[i].start_time;
+        delete d[i].end_time;
       }
       setChildNonRegistered([...d]);
       setLoadingGetChildrenRegistered(false);
@@ -479,7 +485,7 @@ export default function ContestRegister() {
                         >
                           <input
                             disabled // for tmp
-                            checked={child.is_registered}
+                            // checked={child.is_registered}
                             class="form-check-input ml-1"
                             type="radio"
                             // name="flexRadioDefault" // for tmp
@@ -512,7 +518,7 @@ export default function ContestRegister() {
                               fontSize: "13px",
                             }}
                           >
-                            -
+                            {child.is_registered && child?.start_time?.slice(0, 5) || '-'} s/d {child?.end_time?.slice(0, 5) || '-'}
                           </span>
                         </div>
                       </li>
