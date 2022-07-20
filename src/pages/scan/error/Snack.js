@@ -21,18 +21,19 @@ export default function Welcome() {
         return navigate("/venue/iddle-snack");
       }
     }, 5000);
-    const user = localStorage.getItem('user-scan');
-    const state = localStorage.getItem('state');
-    let err = localStorage.getItem('error');
-    // if (!err) {      
+    const user = localStorage.getItem("user-scan");
+    const state = localStorage.getItem("state");
+    let err = localStorage.getItem("error");
+    // if (!err) {
     //   return navigate('/venue/iddle-snack');
     // }
 
     if (err) {
       console.log(err);
-      switch(err) {
-        case 'invalid-children-age':
-          err = 'Mohon maaf penukaran hanya berlaku bagi yang memiliki anak usia 1 - 12 tahun';
+      switch (err) {
+        case "invalid-children-age":
+          err =
+            "Mohon maaf penukaran hanya berlaku bagi yang memiliki anak usia 1 - 12 tahun";
           break;
         default:
           err = "Anda belum terdaftar pada daftar kehadiran";
@@ -42,15 +43,14 @@ export default function Welcome() {
       setError(err);
     }
 
-    if (state === 'update') {
-      setError('SUDAH PERNAH MENUKARKAN SEBELUMNYA');
+    if (state === "update") {
+      setError("SUDAH PERNAH MENUKARKAN SEBELUMNYA");
     }
     setStatus(state);
     console.log(JSON.parse(user));
     setUser(JSON.parse(user));
-
   }, []);
-  
+
   return (
     <div className="row justify-content-center">
       <div
@@ -59,26 +59,25 @@ export default function Welcome() {
           background: `url(${Background})`,
           margin: 0,
           padding: 0,
-          overflowX: "hidden",
-          overflowY: "scroll",
+          overflow: "hidden",
         }}
       >
         <FadeIn>
-          <div className="container-fluid" style={{ marginTop: "150px" }}>
+          <div className="container-fluid content-scan">
             <div className="row justify-content-center">
               <div className="col"></div>
               <div className="col-2 col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
                 <img
                   src="/assets/img/icon/cancel.png"
                   className="mb-4"
-                  width={120}
+                  width={100}
                 />
               </div>
             </div>
             <div className="row justify-content-center">
               <div className="col-10 col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                 <div className="text-center">
-                  <h2 className="mb-3 header2" style={{ fontSize: "54px" }}>
+                  <h2 className="mb-3 header2" style={{fontSize:'45px'}}>
                     <i>{error}</i>
                   </h2>
                   {error !== "Anda belum terdaftar" && (

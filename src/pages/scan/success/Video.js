@@ -35,22 +35,21 @@ export default function Video() {
           background: `url(${Background})`,
           margin: 0,
           padding: 0,
-          overflowX: "hidden",
-          overflowY: "scroll",
+          overflow: "hidden",
         }}
       >
         <FadeIn>
-          <div className="container-fluid" style={{ marginTop: "180px" }}>
+          <div className="container-fluid content-scan">
             <div className="row justify-content-center">
               <div className="col"></div>
               <div className="col-2 col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                <img src="/assets/img/icon/success.png" width={120} />
+                <img src="/assets/img/icon/success.png" width={100} />
               </div>
             </div>
             <div className="row justify-content-center">
               <div className="col-10 col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                 <div className="text-center">
-                  <h2 className="mb-3 header" style={{ fontSize: "48px" }}>
+                  <h2 className="mb-3 header" style={{fontSize:'45px'}}>
                     <i>
                       Selamat bergaya 360 Family Jotun <br /> jangan lupa
                       posting di socmed kebahagiaan kamu
