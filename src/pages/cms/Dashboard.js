@@ -5,56 +5,73 @@ import { showToast, validate } from "../utils/helper";
 import LoadingScreen from 'react-loading-screen';
 // import { MDBDataTableV5 } from "mdbreact";
 export default function Dashboard() {
-  
+  const customStyles = {
+    rows: {
+      style: {
+        minHeight: "50px", // override the row height
+      },
+    },
+    headCells: {
+      style: {
+        fontSize: "14px",
+        fontWeight: "500",
+      },
+    },
+    cells: {
+      style: {
+        fontSize: "14px",
+      },
+    },
+  };
   const [datatable, setDatatable] = useState({
     columns: [
       {
         name: "No",
-        selector: row => row.no,
-        width: '50',
-        sortable: true
+        selector: (row) => row.no,
+        sortable: true,
+        width: "80px",
       },
       {
         name: "Nama",
-        selector: row => row.name,
-        width: 270,        
-        sortable: false,
+        selector: (row) => row.name,
+        sortable: true,
+        width: "200px",
       },
       {
         name: "No Telepon",
-        selector: row => row.phone_number,
+        selector: (row) => row.phone_number,
         sortable: false,
-        width: 270,
+        width: "150px",
       },
       {
         name: "Departemen",
-        selector: row => row.department_name,
+        selector: (row) => row.department_name,
         sortable: false,
-        width: 200,
+        width: "150px",
       },
       {
         name: "Lokasi",
-        selector: row => row.branch_name,
+        selector: (row) => row.branch_name,
         sortable: false,
-        width: 200,
+        width: "180px",
       },
       {
         name: "Kendaraan",
-        selector: row => row.transportation_name,
+        selector: (row) => row.transportation_name,
         sortable: false,
-        width: 150,
+        width: "200px",
       },
       {
         name: "QR Link",
-        selector: row => row.qr_code_url,
+        selector: (row) => row.qr_code_url,
         sortable: false,
-        width: 150,
-      },      
+        width: "250px",
+      },
       {
         name: "Option",
-        selector: row => row.option,
+        selector: (row) => row.option,
         sortable: false,
-        width: 100,
+        width: "80px",
       },
     ],
     rows: [],
@@ -114,8 +131,8 @@ export default function Dashboard() {
 
     const fetchUser = async () => {
       await fetchUserList();
-    }
-    fetchDataMaster();    
+    };
+    fetchDataMaster();
     fetchUser();
   }, []);
 
@@ -127,8 +144,10 @@ export default function Dashboard() {
       for (let [i, row] of resp.results.entries()) {
         row.no = i + 1;
         row.qr_code_url = (
-          <a target="_blank" href={`${row.qr_code_url}`}>{row.qr_code_url}</a>
-        )
+          <a target="_blank" href={`${row.qr_code_url}`}>
+            {row.qr_code_url}
+          </a>
+        );
         row.option = (
           <>
             <i
@@ -140,11 +159,11 @@ export default function Dashboard() {
         );
 
         rows = [...rows, row];
-      }      
-
-      setDatatable({ ...datatable, rows })
+      }
+      // console.log(rows);
+      setDatatable({ ...datatable, rows });
       setLoading(false);
-    } catch(err) {
+    } catch (err) {
       console.error(err);
       setLoading(false);
     }
@@ -169,34 +188,32 @@ export default function Dashboard() {
     }
 
     const p = { ...payload };
-    p.family_list = p.family_list.map((item, i) => {
-      if (i === 0) return { ...item}
-      if (item.name !== '') return { ...item }
-    }).filter(item => item);
-    
+    p.family_list = p.family_list
+      .map((item, i) => {
+        if (i === 0) return { ...item };
+        if (item.name !== "") return { ...item };
+      })
+      .filter((item) => item);
+
     setLoading(true);
     try {
       const resp = await user_service.register(payload);
-      if (resp.code === 201) {        
-        showToast('success', 'Data berhasil ditambahkan');
+      if (resp.code === 201) {
+        showToast("success", "Data berhasil ditambahkan");
         setLoading(false);
         await fetchUserList();
         resetPayload();
-        document.getElementById('closeAddModal').click();
-        return
+        document.getElementById("closeAddModal").click();
+        return;
       }
-      showToast('error', JSON.stringify(resp));
+      showToast("error", JSON.stringify(resp));
       setLoading(false);
-
-
-    } catch(err) {
+    } catch (err) {
       console.log(err);
-      showToast('error', JSON.stringify(err));
+      showToast("error", JSON.stringify(err));
 
       setLoading(false);
     }
-
-
   };
 
   const _handleChange = (evt) => {
@@ -217,8 +234,8 @@ export default function Dashboard() {
   };
 
   const resetPayload = () => {
-    for(let i in payload) {
-      if (i === 'family_list') {
+    for (let i in payload) {
+      if (i === "family_list") {
         payload[i] = [
           {
             name: "",
@@ -247,9 +264,9 @@ export default function Dashboard() {
         ];
         continue;
       }
-      payload[i] = '';
+      payload[i] = "";
     }
-  }
+  };
 
   return (
     <>
@@ -259,11 +276,7 @@ export default function Dashboard() {
           bgColor="rgba(0,0,0,0.5)"
           spinnerColor="#9ee5f8"
           textColor="#FFF"
-          text={
-            <>
-              Data sedang diproses...              
-            </>
-          }
+          text={<>Data sedang diproses...</>}
         />
         <div className="row">
           <div className="col-12" id="clickAddModal">
@@ -274,11 +287,31 @@ export default function Dashboard() {
             >
               Create
             </button>
-            <div className="table-responsive">             
+            <div className="row">
+              <div className="col-8"></div>
+              <div className="col-3 mb-4">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Cari .."
+                    style={{ float: "left" }}
+                  />
+                </div>
+              </div>
+              <div className="col">
+                <button className="btn btn-success btn-sm">
+                  <i className="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+            <div className="table-responsive">
               <DataTable
-                  columns={datatable.columns}
-                  data={datatable.rows}
-                  pagination
+                columns={datatable.columns}
+                data={datatable.rows}
+                customStyles={customStyles}
+                pagination
+                defaultSortFieldID={1}
               />
             </div>
           </div>
@@ -308,230 +341,232 @@ export default function Dashboard() {
             </div>
             <form onSubmit={_handleAddData}>
               <div className="modal-body">
-                  <div className="row">
-                    <div className="col-12 mb-3">
-                      <div className="form-group">
-                        <label className="text-muted mb-2">Nama Karyawan</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="contoh : Ahmad Taufik"
-                          name="name"
-                          value={payload.name}
-                          onChange={_handleChange}
-                          required
-                        />
-                      </div>
+                <div className="row">
+                  <div className="col-12 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">Nama Karyawan</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="contoh : Ahmad Taufik"
+                        name="name"
+                        value={payload.name}
+                        onChange={_handleChange}
+                        required
+                      />
                     </div>
-                    <div className="col-6 mb-3">
-                      <div className="form-group">
-                        <label className="text-muted mb-2">
-                          No Whatsapp anda
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="contoh : 0827283823"
-                          name="phone_number"
-                          value={payload.phone_number}
-                          onChange={_handleChange}
-                          required
-                        />
-                      </div>
+                  </div>
+                  <div className="col-6 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">
+                        No Whatsapp anda
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="contoh : 0827283823"
+                        name="phone_number"
+                        value={payload.phone_number}
+                        onChange={_handleChange}
+                        required
+                      />
                     </div>
-                    <div className="col-6 mb-3">
-                      <div className="form-group">
-                        <label className="text-muted mb-2">
-                          Konfirmasi No Whatsapp
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="contoh : 0827283823"
-                          name="confirm_phone_number"
-                          value={payload.confirm_phone_number}
-                          onChange={_handleChange}
-                          required
-                        />
-                      </div>
+                  </div>
+                  <div className="col-6 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">
+                        Konfirmasi No Whatsapp
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="contoh : 0827283823"
+                        name="confirm_phone_number"
+                        value={payload.confirm_phone_number}
+                        onChange={_handleChange}
+                        required
+                      />
                     </div>
-                    <div className="col-12 mb-3">
-                      <div className="form-group">
-                        <label className="text-muted mb-2">Departemen</label>
-                        <select                         
-                          required
-                          name="department"
-                          onChange={_handleChange}
-                          className="form-control" 
-                        >
-                          <option selected disabled value="">
-                            Pilih Departemen anda saat ini
-                          </option>
-                          {master?.master_departments?.length &&
-                            master.master_departments.map((item) => (
-                              <option
-                                selected={payload.department === item.id}
-                                value={item.id}
-                              >
-                                {item.name}
-                              </option>
-                            ))}
-                        </select>
-                      </div>
-                    </div>
-                    <div className="col-6 mb-3">
-                      <div className="form-group">
-                        <label className="text-muted mb-2">Lokasi</label>
-                        <select 
-                          className="form-control"                          
-                          name="branches"
-                          onChange={_handleChange}
-                          required
-                        >
-                          <option selected disabled value="">
-                            Pilih Lokasi anda
-                          </option>
-                          {master?.master_branches?.length &&
-                            master.master_branches.map((item) => (
-                              <option
-                                selected={payload.branches === item.id}
-                                value={item.id}
-                              >
-                                {item.name}
-                              </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-                    {Number(payload.branches) === 1 && (
-                      <>
-                        <div className="col-6 mb-3">
-                          <div className="form-group">
-                            <label className="text-muted mb-2">Transportasi</label>
-                            <select 
-                              className="form-control"
-                              name="transportation"
-                              onChange={_handleChange}
-                              required
+                  </div>
+                  <div className="col-12 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">Departemen</label>
+                      <select
+                        required
+                        name="department"
+                        onChange={_handleChange}
+                        className="form-control"
+                      >
+                        <option selected disabled value="">
+                          Pilih Departemen anda saat ini
+                        </option>
+                        {master?.master_departments?.length &&
+                          master.master_departments.map((item) => (
+                            <option
+                              selected={payload.department === item.id}
+                              value={item.id}
                             >
-                              <option selected disabled value="">
-                                Pilih transportasi anda
-                              </option>
-                              {master?.master_transportations?.length &&
-                                master.master_transportations.map((item) => (
-                                  <option
-                                    selected={payload.transportation === item.id}
-                                    value={item.id}
-                                  >
-                                    {item.name}
-                                  </option>
-                                ))}
-                            </select>
-                          </div>
+                              {item.name}
+                            </option>
+                          ))}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="col-6 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">Lokasi</label>
+                      <select
+                        className="form-control"
+                        name="branches"
+                        onChange={_handleChange}
+                        required
+                      >
+                        <option selected disabled value="">
+                          Pilih Lokasi anda
+                        </option>
+                        {master?.master_branches?.length &&
+                          master.master_branches.map((item) => (
+                            <option
+                              selected={payload.branches === item.id}
+                              value={item.id}
+                            >
+                              {item.name}
+                            </option>
+                          ))}
+                      </select>
+                    </div>
+                  </div>
+                  {Number(payload.branches) === 1 && (
+                    <>
+                      <div className="col-6 mb-3">
+                        <div className="form-group">
+                          <label className="text-muted mb-2">
+                            Transportasi
+                          </label>
+                          <select
+                            className="form-control"
+                            name="transportation"
+                            onChange={_handleChange}
+                            required
+                          >
+                            <option selected disabled value="">
+                              Pilih transportasi anda
+                            </option>
+                            {master?.master_transportations?.length &&
+                              master.master_transportations.map((item) => (
+                                <option
+                                  selected={payload.transportation === item.id}
+                                  value={item.id}
+                                >
+                                  {item.name}
+                                </option>
+                              ))}
+                          </select>
                         </div>
-                      </>
-                    )}
-                    <div className="col-12 mb-3">
-                      <div className="form-group">
-                        <label className="text-muted mb-2">Nama Istri</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Nama istri"
-                          name="name"
-                          value={payload.family_list[0].name}
-                          onChange={e => _handleChangeFamily(0, e)}
-                        />
                       </div>
+                    </>
+                  )}
+                  <div className="col-12 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">Nama Istri</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Nama istri"
+                        name="name"
+                        value={payload.family_list[0].name}
+                        onChange={(e) => _handleChangeFamily(0, e)}
+                      />
                     </div>
-                    <div className="col-6 mb-3">
-                      <div className="form-group">
-                        <label className="text-muted mb-2">
-                          Nama Anak pertama
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Anak Pertama"
-                          name="name"
-                          value={payload.family_list[1].name}
-                          onChange={e => _handleChangeFamily(1, e)}
-                        />
-                      </div>
+                  </div>
+                  <div className="col-6 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">
+                        Nama Anak pertama
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Anak Pertama"
+                        name="name"
+                        value={payload.family_list[1].name}
+                        onChange={(e) => _handleChangeFamily(1, e)}
+                      />
                     </div>
-                    <div className="col-6 mb-3">
-                      <div className="form-group">
-                        <label className="text-muted mb-2">Nama Anak Kedua</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Anak Kedua"
-                          name="name"
-                          value={payload.family_list[2].name}
-                          onChange={e => _handleChangeFamily(2, e)}
-                        />
-                      </div>
+                  </div>
+                  <div className="col-6 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">Nama Anak Kedua</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Anak Kedua"
+                        name="name"
+                        value={payload.family_list[2].name}
+                        onChange={(e) => _handleChangeFamily(2, e)}
+                      />
                     </div>
-                    <div className="col-6 mb-3">
-                      <div className="form-group">
-                        <label className="text-muted mb-2">
-                          Nama Anak Ketiga
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Anak Ketiga"
-                          name="name"
-                          value={payload.family_list[3].name}
-                          onChange={e => _handleChangeFamily(3, e)}
-                        />
-                      </div>
+                  </div>
+                  <div className="col-6 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">
+                        Nama Anak Ketiga
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Anak Ketiga"
+                        name="name"
+                        value={payload.family_list[3].name}
+                        onChange={(e) => _handleChangeFamily(3, e)}
+                      />
                     </div>
-                    <div className="col-6 mb-3">
-                      <div className="form-group">
-                        <label className="text-muted mb-2">
-                          Nama Anak Keempat
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Anak Keempat"
-                          name="name"
-                          value={payload.family_list[4].name}
-                          onChange={e => _handleChangeFamily(4, e)}
-                        />
-                      </div>
+                  </div>
+                  <div className="col-6 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">
+                        Nama Anak Keempat
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Anak Keempat"
+                        name="name"
+                        value={payload.family_list[4].name}
+                        onChange={(e) => _handleChangeFamily(4, e)}
+                      />
                     </div>
-                    <div className="col-12 mb-3">
-                      <div className="form-group">
-                        <label className="text-muted mb-2">
-                          Nama Anak Kelima
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Anak Kelima"
-                          name="name"
-                          value={payload.family_list[5].name}
-                          onChange={e => _handleChangeFamily(5, e)}
-                        />
-                      </div>
+                  </div>
+                  <div className="col-12 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">
+                        Nama Anak Kelima
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Anak Kelima"
+                        name="name"
+                        value={payload.family_list[5].name}
+                        onChange={(e) => _handleChangeFamily(5, e)}
+                      />
                     </div>
                   </div>
                 </div>
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button type="submit" className="btn btn-primary">
-                    Create
-                  </button>
-                </div>
-              </form>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="submit" className="btn btn-primary">
+                  Create
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
