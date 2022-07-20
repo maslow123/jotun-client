@@ -12,45 +12,45 @@ export default function Snack() {
   const navigate = useNavigate();
   const inputRef = useRef(null);
   useEffect(() => {
-    const doScan = async () => {
-      const payload = {
-        code: 'SNACK',
-        key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiI2Mjg3ODAzODI0NjQ0IiwibmFtZSI6IkZhYmlsYSBOdXIgRmFsYmkiLCJpYXQiOjE2NTc4MDgxNTF9.qEc3N6DdW-bF4ErY_9fbIgtHiTeNdpXZhGTgqZmsDqE'
-      };
+    // const doScan = async () => {
+    //   const payload = {
+    //     code: 'SNACK',
+    //     key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZV9udW1iZXIiOiI2Mjg3ODAzODI0NjQ0IiwibmFtZSI6IkZhYmlsYSBOdXIgRmFsYmkiLCJpYXQiOjE2NTc4MDgxNTF9.qEc3N6DdW-bF4ErY_9fbIgtHiTeNdpXZhGTgqZmsDqE'
+    //   };
 
-      try {
-        if (!loading) {
-          setLoading(true);
-          const scan = new Scan();
-          const resp = await scan.doScan(payload);
+    //   try {
+    //     if (!loading) {
+    //       setLoading(true);
+    //       const scan = new Scan();
+    //       const resp = await scan.doScan(payload);
 
-          console.log({ resp });
-          if (resp.status === 200) {
-            // save user data to localstorage
-            localStorage.setItem('user-scan', JSON.stringify(resp.data))
-            if (resp.state === 'new') {
-              return navigate('/venue/snack/success');
-            }
+    //       console.log({ resp });
+    //       if (resp.status === 200) {
+    //         // save user data to localstorage
+    //         localStorage.setItem('user-scan', JSON.stringify(resp.data))
+    //         if (resp.state === 'new') {
+    //           return navigate('/venue/snack/success');
+    //         }
 
-            localStorage.setItem('state', resp.state);
-            return navigate('/venue/snack/error');
-          }
-          setLoading(false);
-        }
-      } catch(e) {
-        console.log({ e });
-        localStorage.setItem('error', e.message)
-        if (e.status === 422) {
-          localStorage.setItem('user-scan', JSON.stringify(e.data))
-        }
-        setLoading(false);
-        return navigate('/venue/snack/error');
-      }
-    };
+    //         localStorage.setItem('state', resp.state);
+    //         return navigate('/venue/snack/error');
+    //       }
+    //       setLoading(false);
+    //     }
+    //   } catch(e) {
+    //     console.log({ e });
+    //     localStorage.setItem('error', e.message)
+    //     if (e.status === 422) {
+    //       localStorage.setItem('user-scan', JSON.stringify(e.data))
+    //     }
+    //     setLoading(false);
+    //     return navigate('/venue/snack/error');
+    //   }
+    // };
 
-    doScan();
-    // inputRef.current.focus();
-    // localStorage.clear();
+    // doScan();
+    inputRef.current.focus();
+    localStorage.clear();
   }, []);
 
   const _onResult = async (e, r) => {
@@ -81,7 +81,7 @@ export default function Snack() {
       } catch (e) {
         localStorage.setItem("error", e.message);
         if (e.status === 422) {
-          localStorage.setItem("user-scan", JSON.stringify(e.data.user));
+          localStorage.setItem("user-scan", JSON.stringify(e.data));
         }
         setLoading(false);
         return navigate("/venue/snack/error");
