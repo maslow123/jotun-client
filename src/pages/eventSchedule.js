@@ -120,6 +120,9 @@ export default function EventSchedule() {
                     <div className="col-8">
                       <div className="d-grid">
                         <button
+                          onClick={() => {
+                            window.open('https://us02web.zoom.us/j/5617433537?pwd=RDhzc0k1VmljL1d4aWVlUWJhcFVTdz09', '_blank')
+                          }}
                           className="btn btn-warning btn-lg btn-block"
                           style={{
                             paddingLeft: "0px",
@@ -137,7 +140,7 @@ export default function EventSchedule() {
                             width={20}
                             height={20}
                             className="mx-2"
-                            src="assets/img/icon/jadwal.png"
+                            src="assets/img/icon/zoom.png"
                           />
                           <span
                             className="mb-0 p-0"
@@ -146,8 +149,8 @@ export default function EventSchedule() {
                               lineHeight: 2,
                             }}
                           >
-                            {/* Masuk ke Zoom */}
-                            Jadwal Acara
+                            Masuk ke Zoom
+                            {/* Jadwal Acara */}
                           </span>
                         </button>
                       </div>

@@ -191,6 +191,7 @@ const App = () => {
               path="/venue/iddle-welcome"
               element={<IddleWelcome />}
             />
+            <Route exact path="/test" element={<Test />} />
           </Routes>
         </>
       )}
