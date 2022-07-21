@@ -107,7 +107,7 @@ export default function Home() {
                     </a>
                     <div className="text-center">
                       <a
-                        href="/assets/pdf/do.pdf"
+                        href="https://bit.ly/3aSl8Xq"
                         target="_blank"
                         // data-bs-toggle="modal"
                         // data-bs-target="#doModal"
