@@ -4,7 +4,9 @@ import { Master, Users } from "../../services";
 import { showToast, validate } from "../utils/helper";
 import { AGES } from "./../utils/constants";
 import LoadingScreen from "react-loading-screen";
+import { useNavigate } from "react-router";
 export default function Dashboard() {
+  const navigate = useNavigate();
   const customStyles = {
     rows: {
       style: {
@@ -83,7 +85,7 @@ export default function Dashboard() {
     department: "",
     branches: "",
     transportation: "",
-    level: 0,
+    level: 1,
     family_list: [
       {
         name: "",
@@ -160,12 +162,12 @@ export default function Dashboard() {
 
         rows = [...rows, row];
       }
-      // console.log(rows);
       setDatatable({ ...datatable, rows });
       setLoading(false);
     } catch (err) {
       console.error(err);
       setLoading(false);
+      navigate('/helpdesk');
     }
   };
   const _handleAddData = async (e) => {
@@ -274,7 +276,6 @@ export default function Dashboard() {
   };
 
   const _handleModalEdit = (user) => {
-    console.log(user);
     let { id, name, phone_number, department_id, branch_id, transportation_id, family } = user;
 
     // add 5 value for family
@@ -284,7 +285,6 @@ export default function Dashboard() {
       }
     }
 
-    console.log(family);
     setPayload({
       id,
       name,
@@ -293,7 +293,7 @@ export default function Dashboard() {
       department: department_id,
       branches: branch_id,
       transportation: transportation_id,
-      level: 0,
+      level: 1,
       family_list: [...family]
     })
 
@@ -309,7 +309,7 @@ export default function Dashboard() {
     department: "",
     branches: "",
     transportation: "",
-    level: 0,
+    level: 1,
     family_list: [
       {
         name: "",
@@ -578,9 +578,9 @@ export default function Dashboard() {
                     <div className="form-group">
                       <label className="text-muted mb-2">Pilih Umur</label>
                       <select
-                        required={payload.family_list[5].name !== ""}
+                        required={payload.family_list[1].name !== ""}
                         name={"age"}
-                        onChange={(e) => _handleChange(5, e)}
+                        onChange={(e) => _handleChangeFamily(1, e)}
                         className="form-control"
                       >
                         <option selected disabled value="">
@@ -613,9 +613,9 @@ export default function Dashboard() {
                     <div className="form-group">
                       <label className="text-muted mb-2">Pilih Umur</label>
                       <select
-                        required={payload.family_list[5].name !== ""}
+                        required={payload.family_list[2].name !== ""}
                         name={"age"}
-                        onChange={(e) => _handleChange(5, e)}
+                        onChange={(e) => _handleChangeFamily(2, e)}
                         className="form-control"
                       >
                         <option selected disabled value="">
@@ -649,9 +649,9 @@ export default function Dashboard() {
                     <div className="form-group">
                       <label className="text-muted mb-2">Pilih Umur</label>
                       <select
-                        required={payload.family_list[5].name !== ""}
+                        required={payload.family_list[3].name !== ""}
                         name={"age"}
-                        onChange={(e) => _handleChange(5, e)}
+                        onChange={(e) => _handleChangeFamily(3, e)}
                         className="form-control"
                       >
                         <option selected disabled value="">
@@ -685,9 +685,9 @@ export default function Dashboard() {
                     <div className="form-group">
                       <label className="text-muted mb-2">Pilih Umur</label>
                       <select
-                        required={payload.family_list[5].name !== ""}
+                        required={payload.family_list[4].name !== ""}
                         name={"age"}
-                        onChange={(e) => _handleChange(5, e)}
+                        onChange={(e) => _handleChange(4, e)}
                         className="form-control"
                       >
                         <option selected disabled value="">
@@ -742,6 +742,7 @@ export default function Dashboard() {
               </div>
               <div className="modal-footer">
                 <button
+                  onClick={resetPayload}
                   type="button"
                   className="btn btn-secondary"
                   data-bs-dismiss="modal"
@@ -919,12 +920,12 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Nama istri"
                         name="name"
-                        value={payload.family_list[0]?.name}
+                        value={payload.family_list?.length > 0 ? payload.family_list[0].name : ''}
                         onChange={(e) => _handleChangeFamily(0, e)}
                       />
                     </div>
                   </div>
-                  <div className="col-6 mb-3">
+                  <div className="col-8 mb-3">
                     <div className="form-group">
                       <label className="text-muted mb-2">
                         Nama Anak pertama
@@ -934,12 +935,34 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Pertama"
                         name="name"
-                        value={payload.family_list?.length > 0 ? payload.family_list[1]?.name : ''}
+                        value={payload.family_list?.length > 1 ? payload.family_list[1].name : ''}
                         onChange={(e) => _handleChangeFamily(1, e)}
                       />
                     </div>
                   </div>
-                  <div className="col-6 mb-3">
+                  <div className="col-4 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">Pilih Umur</label>
+                      <select
+                        required={payload.family_list[1].name !== ""}
+                        name={"age"}
+                        onChange={(e) => _handleChangeFamily(1, e)}
+                        className="form-control"
+                      >
+                        <option selected disabled value="">
+                          {" "}
+                          Pilih umur
+                        </option>
+                        {AGES.map((age) => (
+                          <option value={age} selected={payload.family_list?.length > 0 && payload.family_list[1].age === age}>
+                            {age === 0 ? "0-1" : age} tahun
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="col-8 mb-3">
                     <div className="form-group">
                       <label className="text-muted mb-2">Nama Anak Kedua</label>
                       <input
@@ -947,12 +970,33 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Kedua"
                         name="name"
-                        value={payload.family_list?.length > 1 ? payload.family_list[2]?.name : ''}
+                        value={payload.family_list?.length > 2 ? payload.family_list[2].name : ''}
                         onChange={(e) => _handleChangeFamily(2, e)}
                       />
                     </div>
                   </div>
-                  <div className="col-6 mb-3">
+                  <div className="col-4 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">Pilih Umur</label>
+                      <select
+                        required={payload.family_list[2].name !== ""}
+                        name={"age"}
+                        onChange={(e) => _handleChangeFamily(2, e)}
+                        className="form-control"
+                      >
+                        <option selected disabled value="">
+                          {" "}
+                          Pilih umur
+                        </option>
+                        {AGES.map((age) => (
+                          <option value={age} selected={payload.family_list?.length > 2 && payload.family_list[2].age === age}>
+                            {age === 0 ? "0-1" : age} tahun
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="col-8 mb-3">
                     <div className="form-group">
                       <label className="text-muted mb-2">
                         Nama Anak Ketiga
@@ -962,12 +1006,33 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Ketiga"
                         name="name"
-                        value={payload.family_list?.length > 2 ? payload.family_list[3]?.name : ''}
+                        value={payload.family_list?.length > 3 ? payload.family_list[3].name : ''}
                         onChange={(e) => _handleChangeFamily(3, e)}
                       />
                     </div>
                   </div>
-                  <div className="col-6 mb-3">
+                  <div className="col-4 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">Pilih Umur</label>
+                      <select
+                        required={payload.family_list[3].name !== ""}
+                        name={"age"}
+                        onChange={(e) => _handleChangeFamily(3, e)}
+                        className="form-control"
+                      >
+                        <option selected disabled value="">
+                          {" "}
+                          Pilih umur
+                        </option>
+                        {AGES.map((age) => (
+                          <option value={age} selected={payload.family_list?.length > 3 && payload.family_list[3].age === age}>
+                            {age === 0 ? "0-1" : age} tahun
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="col-8 mb-3">
                     <div className="form-group">
                       <label className="text-muted mb-2">
                         Nama Anak Keempat
@@ -977,12 +1042,33 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Keempat"
                         name="name"
-                        value={payload.family_list?.length > 3 ? payload.family_list[4]?.name : ''}
+                        value={payload.family_list?.length > 4 ? payload.family_list[4].name : ''}
                         onChange={(e) => _handleChangeFamily(4, e)}
                       />
                     </div>
                   </div>
-                  <div className="col-12 mb-3">
+                  <div className="col-4 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">Pilih Umur</label>
+                      <select
+                        required={payload.family_list[4].name !== ""}
+                        name={"age"}
+                        onChange={(e) => _handleChange(4, e)}
+                        className="form-control"
+                      >
+                        <option selected disabled value="">
+                          {" "}
+                          Pilih umur
+                        </option>
+                        {AGES.map((age) => (
+                          <option value={age} selected={payload.family_list?.length > 4 && payload.family_list[4].age === age}>
+                            {age === 0 ? "0-1" : age} tahun
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="col-8 mb-3">
                     <div className="form-group">
                       <label className="text-muted mb-2">
                         Nama Anak Kelima
@@ -992,15 +1078,37 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Kelima"
                         name="name"
-                        value={payload.family_list?.length > 4 ? payload.family_list[5]?.name : ''}
+                        value={payload.family_list?.length > 5 ? payload.family_list[5].name : ''}
                         onChange={(e) => _handleChangeFamily(5, e)}
                       />
+                    </div>
+                  </div>
+                  <div className="col-4 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">Pilih Umur</label>
+                      <select
+                        required={payload.family_list[5].name !== ""}
+                        name={"age"}
+                        onChange={(e) => _handleChange(5, e)}
+                        className="form-control"
+                      >
+                        <option selected disabled value="">
+                          {" "}
+                          Pilih umur
+                        </option>
+                        {AGES.map((age) => (
+                          <option value={age} selected={payload.family_list?.length > 5 && payload.family_list[5] === age}>
+                            {age === 0 ? "0-1" : age} tahun
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="modal-footer">
                 <button
+                  onClick={resetPayload}
                   type="button"
                   className="btn btn-secondary"
                   data-bs-dismiss="modal"
