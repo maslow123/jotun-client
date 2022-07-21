@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DataTable from 'react-data-table-component';
 import { Master, Users } from "../../services";
 import { showToast, validate } from "../utils/helper";
+import { AGES } from "./../utils/constants";
 import LoadingScreen from "react-loading-screen";
 export default function Dashboard() {
   const customStyles = {
@@ -154,6 +155,7 @@ export default function Dashboard() {
               data-bs-target="#editModal"
               className="fa fa-edit px-1"
             ></i>
+            <i className="fa fa-whatsapp text-success"></i>
           </>
         );
 
@@ -271,7 +273,12 @@ export default function Dashboard() {
     <>
       <div
         className="container"
-        style={{ maxHeight: "600px", height: "600px", overflowY: "scroll" }}
+        style={{
+          maxHeight: "900px",
+          height: "900px",
+          paddingBottom: "300px",
+          overflowY: "scroll",
+        }}
       >
         <LoadingScreen
           loading={loading}
@@ -390,7 +397,7 @@ export default function Dashboard() {
                       />
                     </div>
                   </div>
-                  <div className="col-12 mb-3">
+                  <div className="col-6 mb-3">
                     <div className="form-group">
                       <label className="text-muted mb-2">Departemen</label>
                       <select
@@ -481,7 +488,7 @@ export default function Dashboard() {
                       />
                     </div>
                   </div>
-                  <div className="col-6 mb-3">
+                  <div className="col-8 mb-3">
                     <div className="form-group">
                       <label className="text-muted mb-2">
                         Nama Anak pertama
@@ -496,7 +503,29 @@ export default function Dashboard() {
                       />
                     </div>
                   </div>
-                  <div className="col-6 mb-3">
+                  <div className="col-4 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">Pilih Umur</label>
+                      <select
+                        required={payload.family_list[5].name !== ""}
+                        name={"age"}
+                        onChange={(e) => _handleChange(5, e)}
+                        className="form-control"
+                      >
+                        <option selected disabled value="">
+                          {" "}
+                          Pilih umur
+                        </option>
+                        {AGES.map((age) => (
+                          <option value={age}>
+                            {age === 0 ? "0-1" : age} tahun
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="col-8 mb-3">
                     <div className="form-group">
                       <label className="text-muted mb-2">Nama Anak Kedua</label>
                       <input
@@ -509,7 +538,28 @@ export default function Dashboard() {
                       />
                     </div>
                   </div>
-                  <div className="col-6 mb-3">
+                  <div className="col-4 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">Pilih Umur</label>
+                      <select
+                        required={payload.family_list[5].name !== ""}
+                        name={"age"}
+                        onChange={(e) => _handleChange(5, e)}
+                        className="form-control"
+                      >
+                        <option selected disabled value="">
+                          {" "}
+                          Pilih umur
+                        </option>
+                        {AGES.map((age) => (
+                          <option value={age}>
+                            {age === 0 ? "0-1" : age} tahun
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="col-8 mb-3">
                     <div className="form-group">
                       <label className="text-muted mb-2">
                         Nama Anak Ketiga
@@ -524,7 +574,28 @@ export default function Dashboard() {
                       />
                     </div>
                   </div>
-                  <div className="col-6 mb-3">
+                  <div className="col-4 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">Pilih Umur</label>
+                      <select
+                        required={payload.family_list[5].name !== ""}
+                        name={"age"}
+                        onChange={(e) => _handleChange(5, e)}
+                        className="form-control"
+                      >
+                        <option selected disabled value="">
+                          {" "}
+                          Pilih umur
+                        </option>
+                        {AGES.map((age) => (
+                          <option value={age}>
+                            {age === 0 ? "0-1" : age} tahun
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="col-8 mb-3">
                     <div className="form-group">
                       <label className="text-muted mb-2">
                         Nama Anak Keempat
@@ -539,7 +610,28 @@ export default function Dashboard() {
                       />
                     </div>
                   </div>
-                  <div className="col-12 mb-3">
+                  <div className="col-4 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">Pilih Umur</label>
+                      <select
+                        required={payload.family_list[5].name !== ""}
+                        name={"age"}
+                        onChange={(e) => _handleChange(5, e)}
+                        className="form-control"
+                      >
+                        <option selected disabled value="">
+                          {" "}
+                          Pilih umur
+                        </option>
+                        {AGES.map((age) => (
+                          <option value={age}>
+                            {age === 0 ? "0-1" : age} tahun
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="col-8 mb-3">
                     <div className="form-group">
                       <label className="text-muted mb-2">
                         Nama Anak Kelima
@@ -552,6 +644,27 @@ export default function Dashboard() {
                         value={payload.family_list[5].name}
                         onChange={(e) => _handleChangeFamily(5, e)}
                       />
+                    </div>
+                  </div>
+                  <div className="col-4 mb-3">
+                    <div className="form-group">
+                      <label className="text-muted mb-2">Pilih Umur</label>
+                      <select
+                        required={payload.family_list[5].name !== ""}
+                        name={"age"}
+                        onChange={(e) => _handleChange(5, e)}
+                        className="form-control"
+                      >
+                        <option selected disabled value="">
+                          {" "}
+                          Pilih umur
+                        </option>
+                        {AGES.map((age) => (
+                          <option value={age}>
+                            {age === 0 ? "0-1" : age} tahun
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -630,7 +743,7 @@ export default function Dashboard() {
                       />
                     </div>
                   </div>
-                  <div className="col-12 mb-3">
+                  <div className="col-6 mb-3">
                     <div className="form-group">
                       <label className="text-muted mb-2">Departemen</label>
                       <select className="form-control">
