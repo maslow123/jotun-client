@@ -189,9 +189,23 @@ export default function Photo() {
                         style={{ width: "100%" }}
                       />
                     </div>
-                    <div className="text-center">
-                      <button className="btn btn-light btn-md" onClick={_show}>
-                        Show cam
+                    <div className="text-center mt-5">
+                      <button
+                        className="btn btn-md"
+                        style={{
+                          width: "140px",
+                          background: "#feff00",
+                          fontWeight: "bold",
+                          color: "#000",
+                          position: "absolute",
+                          left: 0,
+                          right: 0,
+                          bottom: 60,
+                          margin: "auto",
+                        }}
+                        onClick={_show}
+                      >
+                        Camera
                       </button>
                     </div>
                   </>
@@ -205,15 +219,29 @@ export default function Photo() {
                         style={{ width: "100%" }}
                       />
                     </div>
-                    <div className="text-center">
+                    <div className="text-center mt-5">
                       {/* <h3
                         className="subheader mt-3"
                         style={{ fontWeight: "normal", fontSize: "30px" }}
                       >
                         SCAN DISINI
                       </h3> */}
-                      <button className="btn btn-light btn-md" onClick={hide}>
-                        Hide
+                      <button
+                        className="btn btn-md"
+                        style={{
+                          width: "140px",
+                          background: "#feff00",
+                          fontWeight: "bold",
+                          color: "#000",
+                          position: "absolute",
+                          left: 0,
+                          right: 0,
+                          bottom: 60,
+                          margin: "auto",
+                        }}
+                        onClick={hide}
+                      >
+                        Camera
                       </button>
                     </div>
                   </>
