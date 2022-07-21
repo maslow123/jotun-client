@@ -151,8 +151,6 @@ export default function Dashboard() {
           <>
             <i
               onClick={() => _handleModalEdit(row)}
-              // data-bs-toggle="modal"
-              // data-bs-target="#editModal"
               className="fa fa-edit px-1"
             ></i>
           </>
@@ -216,6 +214,46 @@ export default function Dashboard() {
     }
   };
 
+  const _handleEditData = async (e) => {
+    e.preventDefault();
+    if (Number(payload.branches) !== 1) {
+      delete payload.transportation;
+    }
+    const errors = validate(payload);
+    if (errors.length > 0) {
+      const phoneNumberNotMatch = errors.find(
+        (err) => err === "phone-number-not-match"
+      );
+      if (phoneNumberNotMatch) {
+        return showToast(
+          "error",
+          "Nomor whatsapp tidak sama, harap periksa kembali"
+        );
+      }
+      return showToast("error", JSON.stringify(errors));
+    }
+
+    setLoading(true);
+    try {
+      const resp = await user_service.update(payload);
+      if (resp.code === 201) {
+        showToast("success", "Data berhasil diubah");
+        setLoading(false);
+        await fetchUserList();
+        resetPayload();
+        document.getElementById("closeEditModal").click();
+        return;
+      }
+      showToast("error", JSON.stringify(resp));
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+      showToast("error", JSON.stringify(err));
+
+      setLoading(false);
+    }
+  };
+
   const _handleChange = (evt) => {
     const value = evt.target.value;
     const name = evt.target.name;
@@ -235,8 +273,18 @@ export default function Dashboard() {
 
   const _handleModalEdit = (user) => {
     console.log(user);
-    const { name, phone_number, department_id, branch_id, transportation_id, family } = user;
+    let { id, name, phone_number, department_id, branch_id, transportation_id, family } = user;
+
+    // add 5 value for family
+    for (let i = 0; i < 6; i++) {
+      if (i > family.length - 1) {
+        family = [...family, { name: '', age: 0 }];
+      }
+    }
+
+    console.log(family);
     setPayload({
+      id,
       name,
       phone_number,
       confirm_phone_number: phone_number,
@@ -246,42 +294,47 @@ export default function Dashboard() {
       level: 0,
       family_list: [...family]
     })
+
+    document.getElementById('editModalButton').click();
     // setPayload(user);
   };
 
   const resetPayload = () => {
-    for (let i in payload) {
-      if (i === "family_list") {
-        payload[i] = [
-          {
-            name: "",
-            age: 0,
-          },
-          {
-            name: "",
-            age: 0,
-          },
-          {
-            name: "",
-            age: 0,
-          },
-          {
-            name: "",
-            age: 0,
-          },
-          {
-            name: "",
-            age: 0,
-          },
-          {
-            name: "",
-            age: 0,
-          },
-        ];
-        continue;
-      }
-      payload[i] = "";
-    }
+   setPayload({
+    name: "",
+    phone_number: "",
+    confirm_phone_number: "",
+    department: "",
+    branches: "",
+    transportation: "",
+    level: 0,
+    family_list: [
+      {
+        name: "",
+        age: 0,
+      },
+      {
+        name: "",
+        age: 0,
+      },
+      {
+        name: "",
+        age: 0,
+      },
+      {
+        name: "",
+        age: 0,
+      },
+      {
+        name: "",
+        age: 0,
+      },
+      {
+        name: "",
+        age: 0,
+      },
+    ],
+   })
   };
 
   return (
@@ -351,6 +404,7 @@ export default function Dashboard() {
                 Create data
               </h5>
               <button
+                onClick={resetPayload}
                 type="button"
                 className="btn-close"
                 data-bs-dismiss="modal"
@@ -493,7 +547,7 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Nama istri"
                         name="name"
-                        value={payload.family_list[0].name}
+                        value={payload.family_list?.length > 0 ? payload.family_list[0].name : ''}
                         onChange={(e) => _handleChangeFamily(0, e)}
                       />
                     </div>
@@ -508,7 +562,7 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Pertama"
                         name="name"
-                        value={payload.family_list[1].name}
+                        value={payload.family_list?.length > 1 ? payload.family_list[1].name : ''}
                         onChange={(e) => _handleChangeFamily(1, e)}
                       />
                     </div>
@@ -521,7 +575,7 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Kedua"
                         name="name"
-                        value={payload.family_list[2].name}
+                        value={payload.family_list?.length > 2 ? payload.family_list[2].name : ''}
                         onChange={(e) => _handleChangeFamily(2, e)}
                       />
                     </div>
@@ -536,7 +590,7 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Ketiga"
                         name="name"
-                        value={payload.family_list[3].name}
+                        value={payload.family_list?.length > 3 ? payload.family_list[3].name : ''}
                         onChange={(e) => _handleChangeFamily(3, e)}
                       />
                     </div>
@@ -551,7 +605,7 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Keempat"
                         name="name"
-                        value={payload.family_list[4].name}
+                        value={payload.family_list?.length > 4 ? payload.family_list[4].name : ''}
                         onChange={(e) => _handleChangeFamily(4, e)}
                       />
                     </div>
@@ -566,7 +620,7 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Kelima"
                         name="name"
-                        value={payload.family_list[5].name}
+                        value={payload.family_list?.length > 5 ? payload.family_list[5].name : ''}
                         onChange={(e) => _handleChangeFamily(5, e)}
                       />
                     </div>
@@ -590,6 +644,11 @@ export default function Dashboard() {
         </div>
       </div>
       {/* Modal edit */}
+      <button
+              style={{ position: 'absolute', bottom: -100 }} 
+              id="editModalButton"
+              data-bs-toggle="modal"
+              data-bs-target="#editModal"/>
       <div
         className="modal fade"
         id="editModal"
@@ -604,13 +663,15 @@ export default function Dashboard() {
                 Edit data
               </h5>
               <button
+                onClick={resetPayload}
+                id="closeEditModal"
                 type="button"
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <form onSubmit={_handleAddData}>
+            <form onSubmit={_handleEditData}>
               <div className="modal-body">
                 <div className="row">
                   <div className="col-12 mb-3">
@@ -760,7 +821,7 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Pertama"
                         name="name"
-                        value={payload.family_list.length > 0 && payload.family_list[1].name}
+                        value={payload.family_list?.length > 0 ? payload.family_list[1]?.name : ''}
                         onChange={(e) => _handleChangeFamily(1, e)}
                       />
                     </div>
@@ -773,7 +834,7 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Kedua"
                         name="name"
-                        value={payload.family_list.length > 1 && payload.family_list[2].name}
+                        value={payload.family_list?.length > 1 ? payload.family_list[2]?.name : ''}
                         onChange={(e) => _handleChangeFamily(2, e)}
                       />
                     </div>
@@ -788,7 +849,7 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Ketiga"
                         name="name"
-                        value={payload.family_list.length > 2 && payload.family_list[3].name}
+                        value={payload.family_list?.length > 2 ? payload.family_list[3]?.name : ''}
                         onChange={(e) => _handleChangeFamily(3, e)}
                       />
                     </div>
@@ -803,7 +864,7 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Keempat"
                         name="name"
-                        value={payload.family_list.length > 3 && payload.family_list[4].name}
+                        value={payload.family_list?.length > 3 ? payload.family_list[4]?.name : ''}
                         onChange={(e) => _handleChangeFamily(4, e)}
                       />
                     </div>
@@ -818,7 +879,7 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Kelima"
                         name="name"
-                        value={payload.family_list.length > 4 && payload.family_list[5].name}
+                        value={payload.family_list?.length > 4 ? payload.family_list[5]?.name : ''}
                         onChange={(e) => _handleChangeFamily(5, e)}
                       />
                     </div>
