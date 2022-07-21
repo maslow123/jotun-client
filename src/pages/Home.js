@@ -119,7 +119,7 @@ export default function Home() {
                           fontWeight: "800",
                         }}
                       >
-                        Do<small>s</small> & DONT<small>s</small>
+                        Do<small>s</small> & DONT'<small>s</small>
                       </button>
                     </div>
                   </div>
@@ -311,12 +311,12 @@ export default function Home() {
         aria-labelledby="doModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
+        <div className="modal-dialog" style={{ top: "100px" }}>
           <div className="modal-content">
-            <div className="modal-body">
+            <div className="modal-body p-0 px-0">
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close px-3 py-3"
                 data-bs-dismiss="modal"
                 aria-label="Close"
                 style={{ float: "right", textAlign: "right" }}
