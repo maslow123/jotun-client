@@ -77,7 +77,7 @@ const App = () => {
             <Topbar />
             <Routes>
               <Route exact path="/test" element={<Test />} />
-              <Route exact path="/dashboard" element={<Dashboard />} />
+              {/* <Route exact path="/dashboard" element={<Dashboard />} /> */}
             </Routes>
           </div>
         </>
