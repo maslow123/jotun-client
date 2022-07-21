@@ -66,45 +66,64 @@ export default function Home() {
             </div>
             <div className="row justify-content-center mt-2">
               <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 mt-3 mb-2">
-                <a
-                  onClick={() => navigate("/profile")}
-                  style={{ textDecoration: "none", color: "#000" }}
-                >
-                  <div className="card" style={{ borderRadius: "8px" }}>
-                    <div className="mx-4 my-2">
-                      <span
-                        style={{ float: "right", textAlign: "right" }}
-                        className="mt-3"
-                      >
-                        <i
-                          className="fa fa-angle-right "
-                          style={{ fontSize: "20px" }}
-                        ></i>
-                      </span>
-                      <p
-                        className="mb-0"
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: "13px",
-                        }}
-                      >
-                        Hai, {user.name}
-                      </p>
+                <div className="card" style={{ borderRadius: "8px" }}>
+                  <div className="mx-4 my-2">
+                    <a
+                      onClick={() => navigate("/profile")}
+                      style={{ textDecoration: "none", color: "#000" }}
+                    >
+                      <div>
+                        <span
+                          style={{ float: "right", textAlign: "right" }}
+                          className="mt-3"
+                        >
+                          <i
+                            className="fa fa-angle-right "
+                            style={{ fontSize: "20px" }}
+                          ></i>
+                        </span>
+                        <p
+                          className="mb-0"
+                          style={{
+                            fontWeight: "bold",
+                            fontSize: "13px",
+                          }}
+                        >
+                          Hai, {user.name}
+                        </p>
 
-                      <p
-                        className="mb-0"
+                        <p
+                          className="mb-1"
+                          style={{
+                            fontWeight: "bold",
+                            fontSize: "13px",
+                            color: "#010040",
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          Lihat profile
+                        </p>
+                      </div>
+                    </a>
+                    <div className="text-center">
+                      <button
+                        data-bs-toggle="modal"
+                        data-bs-target="#doModal"
+                        className="btn btn-lg"
                         style={{
-                          fontWeight: "bold",
-                          fontSize: "13px",
-                          color: "#010040",
+                          paddingTop: "7px",
+                          paddingBottom: "7px",
+                          background: "#f9af02",
                           textTransform: "uppercase",
+                          fontSize: "13px",
+                          fontWeight: "800",
                         }}
                       >
-                        Lihat profile
-                      </p>
+                        Do<small>s</small> & DONT<small>s</small>
+                      </button>
                     </div>
                   </div>
-                </a>
+                </div>
               </div>
             </div>
           </div>
@@ -281,6 +300,28 @@ export default function Home() {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="modal"
+        id="doModal"
+        tabindex="-1"
+        aria-labelledby="doModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-body">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                style={{ float: "right", textAlign: "right" }}
+              ></button>
+              <img src="/assets/img/general/do.jpg" className="img-fluid" />
             </div>
           </div>
         </div>
