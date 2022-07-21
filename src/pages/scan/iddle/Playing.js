@@ -128,7 +128,10 @@ export default function Playing() {
   };
   const inputRef = useRef(null);
   return (
-    <div className="row justify-content-center" onClick={() => inputRef.current.focus()}>
+    <div
+      className="row justify-content-center"
+      onClick={() => inputRef.current.focus()}
+    >
       <div
         className="bg-scan col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12"
         style={{
@@ -152,12 +155,17 @@ export default function Playing() {
                       </span>
                     </i>
                   </h2>
-                  <input ref={inputRef} type="text" style={{ width: 0, height: 0, position: 'absolute' }} onKeyPress={(e) => {
-                    if (e.key.trim() === 'Enter') {
-                      onResult(e.target.value);
-                      e.target.value = '';
-                    }
-                  }}/>
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    style={{ width: 0, height: 0, position: "absolute" }}
+                    onKeyPress={(e) => {
+                      if (e.key.trim() === "Enter") {
+                        onResult(e.target.value);
+                        e.target.value = "";
+                      }
+                    }}
+                  />
                 </div>
               </div>
               <div className="col-3">
@@ -171,9 +179,23 @@ export default function Playing() {
                         style={{ width: "100%" }}
                       />
                     </div>
-                    <div className="text-center">
-                      <button className="btn btn-light btn-md" onClick={_show}>
-                        Show cam
+                    <div className="text-center mt-5">
+                      <button
+                        className="btn btn-md"
+                        style={{
+                          width: "140px",
+                          background: "#feff00",
+                          fontWeight: "bold",
+                          color: "#000",
+                          position: "absolute",
+                          left: 0,
+                          right: 0,
+                          bottom: 60,
+                          margin: "auto",
+                        }}
+                        onClick={_show}
+                      >
+                        Camera
                       </button>
                     </div>
                   </>
@@ -187,10 +209,23 @@ export default function Playing() {
                         style={{ width: "100%" }}
                       />
                     </div>
-                    <div className="text-center">
-                    
-                      <button className="btn btn-light btn-md" onClick={hide}>
-                        Hide
+                    <div className="text-center mt-5">
+                      <button
+                        className="btn btn-md"
+                        style={{
+                          width: "140px",
+                          background: "#feff00",
+                          fontWeight: "bold",
+                          color: "#000",
+                          position: "absolute",
+                          left: 0,
+                          right: 0,
+                          bottom: 60,
+                          margin: "auto",
+                        }}
+                        onClick={hide}
+                      >
+                        Camera
                       </button>
                     </div>
                   </>
