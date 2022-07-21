@@ -106,7 +106,6 @@ export default function ContestRegister() {
           }
         }
 
-        console.log(f);
       setChildNonRegistered(f);
       setLoadingGetChildrenRegistered(false);
     } catch (error) {
