@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Background from "./../BG1.svg";
 import { useNavigate } from "react-router-dom";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import $ from "jquery";
 window.jQuery = $;
 window.$ = $;
@@ -122,7 +123,20 @@ export default function Maps() {
               <h2 style={{ fontWeight: "bold" }}>AKAN DATANG</h2>
             </div>
           </div> */}
-          <div className={session}>
+          <TransformWrapper
+            defaultScale={1}
+            defaultPositionX={100}
+            defaultPositionY={200}
+          >
+            <TransformComponent>
+              <img
+                src="assets/img/maps/newmaps.jpg"
+                className="img-fluid"
+                alt="test"
+              />
+            </TransformComponent>
+          </TransformWrapper>
+          {/* <div className={session}>
             <img src="assets/img/maps/maps.png" />
           </div>
           <div className="container-fluid mb">
@@ -137,7 +151,7 @@ export default function Maps() {
             >
               <i className="fa fa-list"></i>
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
       <div
