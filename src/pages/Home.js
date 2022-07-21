@@ -106,9 +106,11 @@ export default function Home() {
                       </div>
                     </a>
                     <div className="text-center">
-                      <button
-                        data-bs-toggle="modal"
-                        data-bs-target="#doModal"
+                      <a
+                        href="/assets/pdf/do.pdf"
+                        target="_blank"
+                        // data-bs-toggle="modal"
+                        // data-bs-target="#doModal"
                         className="btn btn-lg"
                         style={{
                           paddingTop: "7px",
@@ -120,7 +122,7 @@ export default function Home() {
                         }}
                       >
                         Do<small>s</small> & DONT'<small>s</small>
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
