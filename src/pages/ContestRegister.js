@@ -467,7 +467,7 @@ export default function ContestRegister() {
                         color: "#10193a",
                       }}
                     >
-                      PENDAFTARAN DITUTUP
+                      JADWAL LOMBA
                     </button>
                   </div>
                 </div>
