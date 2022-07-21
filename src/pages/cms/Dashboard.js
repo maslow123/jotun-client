@@ -150,8 +150,9 @@ export default function Dashboard() {
         row.option = (
           <>
             <i
-              data-bs-toggle="modal"
-              data-bs-target="#editModal"
+              onClick={() => _handleModalEdit(row)}
+              // data-bs-toggle="modal"
+              // data-bs-target="#editModal"
               className="fa fa-edit px-1"
             ></i>
           </>
@@ -230,6 +231,22 @@ export default function Dashboard() {
     p[index][name] = value;
 
     setPayload({ ...payload, family_list: [...p] });
+  };
+
+  const _handleModalEdit = (user) => {
+    console.log(user);
+    const { name, phone_number, department_id, branch_id, transportation_id, family } = user;
+    setPayload({
+      name,
+      phone_number,
+      confirm_phone_number: phone_number,
+      department: department_id,
+      branches: branch_id,
+      transportation: transportation_id,
+      level: 0,
+      family_list: [...family]
+    })
+    // setPayload(user);
   };
 
   const resetPayload = () => {
@@ -593,8 +610,8 @@ export default function Dashboard() {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">
-              <form>
+            <form onSubmit={_handleAddData}>
+              <div className="modal-body">
                 <div className="row">
                   <div className="col-12 mb-3">
                     <div className="form-group">
@@ -603,6 +620,10 @@ export default function Dashboard() {
                         type="text"
                         className="form-control"
                         placeholder="contoh : Ahmad Taufik"
+                        name="name"
+                        value={payload.name}
+                        onChange={_handleChange}
+                        required
                       />
                     </div>
                   </div>
@@ -615,6 +636,10 @@ export default function Dashboard() {
                         type="text"
                         className="form-control"
                         placeholder="contoh : 0827283823"
+                        name="phone_number"
+                        value={payload.phone_number}
+                        onChange={_handleChange}
+                        required
                       />
                     </div>
                   </div>
@@ -627,33 +652,91 @@ export default function Dashboard() {
                         type="text"
                         className="form-control"
                         placeholder="contoh : 0827283823"
+                        name="confirm_phone_number"
+                        value={payload.confirm_phone_number}
+                        onChange={_handleChange}
+                        required
                       />
                     </div>
                   </div>
                   <div className="col-12 mb-3">
                     <div className="form-group">
                       <label className="text-muted mb-2">Departemen</label>
-                      <select className="form-control">
-                        <option selected>Pilih Departemen anda</option>
+                      <select
+                        required
+                        name="department"
+                        onChange={_handleChange}
+                        className="form-control"
+                      >
+                        <option selected disabled value="">
+                          Pilih Departemen anda saat ini
+                        </option>
+                        {master?.master_departments?.length &&
+                          master.master_departments.map((item) => (
+                            <option
+                              selected={payload.department === item.id}
+                              value={item.id}
+                            >
+                              {item.name}
+                            </option>
+                          ))}
                       </select>
                     </div>
                   </div>
                   <div className="col-6 mb-3">
                     <div className="form-group">
                       <label className="text-muted mb-2">Lokasi</label>
-                      <select className="form-control">
-                        <option selected>Pilih Lokasi anda</option>
+                      <select
+                        className="form-control"
+                        name="branches"
+                        onChange={_handleChange}
+                        required
+                      >
+                        <option selected disabled value="">
+                          Pilih Lokasi anda
+                        </option>
+                        {master?.master_branches?.length &&
+                          master.master_branches.map((item) => (
+                            <option
+                              selected={payload.branches === item.id}
+                              value={item.id}
+                            >
+                              {item.name}
+                            </option>
+                          ))}
                       </select>
                     </div>
                   </div>
-                  <div className="col-6 mb-3">
-                    <div className="form-group">
-                      <label className="text-muted mb-2">Transportasi</label>
-                      <select className="form-control">
-                        <option selected>Pilih Transportasi anda</option>
-                      </select>
-                    </div>
-                  </div>
+                  {Number(payload.branches) === 1 && (
+                    <>
+                      <div className="col-6 mb-3">
+                        <div className="form-group">
+                          <label className="text-muted mb-2">
+                            Transportasi
+                          </label>
+                          <select
+                            className="form-control"
+                            name="transportation"
+                            onChange={_handleChange}
+                            required
+                          >
+                            <option selected disabled value="">
+                              Pilih transportasi anda
+                            </option>
+                            {master?.master_transportations?.length &&
+                              master.master_transportations.map((item) => (
+                                <option
+                                  selected={payload.transportation === item.id}
+                                  value={item.id}
+                                >
+                                  {item.name}
+                                </option>
+                              ))}
+                          </select>
+                        </div>
+                      </div>
+                    </>
+                  )}
                   <div className="col-12 mb-3">
                     <div className="form-group">
                       <label className="text-muted mb-2">Nama Istri</label>
@@ -661,6 +744,9 @@ export default function Dashboard() {
                         type="text"
                         className="form-control"
                         placeholder="Nama istri"
+                        name="name"
+                        value={payload.family_list[0]?.name}
+                        onChange={(e) => _handleChangeFamily(0, e)}
                       />
                     </div>
                   </div>
@@ -673,6 +759,9 @@ export default function Dashboard() {
                         type="text"
                         className="form-control"
                         placeholder="Anak Pertama"
+                        name="name"
+                        value={payload.family_list.length > 0 && payload.family_list[1].name}
+                        onChange={(e) => _handleChangeFamily(1, e)}
                       />
                     </div>
                   </div>
@@ -683,6 +772,9 @@ export default function Dashboard() {
                         type="text"
                         className="form-control"
                         placeholder="Anak Kedua"
+                        name="name"
+                        value={payload.family_list.length > 1 && payload.family_list[2].name}
+                        onChange={(e) => _handleChangeFamily(2, e)}
                       />
                     </div>
                   </div>
@@ -695,6 +787,9 @@ export default function Dashboard() {
                         type="text"
                         className="form-control"
                         placeholder="Anak Ketiga"
+                        name="name"
+                        value={payload.family_list.length > 2 && payload.family_list[3].name}
+                        onChange={(e) => _handleChangeFamily(3, e)}
                       />
                     </div>
                   </div>
@@ -707,6 +802,9 @@ export default function Dashboard() {
                         type="text"
                         className="form-control"
                         placeholder="Anak Keempat"
+                        name="name"
+                        value={payload.family_list.length > 3 && payload.family_list[4].name}
+                        onChange={(e) => _handleChangeFamily(4, e)}
                       />
                     </div>
                   </div>
@@ -719,24 +817,27 @@ export default function Dashboard() {
                         type="text"
                         className="form-control"
                         placeholder="Anak Kelima"
+                        name="name"
+                        value={payload.family_list.length > 4 && payload.family_list[5].name}
+                        onChange={(e) => _handleChangeFamily(5, e)}
                       />
                     </div>
                   </div>
                 </div>
-              </form>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Save
-              </button>
-            </div>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="submit" className="btn btn-primary">
+                  Edit
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
