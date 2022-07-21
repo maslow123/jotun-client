@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import DataTable from 'react-data-table-component';
 import { Master, Users } from "../../services";
 import { showToast, validate } from "../utils/helper";
-import LoadingScreen from 'react-loading-screen';
-// import { MDBDataTableV5 } from "mdbreact";
+import LoadingScreen from "react-loading-screen";
 export default function Dashboard() {
   const customStyles = {
     rows: {
@@ -270,7 +269,10 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="container">
+      <div
+        className="container"
+        style={{ maxHeight: "600px", height: "600px", overflowY: "scroll" }}
+      >
         <LoadingScreen
           loading={loading}
           bgColor="rgba(0,0,0,0.5)"
