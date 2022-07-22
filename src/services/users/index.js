@@ -1,10 +1,6 @@
-import { useNavigate } from "react-router";
-
 export default class Users {
 
     constructor() {};
-
-    navigate = useNavigate();
 
     register = async (payload) => {
         return new Promise((resolve, reject) => {
