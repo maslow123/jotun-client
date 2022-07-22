@@ -121,7 +121,7 @@ export default function Doorprize() {
                   style={{
                     borderRadius: "8px",
                     maxWidth: "100%",
-                    height: 200,
+                    height: 240,
                     overflow: "hidden",
                   }}
                 >
@@ -141,6 +141,23 @@ export default function Doorprize() {
                       >
                         <b>{item.stock}</b> {item.name}
                       </p>
+
+                      <a
+                        href="https://bit.ly/3aSl8Xq"
+                        target="_blank"
+                        className="btn btn-xs"
+                        style={{
+                          paddingTop: "2px",
+                          paddingBottom: "2px",
+                          paddingleft: 0,
+                          paddingRight: "10px",
+                          background: "#f9af02",
+                          fontSize: "10px",
+                          fontWeight: "800",
+                        }}
+                      >
+                        Lihat daftar <br /> pemenang
+                      </a>
                     </div>
                   </div>
                 </div>
