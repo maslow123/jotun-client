@@ -8,52 +8,59 @@ export default function Doorprize() {
   const reward_service = new Rewards();
   const [loading, setLoading] = useState(true);
   const [rewards, setRewards] = useState(null);
-
+  const [disable, setDisable] = useState(true);
   useEffect(() => {
+    const disableButton = async () => {
+      let newDate = new Date();
+      let date = newDate.getDate();
+      if (date >= 24) {
+        setDisable(false);
+      }
+    };
     const fetchRewardList = async () => {
       try {
         const resp = await reward_service.list();
         console.log(resp);
         setRewards(resp.results);
-  
+
         setLoading(false);
-      } catch(err) {
+      } catch (err) {
         console.log(err);
         setLoading(false);
       }
     };
 
     fetchRewardList();
-  }, [])
+    disableButton();
+  }, []);
   const assets = [
     {
-      name: 'Yamaha N-MAX',
+      name: "Yamaha N-MAX",
       stock: 2,
-      image: 'nmax.png'
+      image: "nmax.png",
     },
     {
-      name: 'Honda Genio',
+      name: "Honda Genio",
       stock: 3,
-      image: 'genio.png'
-    },                
-    {
-      name: 'ASUS LAPTOP A416KA INTEL N4500 8GB 256GB FHD',
-      stock: 15,
-      image: 'asus.png'
-    },    
-    {
-      name: 'Sepeda Lipat PACIFIC Blitz 3.0',
-      stock: 10,
-      image: 'sepeda.png'
+      image: "genio.png",
     },
     {
-      name: 'Samsung Galaxy A13',
+      name: "ASUS LAPTOP A416KA INTEL N4500 8GB 256GB FHD",
+      stock: 15,
+      image: "asus.png",
+    },
+    {
+      name: "Sepeda Lipat PACIFIC Blitz 3.0",
+      stock: 10,
+      image: "sepeda.png",
+    },
+    {
+      name: "Samsung Galaxy A13",
       stock: 35,
-      image: 'samsung.png'
-    },        
+      image: "samsung.png",
+    },
   ];
 
-  
   return (
     <div className="row justify-content-center">
       <div
@@ -133,59 +140,96 @@ export default function Doorprize() {
             </div>
           </div>
           <div className="row justify-content-center mb-5">
-            {rewards?.length && rewards.map((reward, i) => (
-              <div
-                key={i}
-                className="col-xs-6 col-sm-6 col-md-6 col-lg-2 col-xl-2 col-5"
-                style={{ padding: 5 }}
-              >
+            {rewards?.length &&
+              rewards.map((reward, i) => (
                 <div
-                  className="card"
-                  style={{
-                    borderRadius: "8px",
-                    maxWidth: "100%",
-                    height: 240,
-                    overflow: "hidden",
-                  }}
+                  key={i}
+                  className="col-xs-6 col-sm-6 col-md-6 col-lg-2 col-xl-2 col-5"
+                  style={{ padding: 5 }}
                 >
-                  <div className="text-center my-3">
-                    <LazyLoadImage
-                      src={reward.image_url}
-                      alt=""
-                      width={100}
-                      height={100}
-                    />
-                  </div>
-                  <div className="mx-2 my-1">
-                    <div className="text-center">
-                      <p
-                        className="mb-2"
-                        style={{ fontWeight: "normal", fontSize: "11px" }}
-                      >
-                        <b>{reward.total}</b> {reward.item}
-                      </p>
-
-                      <a
-                        href={reward.document_url}
-                        target="_blank"
-                        className="btn btn-xs"
-                        style={{
-                          paddingTop: "2px",
-                          paddingBottom: "2px",
-                          paddingleft: 0,
-                          paddingRight: "10px",
-                          background: "#f9af02",
-                          fontSize: "10px",
-                          fontWeight: "800",
-                        }}
-                      >
-                        Lihat daftar <br /> pemenang
-                      </a>
+                  <div
+                    className="card"
+                    style={{
+                      borderRadius: "8px",
+                      maxWidth: "100%",
+                      height: 240,
+                      overflow: "hidden",
+                    }}
+                  >
+                    <div className="text-center my-3">
+                      <LazyLoadImage
+                        src={reward.image_url}
+                        alt=""
+                        width={100}
+                        height={100}
+                      />
+                    </div>
+                    <div className="mx-2 my-1">
+                      <div className="text-center">
+                        <p
+                          className="mb-2"
+                          style={{ fontWeight: "normal", fontSize: "11px" }}
+                        >
+                          <b>{reward.total}</b> {reward.item}
+                        </p>
+                        {disable === true ? (
+                          <>
+                            <a
+                              // href={reward.document_url}
+                              // disabled={true}
+                              // target="_blank"
+                              className="btn btn-xs"
+                              style={{
+                                margin: "auto",
+                                width: "90px",
+                                paddingTop: "2px",
+                                paddingBottom: "2px",
+                                paddingleft: 0,
+                                paddingRight: "10px",
+                                background: "#f9af02",
+                                fontSize: "10px",
+                                fontWeight: "800",
+                                position: "absolute",
+                                left: 0,
+                                right: 0,
+                                bottom: 10,
+                              }}
+                              disabled
+                            >
+                              Lihat daftar <br /> pemenang
+                            </a>
+                          </>
+                        ) : (
+                          <>
+                            <a
+                              href={reward.document_url}
+                              target="_blank"
+                              className="btn btn-xs"
+                              style={{
+                                margin: "auto",
+                                width: "90px",
+                                paddingTop: "2px",
+                                paddingBottom: "2px",
+                                paddingleft: 0,
+                                paddingRight: "10px",
+                                background: "#f9af02",
+                                fontSize: "10px",
+                                fontWeight: "800",
+                                position: "absolute",
+                                left: 0,
+                                right: 0,
+                                bottom: 10,
+                              }}
+                            >
+                              Lihat daftar <br /> pemenang
+                            </a>
+                          </>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>
