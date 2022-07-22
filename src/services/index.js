@@ -5,6 +5,7 @@ import Events from './events';
 import UserEvents from './user-events';
 import Scan from './scan';
 import Schedules from './schedules';
+import Rewards from './rewards';
 
 export { 
     Users,
@@ -13,5 +14,6 @@ export {
     Events,
     UserEvents,
     Scan,
-    Schedules
+    Schedules,
+    Rewards
 };

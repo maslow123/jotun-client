@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Rewards from "../services/rewards";
 import Background from "./../BG1.svg";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 export default function Doorprize() {
   const navigate = useNavigate();
+  const reward_service = new Rewards();
+  const [loading, setLoading] = useState(true);
+  const [rewards, setRewards] = useState(null);
+
+  useEffect(() => {
+    const fetchRewardList = async () => {
+      try {
+        const resp = await reward_service.list();
+        console.log(resp);
+        setRewards(resp.results);
+  
+        setLoading(false);
+      } catch(err) {
+        console.log(err);
+        setLoading(false);
+      }
+    };
+
+    fetchRewardList();
+  }, [])
   const assets = [
     {
       name: 'Yamaha N-MAX',
@@ -30,6 +52,8 @@ export default function Doorprize() {
       image: 'samsung.png'
     },        
   ];
+
+  
   return (
     <div className="row justify-content-center">
       <div
@@ -109,7 +133,7 @@ export default function Doorprize() {
             </div>
           </div>
           <div className="row justify-content-center mb-5">
-            {assets.map((item, i) => (
+            {rewards?.length && rewards.map((reward, i) => (
               <div
                 key={i}
                 className="col-xs-6 col-sm-6 col-md-6 col-lg-2 col-xl-2 col-5"
@@ -117,7 +141,6 @@ export default function Doorprize() {
               >
                 <div
                   className="card"
-                  onClick={() => navigate("/raffle-winner")}
                   style={{
                     borderRadius: "8px",
                     maxWidth: "100%",
@@ -126,8 +149,8 @@ export default function Doorprize() {
                   }}
                 >
                   <div className="text-center my-3">
-                    <img
-                      src={`assets/img/doorprize/${item.image}`}
+                    <LazyLoadImage
+                      src={reward.image_url}
                       alt=""
                       width={100}
                       height={100}
@@ -139,11 +162,11 @@ export default function Doorprize() {
                         className="mb-2"
                         style={{ fontWeight: "normal", fontSize: "11px" }}
                       >
-                        <b>{item.stock}</b> {item.name}
+                        <b>{reward.total}</b> {reward.item}
                       </p>
 
                       <a
-                        href="https://bit.ly/3aSl8Xq"
+                        href={reward.document_url}
                         target="_blank"
                         className="btn btn-xs"
                         style={{
