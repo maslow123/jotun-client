@@ -123,19 +123,25 @@ export default function Maps() {
               <h2 style={{ fontWeight: "bold" }}>AKAN DATANG</h2>
             </div>
           </div> */}
-          <TransformWrapper
-            defaultScale={1}
-            defaultPositionX={100}
-            defaultPositionY={200}
-          >
-            <TransformComponent>
-              <img
-                src="assets/img/maps/newmaps.jpg"
-                className="img-fluid"
-                alt="test"
-              />
-            </TransformComponent>
-          </TransformWrapper>
+          <div className="row justify-content-center">
+            <div className="col-12">
+              <TransformWrapper defaultScale={1}>
+                <TransformComponent>
+                  <div className="text-center">
+                    <img
+                      src="assets/img/maps/newmaps.jpg"
+                      className={
+                        width <= 768
+                          ? "img-fluid maps-mobile"
+                          : "img-fluid maps-desktop"
+                      }
+                      alt="test"
+                    />
+                  </div>
+                </TransformComponent>
+              </TransformWrapper>
+            </div>
+          </div>
           {/* <div className={session}>
             <img src="assets/img/maps/maps.png" />
           </div>
