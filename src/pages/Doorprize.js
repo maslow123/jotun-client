@@ -8,10 +8,10 @@ export default function Doorprize() {
   const reward_service = new Rewards();
   const [loading, setLoading] = useState(true);
   const [rewards, setRewards] = useState(null);
-  const [disable, setDisable] = useState(true);
+  const [disable, setDisable] = useState(false);
   useEffect(() => {
     const disableButton = async () => {
-      const activeButtonDate = new Date('2022-07-24 00:00:00').getTime();
+      const activeButtonDate = new Date("2022-07-24 00:00:00").getTime();
       const date = new Date().getTime();
 
       if (date >= activeButtonDate) {
@@ -162,7 +162,7 @@ export default function Doorprize() {
                         src={reward.image_url}
                         alt=""
                         width={100}
-                        height={100}
+                        height={95}
                       />
                     </div>
                     <div className="mx-2 my-1">
