@@ -513,3 +513,9 @@ overflow:hidden !important;
 .form-right i {
   font-size: 100px;
 }
+.maps-desktop{
+  width:70% !important;
+}
+.maps-mobile{
+  width:100% !important;
+}
