@@ -128,7 +128,11 @@ export default function Doorprize() {
         </div>
         <div
           className="crd2 px-3"
-          style={{ maxHeight: "600px", overflowY: "scroll" }}
+          style={{
+            maxHeight: "600px",
+            overflowY: "scroll",
+            paddingBottom: "150px",
+          }}
         >
           <div className="row justify-content-center">
             <div className="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
@@ -165,7 +169,7 @@ export default function Doorprize() {
                         src={reward.image_url}
                         alt=""
                         // className="img-fluid"
-                        style={{ height: "100px", backgroundSize: "contain" }}
+                        style={{ height: "90px", backgroundSize: "contain" }}
                       />
                     </div>
                     <div className="mx-2 my-1">
