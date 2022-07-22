@@ -11,9 +11,10 @@ export default function Doorprize() {
   const [disable, setDisable] = useState(true);
   useEffect(() => {
     const disableButton = async () => {
-      let newDate = new Date();
-      let date = newDate.getDate();
-      if (date >= 24) {
+      const activeButtonDate = new Date('2022-07-24 00:00:00').getTime();
+      const date = new Date().getTime();
+
+      if (date >= activeButtonDate) {
         setDisable(false);
       }
     };
