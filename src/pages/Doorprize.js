@@ -157,12 +157,15 @@ export default function Doorprize() {
                       overflow: "hidden",
                     }}
                   >
-                    <div className="text-center my-3">
+                    <div
+                      className="text-center my-3"
+                      style={{ height: "100px" }}
+                    >
                       <LazyLoadImage
                         src={reward.image_url}
                         alt=""
-                        width={100}
-                        height={95}
+                        // className="img-fluid"
+                        style={{ height: "100px", backgroundSize: "contain" }}
                       />
                     </div>
                     <div className="mx-2 my-1">
