@@ -8,7 +8,6 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import fileDownload from "js-file-download";
 export default function Dashboard() {
-  var fileDownload = require("js-file-download");
   const navigate = useNavigate();
   const customStyles = {
     rows: {
@@ -117,6 +116,7 @@ export default function Dashboard() {
     ],
   });
 
+  const [originalData, setOriginalData] = useState(null);
   const [userList, setUserList] = useState(null);
   const [master, setMaster] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -140,15 +140,7 @@ export default function Dashboard() {
     fetchDataMaster();
     fetchUser();
   }, []);
-  const handleDownload = (url, filename) => {
-    axios
-      .get(url, {
-        responseType: "blob",
-      })
-      .then((res) => {
-        fileDownload(res.data, filename);
-      });
-  };
+
   const fetchUserList = async () => {
     try {
       setLoading(true);
@@ -181,6 +173,7 @@ export default function Dashboard() {
         rows = [...rows, row];
       }
       setDatatable({ ...datatable, rows });
+      setOriginalData({ ...datatable, rows });
       setLoading(false);
     } catch (err) {
       console.error(err);
@@ -365,6 +358,14 @@ export default function Dashboard() {
     });
   };
 
+  const doSearch = (val) => {
+    const data = { ...originalData };
+    val = val.toLowerCase();
+
+    data.rows = data.rows.filter(item => item.name.toLowerCase().indexOf(val) >= 0);
+    setDatatable({ ...data });
+  };
+
   return (
     <>
       <div
@@ -398,6 +399,7 @@ export default function Dashboard() {
                 <div className="form-group">
                   <input
                     type="text"
+                    onChange={e => doSearch(e.target.value)}
                     className="form-control"
                     placeholder="Cari .."
                     style={{ float: "left" }}
