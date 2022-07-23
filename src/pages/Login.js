@@ -156,7 +156,7 @@ export default function Login() {
                         Anda belum mendaftar? Daftar sekarang
                       </p>
                       <a
-                        onClick={() => navigate("/register")}
+                        // onClick={() => navigate("/register")}
                         className="btn btn-lg"
                         style={{
                           paddingTop: "10px",

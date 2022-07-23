@@ -88,7 +88,7 @@ const App = () => {
             <Route exact path="/helpdesk" element={<LoginCMS />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/logout" element={<Logout />} />
-            <Route exact path="/register" element={<Register />} />
+            {/* <Route exact path="/register" element={<Register />} /> */}
             <Route
               exact
               path="/confirm-register"
