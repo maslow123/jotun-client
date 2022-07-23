@@ -169,7 +169,11 @@ export default function Doorprize() {
                         src={reward.image_url}
                         alt=""
                         // className="img-fluid"
-                        style={{ height: "90px", backgroundSize: "contain" }}
+                        style={{
+                          height: "85px",
+                          backgroundSize: "contain",
+                          backgroundPosition: "center",
+                        }}
                       />
                     </div>
                     <div className="mx-2 my-1">
