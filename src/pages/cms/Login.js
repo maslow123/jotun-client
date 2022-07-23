@@ -58,7 +58,12 @@ export default function Login() {
                               type="text"
                               name="phone_number"
                               value={payload.phone_number}
-                              onChange={e => setPayload({ ...payload, phone_number: e.target.value })}
+                              onChange={(e) =>
+                                setPayload({
+                                  ...payload,
+                                  phone_number: e.target.value,
+                                })
+                              }
                               className="form-control"
                               placeholder="Enter Username"
                             />
@@ -76,7 +81,12 @@ export default function Login() {
                               type="password"
                               name="password"
                               value={payload.password}
-                              onChange={e => setPayload({ ...payload, password: e.target.value })}
+                              onChange={(e) =>
+                                setPayload({
+                                  ...payload,
+                                  password: e.target.value,
+                                })
+                              }
                               className="form-control"
                               placeholder="Enter Password"
                             />
@@ -96,7 +106,7 @@ export default function Login() {
                   </div>
                   <div className="col-md-5 ps-0 d-none d-md-block">
                     <div className="form-right h-100 bg-primary text-white text-center pt-5">
-                      <i className="fa fa-circle-info mt-5 mb-3"></i>
+                      <i className="fa fa-info mt-5 mb-3"></i>
                       <h4 className="fs-1">Help desk</h4>
                     </div>
                   </div>
