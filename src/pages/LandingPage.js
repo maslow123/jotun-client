@@ -76,9 +76,8 @@ export default function LandingPage() {
                 <div className="row justify-content-center">
                   <div className="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-5 col-xl-5">
                     <div className="text-center d-grid">
-                      <a
-                        onClick={() => navigate("/register")}
-                        className="btn btn-warning btn-block"
+                      <a                        
+                        className="btn btn-warning btn-block disabled"
                         style={{
                           paddingTop: "7px",
                           paddingBottom: "7px",
@@ -201,8 +200,9 @@ export default function LandingPage() {
                   <div className="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-2 col-xl-2">
                     <div className="text-center d-grid">
                       <a
-                        onClick={() => navigate("/register")}
-                        className="btn btn-warning btn-block"
+
+                        // onClick={() => navigate("/register")}
+                        className="btn btn-warning btn-block disabled"
                         style={{
                           paddingTop: "7px",
                           paddingBottom: "7px",
