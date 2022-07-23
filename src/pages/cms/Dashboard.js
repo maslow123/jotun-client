@@ -156,15 +156,18 @@ export default function Dashboard() {
       let rows = [];
       for (let [i, row] of resp.results.entries()) {
         row.no = i + 1;
-        row.qr_code_url = (
-          <button
-            onClick={() => {
-              handleDownload(`${row.qr_code_url}`, "test-download.jpg");
-            }}
-          >
-       Download QR
-          </button>
-        );
+        if (row.qr_code_url) {
+          const qrCodeURL = row.qr_code_url;
+          row.qr_code_url = (
+            <button
+              onClick={() => {
+                window.open(qrCodeURL, '_blank');
+              }}
+            >
+              Lihat QR
+            </button>
+          );
+        }
         row.option = (
           <>
             <i
