@@ -5,7 +5,10 @@ import { showToast, validate } from "../utils/helper";
 import { AGES } from "./../utils/constants";
 import LoadingScreen from "react-loading-screen";
 import { useNavigate } from "react-router";
+import axios from "axios";
+import fileDownload from "js-file-download";
 export default function Dashboard() {
+  var fileDownload = require("js-file-download");
   const navigate = useNavigate();
   const customStyles = {
     rows: {
@@ -137,7 +140,15 @@ export default function Dashboard() {
     fetchDataMaster();
     fetchUser();
   }, []);
-
+  const handleDownload = (url, filename) => {
+    axios
+      .get(url, {
+        responseType: "blob",
+      })
+      .then((res) => {
+        fileDownload(res.data, filename);
+      });
+  };
   const fetchUserList = async () => {
     try {
       setLoading(true);
@@ -146,9 +157,13 @@ export default function Dashboard() {
       for (let [i, row] of resp.results.entries()) {
         row.no = i + 1;
         row.qr_code_url = (
-          <a target="_blank" href={`${row.qr_code_url}`}>
-            {row.qr_code_url}
-          </a>
+          <button
+            onClick={() => {
+              handleDownload(`${row.qr_code_url}`, "test-download.jpg");
+            }}
+          >
+       Download QR
+          </button>
         );
         row.option = (
           <>
@@ -156,7 +171,7 @@ export default function Dashboard() {
               onClick={() => _handleModalEdit(row)}
               className="fa fa-edit px-1"
             ></i>
-            <i className="fa fa-whatsapp text-success"></i>
+            {/* <i className="fa fa-whatsapp text-success"></i> */}
           </>
         );
 
@@ -167,7 +182,7 @@ export default function Dashboard() {
     } catch (err) {
       console.error(err);
       setLoading(false);
-      navigate('/helpdesk');
+      navigate("/helpdesk");
     }
   };
   const _handleAddData = async (e) => {
@@ -276,12 +291,20 @@ export default function Dashboard() {
   };
 
   const _handleModalEdit = (user) => {
-    let { id, name, phone_number, department_id, branch_id, transportation_id, family } = user;
+    let {
+      id,
+      name,
+      phone_number,
+      department_id,
+      branch_id,
+      transportation_id,
+      family,
+    } = user;
 
     // add 5 value for family
     for (let i = 0; i < 6; i++) {
       if (i > family.length - 1) {
-        family = [...family, { name: '', age: 0 }];
+        family = [...family, { name: "", age: 0 }];
       }
     }
 
@@ -294,49 +317,49 @@ export default function Dashboard() {
       branches: branch_id,
       transportation: transportation_id,
       level: 1,
-      family_list: [...family]
-    })
+      family_list: [...family],
+    });
 
-    document.getElementById('editModalButton').click();
+    document.getElementById("editModalButton").click();
     // setPayload(user);
   };
 
   const resetPayload = () => {
-   setPayload({
-    name: "",
-    phone_number: "",
-    confirm_phone_number: "",
-    department: "",
-    branches: "",
-    transportation: "",
-    level: 1,
-    family_list: [
-      {
-        name: "",
-        age: 0,
-      },
-      {
-        name: "",
-        age: 0,
-      },
-      {
-        name: "",
-        age: 0,
-      },
-      {
-        name: "",
-        age: 0,
-      },
-      {
-        name: "",
-        age: 0,
-      },
-      {
-        name: "",
-        age: 0,
-      },
-    ],
-   })
+    setPayload({
+      name: "",
+      phone_number: "",
+      confirm_phone_number: "",
+      department: "",
+      branches: "",
+      transportation: "",
+      level: 1,
+      family_list: [
+        {
+          name: "",
+          age: 0,
+        },
+        {
+          name: "",
+          age: 0,
+        },
+        {
+          name: "",
+          age: 0,
+        },
+        {
+          name: "",
+          age: 0,
+        },
+        {
+          name: "",
+          age: 0,
+        },
+        {
+          name: "",
+          age: 0,
+        },
+      ],
+    });
   };
 
   return (
@@ -554,7 +577,11 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Nama istri"
                         name="name"
-                        value={payload.family_list?.length > 0 ? payload.family_list[0].name : ''}
+                        value={
+                          payload.family_list?.length > 0
+                            ? payload.family_list[0].name
+                            : ""
+                        }
                         onChange={(e) => _handleChangeFamily(0, e)}
                       />
                     </div>
@@ -569,7 +596,11 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Pertama"
                         name="name"
-                        value={payload.family_list?.length > 1 ? payload.family_list[1].name : ''}
+                        value={
+                          payload.family_list?.length > 1
+                            ? payload.family_list[1].name
+                            : ""
+                        }
                         onChange={(e) => _handleChangeFamily(1, e)}
                       />
                     </div>
@@ -604,7 +635,11 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Kedua"
                         name="name"
-                        value={payload.family_list?.length > 2 ? payload.family_list[2].name : ''}
+                        value={
+                          payload.family_list?.length > 2
+                            ? payload.family_list[2].name
+                            : ""
+                        }
                         onChange={(e) => _handleChangeFamily(2, e)}
                       />
                     </div>
@@ -640,7 +675,11 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Ketiga"
                         name="name"
-                        value={payload.family_list?.length > 3 ? payload.family_list[3].name : ''}
+                        value={
+                          payload.family_list?.length > 3
+                            ? payload.family_list[3].name
+                            : ""
+                        }
                         onChange={(e) => _handleChangeFamily(3, e)}
                       />
                     </div>
@@ -676,7 +715,11 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Keempat"
                         name="name"
-                        value={payload.family_list?.length > 4 ? payload.family_list[4].name : ''}
+                        value={
+                          payload.family_list?.length > 4
+                            ? payload.family_list[4].name
+                            : ""
+                        }
                         onChange={(e) => _handleChangeFamily(4, e)}
                       />
                     </div>
@@ -712,7 +755,11 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Kelima"
                         name="name"
-                        value={payload.family_list?.length > 5 ? payload.family_list[5].name : ''}
+                        value={
+                          payload.family_list?.length > 5
+                            ? payload.family_list[5].name
+                            : ""
+                        }
                         onChange={(e) => _handleChangeFamily(5, e)}
                       />
                     </div>
@@ -759,10 +806,11 @@ export default function Dashboard() {
       </div>
       {/* Modal edit */}
       <button
-              style={{ position: 'absolute', bottom: -100 }} 
-              id="editModalButton"
-              data-bs-toggle="modal"
-              data-bs-target="#editModal"/>
+        style={{ position: "absolute", bottom: -100 }}
+        id="editModalButton"
+        data-bs-toggle="modal"
+        data-bs-target="#editModal"
+      />
       <div
         className="modal fade"
         id="editModal"
@@ -920,7 +968,11 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Nama istri"
                         name="name"
-                        value={payload.family_list?.length > 0 ? payload.family_list[0].name : ''}
+                        value={
+                          payload.family_list?.length > 0
+                            ? payload.family_list[0].name
+                            : ""
+                        }
                         onChange={(e) => _handleChangeFamily(0, e)}
                       />
                     </div>
@@ -935,7 +987,11 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Pertama"
                         name="name"
-                        value={payload.family_list?.length > 1 ? payload.family_list[1].name : ''}
+                        value={
+                          payload.family_list?.length > 1
+                            ? payload.family_list[1].name
+                            : ""
+                        }
                         onChange={(e) => _handleChangeFamily(1, e)}
                       />
                     </div>
@@ -954,7 +1010,13 @@ export default function Dashboard() {
                           Pilih umur
                         </option>
                         {AGES.map((age) => (
-                          <option value={age} selected={payload.family_list?.length > 0 && payload.family_list[1].age === age}>
+                          <option
+                            value={age}
+                            selected={
+                              payload.family_list?.length > 0 &&
+                              payload.family_list[1].age === age
+                            }
+                          >
                             {age === 0 ? "0-1" : age} tahun
                           </option>
                         ))}
@@ -970,7 +1032,11 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Kedua"
                         name="name"
-                        value={payload.family_list?.length > 2 ? payload.family_list[2].name : ''}
+                        value={
+                          payload.family_list?.length > 2
+                            ? payload.family_list[2].name
+                            : ""
+                        }
                         onChange={(e) => _handleChangeFamily(2, e)}
                       />
                     </div>
@@ -989,7 +1055,13 @@ export default function Dashboard() {
                           Pilih umur
                         </option>
                         {AGES.map((age) => (
-                          <option value={age} selected={payload.family_list?.length > 2 && payload.family_list[2].age === age}>
+                          <option
+                            value={age}
+                            selected={
+                              payload.family_list?.length > 2 &&
+                              payload.family_list[2].age === age
+                            }
+                          >
                             {age === 0 ? "0-1" : age} tahun
                           </option>
                         ))}
@@ -1006,7 +1078,11 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Ketiga"
                         name="name"
-                        value={payload.family_list?.length > 3 ? payload.family_list[3].name : ''}
+                        value={
+                          payload.family_list?.length > 3
+                            ? payload.family_list[3].name
+                            : ""
+                        }
                         onChange={(e) => _handleChangeFamily(3, e)}
                       />
                     </div>
@@ -1025,7 +1101,13 @@ export default function Dashboard() {
                           Pilih umur
                         </option>
                         {AGES.map((age) => (
-                          <option value={age} selected={payload.family_list?.length > 3 && payload.family_list[3].age === age}>
+                          <option
+                            value={age}
+                            selected={
+                              payload.family_list?.length > 3 &&
+                              payload.family_list[3].age === age
+                            }
+                          >
                             {age === 0 ? "0-1" : age} tahun
                           </option>
                         ))}
@@ -1042,7 +1124,11 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Keempat"
                         name="name"
-                        value={payload.family_list?.length > 4 ? payload.family_list[4].name : ''}
+                        value={
+                          payload.family_list?.length > 4
+                            ? payload.family_list[4].name
+                            : ""
+                        }
                         onChange={(e) => _handleChangeFamily(4, e)}
                       />
                     </div>
@@ -1061,7 +1147,13 @@ export default function Dashboard() {
                           Pilih umur
                         </option>
                         {AGES.map((age) => (
-                          <option value={age} selected={payload.family_list?.length > 4 && payload.family_list[4].age === age}>
+                          <option
+                            value={age}
+                            selected={
+                              payload.family_list?.length > 4 &&
+                              payload.family_list[4].age === age
+                            }
+                          >
                             {age === 0 ? "0-1" : age} tahun
                           </option>
                         ))}
@@ -1078,7 +1170,11 @@ export default function Dashboard() {
                         className="form-control"
                         placeholder="Anak Kelima"
                         name="name"
-                        value={payload.family_list?.length > 5 ? payload.family_list[5].name : ''}
+                        value={
+                          payload.family_list?.length > 5
+                            ? payload.family_list[5].name
+                            : ""
+                        }
                         onChange={(e) => _handleChangeFamily(5, e)}
                       />
                     </div>
@@ -1097,7 +1193,13 @@ export default function Dashboard() {
                           Pilih umur
                         </option>
                         {AGES.map((age) => (
-                          <option value={age} selected={payload.family_list?.length > 5 && payload.family_list[5] === age}>
+                          <option
+                            value={age}
+                            selected={
+                              payload.family_list?.length > 5 &&
+                              payload.family_list[5] === age
+                            }
+                          >
                             {age === 0 ? "0-1" : age} tahun
                           </option>
                         ))}
